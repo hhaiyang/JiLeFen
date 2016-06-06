@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CancelRelatePopView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8k-wB-zNp">
+                    <rect key="frame" x="40" y="146" width="240" height="187"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确定要解除关联吗？解除后积分将全部归您所有？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZG-fB-PpA">
+                            <rect key="frame" x="15" y="35" width="210" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="zZu-iM-B8l"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A02-nO-x52">
+                            <rect key="frame" x="0.0" y="110" width="120" height="35"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0u-Mn-zhb">
+                                    <rect key="frame" x="29.5" y="0.0" width="61" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="N0u-Mn-zhb" secondAttribute="height" multiplier="140:80" id="uIa-U8-Izl"/>
+                                    </constraints>
+                                    <state key="normal" backgroundImage="确定"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="N0u-Mn-zhb" secondAttribute="bottom" id="3QB-nt-shz"/>
+                                <constraint firstAttribute="height" constant="35" id="K2a-xz-u1b"/>
+                                <constraint firstItem="N0u-Mn-zhb" firstAttribute="centerX" secondItem="A02-nO-x52" secondAttribute="centerX" id="MI1-ox-uoI"/>
+                                <constraint firstItem="N0u-Mn-zhb" firstAttribute="top" secondItem="A02-nO-x52" secondAttribute="top" id="qUK-qc-2wI"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63e-fS-Zpy">
+                            <rect key="frame" x="120" y="110" width="120" height="35"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCm-If-P6R">
+                                    <rect key="frame" x="28" y="0.0" width="64" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="PCm-If-P6R" secondAttribute="height" multiplier="140:76" id="SQl-w0-ULi"/>
+                                    </constraints>
+                                    <state key="normal" backgroundImage="取消"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="PCm-If-P6R" firstAttribute="top" secondItem="63e-fS-Zpy" secondAttribute="top" id="GXI-41-qwx"/>
+                                <constraint firstItem="PCm-If-P6R" firstAttribute="centerX" secondItem="63e-fS-Zpy" secondAttribute="centerX" id="gxn-vE-QCf"/>
+                                <constraint firstAttribute="bottom" secondItem="PCm-If-P6R" secondAttribute="bottom" id="xZH-Fb-gkz"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifp-SZ-Z9V">
+                            <rect key="frame" x="219" y="-9" width="30" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="aJw-IF-vwp"/>
+                                <constraint firstAttribute="width" secondItem="Ifp-SZ-Z9V" secondAttribute="height" multiplier="57:49" id="wWe-hc-YDy"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="弹出框关闭小按钮"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Ifp-SZ-Z9V" secondAttribute="trailing" constant="-9" id="3Gf-lF-DIO"/>
+                        <constraint firstItem="A02-nO-x52" firstAttribute="top" secondItem="tZG-fB-PpA" secondAttribute="bottom" constant="30" id="5is-3q-s2a"/>
+                        <constraint firstItem="Ifp-SZ-Z9V" firstAttribute="top" secondItem="i8k-wB-zNp" secondAttribute="top" constant="-9" id="AM1-zc-ovo"/>
+                        <constraint firstItem="63e-fS-Zpy" firstAttribute="width" secondItem="A02-nO-x52" secondAttribute="width" id="GfU-cT-G6m"/>
+                        <constraint firstItem="tZG-fB-PpA" firstAttribute="top" secondItem="i8k-wB-zNp" secondAttribute="top" constant="35" id="HOv-L8-LAX"/>
+                        <constraint firstItem="tZG-fB-PpA" firstAttribute="leading" secondItem="i8k-wB-zNp" secondAttribute="leading" constant="15" id="ImG-Lw-9dc"/>
+                        <constraint firstAttribute="width" secondItem="i8k-wB-zNp" secondAttribute="height" multiplier="770:600" id="Pnc-67-ALi"/>
+                        <constraint firstAttribute="trailing" secondItem="63e-fS-Zpy" secondAttribute="trailing" id="daF-g1-bYB"/>
+                        <constraint firstItem="63e-fS-Zpy" firstAttribute="bottom" secondItem="A02-nO-x52" secondAttribute="bottom" id="lJl-9a-snS"/>
+                        <constraint firstItem="63e-fS-Zpy" firstAttribute="top" secondItem="A02-nO-x52" secondAttribute="top" id="rfL-QM-457"/>
+                        <constraint firstAttribute="trailing" secondItem="tZG-fB-PpA" secondAttribute="trailing" constant="15" id="tRV-jf-zfM"/>
+                        <constraint firstItem="63e-fS-Zpy" firstAttribute="leading" secondItem="A02-nO-x52" secondAttribute="trailing" id="x6J-cg-1tj"/>
+                        <constraint firstItem="A02-nO-x52" firstAttribute="leading" secondItem="i8k-wB-zNp" secondAttribute="leading" id="zph-nH-9Da"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="i8k-wB-zNp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UNc-hc-akx"/>
+                <constraint firstItem="i8k-wB-zNp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="t3x-BW-XTp"/>
+                <constraint firstAttribute="trailing" secondItem="i8k-wB-zNp" secondAttribute="trailing" constant="40" id="zLy-Jl-p0C"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cancelButton" destination="PCm-If-P6R" id="7A3-ir-VVm"/>
+                <outlet property="closeButton" destination="Ifp-SZ-Z9V" id="Trr-VO-O2S"/>
+                <outlet property="confirmButton" destination="N0u-Mn-zhb" id="wtu-qh-j3j"/>
+            </connections>
+            <point key="canvasLocation" x="185" y="325"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="取消" width="140" height="76"/>
+        <image name="弹出框关闭小按钮" width="57" height="49"/>
+        <image name="确定" width="140" height="80"/>
+    </resources>
+</document>

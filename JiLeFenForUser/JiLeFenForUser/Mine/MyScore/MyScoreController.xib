@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyScoreController">
+            <connections>
+                <outlet property="introductionView" destination="VV9-bI-5Nh" id="dj1-vo-XFg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laJ-zk-CrL">
+                    <rect key="frame" x="0.0" y="64" width="160" height="55"/>
+                    <color key="backgroundColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="G5L-SG-aoa"/>
+                    </constraints>
+                    <state key="normal" title="增加积分"/>
+                    <connections>
+                        <action selector="addScore:" destination="-1" eventType="touchUpInside" id="cLW-AR-0iI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAt-hn-vLL">
+                    <rect key="frame" x="160" y="64" width="160" height="55"/>
+                    <color key="backgroundColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="积分明细"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-4u-a4n">
+                    <rect key="frame" x="15" y="134" width="290" height="45"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nGp-Jd-zif">
+                            <rect key="frame" x="144" y="10" width="1" height="25"/>
+                            <color key="backgroundColor" red="0.49803921580314636" green="0.49803921580314636" blue="0.49803921580314636" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="Emw-1U-ZLN"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZw-i0-q2e">
+                            <rect key="frame" x="0.0" y="0.0" width="144" height="45"/>
+                            <attributedString key="attributedText">
+                                <fragment content="可用现金积分">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="11" name="STHeitiSC-Light"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="369">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnv-Pf-755">
+                            <rect key="frame" x="145" y="0.0" width="145" height="45"/>
+                            <attributedString key="attributedText">
+                                <fragment content="可用免费积分">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="11" name="STHeitiSC-Light"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" ">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="17" name="STHeitiSC-Light"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="1358">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="17" name="STHeitiSC-Light"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="dZw-i0-q2e" firstAttribute="leading" secondItem="QBT-4u-a4n" secondAttribute="leading" id="3rs-lU-QaZ"/>
+                        <constraint firstAttribute="height" constant="45" id="KOs-Ig-LV6"/>
+                        <constraint firstItem="nGp-Jd-zif" firstAttribute="top" secondItem="QBT-4u-a4n" secondAttribute="top" constant="10" id="No4-GO-NTn"/>
+                        <constraint firstItem="Hnv-Pf-755" firstAttribute="leading" secondItem="nGp-Jd-zif" secondAttribute="trailing" id="P7r-tt-Fnu"/>
+                        <constraint firstItem="dZw-i0-q2e" firstAttribute="top" secondItem="QBT-4u-a4n" secondAttribute="top" id="hDt-Pu-CVv"/>
+                        <constraint firstAttribute="bottom" secondItem="Hnv-Pf-755" secondAttribute="bottom" id="l8T-J8-CdL"/>
+                        <constraint firstItem="nGp-Jd-zif" firstAttribute="centerX" secondItem="QBT-4u-a4n" secondAttribute="centerX" id="mQ7-RZ-bCl"/>
+                        <constraint firstAttribute="bottom" secondItem="nGp-Jd-zif" secondAttribute="bottom" constant="10" id="mtF-db-F8T"/>
+                        <constraint firstAttribute="bottom" secondItem="dZw-i0-q2e" secondAttribute="bottom" id="nhc-72-ogH"/>
+                        <constraint firstAttribute="trailing" secondItem="Hnv-Pf-755" secondAttribute="trailing" id="y3c-46-ggM"/>
+                        <constraint firstItem="Hnv-Pf-755" firstAttribute="top" secondItem="QBT-4u-a4n" secondAttribute="top" id="zZS-n7-eVt"/>
+                        <constraint firstItem="nGp-Jd-zif" firstAttribute="leading" secondItem="dZw-i0-q2e" secondAttribute="trailing" id="zt4-Jv-jf2"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VV9-bI-5Nh" customClass="IntroductionView">
+                    <rect key="frame" x="10" y="199" width="300" height="232"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="VV9-bI-5Nh" secondAttribute="bottom" constant="49" id="HPi-0R-ay5"/>
+                <constraint firstItem="QAt-hn-vLL" firstAttribute="bottom" secondItem="laJ-zk-CrL" secondAttribute="bottom" id="LRQ-tp-q5R"/>
+                <constraint firstAttribute="trailing" secondItem="VV9-bI-5Nh" secondAttribute="trailing" constant="10" id="Qbk-ml-CRT"/>
+                <constraint firstItem="VV9-bI-5Nh" firstAttribute="top" secondItem="QBT-4u-a4n" secondAttribute="bottom" constant="20" id="Qhl-X2-pHz"/>
+                <constraint firstItem="VV9-bI-5Nh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="T1x-xA-dYm"/>
+                <constraint firstItem="laJ-zk-CrL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tag-bu-NlF"/>
+                <constraint firstAttribute="trailing" secondItem="QAt-hn-vLL" secondAttribute="trailing" id="UPU-y6-YbP"/>
+                <constraint firstItem="QBT-4u-a4n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="XEa-at-Q6K"/>
+                <constraint firstItem="laJ-zk-CrL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Y4G-QL-QcP"/>
+                <constraint firstItem="QAt-hn-vLL" firstAttribute="top" secondItem="laJ-zk-CrL" secondAttribute="top" id="faf-q5-TOf"/>
+                <constraint firstItem="QAt-hn-vLL" firstAttribute="width" secondItem="laJ-zk-CrL" secondAttribute="width" id="gov-bq-QH0"/>
+                <constraint firstItem="QBT-4u-a4n" firstAttribute="top" secondItem="QAt-hn-vLL" secondAttribute="bottom" constant="15" id="i6A-Aa-USr"/>
+                <constraint firstItem="QAt-hn-vLL" firstAttribute="leading" secondItem="laJ-zk-CrL" secondAttribute="trailing" id="i9G-0I-CyI"/>
+                <constraint firstAttribute="trailing" secondItem="QBT-4u-a4n" secondAttribute="trailing" constant="15" id="x59-0e-cwB"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="95" y="268"/>
+        </view>
+    </objects>
+</document>

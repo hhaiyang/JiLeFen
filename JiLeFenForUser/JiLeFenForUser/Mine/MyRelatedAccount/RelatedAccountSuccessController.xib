@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RelatedAccountSuccessController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="标志" translatesAutoresizingMaskIntoConstraints="NO" id="F4m-CR-yZh">
+                    <rect key="frame" x="150" y="150" width="20" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="F4m-CR-yZh" secondAttribute="height" multiplier="2:1" id="ggY-5Z-Aoi"/>
+                        <constraint firstAttribute="width" constant="20" id="mSQ-wY-MGp"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="标志" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-0W-IJh">
+                    <rect key="frame" x="173" y="127" width="54" height="54"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="标志" translatesAutoresizingMaskIntoConstraints="NO" id="qFn-K0-oM1">
+                    <rect key="frame" x="93" y="128" width="54" height="54"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="TXL-Ph-DFt"/>
+                        <constraint firstAttribute="width" secondItem="qFn-K0-oM1" secondAttribute="height" multiplier="1:1" id="kJB-RF-JBx"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您与139*******7已互为关联" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Uw-Hd-Wpl">
+                    <rect key="frame" x="10" y="210" width="300" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Q35-jM-S3c"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3p-wq-XgV">
+                    <rect key="frame" x="50.5" y="275" width="220" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="D3p-wq-XgV" secondAttribute="height" multiplier="440:80" id="CHh-r2-aQ3"/>
+                        <constraint firstAttribute="height" constant="40" id="cty-Se-pkj"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="解除关联按钮"/>
+                    <connections>
+                        <action selector="cancelRelate:" destination="-1" eventType="touchUpInside" id="rIW-gh-6kk"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="D3p-wq-XgV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2IY-cY-U0o"/>
+                <constraint firstItem="F4m-CR-yZh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3PZ-Nd-foq"/>
+                <constraint firstItem="F4m-CR-yZh" firstAttribute="centerY" secondItem="qFn-K0-oM1" secondAttribute="centerY" id="7QY-Zi-nkJ"/>
+                <constraint firstItem="0Uw-Hd-Wpl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="9yf-yj-Kv5"/>
+                <constraint firstItem="U1L-0W-IJh" firstAttribute="height" secondItem="qFn-K0-oM1" secondAttribute="height" id="Cw6-Gc-Rq7"/>
+                <constraint firstItem="0Uw-Hd-Wpl" firstAttribute="top" secondItem="qFn-K0-oM1" secondAttribute="bottom" constant="28" id="Mrm-Te-egh"/>
+                <constraint firstItem="U1L-0W-IJh" firstAttribute="centerY" secondItem="F4m-CR-yZh" secondAttribute="centerY" id="N9c-Cc-Ykr"/>
+                <constraint firstItem="U1L-0W-IJh" firstAttribute="width" secondItem="qFn-K0-oM1" secondAttribute="width" id="Rmj-Vz-kl9"/>
+                <constraint firstItem="F4m-CR-yZh" firstAttribute="leading" secondItem="qFn-K0-oM1" secondAttribute="trailing" constant="3" id="VvV-qc-MuS"/>
+                <constraint firstItem="U1L-0W-IJh" firstAttribute="leading" secondItem="F4m-CR-yZh" secondAttribute="trailing" constant="3" id="fxj-fm-8gq"/>
+                <constraint firstItem="F4m-CR-yZh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="lK7-Z2-vqY"/>
+                <constraint firstItem="D3p-wq-XgV" firstAttribute="top" secondItem="0Uw-Hd-Wpl" secondAttribute="bottom" constant="30" id="ls1-ug-xgn"/>
+                <constraint firstAttribute="trailing" secondItem="0Uw-Hd-Wpl" secondAttribute="trailing" constant="10" id="wHM-0f-5Ap"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="312" y="289"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="标志" width="508" height="231"/>
+        <image name="解除关联按钮" width="440" height="80"/>
+    </resources>
+</document>
