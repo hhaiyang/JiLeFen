@@ -22,6 +22,9 @@
 @property (nonatomic, strong) ActivityDateView *dateView;
 @property (nonatomic, strong) ActivityContentView *activityContentView;
 @property (nonatomic, strong) ActivityPopView *popView;
+@property (nonatomic, assign) CGRect keyboardFrame;
+@property (nonatomic, assign) NSTimeInterval keyboardAnimationDuration;
+@property (nonatomic, assign) UIViewAnimationOptions keyboardAnimationOption;
 @end
 
 @implementation CreateActivityController
@@ -38,6 +41,42 @@
     self.title = @"发布活动";
     [self initNavi];
     [self setupSubviews];
+    [self addKeyboardNotification];
+    
+    
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)addKeyboardNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+- (void)keyboardWillShow:(NSNotification *)noti {
+    NSTimeInterval duration = [noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    self.keyboardAnimationDuration = duration;
+    UIViewAnimationOptions option = [noti.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    self.keyboardAnimationOption = option;
+    CGRect keyboardFrame = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.keyboardFrame = keyboardFrame;
+    if (![self.activityContentView.contentTextView isFirstResponder]) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        return;
+    }
+    
+}
+- (void)keyboardWillHide:(NSNotification *)noti {
+    TEST_LOG(@"noti = %@", noti);
+    __weak typeof(self) weakSelf = self;
+    CGRect contentViewFrame = self.contentView.frame;
+    contentViewFrame.origin.y = 64;
+    NSTimeInterval duration = [noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationOptions option = [noti.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    [UIView animateWithDuration:duration delay:0 options:option animations:^{
+        weakSelf.contentView.frame = contentViewFrame;
+    } completion:nil];
+   
     
     
 }

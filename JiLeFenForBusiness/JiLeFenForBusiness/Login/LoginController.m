@@ -12,7 +12,7 @@
 #import "HomeController.h"
 #import "User.h"
 
-@interface LoginController ()
+@interface LoginController () <UITextFieldDelegate>
 @property (nonatomic, strong) LoginView *loginView;
 @end
 
@@ -21,8 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     LoginView *loginView = [[LoginView alloc] initWithFrame:self.view.bounds];
+    loginView.userNameTextField.delegate = self;
     [loginView.loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [loginView.gotoRegisterButton addTarget:self action:@selector(toRegisterVC) forControlEvents:UIControlEventTouchUpInside];
+    [loginView.recordPasswordButton addTarget:self action:@selector(recordPassword:) forControlEvents:UIControlEventTouchUpInside];
     self.loginView = loginView;
     [self.view addSubview:loginView];
     self.title = @"登陆";
@@ -118,9 +120,41 @@
     [self hideKeyboard];
 }
 - (void)toHomeVC {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *password = [ud objectForKey:self.loginView.userNameTextField.text];
+    if (self.loginView.recordPasswordButton.selected) {
+        if (!password) {
+            [ud setObject:self.loginView.passwordTextField.text forKey:self.loginView.userNameTextField.text];
+        }
+        
+    } else {
+        if (password) {
+            [ud removeObjectForKey:self.loginView.userNameTextField.text];
+        }
+        
+    }
     HomeController *home = [HomeController new];
     UINavigationController *homeNavi = [[UINavigationController alloc] initWithRootViewController:home];
     kWindow.rootViewController = homeNavi;
     
+}
+- (void)recordPassword:(UIButton *)sender {
+    RecordPasswordButton *button = (RecordPasswordButton *)sender;
+    button.selected = !button.selected;
+    if (button.selected) {
+        button.recordPasswordImageView.image = [UIImage imageNamed:@"记住密码按钮"];
+        
+    } else {
+        button.recordPasswordImageView.image = [UIImage imageNamed:@"记住密码按钮-待选"];
+    }
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:textField.text];
+    if (password) {
+        self.loginView.passwordTextField.text = password;
+        self.loginView.recordPasswordButton.selected = YES;
+        self.loginView.recordPasswordButton.recordPasswordImageView.image = [UIImage imageNamed:@"记住密码按钮"];
+    }
+    return YES;
 }
 @end

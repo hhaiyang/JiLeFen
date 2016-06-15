@@ -24,6 +24,7 @@
 		02092E221CE38F51006FEB21 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 02092E171CE38F51006FEB21 /* UIProgressView+AFNetworking.m */; };
 		02092E231CE38F51006FEB21 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 02092E191CE38F51006FEB21 /* UIRefreshControl+AFNetworking.m */; };
 		02092E241CE38F51006FEB21 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 02092E1B1CE38F51006FEB21 /* UIWebView+AFNetworking.m */; };
+		0212BF1F1D11804B00CA82BA /* RecordPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0212BF1E1D11804B00CA82BA /* RecordPasswordButton.m */; };
 		021A10851D02711300FCA253 /* VerifySuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021A10841D02711300FCA253 /* VerifySuccessController.m */; };
 		0238D2921D01875D007C184B /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0238D2911D01875D007C184B /* ScoreCell.m */; };
 		024816B31CEB0465003C8CEC /* ModifyPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 024816B21CEB0465003C8CEC /* ModifyPasswordController.m */; };
@@ -156,6 +157,8 @@
 		02092E1A1CE38F51006FEB21 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		02092E1B1CE38F51006FEB21 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		02092E251CE38F73006FEB21 /* URLDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLDefine.h; sourceTree = "<group>"; };
+		0212BF1D1D11804B00CA82BA /* RecordPasswordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPasswordButton.h; sourceTree = "<group>"; };
+		0212BF1E1D11804B00CA82BA /* RecordPasswordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPasswordButton.m; sourceTree = "<group>"; };
 		021A10831D02711300FCA253 /* VerifySuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifySuccessController.h; sourceTree = "<group>"; };
 		021A10841D02711300FCA253 /* VerifySuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifySuccessController.m; sourceTree = "<group>"; };
 		0238D2901D01875D007C184B /* ScoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCell.h; sourceTree = "<group>"; };
@@ -831,6 +834,8 @@
 				02FFD0391CDEE6F000EEA0D1 /* LoginController.m */,
 				02FFD03B1CDEE70D00EEA0D1 /* LoginView.h */,
 				02FFD03C1CDEE70D00EEA0D1 /* LoginView.m */,
+				0212BF1D1D11804B00CA82BA /* RecordPasswordButton.h */,
+				0212BF1E1D11804B00CA82BA /* RecordPasswordButton.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1037,6 +1042,7 @@
 				029D3CE11D0537DC00C6C1CA /* SDWebImageDownloader.m in Sources */,
 				0277B03C1CF14F520099143B /* MJRefreshBackGifFooter.m in Sources */,
 				024816B61CEB0585003C8CEC /* ModifyPasswordCell.m in Sources */,
+				0212BF1F1D11804B00CA82BA /* RecordPasswordButton.m in Sources */,
 				029D3CE21D0537DC00C6C1CA /* SDWebImageDownloaderOperation.m in Sources */,
 				0277B06B1CF160990099143B /* ActivityListController.m in Sources */,
 				02092E041CE38F4B006FEB21 /* AFURLRequestSerialization.m in Sources */,

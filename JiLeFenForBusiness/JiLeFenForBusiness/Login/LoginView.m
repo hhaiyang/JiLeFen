@@ -49,6 +49,10 @@
         userNameTextField.frame = CGRectMake(30, passwordTextField.y-50, inputBackgroundImageView.width-60, 40);
         [inputBackgroundImageView addSubview:userNameTextField];
         
+        RecordPasswordButton *recordPasswordButton = [[RecordPasswordButton alloc] initWithFrame:CGRectMake(passwordTextField.x, passwordTextField.y+passwordTextField.height+5, 87, 25)];
+        self.recordPasswordButton = recordPasswordButton;
+        [inputBackgroundImageView addSubview:recordPasswordButton];
+        
         UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.loginButton = loginButton;
         UIImage *loginImage = [UIImage imageNamed:@"登陆按钮"];
@@ -56,7 +60,7 @@
         width = loginImage.size.width/loginImage.size.height*height;
         [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
         [loginButton setBackgroundImage:loginImage forState:UIControlStateHighlighted];
-        loginButton.frame = CGRectMake((inputBackgroundImageView.width-width)/2, passwordTextField.y+passwordTextField.height+20, width, height);
+        loginButton.frame = CGRectMake((inputBackgroundImageView.width-width)/2, recordPasswordButton.y+recordPasswordButton.height, width, height);
         [inputBackgroundImageView addSubview:loginButton];
         
         UIButton *gotoRegisterButton = [UIButton buttonWithType:UIButtonTypeCustom];
