@@ -12,26 +12,93 @@
 #import "MyScoreController.h"
 #import "MyAttentionController.h"
 #import "MyRelatedAccountController.h"
-#import "MineHeaderView.h"
 @interface MineController ()
 @property (nonatomic, strong) NSArray *titleArr;
 @property (nonatomic, strong) NSArray *imageArr;
 @end
 
 @implementation MineController
-/** 控制器生命周期 */
-- (instancetype)init {
-    self = [super init];
+
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
     if (self) {
-        [self basicSetup];
+        self.title = @"我的";
+        self.tabBarItem.image = [UIImage imageNamed:@"我的-点击前 透明"];
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"我的-点击后 透明"];
     }
     return self;
 }
-/** 视图生命周期 */
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
-   
+    self.tableView.backgroundColor = [UIColor whiteColor];
+     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"otherCell"];
+    UIView *tableheaderView = [UIView new];
+    tableheaderView.frame = CGRectMake(0, 0, self.tableView.bounds.size.width, 220);
+    self.tableView.tableHeaderView = tableheaderView;
+    
+    UIImageView *imageView = [UIImageView new];
+    imageView.userInteractionEnabled = YES;
+    imageView.frame = CGRectMake(0, 0, tableheaderView.width, 160);
+    imageView.backgroundColor = kRGBColor(201, 252, 208);
+    [tableheaderView addSubview:imageView];
+    
+    UILabel *label = [UILabel new];
+    label.text = @"你还没有登录哦～";
+    label.textColor = [UIColor grayColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.frame = CGRectMake(30, (imageView.height-21)/2, imageView.width-60, 21);
+    [imageView addSubview:label];
+    
+    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *loginImage = [UIImage imageNamed:@"我的主界面-登陆按钮"];
+    CGFloat loginButtonHeight = 45;
+    CGFloat loginButtonWidth = loginImage.size.width/loginImage.size.height*loginButtonHeight;
+    loginButton.frame = CGRectMake((imageView.width-loginButtonWidth)/2, label.y+label.height+8, loginButtonWidth, loginButtonHeight);
+    [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
+    [loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    [imageView addSubview:loginButton];
+    
+    UIView *actionView = [UIView new];
+    actionView.frame = CGRectMake(0, imageView.y+imageView.height, tableheaderView.width, tableheaderView.height-imageView.height);
+    actionView.backgroundColor = kRGBColor(245, 244, 245);
+    [tableheaderView addSubview:actionView];
+    
+    UIView *subview = nil;
+    CGFloat subviewWidth = actionView.width/3;
+    CGFloat subviewHeight = actionView.height;
+    NSArray *titles = @[@"我的积分", @"我的关注", @"我的关联号"];
+    NSArray *images = @[@"我的积分", @"我的关注", @"我的关联号"];
+    for (int index = 0; index < 3; index++) {
+        subview = [UIView new];
+        subview.backgroundColor = [UIColor clearColor];
+        subview.frame = CGRectMake(index*subviewWidth, 0, subviewWidth, subviewHeight);
+        [actionView addSubview:subview];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *image = [UIImage imageNamed:images[index]];
+        CGFloat buttonHeight = subview.height-23;
+        CGFloat buttonWidth = image.size.width/image.size.height*buttonHeight;
+        button.frame = CGRectMake((subview.width-buttonWidth)/2, 3, buttonWidth, buttonHeight);
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        if (index == 0) {
+            [button addTarget:self action:@selector(myScore:) forControlEvents:UIControlEventTouchUpInside];
+        } else if (index == 1) {
+            [button addTarget:self action:@selector(myAttention:) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            [button addTarget:self action:@selector(myRelatedAccount:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        [subview addSubview:button];
+        
+        UILabel *label = [UILabel new];
+        label.text = titles[index];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor grayColor];
+        label.font = [UIFont systemFontOfSize:13];
+        label.frame = CGRectMake(3, button.y+button.height, subview.width-6, subview.height-button.y-button.height-3);
+        [subview addSubview:label];
+    }
+    
+       
     
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,26 +121,7 @@
     }
     return _imageArr;
 }
-- (void)basicSetup {
-    self.title = @"我的";
-    self.tabBarItem.image = [UIImage imageNamed:@"我的-点击前 透明"];
-    self.tabBarItem.selectedImage = [UIImage imageNamed:@"我的-点击后 透明"];
-    
-}
-- (void)initUI {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 220)];
-    MineHeaderView *headerView = [MineHeaderView headerView];
-    headerView.frame = CGRectMake(0, 0, self.tableView.bounds.size.width, 220);
-    [headerView.loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView.myScoreButton addTarget:self action:@selector(myScore:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView.myAttentionButton addTarget:self action:@selector(myAttention:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView.myRelatedAccountButton addTarget:self action:@selector(myRelatedAccount:) forControlEvents:UIControlEventTouchUpInside];
-    headerView.frame = view.bounds;
-    [view addSubview:headerView];
-    self.tableView.tableHeaderView = view;
-    
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"otherCell"];
-}
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -85,7 +133,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"otherCell"];
     cell.textLabel.text = self.titleArr[indexPath.row];
-    //cell.imageView.image = [UIImage imageNamed:self.imageArr[indexPath.row]];
+//    cell.imageView.image = [UIImage imageNamed:self.imageArr[indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -93,6 +141,7 @@
     return @"其他";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         
     } else if (indexPath.row == 1) {

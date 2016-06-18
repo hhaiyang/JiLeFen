@@ -32,7 +32,7 @@
 - (void)createViewControllers {
     HomeController *homeController = [HomeController new];
     UINavigationController *homeNavi = [[UINavigationController alloc] initWithRootViewController:homeController];
-    MineController *mineController = [MineController new];
+    MineController *mineController = [[MineController alloc] initWithStyle:UITableViewStyleGrouped];
     UINavigationController *mineNavi = [[UINavigationController alloc] initWithRootViewController:mineController];
     
     ScoreConvertCenterController *scoreController = [ScoreConvertCenterController new];
