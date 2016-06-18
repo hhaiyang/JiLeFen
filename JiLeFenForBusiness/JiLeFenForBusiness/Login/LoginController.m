@@ -86,7 +86,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     __weak typeof(self) weakSelf = self;
-    [manager POST:LOGIN_URL parameters:@{@"userid":username, @"password":password} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=login" parameters:@{@"userid":username, @"password":password} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
         int status = [responseObject[@"status"] intValue];
         if (status == 0) {

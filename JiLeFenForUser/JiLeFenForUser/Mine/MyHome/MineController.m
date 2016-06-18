@@ -104,7 +104,6 @@
 - (void)login:(id)sender {
     TEST_LOG(@"登录");
     LoginController *loginController = [LoginController new];
-    loginController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:loginController animated:YES];
 }
 - (void)myScore:(id)sender {
