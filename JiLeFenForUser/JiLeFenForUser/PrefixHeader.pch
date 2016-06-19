@@ -22,6 +22,8 @@
 
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
+#import "WMPageController.h"
+#import "MJRefresh.h"
 
 
 #define TestLog

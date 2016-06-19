@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MyAttentionCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *myAttentionImageView;
-@property (weak, nonatomic) IBOutlet UILabel *myAttentionTitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *cancelAttentionButton;
-+ (instancetype)myAttentionCellWithTableView:(UITableView *)tableView;
+@property (strong, nonatomic) UIImageView *myAttentionImageView;
+@property (strong, nonatomic) UILabel *myAttentionTitleLabel;
+@property (strong, nonatomic) UIButton *cancelAttentionButton;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 @end

@@ -1,13 +1,13 @@
 //
-//  AddScoreController.h
+//  QRCodeController.h
 //  JiLeFenForUser
 //
-//  Created by huanghaiyang on 16/2/28.
+//  Created by huanghaiyang on 16/6/19.
 //  Copyright © 2016年 tarena. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AddScoreController : WMPageController
+@interface QRCodeController : UIViewController
 
 @end

@@ -17,15 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
-    
-}
-
-- (void)initUI {
     self.title = @"关联账号";
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
+
+    
+    
 }
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];

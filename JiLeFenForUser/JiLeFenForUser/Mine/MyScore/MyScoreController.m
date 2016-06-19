@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IntroductionView *introductionView;
 @property (nonatomic, strong) UILabel *cashScoreLabel;
 @property (nonatomic, strong) UILabel *freeScoreLabel;
+@property (nonatomic, strong) NSArray *titles;
 @end
 
 @implementation MyScoreController
@@ -32,10 +33,11 @@
     topView.backgroundColor = kRGBColor(245, 244, 245);
     [self.view addSubview:topView];
     
-    NSArray *titles = @[@"增加积分", @"积分明细"];
+    _titles = @[@"增加积分", @"积分明细"];
     for (int index = 0; index < 2; index++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:titles[index] forState:UIControlStateNormal];
+        button.tag = index;
+        [button setTitle:_titles[index] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(addScore:) forControlEvents:UIControlEventTouchUpInside];
         button.frame = CGRectMake(topView.width/2*index, 0, topView.width/2, topView.height);
@@ -88,9 +90,11 @@
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)addScore:(id)sender {
+- (void)addScore:(UIButton *)sender {
     
-    AddScoreController *addScoreController = [AddScoreController new];
+    AddScoreController *addScoreController = [[AddScoreController alloc] init];
+    addScoreController.selectIndex = sender.tag;
+    addScoreController.title = _titles[sender.tag];
     [self.navigationController pushViewController:addScoreController animated:YES];
 }
 

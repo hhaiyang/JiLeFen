@@ -163,8 +163,7 @@
 }
 - (void)myAttention:(id)sender {
     TEST_LOG(@"我的关注");
-    MyAttentionController *myAttentionController = [MyAttentionController new];
-    myAttentionController.hidesBottomBarWhenPushed = YES;
+    MyAttentionController *myAttentionController = [[MyAttentionController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:myAttentionController animated:YES];
 }
 - (void)myRelatedAccount:(id)sender {
