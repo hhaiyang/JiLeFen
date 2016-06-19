@@ -32,7 +32,7 @@
 + (UITextField *)textFieldWithOrigin:(CGPoint)origin width:(CGFloat)width placehold:(NSString *)placehold {
     UITextField *textField = [UITextField new];
     textField.placeholder = placehold;
-    UIImage *image = [UIImage imageNamed:@"物品兑换-输入兑换码小图标"];
+    UIImage *image = [UIImage imageNamed:@"输入积分背景框"];
     CGFloat height = image.size.height/image.size.width*width;
     textField.frame = CGRectMake(origin.x, origin.y, width, height);
     textField.background = image;

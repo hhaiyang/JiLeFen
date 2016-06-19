@@ -79,11 +79,8 @@
 		02DF137E1CFEAE4100F1BD2C /* MyAttentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF130F1CFEAE4100F1BD2C /* MyAttentionController.m */; };
 		02DF137F1CFEAE4100F1BD2C /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13121CFEAE4100F1BD2C /* MineController.m */; };
 		02DF13821CFEAE4100F1BD2C /* CancelRelatePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13181CFEAE4100F1BD2C /* CancelRelatePopView.m */; };
-		02DF13831CFEAE4100F1BD2C /* CancelRelatePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13191CFEAE4100F1BD2C /* CancelRelatePopView.xib */; };
 		02DF13841CFEAE4100F1BD2C /* MyRelatedAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF131B1CFEAE4100F1BD2C /* MyRelatedAccountController.m */; };
-		02DF13851CFEAE4100F1BD2C /* MyRelatedAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF131C1CFEAE4100F1BD2C /* MyRelatedAccountController.xib */; };
 		02DF13861CFEAE4100F1BD2C /* RelatedAccountSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF131E1CFEAE4100F1BD2C /* RelatedAccountSuccessController.m */; };
-		02DF13871CFEAE4100F1BD2C /* RelatedAccountSuccessController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF131F1CFEAE4100F1BD2C /* RelatedAccountSuccessController.xib */; };
 		02DF13881CFEAE4100F1BD2C /* AddScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13221CFEAE4100F1BD2C /* AddScoreController.m */; };
 		02DF138A1CFEAE4100F1BD2C /* IntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13251CFEAE4100F1BD2C /* IntroductionView.m */; };
 		02DF138B1CFEAE4100F1BD2C /* MyScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13271CFEAE4100F1BD2C /* MyScoreController.m */; };
@@ -313,13 +310,10 @@
 		02DF13121CFEAE4100F1BD2C /* MineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineController.m; sourceTree = "<group>"; };
 		02DF13171CFEAE4100F1BD2C /* CancelRelatePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelRelatePopView.h; sourceTree = "<group>"; };
 		02DF13181CFEAE4100F1BD2C /* CancelRelatePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelRelatePopView.m; sourceTree = "<group>"; };
-		02DF13191CFEAE4100F1BD2C /* CancelRelatePopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelRelatePopView.xib; sourceTree = "<group>"; };
 		02DF131A1CFEAE4100F1BD2C /* MyRelatedAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRelatedAccountController.h; sourceTree = "<group>"; };
 		02DF131B1CFEAE4100F1BD2C /* MyRelatedAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRelatedAccountController.m; sourceTree = "<group>"; };
-		02DF131C1CFEAE4100F1BD2C /* MyRelatedAccountController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRelatedAccountController.xib; sourceTree = "<group>"; };
 		02DF131D1CFEAE4100F1BD2C /* RelatedAccountSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelatedAccountSuccessController.h; sourceTree = "<group>"; };
 		02DF131E1CFEAE4100F1BD2C /* RelatedAccountSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelatedAccountSuccessController.m; sourceTree = "<group>"; };
-		02DF131F1CFEAE4100F1BD2C /* RelatedAccountSuccessController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RelatedAccountSuccessController.xib; sourceTree = "<group>"; };
 		02DF13211CFEAE4100F1BD2C /* AddScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddScoreController.h; sourceTree = "<group>"; };
 		02DF13221CFEAE4100F1BD2C /* AddScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddScoreController.m; sourceTree = "<group>"; };
 		02DF13241CFEAE4100F1BD2C /* IntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionView.h; sourceTree = "<group>"; };
@@ -853,13 +847,10 @@
 			children = (
 				02DF13171CFEAE4100F1BD2C /* CancelRelatePopView.h */,
 				02DF13181CFEAE4100F1BD2C /* CancelRelatePopView.m */,
-				02DF13191CFEAE4100F1BD2C /* CancelRelatePopView.xib */,
 				02DF131A1CFEAE4100F1BD2C /* MyRelatedAccountController.h */,
 				02DF131B1CFEAE4100F1BD2C /* MyRelatedAccountController.m */,
-				02DF131C1CFEAE4100F1BD2C /* MyRelatedAccountController.xib */,
 				02DF131D1CFEAE4100F1BD2C /* RelatedAccountSuccessController.h */,
 				02DF131E1CFEAE4100F1BD2C /* RelatedAccountSuccessController.m */,
-				02DF131F1CFEAE4100F1BD2C /* RelatedAccountSuccessController.xib */,
 			);
 			path = MyRelatedAccount;
 			sourceTree = "<group>";
@@ -1343,13 +1334,11 @@
 				02DF139D1CFEAE4100F1BD2C /* AppointmentingCell.xib in Resources */,
 				02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */,
 				02DF136A1CFEAE4100F1BD2C /* HomeCell.xib in Resources */,
-				02DF13871CFEAE4100F1BD2C /* RelatedAccountSuccessController.xib in Resources */,
 				02DF13A41CFEAE4100F1BD2C /* DomesticConvertCell.xib in Resources */,
 				02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */,
 				02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */,
 				02DF136D1CFEAE4100F1BD2C /* MiddleView.xib in Resources */,
 				02DF13A01CFEAE4100F1BD2C /* AppointmentUnsubscribePopView.xib in Resources */,
-				02DF13831CFEAE4100F1BD2C /* CancelRelatePopView.xib in Resources */,
 				02DF13AC1CFEAE4100F1BD2C /* ScoreConvertHeaderView.xib in Resources */,
 				02DF13991CFEAE4100F1BD2C /* LookConvertCodePopView.xib in Resources */,
 				029C08111D1645B900138D15 /* MJRefresh.bundle in Resources */,
@@ -1357,7 +1346,6 @@
 				02DF136F1CFEAE4100F1BD2C /* MerchantController.xib in Resources */,
 				02DF13711CFEAE4100F1BD2C /* SearchController.xib in Resources */,
 				02DF13AE1CFEAE4100F1BD2C /* SuspendView.xib in Resources */,
-				02DF13851CFEAE4100F1BD2C /* MyRelatedAccountController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

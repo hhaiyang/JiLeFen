@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopView.h"
 
-@interface CancelRelatePopView : UIView
-@property (weak, nonatomic) IBOutlet UIButton *closeButton;
-@property (weak, nonatomic) IBOutlet UIButton *confirmButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-+ (instancetype)popView;
+@interface CancelRelatePopView : PopView
+@property (strong, nonatomic) UIButton *closeButton;
+@property (strong, nonatomic) UIButton *confirmButton;
+@property (strong, nonatomic) UIButton *cancelButton;
 @end
