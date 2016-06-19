@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-/** 
- * 现金兑换界面
- */
-@interface CashConvertController : UIViewController
 
+@interface CashConvertController : UIViewController
+@property (nonatomic, strong) UILabel *backLabel;
 @end

@@ -12,25 +12,78 @@
 #import "DomesticConvertController.h"
 #import "ConvertRecordController.h"
 #import "SuspendView.h"
-#import "ScoreConvertHeaderView.h"
+
 @interface ScoreConvertCenterController ()
-@property (nonatomic, weak) SuspendView *suspendView;
+@property (nonatomic, strong) SuspendView *suspendView;
+@property (nonatomic, strong) NSArray *allShop;
 
 @end
 
 @implementation ScoreConvertCenterController
-/** 控制器生命周期 */
+
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self basicSetup];
+        self.title = @"积分兑换中心";
+        self.tabBarItem.title = @"积分兑换";
+        self.tabBarItem.image = [UIImage imageNamed:@"积分兑换-点击前 透明"];
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"积分兑换-点击后 透明"];
     }
     return self;
 }
-/** 视图生命周期 */
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
+    SuspendView *view = [[SuspendView alloc] initWithFrame:CGRectMake(0, kScreenHeight-49-25, kScreenWidth, 25)];
+    view.tag = 1000;
+    self.suspendView = view;
+    [kWindow addSubview:view];
+    
+    UIView *headerView = [UIView new];
+    headerView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 70);
+    self.tableView.tableHeaderView = headerView;
+    UIView *actionView = nil;
+    CGFloat actionViewWidth = headerView.width/3;
+    CGFloat actionViewHeight = headerView.height;
+    NSArray *images = @[@"积分兑换中心-现金兑换", @"积分兑换中心-家政服务", @"积分兑换中心-兑换记录"];
+    NSArray *titles = @[@"现金兑换", @"家政服务", @"兑换纪录"];
+    for (int index = 0; index < 3; index++) {
+        actionView = [UIView new];
+        actionView.frame = CGRectMake(index*actionViewWidth, 0, actionViewWidth, actionViewHeight);
+        [headerView addSubview:actionView];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *image = [UIImage imageNamed:images[index]];
+        CGFloat buttonHeight = actionView.height-30;
+        CGFloat buttonWidth = image.size.width/image.size.height*buttonHeight;
+        button.frame = CGRectMake((actionView.width-buttonWidth)/2, 10, buttonWidth, buttonHeight);
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        if (index == 0) {
+            [button addTarget:self action:@selector(cashConvert:) forControlEvents:UIControlEventTouchUpInside];
+        } else if (index == 1) {
+            [button addTarget:self action:@selector(domesticConvert:) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            [button addTarget:self action:@selector(convertRecord:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        [actionView addSubview:button];
+        
+        UILabel *label = [UILabel new];
+        label.text = titles[index];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:13];
+        label.frame = CGRectMake(3, button.y+button.height+3, actionView.width-6, actionView.height-10-6-button.height);
+        [actionView addSubview:label];
+        
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _allShop = @[@"", @"", @"", @"", @""];
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView reloadData];
+        
+    }];
+    [self.tableView.mj_header beginRefreshing];
+
         
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -40,39 +93,11 @@
     }
     
 }
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-  
-   
-
-
-}
-- (void)basicSetup {
-    self.title = @"积分兑换中心";
-    self.tabBarItem.title = @"积分兑换";
-    self.tabBarItem.image = [UIImage imageNamed:@"积分兑换-点击前 透明"];
-    self.tabBarItem.selectedImage = [UIImage imageNamed:@"积分兑换-点击后 透明"];
-}
-- (void)initUI {
-    SuspendView *view = [SuspendView suspendView];
-    view.tag = 1000;
-    self.suspendView = view;
-    view.frame = CGRectMake(0, kScreenHeight-49-25, kScreenWidth, 25);
-    [kWindow addSubview:view];
-    
-    ScoreConvertHeaderView *headerView = [ScoreConvertHeaderView headerView];
-    [headerView.cashConvertButton addTarget:self action:@selector(cashConvert:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView.domesticConvertButton addTarget:self action:@selector(domesticConvert:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView.convertRecordButton addTarget:self action:@selector(convertRecord:) forControlEvents:UIControlEventTouchUpInside];
-    headerView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 70);
-    self.tableView.tableHeaderView = headerView;
-    
-}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _allShop.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ScoreCell *cell = [ScoreCell scoreCellWithTableView:tableView];
@@ -101,6 +126,6 @@
     [self.navigationController pushViewController:convertRecordController animated:YES];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TEST_LOG(@"进入物品兑换详情页面");
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 @end

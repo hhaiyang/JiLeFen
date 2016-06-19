@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0242F4A61D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A51D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m */; };
 		0242F4A91D05626A00C41E4A /* UIView+HYGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A81D05626A00C41E4A /* UIView+HYGeometry.m */; };
+		0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0270B8BD1D16DC4000A0F994 /* SelectBankController.m */; };
 		029243C71D12F50400ADD750 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243C61D12F50400ADD750 /* MBProgressHUD.m */; };
 		029243D61D12F52600ADD750 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243CA1D12F52600ADD750 /* AFHTTPSessionManager.m */; };
 		029243D71D12F52600ADD750 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243CD1D12F52600ADD750 /* AFNetworkReachabilityManager.m */; };
@@ -90,7 +91,6 @@
 		02DF13901CFEAE4100F1BD2C /* QRCodeScoreController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF132F1CFEAE4100F1BD2C /* QRCodeScoreController.xib */; };
 		02DF13911CFEAE4100F1BD2C /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13321CFEAE4100F1BD2C /* RegisterController.m */; };
 		02DF13931CFEAE4100F1BD2C /* CashConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13371CFEAE4100F1BD2C /* CashConvertController.m */; };
-		02DF13941CFEAE4100F1BD2C /* CashConvertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13381CFEAE4100F1BD2C /* CashConvertController.xib */; };
 		02DF13951CFEAE4100F1BD2C /* AlreadyGetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF133B1CFEAE4100F1BD2C /* AlreadyGetCell.m */; };
 		02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF133C1CFEAE4100F1BD2C /* AlreadyGetCell.xib */; };
 		02DF13971CFEAE4100F1BD2C /* ConvertRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF133E1CFEAE4100F1BD2C /* ConvertRecordController.m */; };
@@ -113,10 +113,7 @@
 		02DF13A81CFEAE4100F1BD2C /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135C1CFEAE4100F1BD2C /* ScoreCell.m */; };
 		02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */; };
 		02DF13AA1CFEAE4100F1BD2C /* ScoreConvertCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */; };
-		02DF13AB1CFEAE4100F1BD2C /* ScoreConvertHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13611CFEAE4100F1BD2C /* ScoreConvertHeaderView.m */; };
-		02DF13AC1CFEAE4100F1BD2C /* ScoreConvertHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13621CFEAE4100F1BD2C /* ScoreConvertHeaderView.xib */; };
 		02DF13AD1CFEAE4100F1BD2C /* SuspendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13641CFEAE4100F1BD2C /* SuspendView.m */; };
-		02DF13AE1CFEAE4100F1BD2C /* SuspendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13651CFEAE4100F1BD2C /* SuspendView.xib */; };
 		02E1A5801CB38657009C6177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A57F1CB38657009C6177 /* main.m */; };
 		02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E1A58C1CB38657009C6177 /* LaunchScreen.storyboard */; };
 		02E1A5CF1CB389D8009C6177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E1A5CE1CB389D8009C6177 /* Assets.xcassets */; };
@@ -171,6 +168,8 @@
 		0242F4A51D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+CustomItem.m"; sourceTree = "<group>"; };
 		0242F4A71D05626A00C41E4A /* UIView+HYGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HYGeometry.h"; sourceTree = "<group>"; };
 		0242F4A81D05626A00C41E4A /* UIView+HYGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HYGeometry.m"; sourceTree = "<group>"; };
+		0270B8BC1D16DC4000A0F994 /* SelectBankController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBankController.h; sourceTree = "<group>"; };
+		0270B8BD1D16DC4000A0F994 /* SelectBankController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBankController.m; sourceTree = "<group>"; };
 		029243C51D12F50400ADD750 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		029243C61D12F50400ADD750 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		029243C91D12F52600ADD750 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -331,7 +330,6 @@
 		02DF13321CFEAE4100F1BD2C /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
 		02DF13361CFEAE4100F1BD2C /* CashConvertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertController.h; sourceTree = "<group>"; };
 		02DF13371CFEAE4100F1BD2C /* CashConvertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertController.m; sourceTree = "<group>"; };
-		02DF13381CFEAE4100F1BD2C /* CashConvertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CashConvertController.xib; sourceTree = "<group>"; };
 		02DF133A1CFEAE4100F1BD2C /* AlreadyGetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlreadyGetCell.h; sourceTree = "<group>"; };
 		02DF133B1CFEAE4100F1BD2C /* AlreadyGetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlreadyGetCell.m; sourceTree = "<group>"; };
 		02DF133C1CFEAE4100F1BD2C /* AlreadyGetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlreadyGetCell.xib; sourceTree = "<group>"; };
@@ -367,12 +365,8 @@
 		02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
 		02DF135E1CFEAE4100F1BD2C /* ScoreConvertCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreConvertCenterController.h; sourceTree = "<group>"; };
 		02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreConvertCenterController.m; sourceTree = "<group>"; };
-		02DF13601CFEAE4100F1BD2C /* ScoreConvertHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreConvertHeaderView.h; sourceTree = "<group>"; };
-		02DF13611CFEAE4100F1BD2C /* ScoreConvertHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreConvertHeaderView.m; sourceTree = "<group>"; };
-		02DF13621CFEAE4100F1BD2C /* ScoreConvertHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreConvertHeaderView.xib; sourceTree = "<group>"; };
 		02DF13631CFEAE4100F1BD2C /* SuspendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuspendView.h; sourceTree = "<group>"; };
 		02DF13641CFEAE4100F1BD2C /* SuspendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuspendView.m; sourceTree = "<group>"; };
-		02DF13651CFEAE4100F1BD2C /* SuspendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuspendView.xib; sourceTree = "<group>"; };
 		02E1A57B1CB38657009C6177 /* JiLeFenForUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiLeFenForUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E1A57F1CB38657009C6177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02E1A58D1CB38657009C6177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -905,7 +899,8 @@
 			children = (
 				02DF13361CFEAE4100F1BD2C /* CashConvertController.h */,
 				02DF13371CFEAE4100F1BD2C /* CashConvertController.m */,
-				02DF13381CFEAE4100F1BD2C /* CashConvertController.xib */,
+				0270B8BC1D16DC4000A0F994 /* SelectBankController.h */,
+				0270B8BD1D16DC4000A0F994 /* SelectBankController.m */,
 			);
 			path = CashConvert;
 			sourceTree = "<group>";
@@ -969,12 +964,8 @@
 				02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */,
 				02DF135E1CFEAE4100F1BD2C /* ScoreConvertCenterController.h */,
 				02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */,
-				02DF13601CFEAE4100F1BD2C /* ScoreConvertHeaderView.h */,
-				02DF13611CFEAE4100F1BD2C /* ScoreConvertHeaderView.m */,
-				02DF13621CFEAE4100F1BD2C /* ScoreConvertHeaderView.xib */,
 				02DF13631CFEAE4100F1BD2C /* SuspendView.h */,
 				02DF13641CFEAE4100F1BD2C /* SuspendView.m */,
-				02DF13651CFEAE4100F1BD2C /* SuspendView.xib */,
 			);
 			path = ScoreConvertCenter;
 			sourceTree = "<group>";
@@ -1328,7 +1319,6 @@
 				02DF13A21CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.xib in Resources */,
 				02E1A5CF1CB389D8009C6177 /* Assets.xcassets in Resources */,
 				02DF13671CFEAE4100F1BD2C /* CategoryCell.xib in Resources */,
-				02DF13941CFEAE4100F1BD2C /* CashConvertController.xib in Resources */,
 				02DF13A71CFEAE4100F1BD2C /* GoodsConvertController.xib in Resources */,
 				02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */,
 				02DF139D1CFEAE4100F1BD2C /* AppointmentingCell.xib in Resources */,
@@ -1339,13 +1329,11 @@
 				02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */,
 				02DF136D1CFEAE4100F1BD2C /* MiddleView.xib in Resources */,
 				02DF13A01CFEAE4100F1BD2C /* AppointmentUnsubscribePopView.xib in Resources */,
-				02DF13AC1CFEAE4100F1BD2C /* ScoreConvertHeaderView.xib in Resources */,
 				02DF13991CFEAE4100F1BD2C /* LookConvertCodePopView.xib in Resources */,
 				029C08111D1645B900138D15 /* MJRefresh.bundle in Resources */,
 				02DF13901CFEAE4100F1BD2C /* QRCodeScoreController.xib in Resources */,
 				02DF136F1CFEAE4100F1BD2C /* MerchantController.xib in Resources */,
 				02DF13711CFEAE4100F1BD2C /* SearchController.xib in Resources */,
-				02DF13AE1CFEAE4100F1BD2C /* SuspendView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,6 +1443,7 @@
 				02DF13881CFEAE4100F1BD2C /* AddScoreController.m in Sources */,
 				02E1A6961CB38DF1009C6177 /* BaseScrollViewController.m in Sources */,
 				029C07D51D16387500138D15 /* ScoreRecordController.m in Sources */,
+				0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */,
 				029C08031D1645B900138D15 /* MJRefreshAutoFooter.m in Sources */,
 				02E1A80E1CB395CD009C6177 /* SDWebImageManager.m in Sources */,
 				029243D81D12F52600ADD750 /* AFSecurityPolicy.m in Sources */,
@@ -1469,7 +1458,6 @@
 				02E1A80A1CB395CD009C6177 /* SDWebImageCompat.m in Sources */,
 				029C08251D1653EA00138D15 /* ViewUtil.m in Sources */,
 				02E1A8141CB395CD009C6177 /* UIImageView+WebCache.m in Sources */,
-				02DF13AB1CFEAE4100F1BD2C /* ScoreConvertHeaderView.m in Sources */,
 				02DF13971CFEAE4100F1BD2C /* ConvertRecordController.m in Sources */,
 				02DF13731CFEAE4100F1BD2C /* TabBarController.m in Sources */,
 				02DF13A11CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.m in Sources */,
