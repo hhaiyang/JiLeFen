@@ -7,7 +7,6 @@
 //
 
 #import "SelectBankController.h"
-#import "SuspendView.h"
 @interface SelectBankController ()
 @property (nonatomic, strong) NSArray *banks;
 @end
@@ -42,12 +41,7 @@
     }];
     [self.tableView.mj_header beginRefreshing];
     
-    SuspendView *suspendView = [kWindow viewWithTag:1000];
-    if (suspendView) {
-        suspendView.hidden = YES;
-    }
-
-    
+       
     
    
 }

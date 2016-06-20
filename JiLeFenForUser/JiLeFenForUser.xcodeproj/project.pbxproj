@@ -58,6 +58,9 @@
 		029C08251D1653EA00138D15 /* ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C08241D1653EA00138D15 /* ViewUtil.m */; };
 		029C08281D165CB200138D15 /* MyAttentionPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C08271D165CB200138D15 /* MyAttentionPopView.m */; };
 		02AB89D31D14181300B09691 /* RecordPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AB89D21D14181300B09691 /* RecordPasswordButton.m */; };
+		02AE920E1D18163B001312D0 /* AppointmentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE920D1D18163B001312D0 /* AppointmentedController.m */; };
+		02AE92111D1817DC001312D0 /* AppointmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE92101D1817DC001312D0 /* AppointmentedCell.m */; };
+		02AE92141D181810001312D0 /* AppointmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE92131D181810001312D0 /* AppointmentCell.m */; };
 		02DCA04F1D15052D008AF210 /* ModifyPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DCA04E1D15052D008AF210 /* ModifyPasswordController.m */; };
 		02DCA0521D15055F008AF210 /* ModifyPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DCA0511D15055F008AF210 /* ModifyPasswordCell.m */; };
 		02DCA0591D1505A1008AF210 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DCA0571D1505A1008AF210 /* User.m */; };
@@ -105,15 +108,12 @@
 		02DF13A01CFEAE4100F1BD2C /* AppointmentUnsubscribePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF134D1CFEAE4100F1BD2C /* AppointmentUnsubscribePopView.xib */; };
 		02DF13A11CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF134F1CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.m */; };
 		02DF13A21CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13501CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.xib */; };
-		02DF13A31CFEAE4100F1BD2C /* DomesticConvertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13521CFEAE4100F1BD2C /* DomesticConvertCell.m */; };
-		02DF13A41CFEAE4100F1BD2C /* DomesticConvertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13531CFEAE4100F1BD2C /* DomesticConvertCell.xib */; };
 		02DF13A51CFEAE4100F1BD2C /* DomesticConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */; };
 		02DF13A61CFEAE4100F1BD2C /* GoodsConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13581CFEAE4100F1BD2C /* GoodsConvertController.m */; };
 		02DF13A71CFEAE4100F1BD2C /* GoodsConvertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13591CFEAE4100F1BD2C /* GoodsConvertController.xib */; };
 		02DF13A81CFEAE4100F1BD2C /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135C1CFEAE4100F1BD2C /* ScoreCell.m */; };
 		02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */; };
 		02DF13AA1CFEAE4100F1BD2C /* ScoreConvertCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */; };
-		02DF13AD1CFEAE4100F1BD2C /* SuspendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13641CFEAE4100F1BD2C /* SuspendView.m */; };
 		02E1A5801CB38657009C6177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A57F1CB38657009C6177 /* main.m */; };
 		02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E1A58C1CB38657009C6177 /* LaunchScreen.storyboard */; };
 		02E1A5CF1CB389D8009C6177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E1A5CE1CB389D8009C6177 /* Assets.xcassets */; };
@@ -270,6 +270,12 @@
 		029C08271D165CB200138D15 /* MyAttentionPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttentionPopView.m; sourceTree = "<group>"; };
 		02AB89D11D14181300B09691 /* RecordPasswordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPasswordButton.h; sourceTree = "<group>"; };
 		02AB89D21D14181300B09691 /* RecordPasswordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPasswordButton.m; sourceTree = "<group>"; };
+		02AE920C1D18163B001312D0 /* AppointmentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentedController.h; sourceTree = "<group>"; };
+		02AE920D1D18163B001312D0 /* AppointmentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentedController.m; sourceTree = "<group>"; };
+		02AE920F1D1817DC001312D0 /* AppointmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentedCell.h; sourceTree = "<group>"; };
+		02AE92101D1817DC001312D0 /* AppointmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentedCell.m; sourceTree = "<group>"; };
+		02AE92121D181810001312D0 /* AppointmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentCell.h; sourceTree = "<group>"; };
+		02AE92131D181810001312D0 /* AppointmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentCell.m; sourceTree = "<group>"; };
 		02DCA04D1D15052D008AF210 /* ModifyPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordController.h; sourceTree = "<group>"; };
 		02DCA04E1D15052D008AF210 /* ModifyPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordController.m; sourceTree = "<group>"; };
 		02DCA0501D15055F008AF210 /* ModifyPasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordCell.h; sourceTree = "<group>"; };
@@ -352,9 +358,6 @@
 		02DF134E1CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentUnsubscribeSuccessPopView.h; sourceTree = "<group>"; };
 		02DF134F1CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentUnsubscribeSuccessPopView.m; sourceTree = "<group>"; };
 		02DF13501CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentUnsubscribeSuccessPopView.xib; sourceTree = "<group>"; };
-		02DF13511CFEAE4100F1BD2C /* DomesticConvertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomesticConvertCell.h; sourceTree = "<group>"; };
-		02DF13521CFEAE4100F1BD2C /* DomesticConvertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DomesticConvertCell.m; sourceTree = "<group>"; };
-		02DF13531CFEAE4100F1BD2C /* DomesticConvertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DomesticConvertCell.xib; sourceTree = "<group>"; };
 		02DF13541CFEAE4100F1BD2C /* DomesticConvertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomesticConvertController.h; sourceTree = "<group>"; };
 		02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DomesticConvertController.m; sourceTree = "<group>"; };
 		02DF13571CFEAE4100F1BD2C /* GoodsConvertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsConvertController.h; sourceTree = "<group>"; };
@@ -365,8 +368,6 @@
 		02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
 		02DF135E1CFEAE4100F1BD2C /* ScoreConvertCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreConvertCenterController.h; sourceTree = "<group>"; };
 		02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreConvertCenterController.m; sourceTree = "<group>"; };
-		02DF13631CFEAE4100F1BD2C /* SuspendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuspendView.h; sourceTree = "<group>"; };
-		02DF13641CFEAE4100F1BD2C /* SuspendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuspendView.m; sourceTree = "<group>"; };
 		02E1A57B1CB38657009C6177 /* JiLeFenForUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiLeFenForUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E1A57F1CB38657009C6177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02E1A58D1CB38657009C6177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -937,11 +938,14 @@
 				02DF134E1CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.h */,
 				02DF134F1CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.m */,
 				02DF13501CFEAE4100F1BD2C /* AppointmentUnsubscribeSuccessPopView.xib */,
-				02DF13511CFEAE4100F1BD2C /* DomesticConvertCell.h */,
-				02DF13521CFEAE4100F1BD2C /* DomesticConvertCell.m */,
-				02DF13531CFEAE4100F1BD2C /* DomesticConvertCell.xib */,
 				02DF13541CFEAE4100F1BD2C /* DomesticConvertController.h */,
 				02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */,
+				02AE920C1D18163B001312D0 /* AppointmentedController.h */,
+				02AE920D1D18163B001312D0 /* AppointmentedController.m */,
+				02AE920F1D1817DC001312D0 /* AppointmentedCell.h */,
+				02AE92101D1817DC001312D0 /* AppointmentedCell.m */,
+				02AE92121D181810001312D0 /* AppointmentCell.h */,
+				02AE92131D181810001312D0 /* AppointmentCell.m */,
 			);
 			path = DomesticConvert;
 			sourceTree = "<group>";
@@ -964,8 +968,6 @@
 				02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */,
 				02DF135E1CFEAE4100F1BD2C /* ScoreConvertCenterController.h */,
 				02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */,
-				02DF13631CFEAE4100F1BD2C /* SuspendView.h */,
-				02DF13641CFEAE4100F1BD2C /* SuspendView.m */,
 			);
 			path = ScoreConvertCenter;
 			sourceTree = "<group>";
@@ -1324,7 +1326,6 @@
 				02DF139D1CFEAE4100F1BD2C /* AppointmentingCell.xib in Resources */,
 				02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */,
 				02DF136A1CFEAE4100F1BD2C /* HomeCell.xib in Resources */,
-				02DF13A41CFEAE4100F1BD2C /* DomesticConvertCell.xib in Resources */,
 				02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */,
 				02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */,
 				02DF136D1CFEAE4100F1BD2C /* MiddleView.xib in Resources */,
@@ -1363,6 +1364,7 @@
 				029C08221D16537400138D15 /* PopView.m in Sources */,
 				02DF13A81CFEAE4100F1BD2C /* ScoreCell.m in Sources */,
 				02DF138A1CFEAE4100F1BD2C /* IntroductionView.m in Sources */,
+				02AE92141D181810001312D0 /* AppointmentCell.m in Sources */,
 				029243D61D12F52600ADD750 /* AFHTTPSessionManager.m in Sources */,
 				029243F91D12F52C00ADD750 /* UIWebView+AFNetworking.m in Sources */,
 				02E1A6AC1CB38E73009C6177 /* QRCodeScan.m in Sources */,
@@ -1394,7 +1396,6 @@
 				02DF13A61CFEAE4100F1BD2C /* GoodsConvertController.m in Sources */,
 				02DCA0521D15055F008AF210 /* ModifyPasswordCell.m in Sources */,
 				02DF13821CFEAE4100F1BD2C /* CancelRelatePopView.m in Sources */,
-				02DF13AD1CFEAE4100F1BD2C /* SuspendView.m in Sources */,
 				02DF13721CFEAE4100F1BD2C /* AppDelegate.m in Sources */,
 				02DF13951CFEAE4100F1BD2C /* AlreadyGetCell.m in Sources */,
 				02E1A7CC1CB39520009C6177 /* qrencode.c in Sources */,
@@ -1413,7 +1414,6 @@
 				0242F4A91D05626A00C41E4A /* UIView+HYGeometry.m in Sources */,
 				029C07CC1D16368E00138D15 /* WMMenuView.m in Sources */,
 				02AB89D31D14181300B09691 /* RecordPasswordButton.m in Sources */,
-				02DF13A31CFEAE4100F1BD2C /* DomesticConvertCell.m in Sources */,
 				029243F11D12F52C00ADD750 /* AFAutoPurgingImageCache.m in Sources */,
 				029C07CA1D16368E00138D15 /* WMFooldView.m in Sources */,
 				02E1A80F1CB395CD009C6177 /* SDWebImagePrefetcher.m in Sources */,
@@ -1445,6 +1445,7 @@
 				029C07D51D16387500138D15 /* ScoreRecordController.m in Sources */,
 				0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */,
 				029C08031D1645B900138D15 /* MJRefreshAutoFooter.m in Sources */,
+				02AE920E1D18163B001312D0 /* AppointmentedController.m in Sources */,
 				02E1A80E1CB395CD009C6177 /* SDWebImageManager.m in Sources */,
 				029243D81D12F52600ADD750 /* AFSecurityPolicy.m in Sources */,
 				02E1A8131CB395CD009C6177 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1457,6 +1458,7 @@
 				029C08131D1645B900138D15 /* UIScrollView+MJExtension.m in Sources */,
 				02E1A80A1CB395CD009C6177 /* SDWebImageCompat.m in Sources */,
 				029C08251D1653EA00138D15 /* ViewUtil.m in Sources */,
+				02AE92111D1817DC001312D0 /* AppointmentedCell.m in Sources */,
 				02E1A8141CB395CD009C6177 /* UIImageView+WebCache.m in Sources */,
 				02DF13971CFEAE4100F1BD2C /* ConvertRecordController.m in Sources */,
 				02DF13731CFEAE4100F1BD2C /* TabBarController.m in Sources */,

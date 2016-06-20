@@ -11,10 +11,8 @@
 #import "CashConvertController.h"
 #import "DomesticConvertController.h"
 #import "ConvertRecordController.h"
-#import "SuspendView.h"
 
 @interface ScoreConvertCenterController ()
-@property (nonatomic, strong) SuspendView *suspendView;
 @property (nonatomic, strong) NSArray *allShop;
 
 @end
@@ -34,10 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SuspendView *view = [[SuspendView alloc] initWithFrame:CGRectMake(0, kScreenHeight-49-25, kScreenWidth, 25)];
-    view.tag = 1000;
-    self.suspendView = view;
-    [kWindow addSubview:view];
+   
     
     UIView *headerView = [UIView new];
     headerView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 70);
@@ -88,10 +83,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.suspendView) {
-        self.suspendView.hidden = NO;
-    }
-    
+       
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

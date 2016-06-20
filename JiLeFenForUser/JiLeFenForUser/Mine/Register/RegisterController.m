@@ -136,7 +136,6 @@
 }
 
 - (void)keyboardWillShow:(NSNotification *)noti {
-    TEST_LOG(@"noti = %@", noti);
     CGRect keyboardFrame = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     NSTimeInterval duration = [noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     UIViewAnimationOptions option = [noti.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
@@ -235,6 +234,7 @@
     [self.view endEditing:YES];
 }
 - (void)getVerifyCode:(UIButton *)sender {
+    [self.view endEditing:YES];
     BOOL isPhone = [AccountValidate validatePhone:self.phoneTextField.text];
      MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if (isPhone == NO) {
@@ -254,17 +254,18 @@
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        hud.mode = MBProgressHUDModeText;
-//        hud.label.text = @"获取失败";
-//        [hud hideAnimated:YES afterDelay:1.5];
+        TEST_LOG(@"error = %@", error);
         hud.mode = MBProgressHUDModeText;
-        hud.label.text = @"获取成功";
-        [hud hideAnimated:YES afterDelay:1];
-        _hintLabel.text = @"一分钟内不可频繁获取验证码";
-        _count = 59;
-        _countDownLabel.text = [NSString stringWithFormat:@"%d秒", _count];
-        _getVerifyCodeButton.enabled = NO;
-        _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(countDown:) userInfo:nil repeats:YES];
+        hud.label.text = @"获取失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+//        hud.mode = MBProgressHUDModeText;
+//        hud.label.text = @"获取成功";
+//        [hud hideAnimated:YES afterDelay:1];
+//        _hintLabel.text = @"一分钟内不可频繁获取验证码";
+//        _count = 59;
+//        _countDownLabel.text = [NSString stringWithFormat:@"%d秒", _count];
+//        _getVerifyCodeButton.enabled = NO;
+//        _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(countDown:) userInfo:nil repeats:YES];
         
     }];
     

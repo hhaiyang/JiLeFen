@@ -8,7 +8,6 @@
 
 #import "CashConvertController.h"
 #import "SelectBankController.h"
-#import "SuspendView.h"
 
 @interface CashConvertController ()
 @property (nonatomic, strong) UIView *contentView;
@@ -119,12 +118,15 @@
             [inputView addSubview:textField];
             if (index == 0) {
                 _cashTextField = textField;
+                textField.keyboardType = UIKeyboardTypeNumberPad;
             } else if (index == 1) {
                 _nameTextField = textField;
             } else if (index == 2) {
                 _phoneTextField = textField;
+                textField.keyboardType = UIKeyboardTypeNumberPad;
             } else {
                 _bankTextField = textField;
+                textField.keyboardType = UIKeyboardTypeNumberPad;
             }
 
         }
@@ -135,7 +137,7 @@
     
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     submitButton.layer.cornerRadius = 5;
-    submitButton.frame = CGRectMake((_contentView.width-70)/2, inputView.y+inputView.height+7, 70, 30);
+    submitButton.frame = CGRectMake((_contentView.width-70)/2, inputView.y+inputView.height+20, 70, 30);
     [submitButton setTitle:@"提交" forState:UIControlStateNormal];
     submitButton.backgroundColor = kRGBColor(228, 51, 69);
     [submitButton addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
@@ -144,21 +146,48 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-    SuspendView *suspendView = [kWindow viewWithTag:1000];
-    if (suspendView) {
-        suspendView.hidden = NO;
-    }
-
+  
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)addKeyboardNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 - (void)keyboardWillShow:(NSNotification *)noti {
+    CGRect keyboardFrame = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect rect = CGRectZero;
+    if ([_cashTextField isFirstResponder]) {
+        rect = [_contentView convertRect:_cashTextField.superview.frame toView:kWindow];
+    } else if ([_nameTextField isFirstResponder]) {
+        rect = [_contentView convertRect:_nameTextField.superview.frame toView:kWindow];
+    } else if ([_phoneTextField isFirstResponder]) {
+        rect = [_contentView convertRect:_phoneTextField.superview.frame toView:kWindow];
+    } else if ([_bankTextField isFirstResponder]) {
+        rect = [_contentView convertRect:_bankTextField.superview.frame toView:kWindow];
+    }
+    if (rect.origin.y+rect.size.height > keyboardFrame.origin.y) {
+        CGRect contentViewFrame = _contentView.frame;
+        contentViewFrame.origin.y -= (rect.origin.y+rect.size.height-keyboardFrame.origin.y);
+        double duration = [noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        NSInteger option = [noti.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+        [UIView animateWithDuration:duration delay:0 options:option animations:^{
+            _contentView.frame = contentViewFrame;
+        } completion:nil];
+    }
+    
     
 }
 - (void)keyboardWillHide:(NSNotification *)noti {
+    CGRect contentViewFrame = _contentView.frame;
+    contentViewFrame.origin.y = 64;
+    double duration = [noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSInteger option = [noti.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    [UIView animateWithDuration:duration delay:0 options:option animations:^{
+        _contentView.frame = contentViewFrame;
+    } completion:nil];
     
 }
 
@@ -171,6 +200,8 @@
 }
 - (void)submit:(UIButton *)sender {
     [self.view endEditing:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
 }
 - (void)selectBank {
     [self.view endEditing:YES];

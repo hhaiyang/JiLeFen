@@ -58,29 +58,33 @@
     [self.view endEditing:YES];
     __weak typeof(self) weakSelf = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
     if (self.passwordTextField.text.length <= 0) {
-        hud.mode = MBProgressHUDModeText;
         hud.label.text = @"请输入原密码";
-        [hud hideAnimated:YES afterDelay:0.5];
+        [hud hideAnimated:YES afterDelay:1.5];
         return;
     }
     if (self.pwdxinTextField.text.length <= 0) {
-        hud.mode = MBProgressHUDModeText;
         hud.label.text = @"请输入新密码";
-        [hud hideAnimated:YES afterDelay:0.5];
+        [hud hideAnimated:YES afterDelay:1.5];
         return;
         
     }
     if (self.pwdsureTextField.text.length <= 0) {
-        hud.mode = MBProgressHUDModeText;
         hud.label.text = @"请确认新密码";
-        [hud hideAnimated:YES afterDelay:0.5];
+        [hud hideAnimated:YES afterDelay:1.5];
         return;
     }
+    if (![self.pwdxinTextField.text isEqualToString:self.pwdsureTextField.text]) {
+        hud.label.text = @"新密码和确认密码不一致";
+        [hud hideAnimated:YES afterDelay:1.5];
+        return;
+    }
+    hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = @"修改中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=pwdup" parameters:@{@"userid":[User currentUser].ID, @"password":self.passwordTextField.text, @"pwdxin":self.pwdxinTextField.text, @"pwdsure":self.pwdsureTextField.text} constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=pwdup" parameters:@{@"userid":@"13051616145", @"password":self.passwordTextField.text, @"pwdxin":self.pwdxinTextField.text, @"pwdsure":self.pwdsureTextField.text} constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
         hud.mode = MBProgressHUDModeText;
         weakSelf.passwordTextField.text = nil;
