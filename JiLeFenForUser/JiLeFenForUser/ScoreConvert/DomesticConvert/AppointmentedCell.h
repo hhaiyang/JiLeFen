@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AppointmentedCell : UITableViewCell
-
+@property (nonatomic, strong) UIView *appointmentedContentView;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 @end

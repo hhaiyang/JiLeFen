@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}];
     
     UIView *headerView = [UIView new];
     headerView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 70);

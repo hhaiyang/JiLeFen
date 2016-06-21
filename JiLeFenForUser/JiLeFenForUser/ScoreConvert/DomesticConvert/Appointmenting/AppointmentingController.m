@@ -12,6 +12,7 @@
 #import "AppointmentUnsubscribeSuccessPopView.h"
 
 @interface AppointmentingController ()
+@property (nonatomic, strong) NSArray *appointmentingDomestics;
 @property (nonatomic, strong) AppointmentUnsubscribePopView *appointmentUnsubscribePopView;
 @property (nonatomic, strong) AppointmentUnsubscribeSuccessPopView *appointmentUnsubscribeSuccessPopView;
 @end
@@ -20,36 +21,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
-    
-   
-}
-
-- (void)initUI {
+    self.tableView.backgroundColor = kRGBColor(250, 250, 250);
     self.title = @"预约中";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        _appointmentingDomestics = @[@"", @"", @""];
+        [weakSelf.tableView reloadData];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    [self.tableView registerClass:[AppointmentingCell class] forCellReuseIdentifier:@"AppointmentingCell"];
+    
+    
+    
 }
+- (BOOL)hidesBottomBarWhenPushed {
+    return YES;
+}
+
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return 1;
+    
+    return _appointmentingDomestics.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AppointmentingCell *cell = [AppointmentingCell cellWithTableView:tableView];
+    AppointmentingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppointmentingCell"];
     [cell.unsubscribeButton addTarget:self action:@selector(unsubscribe:) forControlEvents:UIControlEventTouchUpInside];
-   
+    
     
     return cell;
 }
@@ -57,8 +69,7 @@
     return 150;
 }
 - (void)unsubscribe:(UIButton *)sender {
-    TEST_LOG(@"退定");
-    AppointmentUnsubscribePopView *view = [AppointmentUnsubscribePopView popView];
+    AppointmentUnsubscribePopView *view = [AppointmentUnsubscribePopView new];
     [view.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [view.abandonButton addTarget:self action:@selector(abandon) forControlEvents:UIControlEventTouchUpInside];
     [view.treasureButton addTarget:self action:@selector(treasure) forControlEvents:UIControlEventTouchUpInside];
@@ -66,24 +77,29 @@
     [kWindow addSubview:view];
 }
 - (void)close {
-    TEST_LOG(@"关闭弹窗");
     [self.appointmentUnsubscribePopView removeFromSuperview];
     self.appointmentUnsubscribePopView = nil;
     
 }
 - (void)abandon {
-    TEST_LOG(@"忍痛放弃");
-    [self close];
-    AppointmentUnsubscribeSuccessPopView *view = [AppointmentUnsubscribeSuccessPopView popView];
-    for (UIButton *button in view.closeButtons) {
-        [button addTarget:self action:@selector(closeSuccessPopView) forControlEvents:UIControlEventTouchUpInside];
-    }
-    self.appointmentUnsubscribeSuccessPopView = view;
-    [kWindow addSubview:view];
+    __weak typeof(self) weakSelf = self;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:kWindow animated:YES];
+    hud.label.text = @"退订中，请稍候";
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [hud hideAnimated:YES];
+        [weakSelf close];
+        AppointmentUnsubscribeSuccessPopView *view = [AppointmentUnsubscribeSuccessPopView new];
+        [view.closeButton1 addTarget:weakSelf action:@selector(closeSuccessPopView) forControlEvents:UIControlEventTouchUpInside];
+        [view.closeButton2 addTarget:weakSelf action:@selector(closeSuccessPopView) forControlEvents:UIControlEventTouchUpInside];
+        
+        _appointmentUnsubscribeSuccessPopView = view;
+        [kWindow addSubview:view];
+
+        
+    });
     
 }
 - (void)treasure {
-    TEST_LOG(@"继续珍惜");
     [self close];
 }
 - (void)closeSuccessPopView {

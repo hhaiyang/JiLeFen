@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopView.h"
 
-@interface AppointmentUnsubscribeSuccessPopView : UIView
+@interface AppointmentUnsubscribeSuccessPopView : PopView
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *closeButtons;
-+ (instancetype)popView;
+@property (strong, nonatomic) UIButton *closeButton1;
+@property (nonatomic, strong) UIButton *closeButton2;
+
 @end
