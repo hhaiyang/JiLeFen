@@ -11,6 +11,7 @@
 #import "CashConvertController.h"
 #import "DomesticConvertController.h"
 #import "ConvertRecordController.h"
+#import "GoodsConvertController.h"
 
 @interface ScoreConvertCenterController ()
 @property (nonatomic, strong) NSArray *allShop;
@@ -42,7 +43,7 @@
     CGFloat actionViewWidth = headerView.width/3;
     CGFloat actionViewHeight = headerView.height;
     NSArray *images = @[@"积分兑换中心-现金兑换", @"积分兑换中心-家政服务", @"积分兑换中心-兑换记录"];
-    NSArray *titles = @[@"现金兑换", @"家政服务", @"兑换纪录"];
+    NSArray *titles = @[@"现金兑换区", @"家政服务区", @"物品兑换记录"];
     for (int index = 0; index < 3; index++) {
         actionView = [UIView new];
         actionView.frame = CGRectMake(index*actionViewWidth, 0, actionViewWidth, actionViewHeight);
@@ -76,9 +77,24 @@
         _allShop = @[@"", @"", @"", @"", @""];
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf.tableView reloadData];
+//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+//        NSMutableDictionary *para = [NSMutableDictionary new];
+//        para[@"pagesize"] = @"10";
+//        para[@"pagenum"] = @"1";
+//        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=goodslist" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//            [weakSelf.tableView.mj_header endRefreshing];
+//            TEST_LOG(@"res = %@", responseObject);
+//            
+//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//            TEST_LOG(@"error = %@", error);
+//            [weakSelf.tableView.mj_header endRefreshing];
+//            
+//        }];
         
     }];
     [self.tableView.mj_header beginRefreshing];
+    
 
         
 }
@@ -100,25 +116,24 @@
     return 150;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"全部商家";
+    return @"物品兑换区";
 }
 - (void)cashConvert:(id)sender {
-    TEST_LOG(@"现金兑换");
     CashConvertController *cashConvertController = [CashConvertController new];
     [self.navigationController pushViewController:cashConvertController animated:YES];
 }
 - (void)domesticConvert:(id)sender {
-    TEST_LOG(@"家政服务");
     DomesticConvertController *domesticServiceController = [DomesticConvertController new];
     [self.navigationController pushViewController:domesticServiceController animated:YES];
 }
 - (void)convertRecord:(id)sender {
-    TEST_LOG(@"兑换纪录");
     ConvertRecordController *convertRecordController = [ConvertRecordController new];
     convertRecordController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:convertRecordController animated:YES];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GoodsConvertController *goodsConvert = [GoodsConvertController new];
+    [self.navigationController pushViewController:goodsConvert animated:YES];
 }
 @end

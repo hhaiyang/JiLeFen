@@ -9,6 +9,7 @@
 #import "GoodsConvertController.h"
 
 @interface GoodsConvertController ()
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 
 @end
 
@@ -16,22 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"物品兑换";
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(backAction) imageName:@"返回小图标-红色" height:30];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    _contentScrollView = [UIScrollView new];
+    _contentScrollView.frame = CGRectMake(0, 64, self.view.width, self.view.height-64-49);
+    [self.view addSubview:_contentScrollView];
+    
+    
+    
+}
+- (void)backAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

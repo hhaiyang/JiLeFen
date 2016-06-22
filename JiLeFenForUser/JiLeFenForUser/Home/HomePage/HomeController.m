@@ -19,17 +19,18 @@
 @end
 
 @implementation HomeController
-/** 控制器生命周期 */
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self basicSetup];
+        self.title = @"首页";
+        self.tabBarItem.image = [UIImage imageNamed:@"首页-点击前 透明"];
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"首页-点击后  透明"];
     }
     return self;
 }
-/** 视图生命周期 */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self initUI];
     [self addTableHeaderView];
     
@@ -49,12 +50,8 @@
     }
     return _categoryName;
 }
-- (void)basicSetup {
-    self.title = @"首页";
-    self.tabBarItem.image = [UIImage imageNamed:@"首页-点击前 透明"];
-    self.tabBarItem.selectedImage = [UIImage imageNamed:@"首页-点击后  透明"];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-}
+
+
 - (void)initUI {
     UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [searchButton addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];

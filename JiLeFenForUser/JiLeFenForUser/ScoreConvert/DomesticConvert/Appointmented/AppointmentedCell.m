@@ -1,14 +1,14 @@
 //
-//  AppointmentingCell.m
+//  AppointmentedCell.m
 //  JiLeFenForUser
 //
-//  Created by huanghaiyang on 16/3/2.
+//  Created by huanghaiyang on 16/6/20.
 //  Copyright © 2016年 tarena. All rights reserved.
 //
 
-#import "AppointmentingCell.h"
+#import "AppointmentedCell.h"
 
-@implementation AppointmentingCell    
+@implementation AppointmentedCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -37,13 +37,8 @@
             if (index == 0) {
                 _topView = view;
                 _introLabel = [UILabel new];
-                NSMutableAttributedString *str = [[NSMutableAttributedString alloc] init];
-                NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"预约中" attributes:@{NSForegroundColorAttributeName:[UIColor redColor], NSFontAttributeName:[UIFont systemFontOfSize:17]}];
-                NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"(如需退订请在预约时间段24小时前取消预约，24小时内不可退订)" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor redColor]}];
-                [str appendAttributedString:str1];
-                [str appendAttributedString:str2];
-                _introLabel.attributedText = str;
-                
+                _introLabel.textColor = kRGBColor(35, 188, 188);
+                _introLabel.text = @"已预约";
                 
                 [_topView addSubview:_introLabel];
             } else if (index == 1) {
@@ -75,10 +70,12 @@
                 }
             } else {
                 _bottomView = view;
-                _unsubscribeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [_unsubscribeButton setBackgroundImage:[UIImage imageNamed:@"兑换记录-退订"] forState:UIControlStateNormal];
-                [_bottomView addSubview:_unsubscribeButton];
-                
+                _successLabel = [UILabel new];
+                _successLabel.text = @"领取成功";
+                _successLabel.textAlignment = NSTextAlignmentRight;
+                _successLabel.font = [UIFont systemFontOfSize:15];
+                _successLabel.textColor = [UIColor grayColor];
+                [view addSubview:_successLabel];
             }
         }
         
@@ -94,15 +91,12 @@
     _middleView.frame = CGRectMake(0, _firstLine.y+_firstLine.height, _appointmentingContentView.width, _appointmentingContentView.height-2*_firstLine.height-_topView.height*2);
     _secondLine.frame = CGRectMake(0, _middleView.y+_middleView.height, _appointmentingContentView.width, 1);
     _bottomView.frame = CGRectMake(0, _secondLine.y+_secondLine.height, _appointmentingContentView.width, _topView.height);
-    UIImage *image = [_unsubscribeButton backgroundImageForState:UIControlStateNormal];
-    CGFloat buttonHeight = 30;
-    CGFloat buttonWidth = image.size.width/image.size.height*buttonHeight;
-    _unsubscribeButton.frame = CGRectMake(_bottomView.width-10-buttonWidth, (_bottomView.height-buttonHeight)/2, buttonWidth, buttonHeight);
+    _successLabel.frame = CGRectMake(20, 0, _bottomView.width-40, _bottomView.height);
     _appointmentingImageView.frame = CGRectMake(10, 10, _middleView.height-20, _middleView.height-20);
     _serviceDateLabel.frame = CGRectMake(_appointmentingImageView.x+_appointmentingImageView.width+10, 10, _middleView.width-30-_appointmentingImageView.width, (_middleView.height-20)/3);
     _contentLabel.frame = CGRectMake(_serviceDateLabel.x, _serviceDateLabel.y+_serviceDateLabel.height, _serviceDateLabel.width, _serviceDateLabel.height);
     _convertDateLabel.frame = CGRectMake(_serviceDateLabel.x, _contentLabel.y+_contentLabel.height, _serviceDateLabel.width, _serviceDateLabel.height);
-    _introLabel.frame = CGRectMake(0, 0, _topView.width, _topView.height);
+    _introLabel.frame = CGRectMake(20, 0, _topView.width-40, _topView.height);
     
 }
 @end

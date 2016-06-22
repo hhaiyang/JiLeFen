@@ -23,7 +23,7 @@
     
 }
 - (void)initUI {
-    self.title = @"兑换纪录";
+    self.title = @"物品兑换记录";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
     self.tableView.backgroundColor = kRGBColor(249, 249, 249);
 }

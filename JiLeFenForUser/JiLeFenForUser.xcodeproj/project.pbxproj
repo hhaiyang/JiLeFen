@@ -14,6 +14,8 @@
 		0242F4A61D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A51D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m */; };
 		0242F4A91D05626A00C41E4A /* UIView+HYGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A81D05626A00C41E4A /* UIView+HYGeometry.m */; };
 		0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0270B8BD1D16DC4000A0F994 /* SelectBankController.m */; };
+		027E433F1D1AD2C4000D4416 /* AppointmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 027E433C1D1AD2C4000D4416 /* AppointmentedCell.m */; };
+		027E43401D1AD2C4000D4416 /* AppointmentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027E433E1D1AD2C4000D4416 /* AppointmentedController.m */; };
 		029243C71D12F50400ADD750 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243C61D12F50400ADD750 /* MBProgressHUD.m */; };
 		029243D61D12F52600ADD750 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243CA1D12F52600ADD750 /* AFHTTPSessionManager.m */; };
 		029243D71D12F52600ADD750 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243CD1D12F52600ADD750 /* AFNetworkReachabilityManager.m */; };
@@ -62,8 +64,6 @@
 		029C08251D1653EA00138D15 /* ViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C08241D1653EA00138D15 /* ViewUtil.m */; };
 		029C08281D165CB200138D15 /* MyAttentionPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C08271D165CB200138D15 /* MyAttentionPopView.m */; };
 		02AB89D31D14181300B09691 /* RecordPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AB89D21D14181300B09691 /* RecordPasswordButton.m */; };
-		02AE920E1D18163B001312D0 /* AppointmentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE920D1D18163B001312D0 /* AppointmentedController.m */; };
-		02AE92111D1817DC001312D0 /* AppointmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE92101D1817DC001312D0 /* AppointmentedCell.m */; };
 		02AE92141D181810001312D0 /* AppointmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE92131D181810001312D0 /* AppointmentCell.m */; };
 		02DCA04F1D15052D008AF210 /* ModifyPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DCA04E1D15052D008AF210 /* ModifyPasswordController.m */; };
 		02DCA0521D15055F008AF210 /* ModifyPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DCA0511D15055F008AF210 /* ModifyPasswordCell.m */; };
@@ -107,7 +107,6 @@
 		02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13441CFEAE4100F1BD2C /* NotGetCell.xib */; };
 		02DF13A51CFEAE4100F1BD2C /* DomesticConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */; };
 		02DF13A61CFEAE4100F1BD2C /* GoodsConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13581CFEAE4100F1BD2C /* GoodsConvertController.m */; };
-		02DF13A71CFEAE4100F1BD2C /* GoodsConvertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13591CFEAE4100F1BD2C /* GoodsConvertController.xib */; };
 		02DF13A81CFEAE4100F1BD2C /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135C1CFEAE4100F1BD2C /* ScoreCell.m */; };
 		02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */; };
 		02DF13AA1CFEAE4100F1BD2C /* ScoreConvertCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */; };
@@ -175,6 +174,10 @@
 		0242F4A81D05626A00C41E4A /* UIView+HYGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HYGeometry.m"; sourceTree = "<group>"; };
 		0270B8BC1D16DC4000A0F994 /* SelectBankController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBankController.h; sourceTree = "<group>"; };
 		0270B8BD1D16DC4000A0F994 /* SelectBankController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBankController.m; sourceTree = "<group>"; };
+		027E433B1D1AD2C4000D4416 /* AppointmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentedCell.h; sourceTree = "<group>"; };
+		027E433C1D1AD2C4000D4416 /* AppointmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentedCell.m; sourceTree = "<group>"; };
+		027E433D1D1AD2C4000D4416 /* AppointmentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentedController.h; sourceTree = "<group>"; };
+		027E433E1D1AD2C4000D4416 /* AppointmentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentedController.m; sourceTree = "<group>"; };
 		029243C51D12F50400ADD750 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		029243C61D12F50400ADD750 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		029243C91D12F52600ADD750 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -275,10 +278,6 @@
 		029C08271D165CB200138D15 /* MyAttentionPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttentionPopView.m; sourceTree = "<group>"; };
 		02AB89D11D14181300B09691 /* RecordPasswordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPasswordButton.h; sourceTree = "<group>"; };
 		02AB89D21D14181300B09691 /* RecordPasswordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPasswordButton.m; sourceTree = "<group>"; };
-		02AE920C1D18163B001312D0 /* AppointmentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentedController.h; sourceTree = "<group>"; };
-		02AE920D1D18163B001312D0 /* AppointmentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentedController.m; sourceTree = "<group>"; };
-		02AE920F1D1817DC001312D0 /* AppointmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentedCell.h; sourceTree = "<group>"; };
-		02AE92101D1817DC001312D0 /* AppointmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentedCell.m; sourceTree = "<group>"; };
 		02AE92121D181810001312D0 /* AppointmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentCell.h; sourceTree = "<group>"; };
 		02AE92131D181810001312D0 /* AppointmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentCell.m; sourceTree = "<group>"; };
 		02DCA04D1D15052D008AF210 /* ModifyPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordController.h; sourceTree = "<group>"; };
@@ -356,7 +355,6 @@
 		02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DomesticConvertController.m; sourceTree = "<group>"; };
 		02DF13571CFEAE4100F1BD2C /* GoodsConvertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsConvertController.h; sourceTree = "<group>"; };
 		02DF13581CFEAE4100F1BD2C /* GoodsConvertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsConvertController.m; sourceTree = "<group>"; };
-		02DF13591CFEAE4100F1BD2C /* GoodsConvertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsConvertController.xib; sourceTree = "<group>"; };
 		02DF135B1CFEAE4100F1BD2C /* ScoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCell.h; sourceTree = "<group>"; };
 		02DF135C1CFEAE4100F1BD2C /* ScoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCell.m; sourceTree = "<group>"; };
 		02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
@@ -509,15 +507,12 @@
 		0200CF6D1D19881100A286F6 /* Appointmented */ = {
 			isa = PBXGroup;
 			children = (
+				027E433B1D1AD2C4000D4416 /* AppointmentedCell.h */,
+				027E433C1D1AD2C4000D4416 /* AppointmentedCell.m */,
+				027E433D1D1AD2C4000D4416 /* AppointmentedController.h */,
+				027E433E1D1AD2C4000D4416 /* AppointmentedController.m */,
 			);
 			path = Appointmented;
-			sourceTree = "<group>";
-		};
-		0242F4A01D05578000C41E4A /* Util */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 		029243C41D12F50400ADD750 /* MBProgressHUD */ = {
@@ -947,10 +942,6 @@
 				0200CF591D197B2E00A286F6 /* Appointmenting */,
 				02DF13541CFEAE4100F1BD2C /* DomesticConvertController.h */,
 				02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */,
-				02AE920C1D18163B001312D0 /* AppointmentedController.h */,
-				02AE920D1D18163B001312D0 /* AppointmentedController.m */,
-				02AE920F1D1817DC001312D0 /* AppointmentedCell.h */,
-				02AE92101D1817DC001312D0 /* AppointmentedCell.m */,
 				02AE92121D181810001312D0 /* AppointmentCell.h */,
 				02AE92131D181810001312D0 /* AppointmentCell.m */,
 			);
@@ -962,7 +953,6 @@
 			children = (
 				02DF13571CFEAE4100F1BD2C /* GoodsConvertController.h */,
 				02DF13581CFEAE4100F1BD2C /* GoodsConvertController.m */,
-				02DF13591CFEAE4100F1BD2C /* GoodsConvertController.xib */,
 			);
 			path = GoodsConvert;
 			sourceTree = "<group>";
@@ -1000,7 +990,6 @@
 			isa = PBXGroup;
 			children = (
 				02DCA0531D1505A1008AF210 /* Model */,
-				0242F4A01D05578000C41E4A /* Util */,
 				02DF12DE1CFEAE4100F1BD2C /* Home */,
 				02DF12F61CFEAE4100F1BD2C /* Main */,
 				02DF12FB1CFEAE4100F1BD2C /* Mine */,
@@ -1327,7 +1316,6 @@
 			files = (
 				02E1A5CF1CB389D8009C6177 /* Assets.xcassets in Resources */,
 				02DF13671CFEAE4100F1BD2C /* CategoryCell.xib in Resources */,
-				02DF13A71CFEAE4100F1BD2C /* GoodsConvertController.xib in Resources */,
 				02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */,
 				02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */,
 				02DF136A1CFEAE4100F1BD2C /* HomeCell.xib in Resources */,
@@ -1449,22 +1437,22 @@
 				02E1A6961CB38DF1009C6177 /* BaseScrollViewController.m in Sources */,
 				029C07D51D16387500138D15 /* ScoreRecordController.m in Sources */,
 				0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */,
+				027E43401D1AD2C4000D4416 /* AppointmentedController.m in Sources */,
 				0200CF5E1D197B2E00A286F6 /* AppointmentingCell.m in Sources */,
 				029C08031D1645B900138D15 /* MJRefreshAutoFooter.m in Sources */,
-				02AE920E1D18163B001312D0 /* AppointmentedController.m in Sources */,
 				02E1A80E1CB395CD009C6177 /* SDWebImageManager.m in Sources */,
 				029243D81D12F52600ADD750 /* AFSecurityPolicy.m in Sources */,
 				02E1A8131CB395CD009C6177 /* UIImageView+HighlightedWebCache.m in Sources */,
 				02E1A8121CB395CD009C6177 /* UIImage+MultiFormat.m in Sources */,
 				02E1A8081CB395CD009C6177 /* NSData+ImageContentType.m in Sources */,
 				029C08121D1645B900138D15 /* MJRefreshConst.m in Sources */,
+				027E433F1D1AD2C4000D4416 /* AppointmentedCell.m in Sources */,
 				02E1A67B1CB38DDD009C6177 /* NSArray+Description.m in Sources */,
 				029C07D21D16380B00138D15 /* QRCodeController.m in Sources */,
 				02DF136B1CFEAE4100F1BD2C /* HomeController.m in Sources */,
 				029C08131D1645B900138D15 /* UIScrollView+MJExtension.m in Sources */,
 				02E1A80A1CB395CD009C6177 /* SDWebImageCompat.m in Sources */,
 				029C08251D1653EA00138D15 /* ViewUtil.m in Sources */,
-				02AE92111D1817DC001312D0 /* AppointmentedCell.m in Sources */,
 				02E1A8141CB395CD009C6177 /* UIImageView+WebCache.m in Sources */,
 				02DF13971CFEAE4100F1BD2C /* ConvertRecordController.m in Sources */,
 				02DF13731CFEAE4100F1BD2C /* TabBarController.m in Sources */,
