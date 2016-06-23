@@ -72,10 +72,7 @@
 		02DF13671CFEAE4100F1BD2C /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF12E21CFEAE4100F1BD2C /* CategoryCell.xib */; };
 		02DF13681CFEAE4100F1BD2C /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12E41CFEAE4100F1BD2C /* CategoryController.m */; };
 		02DF13691CFEAE4100F1BD2C /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12E71CFEAE4100F1BD2C /* HomeCell.m */; };
-		02DF136A1CFEAE4100F1BD2C /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF12E81CFEAE4100F1BD2C /* HomeCell.xib */; };
 		02DF136B1CFEAE4100F1BD2C /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12EA1CFEAE4100F1BD2C /* HomeController.m */; };
-		02DF136C1CFEAE4100F1BD2C /* MiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12EC1CFEAE4100F1BD2C /* MiddleView.m */; };
-		02DF136D1CFEAE4100F1BD2C /* MiddleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF12ED1CFEAE4100F1BD2C /* MiddleView.xib */; };
 		02DF136E1CFEAE4100F1BD2C /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12F01CFEAE4100F1BD2C /* MerchantController.m */; };
 		02DF136F1CFEAE4100F1BD2C /* MerchantController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF12F11CFEAE4100F1BD2C /* MerchantController.xib */; };
 		02DF13701CFEAE4100F1BD2C /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12F41CFEAE4100F1BD2C /* SearchController.m */; };
@@ -157,6 +154,8 @@
 		02E1A8191CB39620009C6177 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A8181CB39620009C6177 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		02E1A81D1CB396A0009C6177 /* JPinYinUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A81C1CB396A0009C6177 /* JPinYinUtil.m */; };
 		02E1A81F1CB39862009C6177 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E1A81E1CB39862009C6177 /* libiconv.2.4.0.tbd */; };
+		02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */; };
+		02F1CF7D1D1C214E003F7220 /* SecondaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -293,12 +292,8 @@
 		02DF12E41CFEAE4100F1BD2C /* CategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryController.m; sourceTree = "<group>"; };
 		02DF12E61CFEAE4100F1BD2C /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		02DF12E71CFEAE4100F1BD2C /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
-		02DF12E81CFEAE4100F1BD2C /* HomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		02DF12E91CFEAE4100F1BD2C /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
 		02DF12EA1CFEAE4100F1BD2C /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
-		02DF12EB1CFEAE4100F1BD2C /* MiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleView.h; sourceTree = "<group>"; };
-		02DF12EC1CFEAE4100F1BD2C /* MiddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleView.m; sourceTree = "<group>"; };
-		02DF12ED1CFEAE4100F1BD2C /* MiddleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiddleView.xib; sourceTree = "<group>"; };
 		02DF12EF1CFEAE4100F1BD2C /* MerchantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantController.h; sourceTree = "<group>"; };
 		02DF12F01CFEAE4100F1BD2C /* MerchantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
 		02DF12F11CFEAE4100F1BD2C /* MerchantController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantController.xib; sourceTree = "<group>"; };
@@ -474,6 +469,10 @@
 		02E1A81B1CB396A0009C6177 /* JPinYinUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPinYinUtil.h; sourceTree = "<group>"; };
 		02E1A81C1CB396A0009C6177 /* JPinYinUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPinYinUtil.m; sourceTree = "<group>"; };
 		02E1A81E1CB39862009C6177 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
+		02F1CF781D1C1F88003F7220 /* PrimaryRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimaryRecommendView.h; sourceTree = "<group>"; };
+		02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimaryRecommendView.m; sourceTree = "<group>"; };
+		02F1CF7B1D1C214E003F7220 /* SecondaryRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondaryRecommendView.h; sourceTree = "<group>"; };
+		02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryRecommendView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -745,12 +744,12 @@
 			children = (
 				02DF12E61CFEAE4100F1BD2C /* HomeCell.h */,
 				02DF12E71CFEAE4100F1BD2C /* HomeCell.m */,
-				02DF12E81CFEAE4100F1BD2C /* HomeCell.xib */,
 				02DF12E91CFEAE4100F1BD2C /* HomeController.h */,
 				02DF12EA1CFEAE4100F1BD2C /* HomeController.m */,
-				02DF12EB1CFEAE4100F1BD2C /* MiddleView.h */,
-				02DF12EC1CFEAE4100F1BD2C /* MiddleView.m */,
-				02DF12ED1CFEAE4100F1BD2C /* MiddleView.xib */,
+				02F1CF781D1C1F88003F7220 /* PrimaryRecommendView.h */,
+				02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */,
+				02F1CF7B1D1C214E003F7220 /* SecondaryRecommendView.h */,
+				02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1318,10 +1317,8 @@
 				02DF13671CFEAE4100F1BD2C /* CategoryCell.xib in Resources */,
 				02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */,
 				02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */,
-				02DF136A1CFEAE4100F1BD2C /* HomeCell.xib in Resources */,
 				02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */,
 				02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */,
-				02DF136D1CFEAE4100F1BD2C /* MiddleView.xib in Resources */,
 				02DF13991CFEAE4100F1BD2C /* LookConvertCodePopView.xib in Resources */,
 				029C08111D1645B900138D15 /* MJRefresh.bundle in Resources */,
 				02DF13901CFEAE4100F1BD2C /* QRCodeScoreController.xib in Resources */,
@@ -1341,7 +1338,6 @@
 				029243F61D12F52C00ADD750 /* UIImageView+AFNetworking.m in Sources */,
 				02E1A8091CB395CD009C6177 /* SDImageCache.m in Sources */,
 				02DF13681CFEAE4100F1BD2C /* CategoryController.m in Sources */,
-				02DF136C1CFEAE4100F1BD2C /* MiddleView.m in Sources */,
 				02DF13661CFEAE4100F1BD2C /* CategoryCell.m in Sources */,
 				02E1A7CF1CB39520009C6177 /* rscode.c in Sources */,
 				029C07CE1D16368E00138D15 /* WMScrollView.m in Sources */,
@@ -1363,6 +1359,7 @@
 				02E1A81D1CB396A0009C6177 /* JPinYinUtil.m in Sources */,
 				02DF13691CFEAE4100F1BD2C /* HomeCell.m in Sources */,
 				02DF138F1CFEAE4100F1BD2C /* QRCodeScoreController.m in Sources */,
+				02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */,
 				029C08101D1645B900138D15 /* MJRefreshStateHeader.m in Sources */,
 				029C07CB1D16368E00138D15 /* WMMenuItem.m in Sources */,
 				02E1A6951CB38DF1009C6177 /* BaseViewController.m in Sources */,
@@ -1427,6 +1424,7 @@
 				02DF138B1CFEAE4100F1BD2C /* MyScoreController.m in Sources */,
 				029243D71D12F52600ADD750 /* AFNetworkReachabilityManager.m in Sources */,
 				02DF138E1CFEAE4100F1BD2C /* QRCodeScanViewController.m in Sources */,
+				02F1CF7D1D1C214E003F7220 /* SecondaryRecommendView.m in Sources */,
 				02E1A8191CB39620009C6177 /* OpenUDID.m in Sources */,
 				02E1A8111CB395CD009C6177 /* UIImage+GIF.m in Sources */,
 				02E1A80C1CB395CD009C6177 /* SDWebImageDownloader.m in Sources */,

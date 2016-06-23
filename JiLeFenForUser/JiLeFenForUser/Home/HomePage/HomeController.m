@@ -9,7 +9,6 @@
 #import "HomeController.h"
 #import "ZLImageViewDisplayView.h"
 #import "HomeCell.h"
-#import "MiddleView.h"
 #import "SearchController.h"
 #import "CategoryController.h"
 
@@ -33,17 +32,17 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self initUI];
     [self addTableHeaderView];
-    
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    [self.tableView registerClass:[HomeCell class] forCellReuseIdentifier:@"HomeCell"];
+    self.tableView.backgroundColor = kRGBColor(245, 245, 245);
     
 }
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    UIView *view = [kWindow viewWithTag:1000];
-    if (view) {
-        view.hidden = YES;
-    }
-    
-}
+
 - (NSArray *)categoryName {
     if (!_categoryName) {
         _categoryName = @[@"美食",@"服装",@"家具",@"建材"];
@@ -67,7 +66,7 @@
     
 }
 - (void)addTableHeaderView {
-    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 155)];
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 157)];
     self.tableView.tableHeaderView = tableHeaderView;
     
     /** 滑动广告位 */
@@ -78,25 +77,54 @@
     [tableHeaderView addSubview:imageViewDisplay];
     
     /** 中间四个分类 */
-    MiddleView *middleView = [MiddleView middleView];
-    middleView.backgroundColor = kRGBColor(236, 237, 239);
-    middleView.frame = CGRectMake(0, imageViewDisplay.bounds.size.height, tableHeaderView.bounds.size.width, 55);
-    [middleView.integralButton addTarget:self action:@selector(integral) forControlEvents:UIControlEventTouchUpInside];
-    [middleView.discountButton addTarget:self action:@selector(discount) forControlEvents:UIControlEventTouchUpInside];
-    [middleView.shangchaoButton addTarget:self action:@selector(shangchao) forControlEvents:UIControlEventTouchUpInside];
-    [middleView.allCategoryButton addTarget:self action:@selector(allCategory) forControlEvents:UIControlEventTouchUpInside];
+    UIView *middleView = [UIView new];
+    middleView.frame = CGRectMake(0, imageViewDisplay.bounds.size.height, tableHeaderView.bounds.size.width, 57);
+    NSArray *images = @[@"首页-积分图标", @"首页-打折图标", @"首页-商超图标", @"首页-全部分类图标"];
+    NSArray *titles = @[@"积分", @"打折", @"商超", @"全部分类"];
+    for (int index = 0; index < 4; index++) {
+        UIView *view = [UIView new];
+        view.frame = CGRectMake(middleView.width/4*index, 0, middleView.width/4, middleView.height-2);
+        [middleView addSubview:view];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *image = [UIImage imageNamed:images[index]];
+        CGFloat buttonHeight = view.height-20;
+        CGFloat buttonWidth = image.size.width/image.size.height*buttonHeight;
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        button.frame = CGRectMake((view.width-buttonWidth)/2, 5, buttonWidth, buttonHeight);
+        [view addSubview:button];
+        
+        UILabel *label = [UILabel new];
+        label.text = titles[index];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:14];
+        label.textColor = [UIColor grayColor];
+        label.frame = CGRectMake(0, button.y+button.height, view.width, view.height-button.height-button.y);
+        [view addSubview:label];
+        if (index == 0) {
+            [button addTarget:self action:@selector(integral) forControlEvents:UIControlEventTouchUpInside];
+        } else if (index == 1) {
+            [button addTarget:self action:@selector(discount) forControlEvents:UIControlEventTouchUpInside];
+        } else if (index == 2) {
+            [button addTarget:self action:@selector(shangchao) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            [button addTarget:self action:@selector(allCategory) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
+    UIView *line = [UIView new];
+    line.frame = CGRectMake(0, middleView.height-2, middleView.width, 2);
+    line.backgroundColor = kRGBColor(241, 189, 205);
+    [middleView addSubview:line];
+    
     [tableHeaderView addSubview:middleView];
     
 }
 - (void)integral {
-    TEST_LOG(@"积分");
     CategoryController *categoryController = [CategoryController new];
     categoryController.hidesBottomBarWhenPushed = YES;
     categoryController.categoryName = @"积分";
     [self.navigationController pushViewController:categoryController animated:YES];
 }
 - (void)discount {
-    TEST_LOG(@"打折");
     CategoryController *categoryController = [CategoryController new];
     categoryController.hidesBottomBarWhenPushed = YES;
     categoryController.categoryName = @"打折";
@@ -104,10 +132,8 @@
     
 }
 - (void)shangchao {
-    TEST_LOG(@"商超");
 }
 - (void)allCategory {
-    TEST_LOG(@"全部分类");
     CategoryController *allCategoryController = [CategoryController new];
     allCategoryController.categoryName = @"所有分类";
     allCategoryController.hidesBottomBarWhenPushed = YES;
@@ -121,9 +147,9 @@
     return self.categoryName.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeCell *cell = [HomeCell cellWithTableView:tableView];
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell"];
     cell.moreButton.tag = 100+indexPath.row;
-    cell.categoryNameLabel.text = self.categoryName[indexPath.row];
+    cell.categoryLabel.text = self.categoryName[indexPath.row];
     [cell.moreButton addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }

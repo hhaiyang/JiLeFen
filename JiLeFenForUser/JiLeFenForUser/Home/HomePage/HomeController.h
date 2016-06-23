@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-/** 首页 */
+
 @interface HomeController : UITableViewController
 
 @end

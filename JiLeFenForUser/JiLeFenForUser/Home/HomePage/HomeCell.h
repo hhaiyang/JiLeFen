@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PrimaryRecommendView.h"
+#import "SecondaryRecommendView.h"
 
 @interface HomeCell : UITableViewCell
-/** 分类名字 */
-@property (weak, nonatomic) IBOutlet UILabel *categoryNameLabel;
-/** 更多 */
-@property (weak, nonatomic) IBOutlet UIButton *moreButton;
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
+@property (nonatomic, strong) UIView *categoryView;
+@property (nonatomic, strong) UILabel *categoryLabel;
+@property (strong, nonatomic) UIButton *moreButton;
+@property (nonatomic, strong) PrimaryRecommendView *primaryRecommendView;
+@property (nonatomic, strong) SecondaryRecommendView *topSecondaryRecommendView;
+@property (nonatomic, strong) SecondaryRecommendView *bottomSecondaryRecommendView;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 @end
