@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  分类界面
- */
-@interface CategoryController : UITableViewController
-@property (nonatomic, copy) NSString *categoryName;
+#import "HomeController.h"
+
+@interface CategoryController : UIViewController
+@property (nonatomic, assign) BusinessType businessType;
+@property (nonatomic, strong) NSArray *sectionTitles;
 @end

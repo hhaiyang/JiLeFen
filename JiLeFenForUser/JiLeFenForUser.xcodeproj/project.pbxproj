@@ -33,6 +33,7 @@
 		029243F81D12F52C00ADD750 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243EE1D12F52C00ADD750 /* UIRefreshControl+AFNetworking.m */; };
 		029243F91D12F52C00ADD750 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243F01D12F52C00ADD750 /* UIWebView+AFNetworking.m */; };
 		029243FC1D12F5AE00ADD750 /* AccountValidate.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243FB1D12F5AE00ADD750 /* AccountValidate.m */; };
+		02998C9B1D1F9F4B00670877 /* SelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02998C9A1D1F9F4B00670877 /* SelectView.m */; };
 		029C07CA1D16368E00138D15 /* WMFooldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07BC1D16368E00138D15 /* WMFooldView.m */; };
 		029C07CB1D16368E00138D15 /* WMMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07BE1D16368E00138D15 /* WMMenuItem.m */; };
 		029C07CC1D16368E00138D15 /* WMMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07C01D16368E00138D15 /* WMMenuView.m */; };
@@ -214,6 +215,8 @@
 		029243F01D12F52C00ADD750 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		029243FA1D12F5AE00ADD750 /* AccountValidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountValidate.h; sourceTree = "<group>"; };
 		029243FB1D12F5AE00ADD750 /* AccountValidate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountValidate.m; sourceTree = "<group>"; };
+		02998C991D1F9F4B00670877 /* SelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectView.h; sourceTree = "<group>"; };
+		02998C9A1D1F9F4B00670877 /* SelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectView.m; sourceTree = "<group>"; };
 		029C07BB1D16368E00138D15 /* WMFooldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMFooldView.h; sourceTree = "<group>"; };
 		029C07BC1D16368E00138D15 /* WMFooldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMFooldView.m; sourceTree = "<group>"; };
 		029C07BD1D16368E00138D15 /* WMMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMenuItem.h; sourceTree = "<group>"; };
@@ -730,6 +733,8 @@
 		02DF12DF1CFEAE4100F1BD2C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				02998C991D1F9F4B00670877 /* SelectView.h */,
+				02998C9A1D1F9F4B00670877 /* SelectView.m */,
 				02DF12E01CFEAE4100F1BD2C /* CategoryCell.h */,
 				02DF12E11CFEAE4100F1BD2C /* CategoryCell.m */,
 				02DF12E21CFEAE4100F1BD2C /* CategoryCell.xib */,
@@ -1469,6 +1474,7 @@
 				029C080A1D1645B900138D15 /* MJRefreshAutoStateFooter.m in Sources */,
 				029C08151D1645B900138D15 /* UIView+MJExtension.m in Sources */,
 				029243F21D12F52C00ADD750 /* AFImageDownloader.m in Sources */,
+				02998C9B1D1F9F4B00670877 /* SelectView.m in Sources */,
 				02DF13A51CFEAE4100F1BD2C /* DomesticConvertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

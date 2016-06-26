@@ -120,14 +120,16 @@
 }
 - (void)integral {
     CategoryController *categoryController = [CategoryController new];
-    categoryController.hidesBottomBarWhenPushed = YES;
-    categoryController.categoryName = @"积分";
+    categoryController.businessType = BusinessTypeIntegral;
+    categoryController.title = @"积分";
+    categoryController.sectionTitles = @[@"栏目分类", @"全部商区", @"默认排序"];
     [self.navigationController pushViewController:categoryController animated:YES];
 }
 - (void)discount {
     CategoryController *categoryController = [CategoryController new];
-    categoryController.hidesBottomBarWhenPushed = YES;
-    categoryController.categoryName = @"打折";
+    categoryController.businessType = BusinessTypeDiscount;
+    categoryController.sectionTitles = @[@"栏目分类", @"全部商区", @"默认排序"];
+    categoryController.title = @"打折";
     [self.navigationController pushViewController:categoryController animated:YES];
     
 }
@@ -135,8 +137,9 @@
 }
 - (void)allCategory {
     CategoryController *allCategoryController = [CategoryController new];
-    allCategoryController.categoryName = @"所有分类";
-    allCategoryController.hidesBottomBarWhenPushed = YES;
+    allCategoryController.businessType = BusinessTypeAll;
+    allCategoryController.sectionTitles = @[@"建材／装潢", @"全部商区", @"店铺类别"];
+    allCategoryController.title = @"建材";
     [self.navigationController pushViewController:allCategoryController animated:YES];
     
 }
@@ -148,7 +151,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell"];
-    cell.moreButton.tag = 100+indexPath.row;
+    cell.moreButton.tag = indexPath.row;
     cell.categoryLabel.text = self.categoryName[indexPath.row];
     [cell.moreButton addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
@@ -158,8 +161,8 @@
 }
 - (void)moreAction:(UIButton *)sender {
     CategoryController *categoryController = [CategoryController new];
-    categoryController.hidesBottomBarWhenPushed = YES;
-    categoryController.categoryName = self.categoryName[sender.tag-100];
+    categoryController.title = _categoryName[sender.tag];
+    categoryController.businessType = BusinessTypeOther;
     [self.navigationController pushViewController:categoryController animated:YES];
     
     

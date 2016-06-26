@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    BusinessTypeIntegral,
+    BusinessTypeDiscount,
+    BusinessTypeShangChao,
+    BusinessTypeOther,
+    BusinessTypeAll
+} BusinessType;
+
 @interface HomeController : UITableViewController
 
 @end
