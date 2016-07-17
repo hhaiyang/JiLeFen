@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-/**
- *  商家页面
- */
-@interface MerchantController : UIViewController
+
+@interface BusinessController : WMPageController
 
 @end

@@ -11,6 +11,8 @@
 		0200CF5F1D197B2E00A286F6 /* AppointmentingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0200CF5D1D197B2E00A286F6 /* AppointmentingController.m */; };
 		0200CF631D197BBB00A286F6 /* AppointmentUnsubscribePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0200CF611D197BBB00A286F6 /* AppointmentUnsubscribePopView.m */; };
 		0200CF6B1D1981C700A286F6 /* AppointmentUnsubscribeSuccessPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0200CF691D1981C700A286F6 /* AppointmentUnsubscribeSuccessPopView.m */; };
+		020FF65F1D1FCF9C0035683E /* BusinessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 020FF65D1D1FCF9C0035683E /* BusinessController.m */; };
+		021234081D3B6D25000C4E3F /* PartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 021234071D3B6D25000C4E3F /* PartView.m */; };
 		0242F4A61D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A51D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m */; };
 		0242F4A91D05626A00C41E4A /* UIView+HYGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A81D05626A00C41E4A /* UIView+HYGeometry.m */; };
 		0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0270B8BD1D16DC4000A0F994 /* SelectBankController.m */; };
@@ -74,10 +76,7 @@
 		02DF13681CFEAE4100F1BD2C /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12E41CFEAE4100F1BD2C /* CategoryController.m */; };
 		02DF13691CFEAE4100F1BD2C /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12E71CFEAE4100F1BD2C /* HomeCell.m */; };
 		02DF136B1CFEAE4100F1BD2C /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12EA1CFEAE4100F1BD2C /* HomeController.m */; };
-		02DF136E1CFEAE4100F1BD2C /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12F01CFEAE4100F1BD2C /* MerchantController.m */; };
-		02DF136F1CFEAE4100F1BD2C /* MerchantController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF12F11CFEAE4100F1BD2C /* MerchantController.xib */; };
 		02DF13701CFEAE4100F1BD2C /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12F41CFEAE4100F1BD2C /* SearchController.m */; };
-		02DF13711CFEAE4100F1BD2C /* SearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF12F51CFEAE4100F1BD2C /* SearchController.xib */; };
 		02DF13721CFEAE4100F1BD2C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12F81CFEAE4100F1BD2C /* AppDelegate.m */; };
 		02DF13731CFEAE4100F1BD2C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12FA1CFEAE4100F1BD2C /* TabBarController.m */; };
 		02DF13741CFEAE4100F1BD2C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12FE1CFEAE4100F1BD2C /* LoginController.m */; };
@@ -168,6 +167,10 @@
 		0200CF611D197BBB00A286F6 /* AppointmentUnsubscribePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentUnsubscribePopView.m; sourceTree = "<group>"; };
 		0200CF681D1981C700A286F6 /* AppointmentUnsubscribeSuccessPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentUnsubscribeSuccessPopView.h; sourceTree = "<group>"; };
 		0200CF691D1981C700A286F6 /* AppointmentUnsubscribeSuccessPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentUnsubscribeSuccessPopView.m; sourceTree = "<group>"; };
+		020FF65C1D1FCF9C0035683E /* BusinessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessController.h; sourceTree = "<group>"; };
+		020FF65D1D1FCF9C0035683E /* BusinessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessController.m; sourceTree = "<group>"; };
+		021234061D3B6D25000C4E3F /* PartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartView.h; sourceTree = "<group>"; };
+		021234071D3B6D25000C4E3F /* PartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartView.m; sourceTree = "<group>"; };
 		0242F4A41D055D1B00C41E4A /* UIBarButtonItem+CustomItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+CustomItem.h"; sourceTree = "<group>"; };
 		0242F4A51D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+CustomItem.m"; sourceTree = "<group>"; };
 		0242F4A71D05626A00C41E4A /* UIView+HYGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HYGeometry.h"; sourceTree = "<group>"; };
@@ -297,12 +300,8 @@
 		02DF12E71CFEAE4100F1BD2C /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		02DF12E91CFEAE4100F1BD2C /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
 		02DF12EA1CFEAE4100F1BD2C /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
-		02DF12EF1CFEAE4100F1BD2C /* MerchantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantController.h; sourceTree = "<group>"; };
-		02DF12F01CFEAE4100F1BD2C /* MerchantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
-		02DF12F11CFEAE4100F1BD2C /* MerchantController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantController.xib; sourceTree = "<group>"; };
 		02DF12F31CFEAE4100F1BD2C /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchController.h; sourceTree = "<group>"; };
 		02DF12F41CFEAE4100F1BD2C /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
-		02DF12F51CFEAE4100F1BD2C /* SearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchController.xib; sourceTree = "<group>"; };
 		02DF12F71CFEAE4100F1BD2C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02DF12F81CFEAE4100F1BD2C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		02DF12F91CFEAE4100F1BD2C /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
@@ -517,6 +516,15 @@
 			path = Appointmented;
 			sourceTree = "<group>";
 		};
+		020FF65B1D1FCF9C0035683E /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				020FF65C1D1FCF9C0035683E /* BusinessController.h */,
+				020FF65D1D1FCF9C0035683E /* BusinessController.m */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
 		029243C41D12F50400ADD750 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,9 +730,9 @@
 		02DF12DE1CFEAE4100F1BD2C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				020FF65B1D1FCF9C0035683E /* Business */,
 				02DF12DF1CFEAE4100F1BD2C /* Category */,
 				02DF12E51CFEAE4100F1BD2C /* HomePage */,
-				02DF12EE1CFEAE4100F1BD2C /* Merchant */,
 				02DF12F21CFEAE4100F1BD2C /* Search */,
 			);
 			path = Home;
@@ -755,18 +763,10 @@
 				02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */,
 				02F1CF7B1D1C214E003F7220 /* SecondaryRecommendView.h */,
 				02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */,
+				021234061D3B6D25000C4E3F /* PartView.h */,
+				021234071D3B6D25000C4E3F /* PartView.m */,
 			);
 			path = HomePage;
-			sourceTree = "<group>";
-		};
-		02DF12EE1CFEAE4100F1BD2C /* Merchant */ = {
-			isa = PBXGroup;
-			children = (
-				02DF12EF1CFEAE4100F1BD2C /* MerchantController.h */,
-				02DF12F01CFEAE4100F1BD2C /* MerchantController.m */,
-				02DF12F11CFEAE4100F1BD2C /* MerchantController.xib */,
-			);
-			path = Merchant;
 			sourceTree = "<group>";
 		};
 		02DF12F21CFEAE4100F1BD2C /* Search */ = {
@@ -774,7 +774,6 @@
 			children = (
 				02DF12F31CFEAE4100F1BD2C /* SearchController.h */,
 				02DF12F41CFEAE4100F1BD2C /* SearchController.m */,
-				02DF12F51CFEAE4100F1BD2C /* SearchController.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1327,8 +1326,6 @@
 				02DF13991CFEAE4100F1BD2C /* LookConvertCodePopView.xib in Resources */,
 				029C08111D1645B900138D15 /* MJRefresh.bundle in Resources */,
 				02DF13901CFEAE4100F1BD2C /* QRCodeScoreController.xib in Resources */,
-				02DF136F1CFEAE4100F1BD2C /* MerchantController.xib in Resources */,
-				02DF13711CFEAE4100F1BD2C /* SearchController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1402,6 +1399,7 @@
 				02DF137F1CFEAE4100F1BD2C /* MineController.m in Sources */,
 				02DCA0591D1505A1008AF210 /* User.m in Sources */,
 				02E1A68F1CB38DF1009C6177 /* UIImage+Resize.m in Sources */,
+				021234081D3B6D25000C4E3F /* PartView.m in Sources */,
 				029C080D1D1645B900138D15 /* MJRefreshBackStateFooter.m in Sources */,
 				02E1A7CD1CB39520009C6177 /* qrinput.c in Sources */,
 				02E1A8101CB395CD009C6177 /* UIButton+WebCache.m in Sources */,
@@ -1411,6 +1409,7 @@
 				029243F11D12F52C00ADD750 /* AFAutoPurgingImageCache.m in Sources */,
 				029C07CA1D16368E00138D15 /* WMFooldView.m in Sources */,
 				02E1A80F1CB395CD009C6177 /* SDWebImagePrefetcher.m in Sources */,
+				020FF65F1D1FCF9C0035683E /* BusinessController.m in Sources */,
 				029C080B1D1645B900138D15 /* MJRefreshBackGifFooter.m in Sources */,
 				029243FC1D12F5AE00ADD750 /* AccountValidate.m in Sources */,
 				029C080F1D1645B900138D15 /* MJRefreshNormalHeader.m in Sources */,
@@ -1418,7 +1417,6 @@
 				029C07CD1D16368E00138D15 /* WMProgressView.m in Sources */,
 				0200CF631D197BBB00A286F6 /* AppointmentUnsubscribePopView.m in Sources */,
 				02E1A80B1CB395CD009C6177 /* SDWebImageDecoder.m in Sources */,
-				02DF136E1CFEAE4100F1BD2C /* MerchantController.m in Sources */,
 				02E1A6911CB38DF1009C6177 /* UIColor+CustomColor.m in Sources */,
 				02E1A6921CB38DF1009C6177 /* UIDevice+Addition.m in Sources */,
 				029243F71D12F52C00ADD750 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1577,6 +1575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${PRODUCT_NAME}/PrefixHeader.pch";
@@ -1596,6 +1595,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${PRODUCT_NAME}/PrefixHeader.pch";

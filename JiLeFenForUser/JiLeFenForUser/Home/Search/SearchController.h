@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  搜索界面
- */
+
 @interface SearchController : UIViewController
 
 @end

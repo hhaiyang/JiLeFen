@@ -11,7 +11,7 @@
 typedef enum : NSUInteger {
     BusinessTypeIntegral,
     BusinessTypeDiscount,
-    BusinessTypeShangChao,
+    BusinessTypeSupermarket,
     BusinessTypeOther,
     BusinessTypeAll
 } BusinessType;

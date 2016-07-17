@@ -11,7 +11,7 @@
 #import "HomeCell.h"
 #import "SearchController.h"
 #import "CategoryController.h"
-
+#import "PartView.h"
 @interface HomeController ()
 @property (nonatomic, strong) NSMutableArray *tableHeaderViewImagesArray;
 @property (nonatomic, strong) NSArray *categoryName;
@@ -66,7 +66,7 @@
     
 }
 - (void)addTableHeaderView {
-    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 157)];
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 157+20+150)];
     self.tableView.tableHeaderView = tableHeaderView;
     
     /** 滑动广告位 */
@@ -80,10 +80,10 @@
     UIView *middleView = [UIView new];
     middleView.frame = CGRectMake(0, imageViewDisplay.bounds.size.height, tableHeaderView.bounds.size.width, 57);
     NSArray *images = @[@"首页-积分图标", @"首页-打折图标", @"首页-商超图标", @"首页-全部分类图标"];
-    NSArray *titles = @[@"积分", @"打折", @"商超", @"全部分类"];
-    for (int index = 0; index < 4; index++) {
+    NSArray *titles = @[@"积分", @"打折", @"商场", @"全部分类"];
+    for (int index = 0; index < images.count; index++) {
         UIView *view = [UIView new];
-        view.frame = CGRectMake(middleView.width/4*index, 0, middleView.width/4, middleView.height-2);
+        view.frame = CGRectMake(middleView.width/images.count*index, 0, middleView.width/images.count, middleView.height-2);
         [middleView addSubview:view];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage *image = [UIImage imageNamed:images[index]];
@@ -105,7 +105,7 @@
         } else if (index == 1) {
             [button addTarget:self action:@selector(discount) forControlEvents:UIControlEventTouchUpInside];
         } else if (index == 2) {
-            [button addTarget:self action:@selector(shangchao) forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:self action:@selector(supermarket) forControlEvents:UIControlEventTouchUpInside];
         } else {
             [button addTarget:self action:@selector(allCategory) forControlEvents:UIControlEventTouchUpInside];
         }
@@ -114,8 +114,31 @@
     line.frame = CGRectMake(0, middleView.height-2, middleView.width, 2);
     line.backgroundColor = kRGBColor(241, 189, 205);
     [middleView addSubview:line];
-    
     [tableHeaderView addSubview:middleView];
+    
+    UIView *bottomView = [UIView new];
+    bottomView.layer.cornerRadius = 3;
+    bottomView.frame = CGRectMake(10, middleView.y+middleView.height+10, tableHeaderView.width-20, 150);
+    bottomView.backgroundColor = [UIColor whiteColor];
+    [tableHeaderView addSubview:bottomView];
+    
+    PartView *partView = nil;
+    CGFloat partViewHeight = bottomView.height/2;
+    CGFloat partViewWidth = 0;
+    CGFloat space = bottomView.width/5*3;
+    for (int i = 0; i < 4; i++) {
+        if (i%2 == 0) {
+            partViewWidth = bottomView.width/5*3;
+           
+        } else {
+            partViewWidth = bottomView.width/5*2;
+        }
+        partView = [[PartView alloc] init];
+        partView.frame = CGRectMake(i%2*space, i/2*partViewHeight, partViewWidth, partViewHeight);
+        [bottomView addSubview:partView];
+        
+    }
+    
     
 }
 - (void)integral {
@@ -133,7 +156,12 @@
     [self.navigationController pushViewController:categoryController animated:YES];
     
 }
-- (void)shangchao {
+- (void)supermarket {
+    CategoryController *categoryController = [CategoryController new];
+    categoryController.businessType = BusinessTypeSupermarket;
+    categoryController.sectionTitles = @[@"栏目分类", @"全部商区", @"默认排序"];
+    categoryController.title = @"商场";
+    [self.navigationController pushViewController:categoryController animated:YES];
 }
 - (void)allCategory {
     CategoryController *allCategoryController = [CategoryController new];

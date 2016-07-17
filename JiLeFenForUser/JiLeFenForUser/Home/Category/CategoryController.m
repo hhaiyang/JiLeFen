@@ -8,7 +8,7 @@
 
 #import "CategoryController.h"
 #import "CategoryCell.h"
-#import "MerchantController.h"
+#import "BusinessController.h"
 #import "SelectView.h"
 
 @interface CategoryController () <UITableViewDelegate, UITableViewDataSource>
@@ -148,7 +148,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MerchantController *merchantController = [MerchantController new];
+    BusinessController *merchantController = [BusinessController new];
     [self.navigationController pushViewController:merchantController animated:YES];
 }
 @end
