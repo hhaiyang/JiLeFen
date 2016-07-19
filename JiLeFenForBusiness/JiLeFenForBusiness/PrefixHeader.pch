@@ -14,7 +14,6 @@
 #import "UIColor+Additional.h"
 #import "ColorDefine.h"
 #import "UIView+HYGeometry.h"
-#import "URLDefine.h"
 #import "UIImage+Resize.h"
 #import "User.h"
 #import "ViewUtil.h"

@@ -50,6 +50,7 @@ static NSInteger const kWMUndefinedIndex = -1;
 #pragma mark - Public Methods
 
 - (instancetype)initWithViewControllerClasses:(NSArray<Class> *)classes andTheirTitles:(NSArray<NSString *> *)titles {
+
     if (self = [super init]) {
         NSParameterAssert(classes.count == titles.count);
         _viewControllerClasses = [NSArray arrayWithArray:classes];
@@ -61,6 +62,7 @@ static NSInteger const kWMUndefinedIndex = -1;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
+
     if (self = [super initWithCoder:aDecoder]) {
         [self setup];
     }
@@ -68,6 +70,7 @@ static NSInteger const kWMUndefinedIndex = -1;
 }
 
 - (instancetype)init {
+
     if (self = [super init]) {
         [self setup];
     }
@@ -582,7 +585,11 @@ static NSInteger const kWMUndefinedIndex = -1;
 
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
+
+
     [super viewDidLoad];
+
+    
 
     self.view.backgroundColor = [UIColor whiteColor];
 

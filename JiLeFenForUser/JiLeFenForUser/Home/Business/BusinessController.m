@@ -9,6 +9,7 @@
 #import "BusinessController.h"
 
 @interface BusinessController ()
+
 @property (nonatomic, strong) UIImageView *businessImageView;
 @property (nonatomic, strong) UIImageView *pointImageView;
 @property (nonatomic, strong) UILabel *businessNameLabel;
@@ -20,10 +21,11 @@
 @implementation BusinessController
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"金香蕉";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回按钮" height:30];
+    
     
     _businessImageView = [UIImageView new];
     _businessImageView.backgroundColor = [UIColor whiteColor];
@@ -31,20 +33,14 @@
     _businessImageView.frame = CGRectMake(0, 64, self.view.width, 110);
     [self.view addSubview:_businessImageView];
     
-    UIView *line = [UIView new];
-    line.frame = CGRectMake(0, _businessImageView.y+_businessImageView.height, self.view.width, 1);
-    line.backgroundColor = kRGBColor(235, 232, 231);
-    [self.view addSubview:line];
-    
-    _pointImageView = [UIImageView new];
-    _pointImageView.image = [UIImage imageNamed:@"商家商场页面积分倍数-10倍积分"];
-    _pointImageView.frame = CGRectMake(line.width-15-50, -25, 50, 50);
-    [line addSubview:_pointImageView];
-    
     UIView *businessInfoView = [UIView new];
-    businessInfoView.frame = CGRectMake(0, line.y+line.height, self.view.width, 115);
+    businessInfoView.backgroundColor = [UIColor whiteColor];
+    businessInfoView.frame = CGRectMake(0, _businessImageView.y+_businessImageView.height, self.view.width, 115);
     [self.view addSubview:businessInfoView];
-    
+    UIView *line = [UIView new];
+    line.frame = CGRectMake(0, 0, self.view.width, 1);
+    line.backgroundColor = kRGBColor(235, 232, 231);
+    [businessInfoView addSubview:line];
     for (int index = 0; index < 4; index++) {
         UILabel *label = [UILabel new];
         label.frame = CGRectMake(10, (businessInfoView.height-20)/4*index+10, 200, (businessInfoView.height-20)/4);
@@ -73,6 +69,7 @@
             label.textColor = [UIColor grayColor];
             label.text = @"地址：相山区淮海中路92-2号";
             
+            /*
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button addTarget:self action:@selector(lookupBusinessLocation:) forControlEvents:UIControlEventTouchUpInside];
             UIImage *image = [UIImage imageNamed:@"查看商家位置"];
@@ -84,6 +81,7 @@
             center.y = label.center.y;
             button.center = center;
             [businessInfoView addSubview:button];
+             */
             
         } else {
             _businessIntroLabel = label;
@@ -94,22 +92,28 @@
         }
         
     }
+    _pointImageView = [UIImageView new];
+    _pointImageView.image = [UIImage imageNamed:@"商家商场页面积分倍数-10倍积分"];
+    _pointImageView.frame = CGRectMake(businessInfoView.width-15-50, -25, 50, 50);
+    [businessInfoView addSubview:_pointImageView];
+    
     line = [UIView new];
     line.frame = CGRectMake(0, businessInfoView.height-3.5, businessInfoView.width, 1.5);
     line.backgroundColor = kRGBColor(252, 180, 204);
     [businessInfoView addSubview:line];
     
+    
+    
     UIView *scoreView = [UIView new];
-    scoreView.frame = CGRectMake(0, businessInfoView.y+businessInfoView.height, self.view.width, 70);
+    scoreView.backgroundColor = kRGBColor(237, 237, 237);
+    scoreView.frame = CGRectMake(0, businessInfoView.y+businessInfoView.height, self.view.width, 80);
     [self.view addSubview:scoreView];
     for (int index = 0; index < 2; index++) {
         UILabel *label = [UILabel new];
         
     }
-    
-    self.viewFrame = CGRectMake(10, businessInfoView.y+businessInfoView.height+10, self.view.width-20, 100);
-    self.view.backgroundColor = kRGBColor(237, 237, 237);
 
+    self.viewFrame = CGRectMake(0, scoreView.y+scoreView.height-64, self.view.width, self.view.height-scoreView.y-scoreView.height);
 }
 
 - (void)back {
