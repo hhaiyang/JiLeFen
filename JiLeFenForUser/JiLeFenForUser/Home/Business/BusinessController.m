@@ -7,6 +7,7 @@
 //
 
 #import "BusinessController.h"
+#import "ViewUtil.h"
 
 @interface BusinessController ()
 
@@ -16,6 +17,9 @@
 @property (nonatomic, strong) UILabel *telLabel;
 @property (nonatomic, strong) UILabel *addressLabel;
 @property (nonatomic, strong) UILabel *businessIntroLabel;
+@property (nonatomic, strong) UILabel *scoreExpireLabel;
+@property (nonatomic, strong) UILabel *scoreStatusLabel;
+@property (nonatomic, strong) UIButton *attentionButton;
 @end
 
 @implementation BusinessController
@@ -108,11 +112,34 @@
     scoreView.backgroundColor = kRGBColor(237, 237, 237);
     scoreView.frame = CGRectMake(0, businessInfoView.y+businessInfoView.height, self.view.width, 80);
     [self.view addSubview:scoreView];
-    for (int index = 0; index < 2; index++) {
-        UILabel *label = [UILabel new];
-        
-    }
-
+    
+    /*
+    _attentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *attentionImage = [UIImage imageNamed:@""];
+     */
+    _scoreExpireLabel = [UILabel new];
+    _scoreExpireLabel.frame = CGRectMake(5, 10, scoreView.width-60, (scoreView.height-30)/2);
+    NSMutableAttributedString *resultStr = [NSMutableAttributedString new];
+    NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"积分有效期:" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"2015年8月20日－2016年8月31日" attributes:@{NSForegroundColorAttributeName:[UIColor grayColor], NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    [resultStr appendAttributedString:str1];
+    [resultStr appendAttributedString:str2];
+    _scoreExpireLabel.attributedText = resultStr;
+    [scoreView addSubview:_scoreExpireLabel];
+    
+    _scoreStatusLabel = [UILabel new];
+    _scoreStatusLabel.frame = CGRectMake(_scoreExpireLabel.x, _scoreExpireLabel.y+_scoreExpireLabel.height, _scoreExpireLabel.width, _scoreExpireLabel.height);
+    resultStr = [NSMutableAttributedString new];
+     str1 = [[NSAttributedString alloc] initWithString:@"积分状态: " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+    str2 = [[NSAttributedString alloc] initWithString:@"进行中" attributes:@{NSForegroundColorAttributeName:[UIColor redColor], NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    [resultStr appendAttributedString:str1];
+    [resultStr appendAttributedString:str2];
+    _scoreStatusLabel.attributedText = resultStr;
+    [scoreView addSubview:_scoreStatusLabel];
+    UIView *dashLine = [UIView new];
+    dashLine.frame = CGRectMake(0, scoreView.height-10, scoreView.width, 1.5);
+    [scoreView addSubview:dashLine];
+    [ViewUtil drawDashLine:dashLine lineLength:4 lineSpacing:3 lineColor:[UIColor lightGrayColor]];
     self.viewFrame = CGRectMake(0, scoreView.y+scoreView.height-64, self.view.width, self.view.height-scoreView.y-scoreView.height);
 }
 

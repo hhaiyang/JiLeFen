@@ -1,0 +1,97 @@
+Android商户端缺少接口如下:
+
+1,账户管理模块获取账户信息接口没有,包括名称/电话/地址和商户商标Icon  j=user&type=getagentinfo
+
+2,物品兑换模块,是否开启物品兑换功能的接口没有  j=user&type=upflog   
+
+
+
+
+3,验证兑换码正确后,跳到确认信息页,显示可兑换商品的信息(包含名称,品类,数量),获取可兑换商品
+	信息的接口没有(验证码  找到相应的商品ID) 商品信息：goodsinfo
+
+
+4,上个问题的下一步,点击"确定验证"按钮,到达验证成功界面,需要一个接口向后台发送验证成功兑换成功的消息,后台完成该用户积分的扣除动作(这里减去用户的的积分，还有商品的库存量，产生记录)
+
+	扣除动作：cashgoods
+
+
+5,物品兑换,商户兑换记录与兑换详情接口没有 （物品的详细信息，物品名称，时间，数量，积分）；
+	记录 ： cashlist  兑换商品详情 ：goodsinfo
+
+6,索要积分部分,商家点击索要积分,向平台索要一次积分的接口没有,(效果图显示索要一次积分增加10000积分)  * 跟后端无关    可以添加后端接口 
+
+7,消费积分部分,商家输入积分数额通过扫码或者输入顾客用户名向用户消费积分,于此对应的接口没有找到.  
+	addjifen
+
+ （根据用户的手机号码， 给对应的用户相应的积分）。
+
+只发现接口文档中第一个接口--用户增加积分--,参数为用户名,积分代码,积分数额,并未涉及到商户端,,且积分代码字段商户端没有,如果对应的接口（双方产生记录  商户减，用户加 ）
+是这个,应该如何使用
+
+
+数据库 操作  my_member:    flog, int;
+
+	     my_information:  num， int (11) 默认为0；mycode,varchar 允许为空；prices ，int(11) 允许为空 默认值 0； points，int(11) 允许为空 默认值 1 ;
+
+
+发布活动（my_information）  数据库 字段    1 表示可以为空 0 必填项
+
+id				1
+visit_count			1
+title				0
+catid				0
+catid_one			0
+areaid				0
+begintime			0
+activetime			0
+endtime				0
+content				0
+userid				0
+contact_who			1
+qq				1
+email				1
+tel				1
+updatetime			1
+hit				1
+ismember			1
+manage_pwd			1
+ip				0
+ip2area				1
+info_level			1
+img_path			0
+img_count			1
+upgrade_type			1
+upgrade_time			1
+upgrade_type_list		1
+upgrade_time_list		1	
+ifred				1
+ifbold				1
+certify				1
+html_path			1
+upgrade_type_index		1
+upgrade_time_index		1
+mappoint			1
+web_address			1	
+is_zhe				1
+is_new				1
+is_man				1
+is_zeng				1
+is_tuan				1
+infoid				1
+info_id_m			1
+yuanjia				0
+xianjia				1
+yishou				1
+links				1
+jieshao				1
+zhekoufd			1
+maplx				1
+maply				1
+loucenggd			1
+congaodu			1
+is_apptj			1
+num				1
+mycode				0
+prices				1
+points  			1
