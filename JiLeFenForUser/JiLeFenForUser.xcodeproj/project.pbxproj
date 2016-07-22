@@ -15,6 +15,9 @@
 		021234081D3B6D25000C4E3F /* PartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 021234071D3B6D25000C4E3F /* PartView.m */; };
 		0242F4A61D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A51D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m */; };
 		0242F4A91D05626A00C41E4A /* UIView+HYGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0242F4A81D05626A00C41E4A /* UIView+HYGeometry.m */; };
+		026F175F1D42736A00384BEE /* BusinessActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026F175E1D42736A00384BEE /* BusinessActivityController.m */; };
+		026F17621D42740500384BEE /* BusinessShowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026F17611D42740500384BEE /* BusinessShowController.m */; };
+		026F17651D42742D00384BEE /* BusinessCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026F17641D42742D00384BEE /* BusinessCommentController.m */; };
 		0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0270B8BD1D16DC4000A0F994 /* SelectBankController.m */; };
 		027E433F1D1AD2C4000D4416 /* AppointmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 027E433C1D1AD2C4000D4416 /* AppointmentedCell.m */; };
 		027E43401D1AD2C4000D4416 /* AppointmentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027E433E1D1AD2C4000D4416 /* AppointmentedController.m */; };
@@ -175,6 +178,12 @@
 		0242F4A51D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+CustomItem.m"; sourceTree = "<group>"; };
 		0242F4A71D05626A00C41E4A /* UIView+HYGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HYGeometry.h"; sourceTree = "<group>"; };
 		0242F4A81D05626A00C41E4A /* UIView+HYGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HYGeometry.m"; sourceTree = "<group>"; };
+		026F175D1D42736A00384BEE /* BusinessActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessActivityController.h; sourceTree = "<group>"; };
+		026F175E1D42736A00384BEE /* BusinessActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessActivityController.m; sourceTree = "<group>"; };
+		026F17601D42740500384BEE /* BusinessShowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessShowController.h; sourceTree = "<group>"; };
+		026F17611D42740500384BEE /* BusinessShowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessShowController.m; sourceTree = "<group>"; };
+		026F17631D42742D00384BEE /* BusinessCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCommentController.h; sourceTree = "<group>"; };
+		026F17641D42742D00384BEE /* BusinessCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCommentController.m; sourceTree = "<group>"; };
 		0270B8BC1D16DC4000A0F994 /* SelectBankController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBankController.h; sourceTree = "<group>"; };
 		0270B8BD1D16DC4000A0F994 /* SelectBankController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBankController.m; sourceTree = "<group>"; };
 		027E433B1D1AD2C4000D4416 /* AppointmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentedCell.h; sourceTree = "<group>"; };
@@ -521,6 +530,12 @@
 			children = (
 				020FF65C1D1FCF9C0035683E /* BusinessController.h */,
 				020FF65D1D1FCF9C0035683E /* BusinessController.m */,
+				026F175D1D42736A00384BEE /* BusinessActivityController.h */,
+				026F175E1D42736A00384BEE /* BusinessActivityController.m */,
+				026F17601D42740500384BEE /* BusinessShowController.h */,
+				026F17611D42740500384BEE /* BusinessShowController.m */,
+				026F17631D42742D00384BEE /* BusinessCommentController.h */,
+				026F17641D42742D00384BEE /* BusinessCommentController.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1340,6 +1355,7 @@
 				029243F61D12F52C00ADD750 /* UIImageView+AFNetworking.m in Sources */,
 				02E1A8091CB395CD009C6177 /* SDImageCache.m in Sources */,
 				02DF13681CFEAE4100F1BD2C /* CategoryController.m in Sources */,
+				026F17621D42740500384BEE /* BusinessShowController.m in Sources */,
 				02DF13661CFEAE4100F1BD2C /* CategoryCell.m in Sources */,
 				02E1A7CF1CB39520009C6177 /* rscode.c in Sources */,
 				029C07CE1D16368E00138D15 /* WMScrollView.m in Sources */,
@@ -1365,6 +1381,7 @@
 				029C08101D1645B900138D15 /* MJRefreshStateHeader.m in Sources */,
 				029C07CB1D16368E00138D15 /* WMMenuItem.m in Sources */,
 				02E1A6951CB38DF1009C6177 /* BaseViewController.m in Sources */,
+				026F17651D42742D00384BEE /* BusinessCommentController.m in Sources */,
 				02E1A6B91CB38F56009C6177 /* ZLImageViewDisplayView.m in Sources */,
 				02E1A80D1CB395CD009C6177 /* SDWebImageDownloaderOperation.m in Sources */,
 				02E1A6A31CB38E45009C6177 /* HYNavigationBar.m in Sources */,
@@ -1419,6 +1436,7 @@
 				02E1A80B1CB395CD009C6177 /* SDWebImageDecoder.m in Sources */,
 				02E1A6911CB38DF1009C6177 /* UIColor+CustomColor.m in Sources */,
 				02E1A6921CB38DF1009C6177 /* UIDevice+Addition.m in Sources */,
+				026F175F1D42736A00384BEE /* BusinessActivityController.m in Sources */,
 				029243F71D12F52C00ADD750 /* UIProgressView+AFNetworking.m in Sources */,
 				029C08281D165CB200138D15 /* MyAttentionPopView.m in Sources */,
 				029C08081D1645B900138D15 /* MJRefreshAutoGifFooter.m in Sources */,

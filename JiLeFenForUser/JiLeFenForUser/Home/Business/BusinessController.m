@@ -8,9 +8,12 @@
 
 #import "BusinessController.h"
 #import "ViewUtil.h"
+#import "BusinessActivityController.h"
+#import "BusinessShowController.h"
+#import "BusinessCommentController.h"
 
 @interface BusinessController ()
-
+@property (nonatomic, strong) NSArray *pageControllers;
 @property (nonatomic, strong) UIImageView *businessImageView;
 @property (nonatomic, strong) UIImageView *pointImageView;
 @property (nonatomic, strong) UILabel *businessNameLabel;
@@ -23,7 +26,13 @@
 @end
 
 @implementation BusinessController
-
+- (NSArray *)pageControllers {
+    if (_pageControllers) {
+        return _pageControllers;
+    }
+    _pageControllers = @[[BusinessActivityController new], [BusinessShowController new], [BusinessCommentController new]];
+    return _pageControllers;
+}
 - (void)viewDidLoad {
 
     [super viewDidLoad];
@@ -141,6 +150,7 @@
     [scoreView addSubview:dashLine];
     [ViewUtil drawDashLine:dashLine lineLength:4 lineSpacing:3 lineColor:[UIColor lightGrayColor]];
     self.viewFrame = CGRectMake(0, scoreView.y+scoreView.height-64, self.view.width, self.view.height-scoreView.y-scoreView.height);
+    self.menuItemWidth = self.view.width/3;
 }
 
 - (void)back {
@@ -160,7 +170,7 @@
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
-    return [UIViewController new];
+    return self.pageControllers[index];
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
