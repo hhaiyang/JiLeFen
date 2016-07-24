@@ -13,8 +13,6 @@
 #import "MyAttentionController.h"
 #import "MyRelatedAccountController.h"
 @interface MineController ()
-@property (nonatomic, strong) NSArray *titleArr;
-@property (nonatomic, strong) NSArray *imageArr;
 @end
 
 @implementation MineController
@@ -109,31 +107,17 @@
         view.hidden = YES;
     }
 }
-- (NSArray *)titleArr {
-    if (!_titleArr) {
-        _titleArr = @[@"联系客服", @"修改密码"];
-    }
-    return _titleArr;
-}
-- (NSArray *)imageArr {
-    if (!_imageArr) {
-        _imageArr = @[@"输入账号-小人物", @"输入密码-锁"];
-    }
-    return _imageArr;
-}
-
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"otherCell"];
-    cell.textLabel.text = self.titleArr[indexPath.row];
-//    cell.imageView.image = [UIImage imageNamed:self.imageArr[indexPath.row]];
+    cell.textLabel.text = @"修改密码";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -142,12 +126,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
-        
-    } else if (indexPath.row == 1) {
         ModifyPasswordController *modifyPsaawordController = [ModifyPasswordController new];
         [self.navigationController pushViewController:modifyPsaawordController animated:YES];
-    }
 }
 
 - (void)login:(id)sender {
