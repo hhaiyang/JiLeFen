@@ -39,12 +39,33 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self.tableView addGestureRecognizer:tap];
     
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+        NSMutableDictionary *para = [NSMutableDictionary new];
+        para[@"userid"] = @"13945688947";
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=getagentinfo" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            NSLog(@"res = %@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            TEST_LOG(@"error = %@", error);
+            
+            
+        }];
+
+        
+    }];
+    [self.tableView.mj_header beginRefreshing];
+
+    
 }
 - (void)toForwardVC {
     [self.navigationController popViewControllerAnimated:YES];
     
 }
-
 
 #pragma mark - Table view data source
 

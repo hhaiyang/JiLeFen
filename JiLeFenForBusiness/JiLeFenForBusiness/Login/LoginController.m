@@ -66,6 +66,7 @@
     } completion:nil];
 }
 - (void)login {
+    /*
     [self hideKeyboard];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *username = self.loginView.userNameTextField.text;
@@ -106,6 +107,8 @@
         hud.label.text = @"登录失败";
         [hud hideAnimated:YES afterDelay:0.5];
     }];
+     */
+    [self toHomeVC];
     
 }
 - (void)toRegisterVC {

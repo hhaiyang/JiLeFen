@@ -14,9 +14,15 @@
 #import "UsableScoreController.h"
 #import "ModifyScoreController.h"
 #import "ConsumeScoreController.h"
+#import "GoodsConvertUnavailableController.h"
 
+typedef enum : NSUInteger {
+    AVAILABLE,
+    UNAVAILABLE,
+    UNKNOW,
+} GoodsConvertAvailable;
 @interface HomeController ()
-
+@property (nonatomic, assign) GoodsConvertAvailable goodsConvertAvailable;
 @end
 
 @implementation HomeController
@@ -24,11 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = DEFAULT_VIEW_CONTROLLER_BACKGROUND_COLOR;
-    
+    self.goodsConvertAvailable = UNKNOW;
     HomeTopView *topView = [[HomeTopView alloc] initWithFrame:CGRectMake(0, 20, self.view.width, 150)];
     [topView.accountButton addTarget:self action:@selector(toAccountVC) forControlEvents:UIControlEventTouchUpInside];
     [topView.activityButton addTarget:self action:@selector(toActivityVC) forControlEvents:UIControlEventTouchUpInside];
-    [topView.goodsConvertButton addTarget:self action:@selector(toGoodsConvertVC) forControlEvents:UIControlEventTouchUpInside];
+    [topView.goodsConvertButton addTarget:self action:@selector(isGoodsConvertAvailable) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:topView];
     
     
@@ -90,10 +96,55 @@
     [self.navigationController pushViewController:activityList animated:YES];
     
 }
-- (void)toGoodsConvertVC {
-    GoodsConvertController *goodsConvert = [GoodsConvertController new];
-    [self.navigationController pushViewController:goodsConvert animated:YES];
+- (void)isGoodsConvertAvailable {
+    if (self.goodsConvertAvailable == UNKNOW) {
     
+        __weak typeof(self) weakSelf = self;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"获取信息中，请稍候";
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+        NSMutableDictionary *para = [NSMutableDictionary new];
+        para[@"userid"] = @"13945688947";
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=upflog" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [hud hideAnimated:YES];
+            TEST_LOG(@"res = %@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            TEST_LOG(@"error = %@", error);
+            //        hud.mode = MBProgressHUDModeText;
+            //        hud.label.text = @"获取失败";
+            //        [hud hideAnimated:YES afterDelay:1.5];
+            [hud hideAnimated:YES];
+            if (arc4random()%2) {
+                weakSelf.goodsConvertAvailable = AVAILABLE;
+                [weakSelf toGoodsConvertVC];
+                return ;
+            }
+            weakSelf.goodsConvertAvailable = UNAVAILABLE;
+            [weakSelf toGoodsConvertUnavailableVC];
+            
+            
+        }];
+        return;
+        
+    }
+    if (self.goodsConvertAvailable == AVAILABLE) {
+        [self toGoodsConvertVC];
+        return;
+    }
+    [self toGoodsConvertUnavailableVC];
+    
+
+    
+}
+- (void)toGoodsConvertVC {
+        GoodsConvertController *goodsConvert = [GoodsConvertController new];
+        [self.navigationController pushViewController:goodsConvert animated:YES];
+}
+- (void)toGoodsConvertUnavailableVC {
+    GoodsConvertUnavailableController *unavailable = [GoodsConvertUnavailableController new];
+    [self.navigationController pushViewController:unavailable animated:YES];
 }
 - (void)toUsableScoreVC {
     UsableScoreController *usableScore = [UsableScoreController new];

@@ -10,6 +10,8 @@
 #import "CheckCodeController.h"
 #import "GoodsListController.h"
 
+
+
 @interface GoodsConvertController ()
 @property (nonatomic, strong) NSArray *childrenController;
 @property (nonatomic, strong) NSArray *titleArr;
