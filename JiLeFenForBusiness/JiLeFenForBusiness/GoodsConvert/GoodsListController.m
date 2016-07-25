@@ -21,9 +21,19 @@ static NSString *goodsInfoCellID = @"GoodsInfoCell";
     [super viewDidLoad];
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.tableView.mj_header endRefreshing];
-        weakSelf.goodsArr = @[@"f", @"f"];
-        [weakSelf.tableView reloadData];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+        NSMutableDictionary *para = [NSMutableDictionary new];
+        para[@"userid"] = [User currentUser].ID;
+        para[@"isget"] = @"-1";
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=cashlist" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            TEST_LOG(@"res = %@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            TEST_LOG(@"error = %@", error);
+            [weakSelf.tableView.mj_header endRefreshing];
+        }];
         
         
     }];

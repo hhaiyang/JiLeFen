@@ -109,21 +109,20 @@ typedef enum : NSUInteger {
         [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=upflog" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [hud hideAnimated:YES];
             TEST_LOG(@"res = %@", responseObject);
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            TEST_LOG(@"error = %@", error);
-            //        hud.mode = MBProgressHUDModeText;
-            //        hud.label.text = @"获取失败";
-            //        [hud hideAnimated:YES afterDelay:1.5];
-            [hud hideAnimated:YES];
-            if (arc4random()%2) {
-                weakSelf.goodsConvertAvailable = AVAILABLE;
+            int status = [responseObject[@"status"] intValue];
+            if (status == 1) {
+                _goodsConvertAvailable = AVAILABLE;
                 [weakSelf toGoodsConvertVC];
                 return ;
             }
-            weakSelf.goodsConvertAvailable = UNAVAILABLE;
+            _goodsConvertAvailable = UNAVAILABLE;
             [weakSelf toGoodsConvertUnavailableVC];
             
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            TEST_LOG(@"error = %@", error);
+                    hud.mode = MBProgressHUDModeText;
+                    hud.label.text = @"获取失败";
+                    [hud hideAnimated:YES afterDelay:1.5];
             
         }];
         return;

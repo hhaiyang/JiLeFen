@@ -51,36 +51,51 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     NSMutableDictionary *para = [NSMutableDictionary new];
-//    para[@"id"] = [User currentUser].ID;
-//    para[@"code"] = self.textField.text;
+//    para[@"userid"] = [User currentUser].ID;
+    para[@"code"] = self.textField.text;
     para[@"userid"] = @"18158912554";
-    para[@"code"] = @"CSSP2015111555525549";
     __weak typeof(self) weakSelf = self;
     [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=checkcodes" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
         int status = [responseObject[@"status"] intValue];
         if (status == 0) {
-//            hud.mode = MBProgressHUDModeText;
-//            hud.label.text = @"没有该兑换码信息";
-//            [hud hideAnimated:YES afterDelay:1.5];
-            [hud hideAnimated:YES];
-            [weakSelf toGoodsInfoVC];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = @"没有该兑换码信息";
+            [hud hideAnimated:YES afterDelay:1.5];
             return ;
         }
+        hud.label.text = @"获取商品信息中，请稍候";
         NSString *ID = responseObject[@"data"][@"id"];
         [para removeAllObjects];
         para[@"id"] = ID;
-        [hud hideAnimated:YES];
-        [weakSelf toGoodsInfoVC];
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=goodsinfo" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            TEST_LOG(@"res = %@", responseObject);
+//            int status = [responseObject[@"status"] intValue];
+//            if (status == 0) {
+//                hud.mode = MBProgressHUDModeText;
+//                hud.label.text = @"获取商品信息失败";
+//                [hud hideAnimated:YES afterDelay:1.5];
+//                return ;
+//            }
+            [hud hideAnimated:YES];
+            [weakSelf toGoodsInfoVC];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            TEST_LOG(@"error = %@", error);
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = @"获取商品信息失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+            
+        }];
+        
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         TEST_LOG(@"error = %@", error);
-//        hud.mode = MBProgressHUDModeText;
-//        hud.label.text = @"验证失败";
-//        [hud hideAnimated:YES afterDelay:1.5];
-        [hud hideAnimated:YES];
-        [weakSelf toGoodsInfoVC];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"验证失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+
         
         
     }];

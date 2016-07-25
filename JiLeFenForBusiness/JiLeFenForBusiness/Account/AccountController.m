@@ -10,9 +10,13 @@
 #import "AccountInfoView.h"
 #import "LoginController.h"
 #import "ModifyPasswordController.h"
+#import "UIImageView+WebCache.h"
 
 @interface AccountController ()
-
+@property (nonatomic, strong) UIImageView *logo;
+@property (nonatomic, strong) UITextField *nameTextField;
+@property (nonatomic, strong) UITextField *telTextField;
+@property (nonatomic, strong) UITextField *addressTextField;
 @end
 
 @implementation AccountController
@@ -24,6 +28,10 @@
     self.tableView.backgroundColor = DEFAULT_VIEW_CONTROLLER_BACKGROUND_COLOR;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(toForwardVC) imageName:@"二级页面返回小图标" height:30];
     AccountInfoView *infoView = [[AccountInfoView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 44*3)];
+    _logo = infoView.logoImageView;
+    _nameTextField = infoView.nameTextField;
+    _telTextField = infoView.telTextField;
+    _addressTextField = infoView.addressTextField;
     self.tableView.tableHeaderView = infoView;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -44,10 +52,19 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
         NSMutableDictionary *para = [NSMutableDictionary new];
-        para[@"userid"] = @"13945688947";
+        para[@"userid"] = [User currentUser].ID;
         [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=getagentinfo" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [weakSelf.tableView.mj_header endRefreshing];
-            NSLog(@"res = %@", responseObject);
+            TEST_LOG(@"res = %@", responseObject);
+            int status = [responseObject[@"msg"] intValue];
+            if (status == 1) {
+                NSDictionary *dic = [responseObject[@"result"] firstObject];
+                _addressTextField.text = dic[@"address"];
+                _nameTextField.text = dic[@"tname"];
+                _telTextField.text = dic[@"tel"];
+                [_logo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.ugohb.com%@", dic[@"logo"]]]];
+                
+            }
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [weakSelf.tableView.mj_header endRefreshing];

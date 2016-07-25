@@ -75,6 +75,12 @@
         [hud hideAnimated:YES afterDelay:0.5];
         return;
     }
+    if (![self.pwdsureTextField.text isEqualToString:self.pwdxinTextField.text]) {
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"两次密码不一致";
+        [hud hideAnimated:YES afterDelay:0.5];
+        return;
+    }
     hud.label.text = @"修改中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];

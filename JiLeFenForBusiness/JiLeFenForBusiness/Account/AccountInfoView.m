@@ -45,6 +45,7 @@
             [view addSubview:label];
             
             UITextField *textField = [UITextField new];
+            textField.userInteractionEnabled = NO;
             textField.frame = CGRectMake(label.x+label.width, 0, view.width-10-label.width, view.height);
             [view addSubview:textField];
             if (index == 0) {

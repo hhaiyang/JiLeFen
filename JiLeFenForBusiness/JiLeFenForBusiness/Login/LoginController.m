@@ -85,11 +85,8 @@
     }
     hud.label.text = @"登录中";
     
-    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-    [securityPolicy setAllowInvalidCertificates:YES];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     __weak typeof(self) weakSelf = self;
     [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=login" parameters:@{@"userid":username, @"password":password} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
@@ -111,8 +108,6 @@
         hud.label.text = @"登录失败";
         [hud hideAnimated:YES afterDelay:0.5];
     }];
-    
-//    [self toHomeVC];
     
 }
 - (void)toRegisterVC {
