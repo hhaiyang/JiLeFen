@@ -215,10 +215,11 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = @"注册中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
     NSMutableDictionary *para = [NSMutableDictionary new];
     para[@"phone"] = self.phoneTextField.text;
     para[@"password"] = self.passwordTextField.text;
+    para[@"rands"] = self.verifyCodeTextField.text;
     [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=reg" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
         
@@ -251,6 +252,28 @@
     __weak typeof(self) weakSelf = self;
     [manager POST:@"http://www.ugohb.com/app/sms.php" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"resp = %@", responseObject);
+        int status = [responseObject[@"status"] intValue];
+        hud.mode = MBProgressHUDModeText;
+        if (status == 1) {
+            hud.label.text = @"获取成功";
+            [hud hideAnimated:YES afterDelay:1];
+            _hintLabel.text = @"一分钟内不可频繁获取验证码";
+            _count = 59;
+            _countDownLabel.text = [NSString stringWithFormat:@"%d秒", _count];
+            _getVerifyCodeButton.enabled = NO;
+            _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(countDown:) userInfo:nil repeats:YES];
+            return ;
+        }
+        if (status == 0) {
+            hud.label.text = @"获取失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return;
+        }
+        hud.label.text = @"该手机号已注册";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+        
+
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -258,14 +281,6 @@
         hud.mode = MBProgressHUDModeText;
         hud.label.text = @"获取失败";
         [hud hideAnimated:YES afterDelay:1.5];
-//        hud.mode = MBProgressHUDModeText;
-//        hud.label.text = @"获取成功";
-//        [hud hideAnimated:YES afterDelay:1];
-//        _hintLabel.text = @"一分钟内不可频繁获取验证码";
-//        _count = 59;
-//        _countDownLabel.text = [NSString stringWithFormat:@"%d秒", _count];
-//        _getVerifyCodeButton.enabled = NO;
-//        _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(countDown:) userInfo:nil repeats:YES];
         
     }];
     
