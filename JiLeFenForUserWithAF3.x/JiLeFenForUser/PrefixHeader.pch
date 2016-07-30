@@ -1,0 +1,37 @@
+//
+//  PrefixHeader.pch
+//  JiLeFenForUser
+//
+//  Created by huanghaiyang on 16/2/25.
+//  Copyright © 2016年 tarena. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#import "MacroDefine.h"
+#import "UIBarButtonItem+CustomItem.h"
+#import "UIColor+CustomColor.h"
+#import "SystemInfo.h"
+#import "UIImage+Resize.h"
+#import "ViewUtil.h"
+#import "UIView+HYGeometry.h"
+
+
+
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
+#import "WMPageController.h"
+#import "MJRefresh.h"
+
+
+#define TestLog
+#ifdef TestLog
+#define TEST_LOG(...) NSLog(__VA_ARGS__)
+#else
+#define TEST_LOG(...)
+#endif
+
+#endif
+#endif /* PrefixHeader_pch */
