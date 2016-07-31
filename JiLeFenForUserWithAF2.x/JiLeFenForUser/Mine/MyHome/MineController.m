@@ -133,7 +133,8 @@
 - (void)login:(id)sender {
     TEST_LOG(@"登录");
     LoginController *loginController = [LoginController new];
-    [self.navigationController pushViewController:loginController animated:YES];
+    UINavigationController *loginNavi = [[UINavigationController alloc] initWithRootViewController:loginController];
+    [self presentViewController:loginNavi animated:YES completion:nil];
 }
 - (void)myScore:(id)sender {
     TEST_LOG(@"我的积分");

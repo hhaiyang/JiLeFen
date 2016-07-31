@@ -115,7 +115,7 @@
 }
 
 - (void)backAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)recordPassword:(UIButton *)sender {
     RecordPasswordButton *button = (RecordPasswordButton *)sender;
@@ -156,37 +156,38 @@
     NSMutableDictionary *para = [NSMutableDictionary new];
     para[@"userid"] = username;
     para[@"password"] = password;
-//    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=login" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        TEST_LOG(@"res = %@", responseObject);
-//        int status = [responseObject[@"status"] intValue];
-//         hud.mode = MBProgressHUDModeText;
-//        if (status == 0) {
-//            hud.label.text = @"登录失败";
-//            [hud hideAnimated:YES afterDelay:1.5];
-//            return ;
-//        }
-//      
-//        [hud hideAnimated:YES];
-//        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-//        NSString *password = [ud objectForKey:_phoneTextField.text];
-//        if (_recordPasswordButton.selected) {
-//            if (!password) {
-//                [ud setObject:_passwordTextField.text forKey:_phoneTextField.text];
-//            }
-//            
-//        } else {
-//            if (password) {
-//                [ud removeObjectForKey:_phoneTextField.text];
-//            }
-//        }
-//        [weakSelf.navigationController popViewControllerAnimated:YES];
-//
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        hud.mode = MBProgressHUDModeText;
-//        hud.label.text = @"登录失败";
-//        [hud hideAnimated:YES afterDelay:1.5];
-//    }];
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=login" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        int status = [responseObject[@"status"] intValue];
+         hud.mode = MBProgressHUDModeText;
+        if (status == 0) {
+            hud.label.text = @"登录失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return ;
+        }
+      
+        [hud hideAnimated:YES];
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        NSString *password = [ud objectForKey:_phoneTextField.text];
+        if (_recordPasswordButton.selected) {
+            if (!password) {
+                [ud setObject:_passwordTextField.text forKey:_phoneTextField.text];
+            }
+            
+        } else {
+            if (password) {
+                [ud removeObjectForKey:_phoneTextField.text];
+            }
+        }
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"登录失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+    }];
 
 }
 - (void)registerAccount:(id)sender {

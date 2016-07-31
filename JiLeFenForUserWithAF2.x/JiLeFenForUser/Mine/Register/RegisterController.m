@@ -219,26 +219,27 @@
     NSMutableDictionary *para = [NSMutableDictionary new];
     para[@"phone"] = self.phoneTextField.text;
     para[@"password"] = self.passwordTextField.text;
-//    para[@"rands"] = self.verifyCodeTextField.text;
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=reg" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        [hud hideAnimated:YES];
-        NSLog(@"res = %@", responseObject);
+    para[@"rands"] = self.verifyCodeTextField.text;
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=reg" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        hud.mode = MBProgressHUDModeText;
+        int status = [responseObject[@"status"] intValue];
+        if (status == 1) {
+            hud.label.text = @"注册成功";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return ;
+        }
+        hud.label.text = @"注册失败";
+        [hud hideAnimated:YES afterDelay:1.5];
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"error = %@", error);
-        [hud hideAnimated:YES];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"注册失败";
+        [hud hideAnimated:YES afterDelay:1.5];
         
     }];
-//    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=reg" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        TEST_LOG(@"res = %@", responseObject);
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        TEST_LOG(@"error = %@", error);
-//        hud.mode = MBProgressHUDModeText;
-//        hud.label.text = @"注册失败";
-//        [hud hideAnimated:YES afterDelay:1.5];
-//        
-//    }];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
@@ -259,49 +260,39 @@
     NSMutableDictionary *para = [NSMutableDictionary new];
     para[@"phone"] = self.phoneTextField.text;
     __weak typeof(self) weakSelf = self;
-//    [manager POST:@"http://www.ugohb.com/app/sms.php" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        TEST_LOG(@"resp = %@", responseObject);
-//        int status = [responseObject[@"status"] intValue];
-//        hud.mode = MBProgressHUDModeText;
-//        if (status == 1) {
-//            hud.label.text = @"获取成功";
-//            [hud hideAnimated:YES afterDelay:1];
-//            _hintLabel.text = @"一分钟内不可频繁获取验证码";
-//            _count = 59;
-//            _countDownLabel.text = [NSString stringWithFormat:@"%d秒", _count];
-//            _getVerifyCodeButton.enabled = NO;
-//            _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(countDown:) userInfo:nil repeats:YES];
-//            return ;
-//        }
-//        if (status == 0) {
-//            hud.label.text = @"获取失败";
-//            [hud hideAnimated:YES afterDelay:1.5];
-//            return;
-//        }
-//        hud.label.text = @"该手机号已注册";
-//        [hud hideAnimated:YES afterDelay:1.5];
-//        
-//        
-//
-//        
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        TEST_LOG(@"error = %@", error);
-//        hud.mode = MBProgressHUDModeText;
-//        hud.label.text = @"获取失败";
-//        [hud hideAnimated:YES afterDelay:1.5];
-//        
-//    }];
-    [manager POST:@"http://www.ugohb.com/app/sms.php" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        [hud hideAnimated:YES];
-        NSLog(@"res = %@", responseObject);
+    [manager POST:@"http://www.ugohb.com/app/sms.php" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        TEST_LOG(@"resp = %@", responseObject);
+        int status = [responseObject[@"status"] intValue];
+        hud.mode = MBProgressHUDModeText;
+        if (status == 1) {
+            hud.label.text = @"获取成功";
+            [hud hideAnimated:YES afterDelay:1];
+            _hintLabel.text = @"一分钟内不可频繁获取验证码";
+            _count = 59;
+            _countDownLabel.text = [NSString stringWithFormat:@"%d秒", _count];
+            _getVerifyCodeButton.enabled = NO;
+            _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(countDown:) userInfo:nil repeats:YES];
+            return ;
+        }
+        if (status == 0) {
+            hud.label.text = @"获取失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return;
+        }
+        hud.label.text = @"该手机号已注册";
+        [hud hideAnimated:YES afterDelay:1.5];
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [hud hideAnimated:YES];
-        NSLog(@"error = %@", error);
+        
+
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"获取失败";
+        [hud hideAnimated:YES afterDelay:1.5];
         
     }];
-    
     
     
 }

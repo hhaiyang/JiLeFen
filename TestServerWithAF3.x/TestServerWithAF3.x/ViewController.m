@@ -17,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    [self firstcategory];
+//    [self childcategory];
+//    [self goodssearch];
+//    [self goodsInfo];
 }
 
 - (void)addjifen {
@@ -72,20 +75,6 @@
     para[@"pagesize"] = @"10";
     para[@"pagenum"] = @"1";
     [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=jifenlist" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"res = %@", responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error = %@", error);
-        
-    }];
-    
-}
-- (void)goodsinfo {
-    //有数据，返回状态码：0
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    NSMutableDictionary *para = [NSMutableDictionary new];
-    para[@"id"] = @"123";
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=goodsinfo" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"res = %@", responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error = %@", error);
@@ -158,6 +147,56 @@
 - (void)login {
     
 }
+- (void)firstcategory {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=firstcategory" parameters:nil constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res = %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@", error);
+        
+    }];
+}
+- (void)childcategory {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"parentid"] = @"abc";
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=childcategory" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res = %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@", error);
+        
+    }];
 
+}
+- (void)goodssearch {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"code"] = @"fdsf";
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=goodseacher" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res = %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@", error);
+        
+    }];
+}
+- (void)goodsInfo {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"id"] = @"123";
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=goodsinfo" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"res = %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@", error);
+        
+    }];
 
+}
 @end

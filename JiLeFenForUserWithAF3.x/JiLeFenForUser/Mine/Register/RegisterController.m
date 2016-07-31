@@ -42,8 +42,8 @@
     UIImage *image = [UIImage imageNamed:@"白色半透明背景"];
     CGFloat heigth = 45;
     CGFloat width = backgroundImageView.width-60;
-    NSArray *images = @[@"输入账号-小人物", /*@"输入验证码小图标",*/ @"输入密码-锁", @"输入密码-锁"];
-    NSArray *placeholds = @[@"请输入您的手机号", /*@"请输入验证码",*/ @"请输入您的密码", @"请再次确认密码"];
+    NSArray *images = @[@"输入账号-小人物", @"输入验证码小图标", @"输入密码-锁", @"输入密码-锁"];
+    NSArray *placeholds = @[@"请输入您的手机号", @"请输入验证码", @"请输入您的密码", @"请再次确认密码"];
     for (int index = 0; index < images.count; index++) {
         imageView = [UIImageView new];
         imageView.userInteractionEnabled = YES;
@@ -69,7 +69,7 @@
         if (index == 0) {
             self.phoneTextField = textField;
             
-        } /*else if (index == 1) {
+        } else if (index == 1) {
             self.verifyCodeTextField = textField;
             _countDownLabel = [UILabel new];
             _countDownLabel.frame = CGRectMake(imageView.width-33, 0, 30, imageView.height);
@@ -99,7 +99,7 @@
             _hintLabel.font = [UIFont systemFontOfSize:10];
             [backgroundImageView addSubview:_hintLabel];
             
-        } */else if (index == 1) {
+        } else if (index == 2) {
             self.passwordTextField = textField;
             textField.secureTextEntry = YES;
             
@@ -247,12 +247,16 @@
     }
     hud.label.text = @"获取中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"application/json", nil];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSMutableDictionary *para = [NSMutableDictionary new];
     para[@"phone"] = self.phoneTextField.text;
     __weak typeof(self) weakSelf = self;
     [manager POST:@"http://www.ugohb.com/app/sms.php" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"resp = %@", responseObject);
+        NSDictionary *header = task.currentRequest.allHTTPHeaderFields;
+        NSLog(@"header = %@", header);
         int status = [responseObject[@"status"] intValue];
         hud.mode = MBProgressHUDModeText;
         if (status == 1) {
