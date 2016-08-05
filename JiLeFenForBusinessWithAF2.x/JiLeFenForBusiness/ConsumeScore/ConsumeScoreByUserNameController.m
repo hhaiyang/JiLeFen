@@ -60,20 +60,22 @@
 }
 - (void)submit {
     [self.view endEditing:YES];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    if (self.scoreTextField.text.length <= 0) {
-        hud.label.text = @"请输入积分数额";
-        [hud hideAnimated:YES afterDelay:1.5];
-        return;
-    }
-    if (self.userNameTextField.text.length <= 0) {
-        hud.label.text = @"请输入用户名";
-        [hud hideAnimated:YES afterDelay:1.5];
-        return;
-    }
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.label.text = @"提交中，请稍候";
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.mode = MBProgressHUDModeText;
+//    if (self.scoreTextField.text.length <= 0) {
+//        hud.label.text = @"请输入积分数额";
+//        [hud hideAnimated:YES afterDelay:1.5];
+//        return;
+//    }
+//    if (self.userNameTextField.text.length <= 0) {
+//        hud.label.text = @"请输入用户名";
+//        [hud hideAnimated:YES afterDelay:1.5];
+//        return;
+//    }
+//    hud.mode = MBProgressHUDModeIndeterminate;
+//    hud.label.text = @"提交中，请稍候";
+//    //缺少接口
+    
     
     
 }

@@ -53,7 +53,7 @@
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
         NSMutableDictionary *para = [NSMutableDictionary new];
         para[@"userid"] = [User currentUser].ID;
-        [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=getagentinfo" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=getagentinfo" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [weakSelf.tableView.mj_header endRefreshing];
             TEST_LOG(@"res = %@", responseObject);
             int status = [responseObject[@"msg"] intValue];

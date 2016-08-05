@@ -45,7 +45,7 @@
     __weak typeof(self) weakSelf = self;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=activelist" parameters:nil constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=activelist" parameters:nil constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
         [weakSelf.tableView.mj_header endRefreshing];
         int status = [responseObject[@"status"] intValue];

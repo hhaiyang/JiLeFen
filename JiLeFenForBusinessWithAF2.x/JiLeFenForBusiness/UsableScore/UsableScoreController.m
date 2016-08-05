@@ -140,7 +140,7 @@ static NSString *scoreCellID = @"ScoreCell";
     para[@"starttime"] = [NSString stringWithFormat:@"%@-%@", self.queryScoreChangeView.beginYearTextField.text, self.queryScoreChangeView.beginMonthTextField.text];
     para[@"endtime"] = [NSString stringWithFormat:@"%@-%@", self.queryScoreChangeView.endYearTextField, self.queryScoreChangeView.endMonthTextField];
     __weak typeof(self) weakSelf = self;
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getagentlog" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getagentlog" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
 //        int status = [responseObject[@"status"] intValue];
 //        if (status == 0) {
@@ -185,15 +185,7 @@ static NSString *scoreCellID = @"ScoreCell";
 }
 - (void)addScore {
     [self.view endEditing:YES];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.label.text = @"索要中，请稍候";
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [hud hideAnimated:YES];
-        weakSelf.addScorePopView.successLabel.text = @"您已成功增加10000积分";
-        weakSelf.addScorePopView.usableScoreLabel.text = @"可用积分 22000";
-        [kWindow addSubview:weakSelf.addScorePopView];
-    });
+    [kWindow addSubview:self.addScorePopView];
     
     
 }

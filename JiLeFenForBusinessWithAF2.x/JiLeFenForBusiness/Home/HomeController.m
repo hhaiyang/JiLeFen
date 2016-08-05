@@ -12,7 +12,6 @@
 #import "ActivityListController.h"
 #import "GoodsConvertController.h"
 #import "UsableScoreController.h"
-#import "ModifyScoreController.h"
 #import "ConsumeScoreController.h"
 #import "GoodsConvertUnavailableController.h"
 
@@ -39,10 +38,10 @@ typedef enum : NSUInteger {
     
     
     CGFloat width = (self.view.width-2)/3;
-    NSArray *images = @[@"首页-可用积分小图标", @"首页消费积分", @"首页-积分倍数修改小图标"];
-    NSArray *titles = @[@"可用积分", @"消费积分", @"积分倍数修改"];
+    NSArray *images = @[@"首页-可用积分小图标", @"首页消费积分"];
+    NSArray *titles = @[@"可用积分", @"消费积分"];
     CGFloat height = width;
-    for (int index = 0; index < 3; index++) {
+    for (int index = 0; index < images.count; index++) {
         UIView *view = [UIView new];
         view.backgroundColor = [UIColor whiteColor];
         view.frame = CGRectMake(index*(width+1), topView.y+topView.height, width, height);
@@ -63,8 +62,6 @@ typedef enum : NSUInteger {
             [button addTarget:self action:@selector(toUsableScoreVC) forControlEvents:UIControlEventTouchUpInside];
         } else if (index == 1) {
             [button addTarget:self action:@selector(toConsumeScoreVC) forControlEvents:UIControlEventTouchUpInside];
-        } else if (index == 2) {
-            [button addTarget:self action:@selector(toModifyScorePointVC) forControlEvents:UIControlEventTouchUpInside];
         }
         
         UILabel *label = [UILabel new];
@@ -106,7 +103,7 @@ typedef enum : NSUInteger {
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
         NSMutableDictionary *para = [NSMutableDictionary new];
         para[@"userid"] = [User currentUser].ID;
-        [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=upflog" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=upflog" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [hud hideAnimated:YES];
             TEST_LOG(@"res = %@", responseObject);
             int status = [responseObject[@"status"] intValue];
@@ -155,9 +152,5 @@ typedef enum : NSUInteger {
     [self.navigationController pushViewController:consumeScore animated:YES];
     
 }
-- (void)toModifyScorePointVC {
-    ModifyScoreController *modifyScore = [ModifyScoreController new];
-    [self.navigationController pushViewController:modifyScore animated:YES];
-    
-}
+
 @end

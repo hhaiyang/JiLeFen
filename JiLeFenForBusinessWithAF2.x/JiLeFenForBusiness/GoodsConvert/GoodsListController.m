@@ -26,7 +26,7 @@ static NSString *goodsInfoCellID = @"GoodsInfoCell";
         NSMutableDictionary *para = [NSMutableDictionary new];
         para[@"userid"] = [User currentUser].ID;
         para[@"isget"] = @"-1";
-        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=cashlist" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=cashlist" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [weakSelf.tableView.mj_header endRefreshing];
             TEST_LOG(@"res = %@", responseObject);
             

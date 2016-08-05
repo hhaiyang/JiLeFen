@@ -84,7 +84,7 @@
     hud.label.text = @"修改中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=pwdup" parameters:@{@"userid":[User currentUser].ID, @"password":self.passwordTextField.text, @"pwdxin":self.pwdxinTextField.text, @"pwdsure":self.pwdsureTextField.text} constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=pwdup" parameters:@{@"userid":[User currentUser].ID, @"password":self.passwordTextField.text, @"pwdxin":self.pwdxinTextField.text, @"pwdsure":self.pwdsureTextField.text} constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
         hud.mode = MBProgressHUDModeText;
         weakSelf.passwordTextField.text = nil;

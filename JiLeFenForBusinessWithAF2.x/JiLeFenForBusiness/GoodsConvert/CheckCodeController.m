@@ -56,7 +56,7 @@
     para[@"code"] = self.textField.text;
     para[@"userid"] = @"18158912554";
     __weak typeof(self) weakSelf = self;
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=checkcodes" parameters:para constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=checkcodes" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);
         int status = [responseObject[@"status"] intValue];
         if (status == 0) {
@@ -66,10 +66,9 @@
             return ;
         }
         hud.label.text = @"获取商品信息中，请稍候";
-//        NSString *ID = responseObject[@"data"][@"id"];
         [para removeAllObjects];
         para[@"code"] = @"CSSP2015111555525549";
-        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getcodesgood" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getcodesgood" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             TEST_LOG(@"res = %@", responseObject);
 //            int status = [responseObject[@"status"] intValue];
 //            if (status == 0) {

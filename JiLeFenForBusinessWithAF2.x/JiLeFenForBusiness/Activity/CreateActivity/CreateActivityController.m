@@ -250,9 +250,6 @@
         NSData *imageData = UIImagePNGRepresentation(image);
         [formData appendPartWithFileData:imageData name:@"img_path" fileName:@"image.png" mimeType:@"image/png"];
         
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        TEST_LOG(@"progress = %@", uploadProgress);
-        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"发布活动数据 = %@", responseObject);
         int status = [responseObject[@"status"] intValue];
