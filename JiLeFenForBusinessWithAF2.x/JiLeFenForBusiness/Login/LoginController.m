@@ -22,7 +22,7 @@
     [super viewDidLoad];
     LoginView *loginView = [[LoginView alloc] initWithFrame:self.view.bounds];
     loginView.userNameTextField.delegate = self;
-    [loginView.loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+    [loginView.loginButton addTarget:self action:@selector(testLogin) forControlEvents:UIControlEventTouchUpInside];
     [loginView.gotoRegisterButton addTarget:self action:@selector(toRegisterVC) forControlEvents:UIControlEventTouchUpInside];
     [loginView.recordPasswordButton addTarget:self action:@selector(recordPassword:) forControlEvents:UIControlEventTouchUpInside];
     self.loginView = loginView;
@@ -65,12 +65,15 @@
         weakSelf.loginView.frame = self.view.bounds;
     } completion:nil];
 }
+- (void)testLogin {
+    [self toHomeVC];
+}
 - (void)login {
+
     
     [self hideKeyboard];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSString *username = self.loginView.userNameTextField.text;
-    NSString *password = self.loginView.passwordTextField.text;
+    NSString *username = self.loginView.userNameTextField.text;    NSString *password = self.loginView.passwordTextField.text;
     if (username.length <= 0) {
         hud.mode = MBProgressHUDModeText;
         hud.label.text = @"请输入用户名";

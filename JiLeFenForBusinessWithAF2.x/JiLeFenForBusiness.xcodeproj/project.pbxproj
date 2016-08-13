@@ -122,6 +122,7 @@
 		8703C1751D548C65006D58BD /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8703C1621D548C65006D58BD /* UIWebView+AFNetworking.m */; };
 		8734703F1D5325B3007A4BE8 /* TestData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8734703E1D5325B3007A4BE8 /* TestData.txt */; };
 		873470421D5333DE007A4BE8 /* Goods.m in Sources */ = {isa = PBXBuildFile; fileRef = 873470411D5333DE007A4BE8 /* Goods.m */; };
+		C559C05A1D5EDBAB002ACC3E /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = C559C0591D5EDBAB002ACC3E /* Order.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -359,6 +360,8 @@
 		8734703E1D5325B3007A4BE8 /* TestData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestData.txt; sourceTree = "<group>"; };
 		873470401D5333DE007A4BE8 /* Goods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goods.h; sourceTree = "<group>"; };
 		873470411D5333DE007A4BE8 /* Goods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goods.m; sourceTree = "<group>"; };
+		C559C0581D5EDBAB002ACC3E /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		C559C0591D5EDBAB002ACC3E /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +415,8 @@
 				0277B0481CF1531B0099143B /* Activity.m */,
 				873470401D5333DE007A4BE8 /* Goods.h */,
 				873470411D5333DE007A4BE8 /* Goods.m */,
+				C559C0581D5EDBAB002ACC3E /* Order.h */,
+				C559C0591D5EDBAB002ACC3E /* Order.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1054,6 +1059,7 @@
 				029D3CDD1D0537DC00C6C1CA /* NSData+ImageContentType.m in Sources */,
 				8703C16A1D548C65006D58BD /* AFURLResponseSerialization.m in Sources */,
 				02FFD03D1CDEE70D00EEA0D1 /* LoginView.m in Sources */,
+				C559C05A1D5EDBAB002ACC3E /* Order.m in Sources */,
 				8703C1671D548C65006D58BD /* AFSecurityPolicy.m in Sources */,
 				0277B0581CF15B480099143B /* UIBarButtonItem+CustomItem.m in Sources */,
 				0277B0411CF14F520099143B /* MJRefreshStateHeader.m in Sources */,

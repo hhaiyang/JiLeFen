@@ -66,6 +66,7 @@
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TEST_LOG(@"error = %@", error);
         [weakSelf.tableView.mj_header endRefreshing];
         
     }];

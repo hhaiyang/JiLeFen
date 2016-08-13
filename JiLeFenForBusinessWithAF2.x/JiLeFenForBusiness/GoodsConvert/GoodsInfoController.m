@@ -49,7 +49,7 @@
     CGFloat verticalSpace = 30+1;
     width = horizontalSpace+1;
     height = verticalSpace+1;
-    NSArray *titles =@[@"名称", @"品类", @"数量", @"卡旺卡奶茶", @"花生巧克力口味", @"1"];
+    NSArray *titles = @[@"名称", @"品类", @"数量", self.order.goods.name, @"花生巧克力口味", self.order.count];
     GoodsInfoView *goodsInfoView = nil;
     for (int index = 0; index < 6; index++) {
         if (index == 2 || index == 5) {
@@ -114,14 +114,34 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)confirmVerify {
+    __weak typeof(self) weakSelf = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.label.text = @"验证中，请稍候";
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [hud hideAnimated:YES];
-        [weakSelf toVerifySuccessVC];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"code"] = self.order.code;
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=surechange" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        int status = [responseObject[@"status"] intValue];
+        if (status == 1) {
+            [hud hideAnimated:YES];
+            [weakSelf toVerifySuccessVC];
+            return ;
+            
+        }
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"验证失败";
+        [hud hideAnimated:YES afterDelay:1.5];
         
-    });
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"验证失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+    }];
+   
 }
 - (void)toVerifySuccessVC {
     VerifySuccessController *success = [VerifySuccessController new];

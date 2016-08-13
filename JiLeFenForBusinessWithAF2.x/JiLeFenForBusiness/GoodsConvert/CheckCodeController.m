@@ -8,6 +8,7 @@
 
 #import "CheckCodeController.h"
 #import "GoodsInfoController.h"
+#import "Order.h"
 
 @interface CheckCodeController ()
 @property (nonatomic, strong) UITextField *textField;
@@ -66,19 +67,41 @@
             return ;
         }
         hud.label.text = @"获取商品信息中，请稍候";
-        [para removeAllObjects];
-        para[@"code"] = @"CSSP2015111555525549";
+        [para removeObjectForKey:@"userid"];
         [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getcodesgood" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             TEST_LOG(@"res = %@", responseObject);
-//            int status = [responseObject[@"status"] intValue];
-//            if (status == 0) {
-//                hud.mode = MBProgressHUDModeText;
-//                hud.label.text = @"获取商品信息失败";
-//                [hud hideAnimated:YES afterDelay:1.5];
-//                return ;
-//            }
-            [hud hideAnimated:YES];
-            [weakSelf toGoodsInfoVC];
+            int status = [responseObject[@"status"] intValue];
+            if (status == 1) {
+                [hud hideAnimated:YES];
+                Order *order = [Order new];
+                order.count = responseObject[@"data"][@"count"];
+                order.code = responseObject[@"data"][@"ordercode"];
+                Goods *goods = [Goods new];
+                goods.name = responseObject[@"data"][@"name"];
+                order.goods = goods;
+                GoodsInfoController *goodsInfo = [GoodsInfoController new];
+                goodsInfo.order = order;
+                [weakSelf.navigationController pushViewController:goodsInfo animated:YES];
+                return ;
+                
+            }
+            if (status == 0) {
+                hud.mode = MBProgressHUDModeText;
+                hud.label.text = @"找不到对应的商品信息";
+                [hud hideAnimated:YES afterDelay:1.5];
+                return;
+            }
+            if (status == 2) {
+                hud.mode = MBProgressHUDModeText;
+                hud.label.text = @"该兑换码已失效";
+                [hud hideAnimated:YES afterDelay:1.5];
+                return;
+            }
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = @"获取商品信息失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return;
+           
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             TEST_LOG(@"error = %@", error);
@@ -99,11 +122,6 @@
         
         
     }];
-}
-- (void)toGoodsInfoVC {
-    GoodsInfoController *goodsInfo = [GoodsInfoController new];
-    [self.navigationController pushViewController:goodsInfo animated:YES];
-    
 }
 
 @end

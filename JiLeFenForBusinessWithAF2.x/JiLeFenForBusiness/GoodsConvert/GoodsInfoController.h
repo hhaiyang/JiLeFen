@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Goods.h"
+#import "Order.h"
 @interface GoodsInfoController : UIViewController
-@property (nonatomic, strong) Goods *goods;
+@property (nonatomic, strong) Order *order;
 @end
