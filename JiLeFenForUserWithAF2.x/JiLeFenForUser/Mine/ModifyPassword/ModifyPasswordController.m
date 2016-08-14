@@ -83,47 +83,52 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = @"修改中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"userid"] = [User currentUser].ID;
+    para[@"password"] = self.passwordTextField.text;
+    para[@"pwdxin"] = self.pwdxinTextField.text;
+    para[@"pwdsure"] = self.pwdsureTextField.text;
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-//    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=pwdup" parameters:@{@"userid":@"13051616145", @"password":self.passwordTextField.text, @"pwdxin":self.pwdxinTextField.text, @"pwdsure":self.pwdsureTextField.text} constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        TEST_LOG(@"res = %@", responseObject);
-//        hud.mode = MBProgressHUDModeText;
-//        weakSelf.passwordTextField.text = nil;
-//        weakSelf.pwdxinTextField.text = nil;
-//        weakSelf.pwdsureTextField.text = nil;
-//        int status = [responseObject[@"status"] intValue];
-//        if (status == 1) {
-//            hud.label.text = @"密码修改成功";
-//            [hud hideAnimated:YES afterDelay:1];
-//            return ;
-//        }
-//        if (status == -2) {
-//            hud.label.text = @"修改失败：用户名或者密码不正确";
-//            [hud hideAnimated:YES afterDelay:1];
-//            return;
-//        }
-//        if (status == -1) {
-//            hud.label.text=  @"修改失败：确认密码输入有误";
-//            [hud hideAnimated:YES afterDelay:1];
-//            return;
-//        }
-//        if (status == 0) {
-//            hud.label.text = @"修改失败：两次密码输入相同";
-//            [hud hideAnimated:YES afterDelay:1];
-//            return;
-//        }
-//        hud.label.text = @"修改失败";
-//        [hud hideAnimated:YES afterDelay:1];
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        TEST_LOG(@"error = %@", error);
-//        weakSelf.passwordTextField.text = nil;
-//        weakSelf.pwdxinTextField.text = nil;
-//        weakSelf.pwdsureTextField.text = nil;
-//        hud.mode = MBProgressHUDModeText;
-//        hud.label.text = @"修改密码失败";
-//        [hud hideAnimated:YES afterDelay:1];
-//        
-//    }];
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=pwdup" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        hud.mode = MBProgressHUDModeText;
+        weakSelf.passwordTextField.text = nil;
+        weakSelf.pwdxinTextField.text = nil;
+        weakSelf.pwdsureTextField.text = nil;
+        int status = [responseObject[@"status"] intValue];
+        if (status == 1) {
+            hud.label.text = @"密码修改成功";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return ;
+        }
+        if (status == -2) {
+            hud.label.text = @"修改失败：用户名或者密码不正确";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return;
+        }
+        if (status == -1) {
+            hud.label.text=  @"修改失败：确认密码输入有误";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return;
+        }
+        if (status == 0) {
+            hud.label.text = @"修改失败：两次密码输入相同";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return;
+        }
+        hud.label.text = @"修改失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        TEST_LOG(@"error = %@", error);
+        weakSelf.passwordTextField.text = nil;
+        weakSelf.pwdxinTextField.text = nil;
+        weakSelf.pwdsureTextField.text = nil;
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"修改密码失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+    }];
     
 }
 - (void)toForwardVC {

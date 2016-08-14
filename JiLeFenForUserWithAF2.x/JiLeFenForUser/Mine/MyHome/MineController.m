@@ -12,7 +12,10 @@
 #import "MyScoreController.h"
 #import "MyAttentionController.h"
 #import "MyRelatedAccountController.h"
+#import "User.h"
 @interface MineController ()
+@property (nonatomic, strong) UILabel *userStatusLabel;
+@property (nonatomic, strong) UIButton *userStatusButton;
 @end
 
 @implementation MineController
@@ -41,6 +44,7 @@
     [tableheaderView addSubview:imageView];
     
     UILabel *label = [UILabel new];
+    _userStatusLabel = label;
     label.text = @"你还没有登录哦～";
     label.textColor = [UIColor grayColor];
     label.textAlignment = NSTextAlignmentCenter;
@@ -48,12 +52,12 @@
     [imageView addSubview:label];
     
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *loginImage = [UIImage imageNamed:@"我的主界面-登陆按钮"];
-    CGFloat loginButtonHeight = 45;
-    CGFloat loginButtonWidth = loginImage.size.width/loginImage.size.height*loginButtonHeight;
-    loginButton.frame = CGRectMake((imageView.width-loginButtonWidth)/2, label.y+label.height+8, loginButtonWidth, loginButtonHeight);
-    [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
-    [loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    _userStatusButton = loginButton;
+    [_userStatusButton setBackgroundColor:kRGBColor(226, 85, 109)];
+    loginButton.layer.cornerRadius = 5;
+    CGFloat loginButtonHeight = 30;
+    CGFloat loginButtonWidth = 70;
+    loginButton.frame = CGRectMake((imageView.width-loginButtonWidth)/2, label.y+label.height+15, loginButtonWidth, loginButtonHeight);
     [imageView addSubview:loginButton];
     
     UIView *actionView = [UIView new];
@@ -101,14 +105,17 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //隐藏导航栏
     self.navigationController.navigationBar.hidden = YES;
-    UIView *view = [kWindow viewWithTag:1000];
-    if (view) {
-        view.hidden = YES;
-    }
+    [self updateUI];
+    
 }
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if ([User currentUser].status == NoLogin) {
+        return 0;
+    }
     return 1;
 }
 
@@ -138,19 +145,55 @@
 }
 - (void)myScore:(id)sender {
     TEST_LOG(@"我的积分");
+//    if ([User currentUser].status == NoLogin) {
+//        [self login:nil];
+//        return;
+//    }
     MyScoreController *myScoreController = [MyScoreController new];
    
     [self.navigationController pushViewController:myScoreController animated:YES];
 }
 - (void)myAttention:(id)sender {
     TEST_LOG(@"我的关注");
+//    if ([User currentUser].status == NoLogin) {
+//        [self login:nil];
+//        return;
+//    }
     MyAttentionController *myAttentionController = [[MyAttentionController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:myAttentionController animated:YES];
 }
 - (void)myRelatedAccount:(id)sender {
     TEST_LOG(@"我的关联号");
+//    if ([User currentUser].status == NoLogin) {
+//        [self login:nil];
+//        return;
+//    }
     MyRelatedAccountController *myRelatedAccountController = [MyRelatedAccountController new];
     myRelatedAccountController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myRelatedAccountController animated:YES];
+}
+//退出登录
+- (void)logout {
+    TEST_LOG(@"退出");
+    User *user = [User currentUser];
+    user.ID = nil;
+    user.status = NoLogin;
+    [self updateUI];
+
+    
+}
+- (void)updateUI {
+    //判断用户状态
+    if ([User currentUser].status == NoLogin) {
+        [_userStatusButton setTitle:@"登陆" forState:UIControlStateNormal];
+        [_userStatusButton removeTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+        [_userStatusButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [_userStatusButton setTitle:@"注销" forState:UIControlStateNormal];
+        [_userStatusButton removeTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+        [_userStatusButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    [self.tableView reloadData];
 }
 @end

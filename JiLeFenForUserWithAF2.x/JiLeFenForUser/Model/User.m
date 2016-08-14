@@ -16,6 +16,7 @@ static User *currentUser = nil;
     }
     currentUser = [User new];
     currentUser.ID = nil;
+    currentUser.status = NoLogin;
     return currentUser;
 }
 @end

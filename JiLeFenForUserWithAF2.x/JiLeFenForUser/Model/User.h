@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum UserStatus {
+    Login,
+    NoLogin
+    
+}UserStatus;
+
 @interface User : NSObject
 @property (nonatomic, copy) NSString *ID;
+@property (nonatomic, assign) UserStatus status;
 + (instancetype)currentUser;
 @end

@@ -9,6 +9,7 @@
 #import "LoginController.h"
 #import "RegisterController.h"
 #import "RecordPasswordButton.h"
+#import "User.h"
 @interface LoginController () <UITextFieldDelegate>
 @property (strong, nonatomic) UITextField *phoneTextField;
 @property (strong, nonatomic) UITextField *passwordTextField;
@@ -75,6 +76,7 @@
     [recordPasswordButton addTarget:self action:@selector(recordPassword:) forControlEvents:UIControlEventTouchUpInside];
     [backgroundImageView addSubview:recordPasswordButton];
     
+    /*
     UIButton *forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *forgotImage = [UIImage imageNamed:@"忘记密码小图标"];
     CGFloat forgotHeight = 30;
@@ -83,6 +85,7 @@
     [forgotPasswordButton setBackgroundImage:forgotImage forState:UIControlStateNormal];
     [forgotPasswordButton addTarget:self action:@selector(forgetPassword:) forControlEvents:UIControlEventTouchUpInside];
     [backgroundImageView addSubview:forgotPasswordButton];
+     */
     
     UIButton *button = nil;
     CGFloat buttonHeight = 47;
@@ -179,6 +182,9 @@
                 [ud removeObjectForKey:_phoneTextField.text];
             }
         }
+        User *user = [User currentUser];
+        user.ID = responseObject[@"userid"];
+        user.status = Login;
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
 
         

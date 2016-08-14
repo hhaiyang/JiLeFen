@@ -256,7 +256,7 @@
     }
     hud.label.text = @"获取中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", nil];
     NSMutableDictionary *para = [NSMutableDictionary new];
     para[@"phone"] = self.phoneTextField.text;
     __weak typeof(self) weakSelf = self;
