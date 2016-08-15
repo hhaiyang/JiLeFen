@@ -12,6 +12,7 @@
 #import "LookConvertCodePopView.h"
 
 @interface ConvertRecordController ()
+@property (nonatomic, strong) NSArray *goodsConvertRecordArr;
 @property (nonatomic, strong) LookConvertCodePopView *lookConvertCodePopView;
 @end
 
@@ -19,14 +20,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
-    
-}
-- (void)initUI {
     self.title = @"物品兑换记录";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
     self.tableView.backgroundColor = kRGBColor(249, 249, 249);
+    
+    
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    
 }
+
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -56,7 +63,6 @@
     }
     
     
-    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,9 +71,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 15;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 - (void)lookConvertCode:(UIButton *)sender {
     TEST_LOG(@"查看兑换码");
-    TEST_LOG(@"button tag = %d", sender.tag);
     LookConvertCodePopView *view = [LookConvertCodePopView popView];
     [view.cornerCloseButton addTarget:self action:@selector(closeLookConvertCodePopView) forControlEvents:UIControlEventTouchUpInside];
     [view.bottomCloseButton addTarget:self action:@selector(closeLookConvertCodePopView) forControlEvents:UIControlEventTouchUpInside];
@@ -76,7 +84,7 @@
 }
 - (void)unsubscribe:(UIButton *)sender {
     TEST_LOG(@"退订");
-    TEST_LOG(@"button tag = %d", sender.tag);
+
 }
 - (void)closeLookConvertCodePopView {
     [self.lookConvertCodePopView removeFromSuperview];

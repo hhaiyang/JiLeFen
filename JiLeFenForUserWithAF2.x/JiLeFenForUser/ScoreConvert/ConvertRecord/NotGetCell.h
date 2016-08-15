@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *unsubscribeButton;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
+
 @end

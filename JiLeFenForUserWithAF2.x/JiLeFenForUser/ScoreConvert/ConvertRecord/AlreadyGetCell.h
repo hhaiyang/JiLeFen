@@ -12,4 +12,5 @@
  */
 @interface AlreadyGetCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
+
 @end

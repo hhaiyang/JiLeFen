@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopView.h"
 /**
  *  查看兑换码弹出框
  */
-@interface LookConvertCodePopView : UIView
+@interface LookConvertCodePopView : PopView
 @property (weak, nonatomic) IBOutlet UIButton *cornerCloseButton;
 @property (weak, nonatomic) IBOutlet UIButton *bottomCloseButton;
 + (instancetype)popView;

@@ -14,6 +14,7 @@
     AlreadyGetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"alreadyGetCell"];
     if (cell == nil) {
         cell = [[[UINib nibWithNibName:@"AlreadyGetCell" bundle:nil] instantiateWithOwner:nil options:nil] firstObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }

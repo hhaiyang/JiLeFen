@@ -14,8 +14,8 @@
     NotGetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notGetCell"];
     if (cell == nil) {
         cell = [[[UINib nibWithNibName:@"NotGetCell" bundle:nil] instantiateWithOwner:nil options:nil] firstObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }
-
 @end
