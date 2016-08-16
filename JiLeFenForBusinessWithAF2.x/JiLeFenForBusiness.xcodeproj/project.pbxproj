@@ -936,7 +936,6 @@
 				TargetAttributes = {
 					02DD6CD41C796B6C00F215B3 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = EAF4SQC798;
 					};
 				};
 			};
@@ -1202,7 +1201,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.tedu.JiLeFenForBusiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f166f9cc-3d64-4938-9221-3a606e1d338b";
+				PROVISIONING_PROFILE = "86749015-1318-4688-b968-35b3eac32f6e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1221,7 +1220,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.tedu.JiLeFenForBusiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f166f9cc-3d64-4938-9221-3a606e1d338b";
+				PROVISIONING_PROFILE = "86749015-1318-4688-b968-35b3eac32f6e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

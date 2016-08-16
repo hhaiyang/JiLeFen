@@ -18,6 +18,7 @@
 @interface UsableScoreController () <AddScorePopViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIButton *scoreChangeButton;
 @property (nonatomic, strong) UIButton *scoreAddRecordButton;
+//可用积分
 @property (nonatomic, strong) UILabel *usableScoreLabel;
 @property (nonatomic, strong) AddScorePopView *addScorePopView;
 @property (nonatomic, strong) QueryScoreChangeView *queryScoreChangeView;
@@ -67,7 +68,12 @@ static NSString *scoreCellID = @"ScoreCell";
     }
     
     AddScoreView *view = [[AddScoreView alloc] initWithFrame:CGRectMake(10, button.y+button.height+10, self.view.width-20, 50)];
-    view.usableScoreLabel.text = @"可用积分 2000";
+    NSMutableAttributedString *usableScore = [NSMutableAttributedString new];
+    NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"可用积分  " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}];
+    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"0" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20], NSForegroundColorAttributeName:[UIColor redColor]}];
+    [usableScore appendAttributedString:str1];
+    [usableScore appendAttributedString:str2];
+    view.usableScoreLabel.attributedText = usableScore;
     self.usableScoreLabel = view.usableScoreLabel;
     [view.addScoreButton addTarget:self action:@selector(addScore) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:view];
@@ -94,9 +100,41 @@ static NSString *scoreCellID = @"ScoreCell";
     tableView.frame = CGRectMake(0, queryButton.y+queryButton.height+15, self.view.width, self.view.height-queryButton.y-queryButton.height-15);
     [self.view addSubview:tableView];
     
+    [self getUsableScore];
+    
+    
     
     
 }
+//获取可用积分
+- (void)getUsableScore {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"userid"] = [User currentUser].ID;
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getnum" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        [hud hideAnimated:YES];
+        int status = [responseObject[@"status"] intValue];
+        if (status == 1) {
+            NSString *v_num = responseObject[@"data"][@"v_num"];
+            NSMutableAttributedString *usableScore = [NSMutableAttributedString new];
+            NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"可用积分  " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}];
+            NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:v_num attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20], NSForegroundColorAttributeName:[UIColor redColor]}];
+            [usableScore appendAttributedString:str1];
+            [usableScore appendAttributedString:str2];
+            _usableScoreLabel.attributedText = usableScore;
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        [hud hideAnimated:YES];
+        
+    }];
+    
+}
+//查询积分变动情况，两种情况：1、积分明细；2、索要记录
 - (void)queryScoreChange:(UIButton *)sender {
     [self.view endEditing:YES];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -124,44 +162,43 @@ static NSString *scoreCellID = @"ScoreCell";
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = @"查询中，请稍候";
     if (self.scoreChangeButton.selected) {
-        //查询积分明细
+        //查询积分明细，缺少接口
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             hud.mode = MBProgressHUDModeText;
             hud.label.text = @"暂无数据";
             [hud hideAnimated:YES afterDelay:1.5];
         });
-        return;
+    } else {
+        //查询索要记录
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+        NSMutableDictionary *para = [NSMutableDictionary new];
+        para[@"userid"] = [User currentUser].ID;
+        para[@"starttime"] = [NSString stringWithFormat:@"%@-%@", self.queryScoreChangeView.beginYearTextField.text, self.queryScoreChangeView.beginMonthTextField.text];
+        para[@"endtime"] = [NSString stringWithFormat:@"%@-%@", self.queryScoreChangeView.endYearTextField, self.queryScoreChangeView.endMonthTextField];
+        __weak typeof(self) weakSelf = self;
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getagentlog" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            TEST_LOG(@"res = %@", responseObject);
+            int status = [responseObject[@"status"] intValue];
+            if (status == 0) {
+                hud.mode = MBProgressHUDModeText;
+                hud.label.text = @"暂无数据";
+                [hud hideAnimated:YES afterDelay:1.5];
+                weakSelf.arr = nil;
+                [weakSelf.tableView reloadData];
+                return ;
+            }
+            //对有数据的情况进行处理
+            
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            TEST_LOG(@"error = %@", error);
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = @"查询失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+        }];
+        
     }
-    //查询索要记录
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    NSMutableDictionary *para = [NSMutableDictionary new];
-    para[@"userid"] = [User currentUser].ID;
-    para[@"starttime"] = [NSString stringWithFormat:@"%@-%@", self.queryScoreChangeView.beginYearTextField.text, self.queryScoreChangeView.beginMonthTextField.text];
-    para[@"endtime"] = [NSString stringWithFormat:@"%@-%@", self.queryScoreChangeView.endYearTextField, self.queryScoreChangeView.endMonthTextField];
-    __weak typeof(self) weakSelf = self;
-    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getagentlog" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        TEST_LOG(@"res = %@", responseObject);
-//        int status = [responseObject[@"status"] intValue];
-//        if (status == 0) {
-//            hud.mode = MBProgressHUDModeText;
-//            hud.label.text = @"暂无数据";
-//            [hud hideAnimated:YES afterDelay:1.5];
-//            weakSelf.arr = nil;
-//            [weakSelf.tableView reloadData];
-//            return ;
-//        }
-        weakSelf.arr = @[@"d", @"fds"];
-        [hud hideAnimated:YES];
-        [weakSelf.tableView reloadData];
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        TEST_LOG(@"error = %@", error);
-        hud.mode = MBProgressHUDModeText;
-        hud.label.text = @"查询失败";
-        [hud hideAnimated:YES afterDelay:1.5];
-    }];
     
 }
 - (void)toForwardVC {

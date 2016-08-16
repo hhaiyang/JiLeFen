@@ -66,6 +66,8 @@
     } completion:nil];
 }
 - (void)testLogin {
+    User *user = [User currentUser];
+    user.ID = @"13945688947";
     [self toHomeVC];
 }
 - (void)login {
