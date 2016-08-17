@@ -163,11 +163,6 @@ static NSString *scoreCellID = @"ScoreCell";
     hud.label.text = @"查询中，请稍候";
     if (self.scoreChangeButton.selected) {
         //查询积分明细，缺少接口
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = @"暂无数据";
-            [hud hideAnimated:YES afterDelay:1.5];
-        });
     } else {
         //查询索要记录
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

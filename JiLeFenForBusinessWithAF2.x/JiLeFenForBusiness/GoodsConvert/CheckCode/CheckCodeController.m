@@ -53,9 +53,8 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     NSMutableDictionary *para = [NSMutableDictionary new];
-//    para[@"userid"] = [User currentUser].ID;
+    para[@"userid"] = [User currentUser].ID;
     para[@"code"] = self.textField.text;
-    para[@"userid"] = @"18158912554";
     __weak typeof(self) weakSelf = self;
     [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=checkcodes" parameters:para constructingBodyWithBlock:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         TEST_LOG(@"res = %@", responseObject);

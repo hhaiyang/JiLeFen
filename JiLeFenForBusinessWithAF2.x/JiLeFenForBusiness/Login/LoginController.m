@@ -22,7 +22,7 @@
     [super viewDidLoad];
     LoginView *loginView = [[LoginView alloc] initWithFrame:self.view.bounds];
     loginView.userNameTextField.delegate = self;
-    [loginView.loginButton addTarget:self action:@selector(testLogin) forControlEvents:UIControlEventTouchUpInside];
+    [loginView.loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [loginView.gotoRegisterButton addTarget:self action:@selector(toRegisterVC) forControlEvents:UIControlEventTouchUpInside];
     [loginView.recordPasswordButton addTarget:self action:@selector(recordPassword:) forControlEvents:UIControlEventTouchUpInside];
     self.loginView = loginView;
