@@ -9,13 +9,8 @@
 #import "LookConvertCodePopView.h"
 
 @implementation LookConvertCodePopView
-+ (instancetype)popView {
-    LookConvertCodePopView *view = [[[UINib nibWithNibName:@"LookConvertCodePopView" bundle:nil] instantiateWithOwner:nil options:nil] firstObject];
-    view.backgroundColor = [UIColor popColor];
-    view.frame = kScreenBounds;
-    return view;
-}
 - (void)setContentView {
+    //内容视图
     UIView *contentView = [UIView new];
     contentView.backgroundColor = ContentViewBackgroundColor;
     CGFloat width = self.width-ContentViewLeftMargin*2;
@@ -23,47 +18,54 @@
     contentView.frame = CGRectMake(ContentViewLeftMargin, (self.height-height)/2, width, height);
     [self addSubview:contentView];
     
-    _closeButton = [ViewUtil closeButtonWithPosition:CGPointMake(contentView.width-CloseButtonWidth+7, CloseButtonTopMargin) andWidth:CloseButtonWidth];
+    //右上角关闭按钮
+    _cornerCloseButton = [ViewUtil closeButtonWithPosition:CGPointMake(contentView.width-CloseButtonWidth+7, CloseButtonTopMargin) andWidth:CloseButtonWidth];
+    [contentView addSubview:_cornerCloseButton];
     
-    [contentView addSubview:_closeButton];
-    
+    //显示商家名的标签
     UILabel *label = [UILabel new];
-    label.numberOfLines = 0;
-    label.text = @"真的要取消关注吗？取消关注后将不再接收收该商家的活动消息？";
-    label.frame = CGRectMake(20, 15, contentView.width-40, 109);
+    label.textColor = [UIColor grayColor];
+    label.font = [UIFont systemFontOfSize:15];
+    label.text = @"[卡旺卡奶茶]";
+    label.frame = CGRectMake(30, 33, contentView.width-60, 20);
     [contentView addSubview:label];
     
-    UIView *view = [UIView new];
-    view.frame = CGRectMake(0, label.y+label.height+5, contentView.width, 45);
-    [contentView addSubview:view];
+    //显示兑换的物品的标签
+    label = [UILabel new];
+    label.font = [UIFont systemFontOfSize:14];
+    label.text = @"花生巧克力1杯";
+    label.textColor = kRGBColor(254, 148, 140);
+    label.frame = CGRectMake(30, 58, contentView.width-60, 20);
+    [contentView addSubview:label];
     
-    NSArray *images = @[@"确定", @"取消"];
-    for (int index = 0; index < 2; index++) {
-        UIView *actionView = [UIView new];
-        actionView.frame = CGRectMake(view.width/2*index, 0, view.width/2, view.height);
-        [view addSubview:actionView];
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        CGFloat buttonHeight = actionView.height;
-        UIImage *image = [UIImage imageNamed:images[index]];
-        CGFloat buttonWidth = image.size.width/image.size.height*buttonHeight;
-        button.frame = CGRectMake((actionView.width-buttonWidth)/2, 0, buttonWidth, buttonHeight);
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        button.tag = index;
-        
-        [actionView addSubview:button];
-        if (index == 0) {
-            _sureButton = button;
-        } else {
-            _cancelButton = button;
-        }
-        
-        
-        
-    }
+    //分割线
+    UIView *separator = [UIView new];
+    separator.frame = CGRectMake(20, 93, contentView.width-40, 1);
+    separator.backgroundColor = kRGBColor(230, 230, 230);
+    [contentView addSubview:separator];
     
+    //显示“兑换码”这几个字的标签
+    label = [UILabel new];
+    label.text = @"兑换码：";
+    label.font = [UIFont systemFontOfSize:11];
+    label.textColor = [UIColor grayColor];
+    label.frame = CGRectMake(30, 109, 45, 21);
+    [contentView addSubview:label];
     
+    //显示兑换码的标签
+    label = [UILabel new];
+    label.font = [UIFont systemFontOfSize:14];
+    label.text = @"0233 3561 5521 22";
+    label.frame = CGRectMake(78, 109, contentView.width-78-30, 21);
+    [contentView addSubview:label];
     
-    
+    //底部关闭按钮
+    _bottomCloseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"关闭按钮"];
+    width = 65;
+    height = image.size.height/image.size.width*width;
+    [_bottomCloseButton setBackgroundImage:image forState:UIControlStateNormal];
+    _bottomCloseButton.frame = CGRectMake((contentView.width-width)/2, 140, width, height);
+    [contentView addSubview:_bottomCloseButton];
 }
 @end

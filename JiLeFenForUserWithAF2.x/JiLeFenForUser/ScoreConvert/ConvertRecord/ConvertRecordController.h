@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  兑换纪录界面
- */
+//物品兑换记录界面
 @interface ConvertRecordController : UITableViewController
 
 @end

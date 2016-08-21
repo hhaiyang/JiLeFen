@@ -10,10 +10,12 @@
 #import "NotGetCell.h"
 #import "AlreadyGetCell.h"
 #import "LookConvertCodePopView.h"
+#import "UnsubscribeConfirmPopView.h"
 
-@interface ConvertRecordController ()
+@interface ConvertRecordController () <UnsubscribeConfirmPopViewDelegate>
 @property (nonatomic, strong) NSArray *goodsConvertRecordArr;
 @property (nonatomic, strong) LookConvertCodePopView *lookConvertCodePopView;
+@property (nonatomic, strong) UnsubscribeConfirmPopView *unsubscribeConfirmPopView;
 @end
 
 @implementation ConvertRecordController
@@ -76,7 +78,7 @@
 }
 - (void)lookConvertCode:(UIButton *)sender {
     TEST_LOG(@"查看兑换码");
-    LookConvertCodePopView *view = [LookConvertCodePopView popView];
+    LookConvertCodePopView *view = [[LookConvertCodePopView alloc] init];
     [view.cornerCloseButton addTarget:self action:@selector(closeLookConvertCodePopView) forControlEvents:UIControlEventTouchUpInside];
     [view.bottomCloseButton addTarget:self action:@selector(closeLookConvertCodePopView) forControlEvents:UIControlEventTouchUpInside];
     self.lookConvertCodePopView = view;
@@ -84,10 +86,25 @@
 }
 - (void)unsubscribe:(UIButton *)sender {
     TEST_LOG(@"退订");
+    _unsubscribeConfirmPopView = [[UnsubscribeConfirmPopView alloc] init];
+    _unsubscribeConfirmPopView.delegate = self;
+    [kWindow addSubview:_unsubscribeConfirmPopView];
 
 }
 - (void)closeLookConvertCodePopView {
     [self.lookConvertCodePopView removeFromSuperview];
     self.lookConvertCodePopView = nil;
+}
+- (void)unsubscribeConfirmPopView:(UnsubscribeConfirmPopView *)view didClickCloseButton:(UIButton *)button {
+    [view removeFromSuperview];
+    
+}
+- (void)unsubscribeConfirmPopView:(UnsubscribeConfirmPopView *)view didClickGiveupButton:(UIButton *)button {
+    [view removeFromSuperview];
+    
+}
+- (void)unsubscribeConfirmPopView:(UnsubscribeConfirmPopView *)view didClickCherishButton:(UIButton *)button {
+    [view removeFromSuperview];
+    
 }
 @end

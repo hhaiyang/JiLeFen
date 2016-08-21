@@ -106,7 +106,6 @@
 		02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF133C1CFEAE4100F1BD2C /* AlreadyGetCell.xib */; };
 		02DF13971CFEAE4100F1BD2C /* ConvertRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF133E1CFEAE4100F1BD2C /* ConvertRecordController.m */; };
 		02DF13981CFEAE4100F1BD2C /* LookConvertCodePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13401CFEAE4100F1BD2C /* LookConvertCodePopView.m */; };
-		02DF13991CFEAE4100F1BD2C /* LookConvertCodePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13411CFEAE4100F1BD2C /* LookConvertCodePopView.xib */; };
 		02DF139A1CFEAE4100F1BD2C /* NotGetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13431CFEAE4100F1BD2C /* NotGetCell.m */; };
 		02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF13441CFEAE4100F1BD2C /* NotGetCell.xib */; };
 		02DF13A51CFEAE4100F1BD2C /* DomesticConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */; };
@@ -163,6 +162,7 @@
 		02E1A81F1CB39862009C6177 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E1A81E1CB39862009C6177 /* libiconv.2.4.0.tbd */; };
 		02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */; };
 		02F1CF7D1D1C214E003F7220 /* SecondaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */; };
+		87074EE41D69A211000410AC /* UnsubscribeConfirmPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -362,7 +362,6 @@
 		02DF133E1CFEAE4100F1BD2C /* ConvertRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvertRecordController.m; sourceTree = "<group>"; };
 		02DF133F1CFEAE4100F1BD2C /* LookConvertCodePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookConvertCodePopView.h; sourceTree = "<group>"; };
 		02DF13401CFEAE4100F1BD2C /* LookConvertCodePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookConvertCodePopView.m; sourceTree = "<group>"; };
-		02DF13411CFEAE4100F1BD2C /* LookConvertCodePopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LookConvertCodePopView.xib; sourceTree = "<group>"; };
 		02DF13421CFEAE4100F1BD2C /* NotGetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotGetCell.h; sourceTree = "<group>"; };
 		02DF13431CFEAE4100F1BD2C /* NotGetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotGetCell.m; sourceTree = "<group>"; };
 		02DF13441CFEAE4100F1BD2C /* NotGetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotGetCell.xib; sourceTree = "<group>"; };
@@ -493,6 +492,8 @@
 		02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimaryRecommendView.m; sourceTree = "<group>"; };
 		02F1CF7B1D1C214E003F7220 /* SecondaryRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondaryRecommendView.h; sourceTree = "<group>"; };
 		02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryRecommendView.m; sourceTree = "<group>"; };
+		87074EE21D69A211000410AC /* UnsubscribeConfirmPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribeConfirmPopView.h; sourceTree = "<group>"; };
+		87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeConfirmPopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -968,10 +969,11 @@
 				02DF133E1CFEAE4100F1BD2C /* ConvertRecordController.m */,
 				02DF133F1CFEAE4100F1BD2C /* LookConvertCodePopView.h */,
 				02DF13401CFEAE4100F1BD2C /* LookConvertCodePopView.m */,
-				02DF13411CFEAE4100F1BD2C /* LookConvertCodePopView.xib */,
 				02DF13421CFEAE4100F1BD2C /* NotGetCell.h */,
 				02DF13431CFEAE4100F1BD2C /* NotGetCell.m */,
 				02DF13441CFEAE4100F1BD2C /* NotGetCell.xib */,
+				87074EE21D69A211000410AC /* UnsubscribeConfirmPopView.h */,
+				87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */,
 			);
 			path = ConvertRecord;
 			sourceTree = "<group>";
@@ -1361,7 +1363,6 @@
 				0278E93B1D47B0B3000F1898 /* LICENSE in Resources */,
 				02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */,
 				02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */,
-				02DF13991CFEAE4100F1BD2C /* LookConvertCodePopView.xib in Resources */,
 				029C08111D1645B900138D15 /* MJRefresh.bundle in Resources */,
 				02DF13901CFEAE4100F1BD2C /* QRCodeScoreController.xib in Resources */,
 			);
@@ -1420,6 +1421,7 @@
 				029C08061D1645B900138D15 /* MJRefreshFooter.m in Sources */,
 				02E1A67C1CB38DDD009C6177 /* NSDictionary+Decription.m in Sources */,
 				02DF13A61CFEAE4100F1BD2C /* GoodsConvertController.m in Sources */,
+				87074EE41D69A211000410AC /* UnsubscribeConfirmPopView.m in Sources */,
 				02DCA0521D15055F008AF210 /* ModifyPasswordCell.m in Sources */,
 				02DF13821CFEAE4100F1BD2C /* CancelRelatePopView.m in Sources */,
 				0278E93A1D47B0B3000F1898 /* AFURLSessionManager.m in Sources */,
