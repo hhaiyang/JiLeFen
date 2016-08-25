@@ -9,7 +9,7 @@
 #import "CategoryController.h"
 #import "CategoryCell.h"
 #import "BusinessController.h"
-#import "SelectView.h"
+#import "Commbox.h"
 
 @interface CategoryController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -56,7 +56,7 @@
             view.frame = CGRectMake(index*(space+1), 0, space, _topView.height);
             [_topView addSubview:view];
             
-            SelectView *selectView = [[SelectView alloc] initWithFrame:CGRectMake(5, 0, view.width-10, view.height)];
+            Commbox *selectView = [[Commbox alloc] initWithFrame:CGRectMake(5, 0, view.width-10, view.height)];
             [selectView.button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
             selectView.button.tag = index;
             selectView.nameLabel.text = _sectionTitles[index];
@@ -88,7 +88,7 @@
     
 }
 - (void)buttonAction:(UIButton *)sender {
-    SelectView *selectView = (SelectView *)sender.superview;
+    Commbox *selectView = (Commbox *)sender.superview;
     sender.selected = !sender.selected;
     if (sender.selected) {
         selectView.indicatorImageView.image = [UIImage imageNamed:@"UpIndicator"];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScoreRecordController : UIViewController
+@interface ScoreListController : UIViewController
 
 @end

@@ -42,15 +42,14 @@
 		027E43401D1AD2C4000D4416 /* AppointmentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027E433E1D1AD2C4000D4416 /* AppointmentedController.m */; };
 		029243C71D12F50400ADD750 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243C61D12F50400ADD750 /* MBProgressHUD.m */; };
 		029243FC1D12F5AE00ADD750 /* AccountValidate.m in Sources */ = {isa = PBXBuildFile; fileRef = 029243FB1D12F5AE00ADD750 /* AccountValidate.m */; };
-		02998C9B1D1F9F4B00670877 /* SelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02998C9A1D1F9F4B00670877 /* SelectView.m */; };
+		02998C9B1D1F9F4B00670877 /* Commbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 02998C9A1D1F9F4B00670877 /* Commbox.m */; };
 		029C07CA1D16368E00138D15 /* WMFooldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07BC1D16368E00138D15 /* WMFooldView.m */; };
 		029C07CB1D16368E00138D15 /* WMMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07BE1D16368E00138D15 /* WMMenuItem.m */; };
 		029C07CC1D16368E00138D15 /* WMMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07C01D16368E00138D15 /* WMMenuView.m */; };
 		029C07CD1D16368E00138D15 /* WMProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07C21D16368E00138D15 /* WMProgressView.m */; };
 		029C07CE1D16368E00138D15 /* WMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07C41D16368E00138D15 /* WMScrollView.m */; };
 		029C07CF1D16368E00138D15 /* WMPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07C91D16368E00138D15 /* WMPageController.m */; };
-		029C07D21D16380B00138D15 /* QRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07D11D16380B00138D15 /* QRCodeController.m */; };
-		029C07D51D16387500138D15 /* ScoreRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07D41D16387500138D15 /* ScoreRecordController.m */; };
+		029C07D51D16387500138D15 /* ScoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07D41D16387500138D15 /* ScoreListController.m */; };
 		029C08031D1645B900138D15 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07D91D1645B900138D15 /* MJRefreshAutoFooter.m */; };
 		029C08041D1645B900138D15 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07DB1D1645B900138D15 /* MJRefreshBackFooter.m */; };
 		029C08051D1645B900138D15 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 029C07DD1D1645B900138D15 /* MJRefreshComponent.m */; };
@@ -98,8 +97,6 @@
 		02DF138B1CFEAE4100F1BD2C /* MyScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13271CFEAE4100F1BD2C /* MyScoreController.m */; };
 		02DF138D1CFEAE4100F1BD2C /* QRCodeResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF132A1CFEAE4100F1BD2C /* QRCodeResultViewController.m */; };
 		02DF138E1CFEAE4100F1BD2C /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF132C1CFEAE4100F1BD2C /* QRCodeScanViewController.m */; };
-		02DF138F1CFEAE4100F1BD2C /* QRCodeScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF132E1CFEAE4100F1BD2C /* QRCodeScoreController.m */; };
-		02DF13901CFEAE4100F1BD2C /* QRCodeScoreController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF132F1CFEAE4100F1BD2C /* QRCodeScoreController.xib */; };
 		02DF13911CFEAE4100F1BD2C /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13321CFEAE4100F1BD2C /* RegisterController.m */; };
 		02DF13931CFEAE4100F1BD2C /* CashConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13371CFEAE4100F1BD2C /* CashConvertController.m */; };
 		02DF13951CFEAE4100F1BD2C /* AlreadyGetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF133B1CFEAE4100F1BD2C /* AlreadyGetCell.m */; };
@@ -163,6 +160,8 @@
 		02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */; };
 		02F1CF7D1D1C214E003F7220 /* SecondaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */; };
 		87074EE41D69A211000410AC /* UnsubscribeConfirmPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */; };
+		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
+		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -236,8 +235,8 @@
 		029243C61D12F50400ADD750 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		029243FA1D12F5AE00ADD750 /* AccountValidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountValidate.h; sourceTree = "<group>"; };
 		029243FB1D12F5AE00ADD750 /* AccountValidate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountValidate.m; sourceTree = "<group>"; };
-		02998C991D1F9F4B00670877 /* SelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectView.h; sourceTree = "<group>"; };
-		02998C9A1D1F9F4B00670877 /* SelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectView.m; sourceTree = "<group>"; };
+		02998C991D1F9F4B00670877 /* Commbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commbox.h; sourceTree = "<group>"; };
+		02998C9A1D1F9F4B00670877 /* Commbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commbox.m; sourceTree = "<group>"; };
 		029C07BB1D16368E00138D15 /* WMFooldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMFooldView.h; sourceTree = "<group>"; };
 		029C07BC1D16368E00138D15 /* WMFooldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMFooldView.m; sourceTree = "<group>"; };
 		029C07BD1D16368E00138D15 /* WMMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMenuItem.h; sourceTree = "<group>"; };
@@ -251,10 +250,8 @@
 		029C07C51D16368E00138D15 /* WMPageConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageConst.h; sourceTree = "<group>"; };
 		029C07C81D16368E00138D15 /* WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageController.h; sourceTree = "<group>"; };
 		029C07C91D16368E00138D15 /* WMPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPageController.m; sourceTree = "<group>"; };
-		029C07D01D16380B00138D15 /* QRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeController.h; sourceTree = "<group>"; };
-		029C07D11D16380B00138D15 /* QRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeController.m; sourceTree = "<group>"; };
-		029C07D31D16387500138D15 /* ScoreRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreRecordController.h; sourceTree = "<group>"; };
-		029C07D41D16387500138D15 /* ScoreRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreRecordController.m; sourceTree = "<group>"; };
+		029C07D31D16387500138D15 /* ScoreListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreListController.h; sourceTree = "<group>"; };
+		029C07D41D16387500138D15 /* ScoreListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreListController.m; sourceTree = "<group>"; };
 		029C07D81D1645B900138D15 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		029C07D91D1645B900138D15 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		029C07DA1D1645B900138D15 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -348,9 +345,6 @@
 		02DF132A1CFEAE4100F1BD2C /* QRCodeResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeResultViewController.m; sourceTree = "<group>"; };
 		02DF132B1CFEAE4100F1BD2C /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
 		02DF132C1CFEAE4100F1BD2C /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
-		02DF132D1CFEAE4100F1BD2C /* QRCodeScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScoreController.h; sourceTree = "<group>"; };
-		02DF132E1CFEAE4100F1BD2C /* QRCodeScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScoreController.m; sourceTree = "<group>"; };
-		02DF132F1CFEAE4100F1BD2C /* QRCodeScoreController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScoreController.xib; sourceTree = "<group>"; };
 		02DF13311CFEAE4100F1BD2C /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
 		02DF13321CFEAE4100F1BD2C /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
 		02DF13361CFEAE4100F1BD2C /* CashConvertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertController.h; sourceTree = "<group>"; };
@@ -494,6 +488,10 @@
 		02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryRecommendView.m; sourceTree = "<group>"; };
 		87074EE21D69A211000410AC /* UnsubscribeConfirmPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribeConfirmPopView.h; sourceTree = "<group>"; };
 		87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeConfirmPopView.m; sourceTree = "<group>"; };
+		873F4CEC1D6F16FF008BFA42 /* InputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputDateView.h; sourceTree = "<group>"; };
+		873F4CED1D6F16FF008BFA42 /* InputDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDateView.m; sourceTree = "<group>"; };
+		873F4CEE1D6F16FF008BFA42 /* SelectDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateView.h; sourceTree = "<group>"; };
+		873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -780,8 +778,8 @@
 		02DF12DF1CFEAE4100F1BD2C /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				02998C991D1F9F4B00670877 /* SelectView.h */,
-				02998C9A1D1F9F4B00670877 /* SelectView.m */,
+				02998C991D1F9F4B00670877 /* Commbox.h */,
+				02998C9A1D1F9F4B00670877 /* Commbox.m */,
 				02DF12E01CFEAE4100F1BD2C /* CategoryCell.h */,
 				02DF12E11CFEAE4100F1BD2C /* CategoryCell.m */,
 				02DF12E21CFEAE4100F1BD2C /* CategoryCell.xib */,
@@ -906,6 +904,10 @@
 		02DF13201CFEAE4100F1BD2C /* MyScore */ = {
 			isa = PBXGroup;
 			children = (
+				873F4CEC1D6F16FF008BFA42 /* InputDateView.h */,
+				873F4CED1D6F16FF008BFA42 /* InputDateView.m */,
+				873F4CEE1D6F16FF008BFA42 /* SelectDateView.h */,
+				873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */,
 				02DF13211CFEAE4100F1BD2C /* AddScoreController.h */,
 				02DF13221CFEAE4100F1BD2C /* AddScoreController.m */,
 				02DF13241CFEAE4100F1BD2C /* IntroductionView.h */,
@@ -916,13 +918,8 @@
 				02DF132A1CFEAE4100F1BD2C /* QRCodeResultViewController.m */,
 				02DF132B1CFEAE4100F1BD2C /* QRCodeScanViewController.h */,
 				02DF132C1CFEAE4100F1BD2C /* QRCodeScanViewController.m */,
-				02DF132D1CFEAE4100F1BD2C /* QRCodeScoreController.h */,
-				02DF132E1CFEAE4100F1BD2C /* QRCodeScoreController.m */,
-				02DF132F1CFEAE4100F1BD2C /* QRCodeScoreController.xib */,
-				029C07D01D16380B00138D15 /* QRCodeController.h */,
-				029C07D11D16380B00138D15 /* QRCodeController.m */,
-				029C07D31D16387500138D15 /* ScoreRecordController.h */,
-				029C07D41D16387500138D15 /* ScoreRecordController.m */,
+				029C07D31D16387500138D15 /* ScoreListController.h */,
+				029C07D41D16387500138D15 /* ScoreListController.m */,
 			);
 			path = MyScore;
 			sourceTree = "<group>";
@@ -1364,7 +1361,6 @@
 				02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */,
 				02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */,
 				029C08111D1645B900138D15 /* MJRefresh.bundle in Resources */,
-				02DF13901CFEAE4100F1BD2C /* QRCodeScoreController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1398,7 +1394,6 @@
 				0278E9441D47B0B3000F1898 /* UIWebView+AFNetworking.m in Sources */,
 				02E1A81D1CB396A0009C6177 /* JPinYinUtil.m in Sources */,
 				02DF13691CFEAE4100F1BD2C /* HomeCell.m in Sources */,
-				02DF138F1CFEAE4100F1BD2C /* QRCodeScoreController.m in Sources */,
 				02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */,
 				029C08101D1645B900138D15 /* MJRefreshStateHeader.m in Sources */,
 				029C07CB1D16368E00138D15 /* WMMenuItem.m in Sources */,
@@ -1433,6 +1428,7 @@
 				029C08141D1645B900138D15 /* UIScrollView+MJRefresh.m in Sources */,
 				02DF138D1CFEAE4100F1BD2C /* QRCodeResultViewController.m in Sources */,
 				0200CF5F1D197B2E00A286F6 /* AppointmentingController.m in Sources */,
+				873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */,
 				0278E9411D47B0B3000F1898 /* UIImageView+AFNetworking.m in Sources */,
 				0242F4A61D055D1B00C41E4A /* UIBarButtonItem+CustomItem.m in Sources */,
 				02DF13701CFEAE4100F1BD2C /* SearchController.m in Sources */,
@@ -1459,6 +1455,7 @@
 				029C07CD1D16368E00138D15 /* WMProgressView.m in Sources */,
 				0200CF631D197BBB00A286F6 /* AppointmentUnsubscribePopView.m in Sources */,
 				02E1A80B1CB395CD009C6177 /* SDWebImageDecoder.m in Sources */,
+				873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */,
 				02E1A6911CB38DF1009C6177 /* UIColor+CustomColor.m in Sources */,
 				02E1A6921CB38DF1009C6177 /* UIDevice+Addition.m in Sources */,
 				026F175F1D42736A00384BEE /* BusinessActivityController.m in Sources */,
@@ -1483,7 +1480,7 @@
 				02DF13881CFEAE4100F1BD2C /* AddScoreController.m in Sources */,
 				0278E9351D47B0B3000F1898 /* AFNetworkReachabilityManager.m in Sources */,
 				02E1A6961CB38DF1009C6177 /* BaseScrollViewController.m in Sources */,
-				029C07D51D16387500138D15 /* ScoreRecordController.m in Sources */,
+				029C07D51D16387500138D15 /* ScoreListController.m in Sources */,
 				0270B8BE1D16DC4000A0F994 /* SelectBankController.m in Sources */,
 				027E43401D1AD2C4000D4416 /* AppointmentedController.m in Sources */,
 				0200CF5E1D197B2E00A286F6 /* AppointmentingCell.m in Sources */,
@@ -1496,7 +1493,6 @@
 				029C08121D1645B900138D15 /* MJRefreshConst.m in Sources */,
 				027E433F1D1AD2C4000D4416 /* AppointmentedCell.m in Sources */,
 				02E1A67B1CB38DDD009C6177 /* NSArray+Description.m in Sources */,
-				029C07D21D16380B00138D15 /* QRCodeController.m in Sources */,
 				02DF136B1CFEAE4100F1BD2C /* HomeController.m in Sources */,
 				029C08131D1645B900138D15 /* UIScrollView+MJExtension.m in Sources */,
 				02E1A80A1CB395CD009C6177 /* SDWebImageCompat.m in Sources */,
@@ -1518,7 +1514,7 @@
 				029C080A1D1645B900138D15 /* MJRefreshAutoStateFooter.m in Sources */,
 				029C08151D1645B900138D15 /* UIView+MJExtension.m in Sources */,
 				0278E9341D47B0B3000F1898 /* AFHTTPSessionManager.m in Sources */,
-				02998C9B1D1F9F4B00670877 /* SelectView.m in Sources */,
+				02998C9B1D1F9F4B00670877 /* Commbox.m in Sources */,
 				02DF13A51CFEAE4100F1BD2C /* DomesticConvertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

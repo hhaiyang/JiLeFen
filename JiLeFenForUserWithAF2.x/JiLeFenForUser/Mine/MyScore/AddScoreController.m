@@ -7,53 +7,42 @@
 //
 
 #import "AddScoreController.h"
-#import "QRCodeScoreController.h"
 #import "QRCodeGenerator.h"
-#import "QRCodeController.h"
-#import "ScoreRecordController.h"
-#import "WMPageConst.h"
+
+
 
 @interface AddScoreController ()
-@property (nonatomic, strong) NSArray *childrenController;
+
 @end
 
 @implementation AddScoreController
 
-- (NSArray *)childrenController {
-    if (_childrenController) {
-        return _childrenController;
-    }
-    QRCodeController *qrcode = [QRCodeController new];
-    ScoreRecordController *scoreRecord = [ScoreRecordController new];
-    _childrenController = @[qrcode, scoreRecord];
-    return _childrenController;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
-      self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
-    self.menuHeight = 55;
-    self.menuItemWidth = self.view.width/2;
-    self.postNotification = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(controllerDidAddToSuperViewNotification:) name:WMControllerDidAddToSuperViewNotification object:nil];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-- (void)controllerDidAddToSuperViewNotification:(NSNotification *)noti {
-    self.title = noti.object[@"title"];
+    self.title = @"增加积分";
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
+    
+    //提示标签
+    UILabel *label = [UILabel new];
+    label.numberOfLines = 2;
+    label.frame = CGRectMake((self.view.width-150)/2, 64+30, 150, 50);
+    label.text = @"到店消费积分时请让商家扫描下方二维码";
+    label.textColor = [UIColor grayColor];
+    label.font = [UIFont systemFontOfSize:16];
+    [self.view addSubview:label];
+    
+    //二维码
+    UIImageView *qrcodeImageView = [UIImageView new];
+    CGFloat x = 35;
+    CGFloat width = self.view.width-x*2;
+    qrcodeImageView.frame = CGRectMake(x, label.y+label.height+10, width, width);
+    qrcodeImageView.image = [QRCodeGenerator qrImageForString:@"huanghaiyang" imageSize:qrcodeImageView.size.width];
+    [self.view addSubview:qrcodeImageView];
+
 }
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController {
-    return self.childrenController.count;
-}
-- (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
-    return self.childrenController[index];
-}
-- (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
-    return @[@"增加积分", @"积分明细"][index];
-}
 @end

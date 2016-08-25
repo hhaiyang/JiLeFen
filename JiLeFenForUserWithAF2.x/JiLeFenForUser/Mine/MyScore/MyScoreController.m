@@ -9,13 +9,14 @@
 #import "MyScoreController.h"
 #import "AddScoreController.h"
 #import "IntroductionView.h"
+#import "ScoreListController.h"
 
 
 @interface MyScoreController ()
 @property (strong, nonatomic) IntroductionView *introductionView;
 @property (nonatomic, strong) UILabel *cashScoreLabel;
 @property (nonatomic, strong) UILabel *freeScoreLabel;
-@property (nonatomic, strong) NSArray *titles;
+
 @end
 
 @implementation MyScoreController
@@ -28,25 +29,14 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
     
-    UIView *topView = [UIView new];
-    topView.frame = CGRectMake(0, 64, self.view.width, 55);
-    topView.backgroundColor = kRGBColor(245, 244, 245);
-    [self.view addSubview:topView];
-    
-    _titles = @[@"增加积分", @"积分明细"];
-    for (int index = 0; index < 2; index++) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.tag = index;
-        [button setTitle:_titles[index] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(addScore:) forControlEvents:UIControlEventTouchUpInside];
-        button.frame = CGRectMake(topView.width/2*index, 0, topView.width/2, topView.height);
-        [topView addSubview:button];
-    }
+
+    UIBarButtonItem *addScore = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(addScore:) imageName:@"AddScore" height:25];
+    UIBarButtonItem *scoreList = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(scoreList) imageName:@"ScoreList" height:25];
+    self.navigationItem.rightBarButtonItems = @[addScore, scoreList];
     
     UIView *scoreView = [UIView new];
     scoreView.layer.cornerRadius = 2;
-    scoreView.frame = CGRectMake(15, topView.y+topView.height+15, self.view.width-30, 45);
+    scoreView.frame = CGRectMake(15, 64+20, self.view.width-30, 45);
     scoreView.backgroundColor = kRGBColor(232, 232, 232);
     [self.view addSubview:scoreView];
     
@@ -90,12 +80,16 @@
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
+//增加积分
 - (void)addScore:(UIButton *)sender {
     
     AddScoreController *addScoreController = [[AddScoreController alloc] init];
-    addScoreController.selectIndex = sender.tag;
-    addScoreController.title = _titles[sender.tag];
     [self.navigationController pushViewController:addScoreController animated:YES];
 }
-
+//积分明细
+- (void)scoreList {
+    ScoreListController *scoreList = [ScoreListController new];
+    [self.navigationController pushViewController:scoreList animated:YES];
+    
+}
 @end

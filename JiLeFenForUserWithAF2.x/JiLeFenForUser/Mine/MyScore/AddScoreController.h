@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddScoreController : WMPageController
+@interface AddScoreController : UIViewController
 
 @end
