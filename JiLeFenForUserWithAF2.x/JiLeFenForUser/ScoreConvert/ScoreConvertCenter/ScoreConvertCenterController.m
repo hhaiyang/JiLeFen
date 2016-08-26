@@ -118,6 +118,8 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"物品兑换区";
 }
+
+//跳转到现金兑换界面
 - (void)cashConvert:(id)sender {
     CashConvertController *cashConvertController = [CashConvertController new];
     [self.navigationController pushViewController:cashConvertController animated:YES];

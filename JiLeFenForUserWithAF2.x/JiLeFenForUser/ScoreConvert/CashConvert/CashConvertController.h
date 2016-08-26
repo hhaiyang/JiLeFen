@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+//现金兑换
 @interface CashConvertController : UIViewController
-@property (nonatomic, strong) UILabel *backLabel;
+//银行开户行类型
+@property (nonatomic, strong) UILabel *bankLabel;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SelectBankController.h"
+#import "Bank.h"
 @interface SelectBankController ()
 @property (nonatomic, strong) NSArray *banks;
 @end
@@ -21,22 +22,33 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(backAction) imageName:@"返回小图标-红色" height:30];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"BankCell"];
-    __weak typeof(self) weakSSelf = self;
+    __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-//        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=banklist" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//            [weakSSelf.tableView.mj_header endRefreshing];
-//            TEST_LOG(@"res = %@", responseObject);
-//            [weakSSelf.tableView reloadData];
-//            
-//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            TEST_LOG(@"erro = %@", error);
-//            [weakSSelf.tableView.mj_header endRefreshing];
-//            _banks = @[@"中国银行", @"中国农业银行", @"中国建设银行", @"中国交通银行"];
-//            [weakSSelf.tableView reloadData];
-//            
-//        }];
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=banklist" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            TEST_LOG(@"res = %@", responseObject);
+            int status = [responseObject[@"status"] intValue];
+            if (status == 1) {
+                NSArray *arr = responseObject[@"data"];
+                NSMutableArray *banks = [NSMutableArray new];
+                for (NSDictionary *dic in arr) {
+                    Bank *bank = [Bank new];
+                    bank.ID = dic[@"bankid"];
+                    bank.name = dic[@"bankname"];
+                    [banks addObject:bank];
+                    
+                }
+                _banks = [banks copy];
+                [weakSelf.tableView reloadData];
+            }
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            TEST_LOG(@"erro = %@", error);
+            [weakSelf.tableView.mj_header endRefreshing];
+            
+        }];
         
     }];
     [self.tableView.mj_header beginRefreshing];
@@ -61,14 +73,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BankCell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = _banks[indexPath.row];
+    Bank *bank = _banks[indexPath.row];
+    cell.textLabel.text = bank.ID;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.cashConvertController.backLabel.text = _banks[indexPath.row];
+    Bank *bank = _banks[indexPath.row];
+    self.cashConvertController.bankLabel.text = bank.ID;
     [self.navigationController popViewControllerAnimated:YES];
     
 }

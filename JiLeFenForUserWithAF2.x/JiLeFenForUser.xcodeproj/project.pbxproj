@@ -160,8 +160,12 @@
 		02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */; };
 		02F1CF7D1D1C214E003F7220 /* SecondaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */; };
 		87074EE41D69A211000410AC /* UnsubscribeConfirmPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */; };
+		871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 871B127D1D703BC0005F615C /* CashConvertSuccessView.m */; };
 		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
 		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
+		87E564201D701F83007301C5 /* Bank.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5641F1D701F83007301C5 /* Bank.m */; };
+		87E564231D7022C7007301C5 /* CashConvertHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564221D7022C7007301C5 /* CashConvertHintView.m */; };
+		87E564261D702F52007301C5 /* CashConvertCheckInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -488,10 +492,18 @@
 		02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryRecommendView.m; sourceTree = "<group>"; };
 		87074EE21D69A211000410AC /* UnsubscribeConfirmPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribeConfirmPopView.h; sourceTree = "<group>"; };
 		87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeConfirmPopView.m; sourceTree = "<group>"; };
+		871B127C1D703BC0005F615C /* CashConvertSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertSuccessView.h; sourceTree = "<group>"; };
+		871B127D1D703BC0005F615C /* CashConvertSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertSuccessView.m; sourceTree = "<group>"; };
 		873F4CEC1D6F16FF008BFA42 /* InputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputDateView.h; sourceTree = "<group>"; };
 		873F4CED1D6F16FF008BFA42 /* InputDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDateView.m; sourceTree = "<group>"; };
 		873F4CEE1D6F16FF008BFA42 /* SelectDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateView.h; sourceTree = "<group>"; };
 		873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateView.m; sourceTree = "<group>"; };
+		87E5641E1D701F83007301C5 /* Bank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bank.h; sourceTree = "<group>"; };
+		87E5641F1D701F83007301C5 /* Bank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bank.m; sourceTree = "<group>"; };
+		87E564211D7022C7007301C5 /* CashConvertHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertHintView.h; sourceTree = "<group>"; };
+		87E564221D7022C7007301C5 /* CashConvertHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertHintView.m; sourceTree = "<group>"; };
+		87E564241D702F52007301C5 /* CashConvertCheckInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertCheckInfoView.h; sourceTree = "<group>"; };
+		87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertCheckInfoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -760,6 +772,8 @@
 			children = (
 				02DCA0561D1505A1008AF210 /* User.h */,
 				02DCA0571D1505A1008AF210 /* User.m */,
+				87E5641E1D701F83007301C5 /* Bank.h */,
+				87E5641F1D701F83007301C5 /* Bank.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -952,6 +966,12 @@
 				02DF13371CFEAE4100F1BD2C /* CashConvertController.m */,
 				0270B8BC1D16DC4000A0F994 /* SelectBankController.h */,
 				0270B8BD1D16DC4000A0F994 /* SelectBankController.m */,
+				87E564211D7022C7007301C5 /* CashConvertHintView.h */,
+				87E564221D7022C7007301C5 /* CashConvertHintView.m */,
+				87E564241D702F52007301C5 /* CashConvertCheckInfoView.h */,
+				87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */,
+				871B127C1D703BC0005F615C /* CashConvertSuccessView.h */,
+				871B127D1D703BC0005F615C /* CashConvertSuccessView.m */,
 			);
 			path = CashConvert;
 			sourceTree = "<group>";
@@ -1380,6 +1400,7 @@
 				029C07CE1D16368E00138D15 /* WMScrollView.m in Sources */,
 				0278E9431D47B0B3000F1898 /* UIRefreshControl+AFNetworking.m in Sources */,
 				02DCA04F1D15052D008AF210 /* ModifyPasswordController.m in Sources */,
+				87E564231D7022C7007301C5 /* CashConvertHintView.m in Sources */,
 				02DF13981CFEAE4100F1BD2C /* LookConvertCodePopView.m in Sources */,
 				02DF13841CFEAE4100F1BD2C /* MyRelatedAccountController.m in Sources */,
 				02DF139A1CFEAE4100F1BD2C /* NotGetCell.m in Sources */,
@@ -1392,7 +1413,10 @@
 				02E1A6AC1CB38E73009C6177 /* QRCodeScan.m in Sources */,
 				0278E93E1D47B0B3000F1898 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0278E9441D47B0B3000F1898 /* UIWebView+AFNetworking.m in Sources */,
+				87E564261D702F52007301C5 /* CashConvertCheckInfoView.m in Sources */,
+				87E564201D701F83007301C5 /* Bank.m in Sources */,
 				02E1A81D1CB396A0009C6177 /* JPinYinUtil.m in Sources */,
+				871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */,
 				02DF13691CFEAE4100F1BD2C /* HomeCell.m in Sources */,
 				02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */,
 				029C08101D1645B900138D15 /* MJRefreshStateHeader.m in Sources */,
