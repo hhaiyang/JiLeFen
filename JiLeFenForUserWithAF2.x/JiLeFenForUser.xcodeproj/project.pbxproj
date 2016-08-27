@@ -166,6 +166,9 @@
 		87E564201D701F83007301C5 /* Bank.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5641F1D701F83007301C5 /* Bank.m */; };
 		87E564231D7022C7007301C5 /* CashConvertHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564221D7022C7007301C5 /* CashConvertHintView.m */; };
 		87E564261D702F52007301C5 /* CashConvertCheckInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */; };
+		87EE54B41D7171D400AE884B /* AppointmentInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EE54B31D7171D400AE884B /* AppointmentInfoView.m */; };
+		87EE54B71D717A1B00AE884B /* AppointmentSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EE54B61D717A1B00AE884B /* AppointmentSuccessView.m */; };
+		87F748501D716760008B8639 /* AppointmentHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F7484F1D716760008B8639 /* AppointmentHintView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -504,6 +507,12 @@
 		87E564221D7022C7007301C5 /* CashConvertHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertHintView.m; sourceTree = "<group>"; };
 		87E564241D702F52007301C5 /* CashConvertCheckInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertCheckInfoView.h; sourceTree = "<group>"; };
 		87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertCheckInfoView.m; sourceTree = "<group>"; };
+		87EE54B21D7171D400AE884B /* AppointmentInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentInfoView.h; sourceTree = "<group>"; };
+		87EE54B31D7171D400AE884B /* AppointmentInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentInfoView.m; sourceTree = "<group>"; };
+		87EE54B51D717A1B00AE884B /* AppointmentSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentSuccessView.h; sourceTree = "<group>"; };
+		87EE54B61D717A1B00AE884B /* AppointmentSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentSuccessView.m; sourceTree = "<group>"; };
+		87F7484E1D716760008B8639 /* AppointmentHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentHintView.h; sourceTree = "<group>"; };
+		87F7484F1D716760008B8639 /* AppointmentHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentHintView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1004,6 +1013,12 @@
 				02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */,
 				02AE92121D181810001312D0 /* AppointmentCell.h */,
 				02AE92131D181810001312D0 /* AppointmentCell.m */,
+				87F7484E1D716760008B8639 /* AppointmentHintView.h */,
+				87F7484F1D716760008B8639 /* AppointmentHintView.m */,
+				87EE54B21D7171D400AE884B /* AppointmentInfoView.h */,
+				87EE54B31D7171D400AE884B /* AppointmentInfoView.m */,
+				87EE54B51D717A1B00AE884B /* AppointmentSuccessView.h */,
+				87EE54B61D717A1B00AE884B /* AppointmentSuccessView.m */,
 			);
 			path = DomesticConvert;
 			sourceTree = "<group>";
@@ -1424,6 +1439,7 @@
 				02E1A6951CB38DF1009C6177 /* BaseViewController.m in Sources */,
 				026F17651D42742D00384BEE /* BusinessCommentController.m in Sources */,
 				02E1A6B91CB38F56009C6177 /* ZLImageViewDisplayView.m in Sources */,
+				87F748501D716760008B8639 /* AppointmentHintView.m in Sources */,
 				02E1A80D1CB395CD009C6177 /* SDWebImageDownloaderOperation.m in Sources */,
 				02E1A6A31CB38E45009C6177 /* HYNavigationBar.m in Sources */,
 				02E1A8151CB395CD009C6177 /* UIView+WebCacheOperation.m in Sources */,
@@ -1484,6 +1500,7 @@
 				02E1A6921CB38DF1009C6177 /* UIDevice+Addition.m in Sources */,
 				026F175F1D42736A00384BEE /* BusinessActivityController.m in Sources */,
 				029C08281D165CB200138D15 /* MyAttentionPopView.m in Sources */,
+				87EE54B71D717A1B00AE884B /* AppointmentSuccessView.m in Sources */,
 				029C08081D1645B900138D15 /* MJRefreshAutoGifFooter.m in Sources */,
 				0278E9421D47B0B3000F1898 /* UIProgressView+AFNetworking.m in Sources */,
 				02E1A6941CB38DF1009C6177 /* ResManager.m in Sources */,
@@ -1518,6 +1535,7 @@
 				027E433F1D1AD2C4000D4416 /* AppointmentedCell.m in Sources */,
 				02E1A67B1CB38DDD009C6177 /* NSArray+Description.m in Sources */,
 				02DF136B1CFEAE4100F1BD2C /* HomeController.m in Sources */,
+				87EE54B41D7171D400AE884B /* AppointmentInfoView.m in Sources */,
 				029C08131D1645B900138D15 /* UIScrollView+MJExtension.m in Sources */,
 				02E1A80A1CB395CD009C6177 /* SDWebImageCompat.m in Sources */,
 				029C08251D1653EA00138D15 /* ViewUtil.m in Sources */,
