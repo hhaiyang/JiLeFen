@@ -13,7 +13,8 @@
 #import "AppointmentCell.h"
 #import "AppointmentHintView.h"
 #import "AppointmentInfoView.h"
-@interface DomesticConvertController () <AppointmentHintViewDelegate, AppointmentInfoViewDelegate>
+#import "AppointmentSuccessView.h"
+@interface DomesticConvertController () <AppointmentHintViewDelegate, AppointmentInfoViewDelegate, AppointmentSuccessViewDelegate>
 @property (nonatomic, strong) UILabel *freeScoreLabel;
 @property (nonatomic, strong) UILabel *appointmentingLabel;
 @property (nonatomic, strong) UILabel *appointmentedLabel;
@@ -21,6 +22,7 @@
 //弹出框
 @property (nonatomic, strong) AppointmentHintView *appointmentHintView;
 @property (nonatomic, strong) AppointmentInfoView *appointmentInfoView;
+@property (nonatomic, strong) AppointmentSuccessView *appointmentSuccessView;
 @end
 
 @implementation DomesticConvertController
@@ -214,14 +216,32 @@
     [view removeFromSuperview];
     
 }
+
+
 - (void)appointmentInfoView:(AppointmentInfoView *)view didClickedCloseButton:(UIButton *)button {
     [view removeFromSuperview];
 }
 - (void)appointmentInfoView:(AppointmentInfoView *)view didClickedSureButton:(UIButton *)button {
     [view removeFromSuperview];
+    _appointmentSuccessView = [[AppointmentSuccessView alloc] init];
+    _appointmentSuccessView.delegate = self;
+    [kWindow addSubview:_appointmentSuccessView];
     
 }
 - (void)appointmentInfoView:(AppointmentInfoView *)view didClickedBackButton:(UIButton *)button {
+    [view removeFromSuperview];
+    
+}
+
+
+- (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedCloseButton:(UIButton *)button{
+    [view removeFromSuperview];
+}
+- (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedSureButton:(UIButton *)button{
+    [view removeFromSuperview];
+    
+}
+- (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedBackButton:(UIButton *)button {
     [view removeFromSuperview];
     
 }

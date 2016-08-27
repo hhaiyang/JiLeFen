@@ -9,6 +9,8 @@
 #import "AppointmentSuccessView.h"
 
 @interface AppointmentSuccessView ()
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIView *userInfoView;
 @property (nonatomic, strong) UILabel *hintLabel;
 @property (nonatomic, strong) UILabel *hint1;
 @property (nonatomic, strong) UILabel *hint2;
@@ -20,6 +22,7 @@
 - (void)setContentView {
     //内容视图
     UIView *contentView = [UIView new];
+    _contentView = contentView;
     contentView.backgroundColor = ContentViewBackgroundColor;
     CGFloat width = self.width-ContentViewLeftMargin*2;
     CGFloat height = 40+132+40+22+20;
@@ -57,6 +60,7 @@
     
     //显示预约的用户信息视图
     UIView *userInfoView = [UIView new];
+    _userInfoView = userInfoView;
     userInfoView.backgroundColor = kRGBColor(253, 235, 236);
     userInfoView.frame = CGRectMake(10, _timeLabel.y+_timeLabel.height+10, contentView.width-20, 0);
     [contentView addSubview:userInfoView];
@@ -71,15 +75,20 @@
         [userInfoView addSubview:label];
         
         UILabel *infoLabel = [UILabel new];
+        infoLabel.font = label.font;
         infoLabel.textColor = kRGBColor(230, 63, 83);
         infoLabel.frame = CGRectMake(label.x+label.width, i*21, userInfoView.width-label.width-10, 21);
         [userInfoView addSubview:infoLabel];
         if (i == 0) {
-            _nameLabel = label;
+            _nameLabel = infoLabel;
+            _nameLabel.text = @"黄";
         } else if (i == 1) {
-            _phoneLabel = label;
+            _phoneLabel = infoLabel;
+            _phoneLabel.text = @"13856139785";
         } else {
-            _addressLabel = label;
+            _addressLabel = infoLabel;
+            _addressLabel.numberOfLines = 0;
+            infoLabel.text = @"如需退如需退订，请与时间段开始前24小时取消预定（至少提前1天），24小时内不能退订如需退如需退订，请与时间段开始前24小时取消预定（至少提前1天），24小时内不能退订如需退如需退订，请与时间段开始前24小时取消预定（至少提前1天），24小时内不能退订";
         }
     }
     
@@ -87,7 +96,7 @@
     _hintLabel = hintLabel;
     hintLabel.text = @"温馨提示:";
     hintLabel.font = [UIFont systemFontOfSize:11];
-    hintLabel.frame = CGRectMake(10, 0, 40, 21);
+    hintLabel.frame = CGRectMake(10, 0, 50, 21);
     hintLabel.textColor = [UIColor grayColor];
     [contentView addSubview:hintLabel];
     
@@ -96,12 +105,12 @@
     hint1.text = @"1、请保持手机畅通，有人在家中！";
     hint1.textColor = hintLabel.textColor;
     hint1.font = hintLabel.font;
-    hint1.frame = CGRectMake(hintLabel.x+hintLabel.width, 0, contentView.width-hintLabel.width-hintLabel.x, 21);
+    hint1.frame = CGRectMake(hintLabel.x+hintLabel.width, 0, contentView.width-hintLabel.width-hintLabel.x*2, 21);
     [contentView addSubview:hint1];
     
     UILabel *hin2 = [UILabel new];
     _hint2 = hin2;
-    hin2.text = @"如需退订，请与时间段开始前24小时取消预定（至少提前1天），24小时内不能退订";
+    hin2.text = @"2、如需退订，请与时间段开始前24小时取消预定（至少提前1天），24小时内不能退订！";
     hin2.frame = CGRectMake(hint1.x, 0, hint1.width, hint1.height);
     hin2.textColor = hint1.textColor;
     hin2.font = hint1.font;
@@ -157,7 +166,45 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    NSString *address = _addressLabel.text;
+    
+    
+    CGRect addressFrame = _addressLabel.frame;
+    NSLog(@"font = %@", _addressLabel.font);
+    CGRect frame = [_addressLabel textRectForBounds:CGRectMake(0, 0, addressFrame.size.width, CGFLOAT_MAX) limitedToNumberOfLines:0];
+    NSLog(@"frame = %@", NSStringFromCGRect(frame));
+    if (frame.size.height > addressFrame.size.height) {
+        addressFrame.size.height = frame.size.height+4;
+    }
+    _addressLabel.frame = addressFrame;
+    
+    CGRect userInfoViewFrame = _userInfoView.frame;
+    userInfoViewFrame.size.height = addressFrame.origin.y+addressFrame.size.height;
+    _userInfoView.frame = userInfoViewFrame;
+    
+    CGRect hintFrame = _hintLabel.frame;
+    hintFrame.origin.y = _userInfoView.y+_userInfoView.height+5;
+    _hintLabel.frame = hintFrame;
+    
+    CGRect hint1Frame = _hint1.frame;
+    hint1Frame.origin.y = _hintLabel.y;
+    _hint1.frame = hint1Frame;
+    
+    CGRect hint2Frame = _hint2.frame;
+    frame = [_hint2 textRectForBounds:CGRectMake(0, 0, hint2Frame.size.width, CGFLOAT_MAX) limitedToNumberOfLines:0];
+    if (frame.size.height > hint2Frame.size.height) {
+        hint2Frame.size.height = frame.size.height;
+    }
+    hint2Frame.origin.y = _hint1.y+_hint1.height;
+    _hint2.frame = hint2Frame;
+    
+    CGRect buttonViewFrame = _buttonView.frame;
+    buttonViewFrame.origin.y = _hint2.y+_hint2.height+10;
+    _buttonView.frame = buttonViewFrame;
+    
+    CGRect contentViewFrame = _contentView.frame;
+    contentViewFrame.size.height = _buttonView.y+_buttonView.height+20;
+    contentViewFrame.origin.y = (self.height-contentViewFrame.size.height)/2;
+    _contentView.frame = contentViewFrame;
     
 }
 

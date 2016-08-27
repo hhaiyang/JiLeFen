@@ -9,7 +9,7 @@
 #import "PopView.h"
 @class AppointmentSuccessView;
 @protocol AppointmentSuccessViewDelegate <NSObject>
-
+@optional
 - (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedCloseButton:(UIButton *)button;
 - (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedSureButton:(UIButton *)button;
 - (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedBackButton:(UIButton *)button;
