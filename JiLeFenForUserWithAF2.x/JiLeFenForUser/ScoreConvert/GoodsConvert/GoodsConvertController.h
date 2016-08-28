@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  物品兑换界面
- */
-@interface GoodsConvertController : UIViewController
+//物品兑换界面
+@interface GoodsConvertController : UITableViewController
 
 @end

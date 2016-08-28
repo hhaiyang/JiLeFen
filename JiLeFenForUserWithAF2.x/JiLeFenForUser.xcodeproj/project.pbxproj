@@ -160,6 +160,7 @@
 		02F1CF7A1D1C1F88003F7220 /* PrimaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF791D1C1F88003F7220 /* PrimaryRecommendView.m */; };
 		02F1CF7D1D1C214E003F7220 /* SecondaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */; };
 		87074EE41D69A211000410AC /* UnsubscribeConfirmPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */; };
+		8710F4561D72ADEF00D5232C /* UnsubscribeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8710F4551D72ADEF00D5232C /* UnsubscribeSuccessView.m */; };
 		871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 871B127D1D703BC0005F615C /* CashConvertSuccessView.m */; };
 		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
 		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
@@ -495,6 +496,8 @@
 		02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryRecommendView.m; sourceTree = "<group>"; };
 		87074EE21D69A211000410AC /* UnsubscribeConfirmPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribeConfirmPopView.h; sourceTree = "<group>"; };
 		87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeConfirmPopView.m; sourceTree = "<group>"; };
+		8710F4541D72ADEF00D5232C /* UnsubscribeSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribeSuccessView.h; sourceTree = "<group>"; };
+		8710F4551D72ADEF00D5232C /* UnsubscribeSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeSuccessView.m; sourceTree = "<group>"; };
 		871B127C1D703BC0005F615C /* CashConvertSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertSuccessView.h; sourceTree = "<group>"; };
 		871B127D1D703BC0005F615C /* CashConvertSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertSuccessView.m; sourceTree = "<group>"; };
 		873F4CEC1D6F16FF008BFA42 /* InputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputDateView.h; sourceTree = "<group>"; };
@@ -1000,6 +1003,8 @@
 				02DF13441CFEAE4100F1BD2C /* NotGetCell.xib */,
 				87074EE21D69A211000410AC /* UnsubscribeConfirmPopView.h */,
 				87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */,
+				8710F4541D72ADEF00D5232C /* UnsubscribeSuccessView.h */,
+				8710F4551D72ADEF00D5232C /* UnsubscribeSuccessView.m */,
 			);
 			path = ConvertRecord;
 			sourceTree = "<group>";
@@ -1550,6 +1555,7 @@
 				02E1A6B01CB38E95009C6177 /* SystemInfo.m in Sources */,
 				02DF13931CFEAE4100F1BD2C /* CashConvertController.m in Sources */,
 				029C080E1D1645B900138D15 /* MJRefreshGifHeader.m in Sources */,
+				8710F4561D72ADEF00D5232C /* UnsubscribeSuccessView.m in Sources */,
 				029C08071D1645B900138D15 /* MJRefreshHeader.m in Sources */,
 				02E1A6971CB38DF1009C6177 /* NSString+Addition.m in Sources */,
 				029C080C1D1645B900138D15 /* MJRefreshBackNormalFooter.m in Sources */,

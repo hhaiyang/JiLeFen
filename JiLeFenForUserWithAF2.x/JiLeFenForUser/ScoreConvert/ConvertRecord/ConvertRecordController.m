@@ -11,11 +11,13 @@
 #import "AlreadyGetCell.h"
 #import "LookConvertCodePopView.h"
 #import "UnsubscribeConfirmPopView.h"
+#import "UnsubscribeSuccessView.h"
 
-@interface ConvertRecordController () <UnsubscribeConfirmPopViewDelegate>
+@interface ConvertRecordController () <UnsubscribeConfirmPopViewDelegate, UnsubscribeSuccessViewDelegate>
 @property (nonatomic, strong) NSArray *goodsConvertRecordArr;
 @property (nonatomic, strong) LookConvertCodePopView *lookConvertCodePopView;
 @property (nonatomic, strong) UnsubscribeConfirmPopView *unsubscribeConfirmPopView;
+@property (nonatomic, strong) UnsubscribeSuccessView *unsubscribeSuccessView;
 @end
 
 @implementation ConvertRecordController
@@ -101,9 +103,20 @@
 }
 - (void)unsubscribeConfirmPopView:(UnsubscribeConfirmPopView *)view didClickGiveupButton:(UIButton *)button {
     [view removeFromSuperview];
+    _unsubscribeSuccessView = [[UnsubscribeSuccessView alloc] init];
+    _unsubscribeSuccessView.delegate = self;
+    [kWindow addSubview:_unsubscribeSuccessView];
     
 }
 - (void)unsubscribeConfirmPopView:(UnsubscribeConfirmPopView *)view didClickCherishButton:(UIButton *)button {
+    [view removeFromSuperview];
+    
+}
+- (void)unsubscribeSuccessView:(UnsubscribeSuccessView *)view didClickedCornerCloseButton:(UIButton *)button {
+    [view removeFromSuperview];
+}
+
+- (void)unsubscribeSuccessView:(UnsubscribeSuccessView *)view didClickedBottomCloseButton:(UIButton *)button {
     [view removeFromSuperview];
     
 }
