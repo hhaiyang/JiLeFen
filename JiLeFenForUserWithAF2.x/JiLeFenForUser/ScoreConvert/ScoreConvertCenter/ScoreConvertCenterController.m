@@ -12,9 +12,10 @@
 #import "DomesticConvertController.h"
 #import "ConvertRecordController.h"
 #import "GoodsConvertController.h"
+#import "Goods.h"
 
 @interface ScoreConvertCenterController ()
-@property (nonatomic, strong) NSArray *allShop;
+@property (nonatomic, strong) NSArray *goodsList;
 
 @end
 
@@ -33,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}];
     
     UIView *headerView = [UIView new];
@@ -71,49 +72,61 @@
         [actionView addSubview:label];
         
     }
-    
-    __weak typeof(self) weakSelf = self;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        _allShop = @[@"", @"", @"", @"", @""];
-        [weakSelf.tableView.mj_header endRefreshing];
-        [weakSelf.tableView reloadData];
-//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-//        NSMutableDictionary *para = [NSMutableDictionary new];
-//        para[@"pagesize"] = @"10";
-//        para[@"pagenum"] = @"1";
-//        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=goodslist" parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//            [weakSelf.tableView.mj_header endRefreshing];
-//            TEST_LOG(@"res = %@", responseObject);
-//            
-//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            TEST_LOG(@"error = %@", error);
-//            [weakSelf.tableView.mj_header endRefreshing];
-//            
-//        }];
-        
-    }];
+    [self.tableView registerClass:[ScoreCell class] forCellReuseIdentifier:@"ScoreCell"];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getGoodsListForConvert)];
     [self.tableView.mj_header beginRefreshing];
     
-
+    
+    
+    
+}
+//获取用于积分兑换的商品列表，商家商品分两类，一类是用现金买，一类用于积分兑换
+- (void)getGoodsListForConvert {
+    __weak typeof(self) weakSelf = self;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    [manager GET:@"http://www.ilovetang.com/ugohb/app.php?p=integral" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        [weakSelf.tableView.mj_header endRefreshing];
+        int status = [responseObject[@"status"] intValue];
+        if (status == 1) {
+            NSArray *arr = responseObject[@"shops"];
+            NSMutableArray *goodsList = [NSMutableArray new];
+            for (NSDictionary *dic in arr) {
+                Goods *goods = [Goods new];
+                [goods setValuesForKeysWithDictionary:dic];
+                [goodsList addObject:goods];
+                
+            }
+            _goodsList = [goodsList copy];
+            [weakSelf.tableView reloadData];
+        }
         
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-       
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _allShop.count;
+    return _goodsList.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ScoreCell *cell = [ScoreCell scoreCellWithTableView:tableView];
+    ScoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScoreCell"];
+    Goods *goods = _goodsList[indexPath.row];
+    cell.goods = goods;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 150;
+    return 120;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"物品兑换区";

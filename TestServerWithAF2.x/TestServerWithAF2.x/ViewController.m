@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self firstcategory];
+    [self firstcategory];
     [self childcategory];
     
 }
@@ -24,7 +24,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=firstcategory" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"res = %@", responseObject);
+        NSLog(@"一级分类 = %@", responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"error = %@", error);
         
@@ -36,7 +36,7 @@
     NSMutableDictionary *para = [NSMutableDictionary new];
     para[@"parentid"] = @"abc";
     [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=childcategory" parameters:para success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"res = %@", responseObject);
+        NSLog(@"二级分类 = %@", responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error = %@", error);

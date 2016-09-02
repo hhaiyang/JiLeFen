@@ -19,11 +19,12 @@
 #import "UIView+HYGeometry.h"
 
 
-
+//三方框架
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
 #import "WMPageController.h"
 #import "MJRefresh.h"
+#import "TTTAttributedLabel.h"
 
 
 #define TestLog

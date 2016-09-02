@@ -21,6 +21,12 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(backAction) imageName:@"返回小图标-红色" height:30];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    //请求数据
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    
+    
     _contentScrollView = [UIScrollView new];
     _contentScrollView.frame = CGRectMake(0, 64, self.view.width, self.view.height-64-49);
     [self.view addSubview:_contentScrollView];

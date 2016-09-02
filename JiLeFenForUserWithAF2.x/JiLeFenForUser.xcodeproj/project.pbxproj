@@ -108,7 +108,6 @@
 		02DF13A51CFEAE4100F1BD2C /* DomesticConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13551CFEAE4100F1BD2C /* DomesticConvertController.m */; };
 		02DF13A61CFEAE4100F1BD2C /* GoodsConvertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13581CFEAE4100F1BD2C /* GoodsConvertController.m */; };
 		02DF13A81CFEAE4100F1BD2C /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135C1CFEAE4100F1BD2C /* ScoreCell.m */; };
-		02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */; };
 		02DF13AA1CFEAE4100F1BD2C /* ScoreConvertCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */; };
 		02E1A5801CB38657009C6177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A57F1CB38657009C6177 /* main.m */; };
 		02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E1A58C1CB38657009C6177 /* LaunchScreen.storyboard */; };
@@ -164,6 +163,8 @@
 		871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 871B127D1D703BC0005F615C /* CashConvertSuccessView.m */; };
 		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
 		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
+		877DA6FA1D79A3DB0061D5E5 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */; };
+		877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6FC1D79A7950061D5E5 /* Goods.m */; };
 		87E564201D701F83007301C5 /* Bank.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5641F1D701F83007301C5 /* Bank.m */; };
 		87E564231D7022C7007301C5 /* CashConvertHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564221D7022C7007301C5 /* CashConvertHintView.m */; };
 		87E564261D702F52007301C5 /* CashConvertCheckInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */; };
@@ -373,7 +374,6 @@
 		02DF13581CFEAE4100F1BD2C /* GoodsConvertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsConvertController.m; sourceTree = "<group>"; };
 		02DF135B1CFEAE4100F1BD2C /* ScoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCell.h; sourceTree = "<group>"; };
 		02DF135C1CFEAE4100F1BD2C /* ScoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCell.m; sourceTree = "<group>"; };
-		02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
 		02DF135E1CFEAE4100F1BD2C /* ScoreConvertCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreConvertCenterController.h; sourceTree = "<group>"; };
 		02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreConvertCenterController.m; sourceTree = "<group>"; };
 		02E1A57B1CB38657009C6177 /* JiLeFenForUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiLeFenForUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,6 +504,10 @@
 		873F4CED1D6F16FF008BFA42 /* InputDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDateView.m; sourceTree = "<group>"; };
 		873F4CEE1D6F16FF008BFA42 /* SelectDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateView.h; sourceTree = "<group>"; };
 		873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateView.m; sourceTree = "<group>"; };
+		877DA6F81D79A3DB0061D5E5 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		877DA6FB1D79A7950061D5E5 /* Goods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goods.h; sourceTree = "<group>"; };
+		877DA6FC1D79A7950061D5E5 /* Goods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goods.m; sourceTree = "<group>"; };
 		87E5641E1D701F83007301C5 /* Bank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bank.h; sourceTree = "<group>"; };
 		87E5641F1D701F83007301C5 /* Bank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bank.m; sourceTree = "<group>"; };
 		87E564211D7022C7007301C5 /* CashConvertHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertHintView.h; sourceTree = "<group>"; };
@@ -786,6 +790,8 @@
 				02DCA0571D1505A1008AF210 /* User.m */,
 				87E5641E1D701F83007301C5 /* Bank.h */,
 				87E5641F1D701F83007301C5 /* Bank.m */,
+				877DA6FB1D79A7950061D5E5 /* Goods.h */,
+				877DA6FC1D79A7950061D5E5 /* Goods.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1042,7 +1048,6 @@
 			children = (
 				02DF135B1CFEAE4100F1BD2C /* ScoreCell.h */,
 				02DF135C1CFEAE4100F1BD2C /* ScoreCell.m */,
-				02DF135D1CFEAE4100F1BD2C /* ScoreCell.xib */,
 				02DF135E1CFEAE4100F1BD2C /* ScoreConvertCenterController.h */,
 				02DF135F1CFEAE4100F1BD2C /* ScoreConvertCenterController.m */,
 			);
@@ -1135,6 +1140,7 @@
 		02E1A5991CB3878D009C6177 /* ThirdLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				877DA6F71D79A3DB0061D5E5 /* TTTAttributedLabel */,
 				0278E9091D47B0B3000F1898 /* AFNetworking */,
 				029C07D61D1645B900138D15 /* MJRefresh */,
 				029C07B91D16368E00138D15 /* WMPageController */,
@@ -1336,6 +1342,15 @@
 			path = StringSorter;
 			sourceTree = "<group>";
 		};
+		877DA6F71D79A3DB0061D5E5 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				877DA6F81D79A3DB0061D5E5 /* TTTAttributedLabel.h */,
+				877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1395,7 +1410,6 @@
 			files = (
 				02E1A5CF1CB389D8009C6177 /* Assets.xcassets in Resources */,
 				02DF13671CFEAE4100F1BD2C /* CategoryCell.xib in Resources */,
-				02DF13A91CFEAE4100F1BD2C /* ScoreCell.xib in Resources */,
 				02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */,
 				0278E93B1D47B0B3000F1898 /* LICENSE in Resources */,
 				02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */,
@@ -1498,6 +1512,7 @@
 				0278E9361D47B0B3000F1898 /* AFSecurityPolicy.m in Sources */,
 				02E1A7CA1CB39520009C6177 /* bitstream.c in Sources */,
 				029C07CD1D16368E00138D15 /* WMProgressView.m in Sources */,
+				877DA6FA1D79A3DB0061D5E5 /* TTTAttributedLabel.m in Sources */,
 				0200CF631D197BBB00A286F6 /* AppointmentUnsubscribePopView.m in Sources */,
 				02E1A80B1CB395CD009C6177 /* SDWebImageDecoder.m in Sources */,
 				873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */,
@@ -1507,6 +1522,7 @@
 				029C08281D165CB200138D15 /* MyAttentionPopView.m in Sources */,
 				87EE54B71D717A1B00AE884B /* AppointmentSuccessView.m in Sources */,
 				029C08081D1645B900138D15 /* MJRefreshAutoGifFooter.m in Sources */,
+				877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */,
 				0278E9421D47B0B3000F1898 /* UIProgressView+AFNetworking.m in Sources */,
 				02E1A6941CB38DF1009C6177 /* ResManager.m in Sources */,
 				0278E9401D47B0B3000F1898 /* UIButton+AFNetworking.m in Sources */,
