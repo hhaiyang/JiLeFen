@@ -7,6 +7,7 @@
 //
 
 #import "PartView.h"
+#import "UIImageView+WebCache.h"
 
 @implementation PartView
 
@@ -14,46 +15,26 @@
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        _imageView = [UIImageView new];
-        _imageView.image = [UIImage imageNamed:@"标志"];
-        [self addSubview:_imageView];
+        //活动图片
+        _activityImageView = [UIImageView new];
+        [self addSubview:_activityImageView];
         
-        _firstLabel = [UILabel new];
-        NSMutableAttributedString *str = [NSMutableAttributedString new];
-        NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"阳光家具  " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
-        NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"6" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:[UIColor redColor]}];
-        NSAttributedString *str3 = [[NSAttributedString alloc] initWithString:@"倍积分" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
-        [str appendAttributedString:str1];
-        [str appendAttributedString:str2];
-        [str appendAttributedString:str3];
-        _firstLabel.attributedText = str;
-        [self addSubview:_firstLabel];
+        //活动所属商家名字
+        _businessNameLabel = [UILabel new];
+        _businessNameLabel.font = [UIFont systemFontOfSize:15];
+        _businessNameLabel.numberOfLines = 0;
+        [self addSubview:_businessNameLabel];
         
-        _secondLabel = [UILabel new];
-        str = [NSMutableAttributedString new];
-        str1 = [[NSAttributedString alloc] initWithString:@"全场" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        str2 = [[NSMutableAttributedString alloc] initWithString:@"5" attributes:@{NSForegroundColorAttributeName:[UIColor redColor], NSFontAttributeName:[UIFont systemFontOfSize:12]}];
-        str3 = [[NSAttributedString alloc] initWithString:@"折" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        [str appendAttributedString:str1];
-        [str appendAttributedString:str2];
-        [str appendAttributedString:str3];
-        _secondLabel.attributedText = str;
-        [self addSubview:_secondLabel];
+        //活动标题
+        _activityTitleLabel = [UILabel new];
+        _activityTitleLabel.numberOfLines = 0;
+        _activityTitleLabel.textColor = [UIColor grayColor];
+        _activityTitleLabel.font = [UIFont systemFontOfSize:12];
+        [self addSubview:_activityTitleLabel];
         
-        _thirdLabel = [UILabel new];
-        _thirdLabel.textAlignment = NSTextAlignmentRight;
-        str = [NSMutableAttributedString new];
-        str1 = [[NSAttributedString alloc] initWithString:@"沙发特价" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        str2 = [[NSMutableAttributedString alloc] initWithString:@"1688" attributes:@{NSForegroundColorAttributeName:[UIColor redColor], NSFontAttributeName:[UIFont systemFontOfSize:12]}];
-        str3 = [[NSAttributedString alloc] initWithString:@"元" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        [str appendAttributedString:str1];
-        [str appendAttributedString:str2];
-        [str appendAttributedString:str3];
-        _thirdLabel.attributedText = str;
-        [self addSubview:_thirdLabel];
-        
-       // _pointImageView = [UIImageView new];
-       // _pointImageView.image = [UIImage imageNamed:@""];
+        //活动积分图片
+        _integralImageView = [UIImageView new];
+        [self addSubview:_integralImageView];
         
         
         
@@ -64,13 +45,27 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    _imageView.frame = CGRectMake(self.width/3*2, 5, self.width/3, self.height-10);
-    _firstLabel.frame = CGRectMake(0, 0, self.width-_imageView.width-10, self.height/3);
-    _secondLabel.frame = CGRectMake(0, _firstLabel.height, _firstLabel.width, _firstLabel.height);
-    _thirdLabel.frame = CGRectMake(0, _secondLabel.y+_secondLabel.height, _secondLabel.width, _secondLabel.height);
+    _activityImageView.frame = CGRectMake(self.width-self.height+10, 0, self.height-10, self.height-10);
+    _businessNameLabel.frame = CGRectMake(0, 0, self.width-self.height, self.height/2);
+    _activityTitleLabel.frame = CGRectMake(0, _businessNameLabel.height, _businessNameLabel.width, _businessNameLabel.height);
+    UIImage *image = _integralImageView.image;
+    CGFloat width = 50;
+    CGFloat height = image.size.height/image.size.width*width;
+    _integralImageView.frame = CGRectMake(0, 0, width, height);
+    CGPoint center = _integralImageView.center;
+    center.x = self.width/2+10;
+    _integralImageView.center = center;
     
     
 }
-
+- (void)setActivity:(Activity *)activity {
+    _activity = activity;
+    [_activityImageView sd_setImageWithURL:[NSURL URLWithString:activity.thumb]];
+    _businessNameLabel.text = activity.business.name;
+    NSArray *integralImages = @[@"mark_int_2", @"mark_int_3", @"mark_int_4", @"mark_int_5", @"mark_int_6", @"mark_int_7", @"mark_int_8", @"mark_int_9", @"mark_int_10"];
+    int number = [activity.integral intValue];
+    _integralImageView.image = [UIImage imageNamed:integralImages[number-2]];
+    _activityTitleLabel.text = activity.title;
+}
 
 @end

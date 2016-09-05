@@ -24,7 +24,16 @@
     //请求数据
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"id"] = @"01";
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=goodsinfo" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"res = %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error = %@", error);
+        
+    }];
     
     
     _contentScrollView = [UIScrollView new];

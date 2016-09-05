@@ -170,6 +170,9 @@
 		87E564261D702F52007301C5 /* CashConvertCheckInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */; };
 		87EE54B41D7171D400AE884B /* AppointmentInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EE54B31D7171D400AE884B /* AppointmentInfoView.m */; };
 		87EE54B71D717A1B00AE884B /* AppointmentSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EE54B61D717A1B00AE884B /* AppointmentSuccessView.m */; };
+		87EF31D41D7D256E003ECB83 /* BusinessListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF31D31D7D256E003ECB83 /* BusinessListCell.m */; };
+		87EF31D71D7D2629003ECB83 /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF31D61D7D2629003ECB83 /* Business.m */; };
+		87EF31DA1D7D4751003ECB83 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF31D91D7D4751003ECB83 /* Activity.m */; };
 		87F748501D716760008B8639 /* AppointmentHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F7484F1D716760008B8639 /* AppointmentHintView.m */; };
 /* End PBXBuildFile section */
 
@@ -518,6 +521,12 @@
 		87EE54B31D7171D400AE884B /* AppointmentInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentInfoView.m; sourceTree = "<group>"; };
 		87EE54B51D717A1B00AE884B /* AppointmentSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentSuccessView.h; sourceTree = "<group>"; };
 		87EE54B61D717A1B00AE884B /* AppointmentSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentSuccessView.m; sourceTree = "<group>"; };
+		87EF31D21D7D256E003ECB83 /* BusinessListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListCell.h; sourceTree = "<group>"; };
+		87EF31D31D7D256E003ECB83 /* BusinessListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessListCell.m; sourceTree = "<group>"; };
+		87EF31D51D7D2629003ECB83 /* Business.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
+		87EF31D61D7D2629003ECB83 /* Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
+		87EF31D81D7D4751003ECB83 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
+		87EF31D91D7D4751003ECB83 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
 		87F7484E1D716760008B8639 /* AppointmentHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentHintView.h; sourceTree = "<group>"; };
 		87F7484F1D716760008B8639 /* AppointmentHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentHintView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -792,6 +801,10 @@
 				87E5641F1D701F83007301C5 /* Bank.m */,
 				877DA6FB1D79A7950061D5E5 /* Goods.h */,
 				877DA6FC1D79A7950061D5E5 /* Goods.m */,
+				87EF31D51D7D2629003ECB83 /* Business.h */,
+				87EF31D61D7D2629003ECB83 /* Business.m */,
+				87EF31D81D7D4751003ECB83 /* Activity.h */,
+				87EF31D91D7D4751003ECB83 /* Activity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -803,6 +816,8 @@
 				02DF12DF1CFEAE4100F1BD2C /* Category */,
 				02DF12E51CFEAE4100F1BD2C /* HomePage */,
 				02DF12F21CFEAE4100F1BD2C /* Search */,
+				87EF31D21D7D256E003ECB83 /* BusinessListCell.h */,
+				87EF31D31D7D256E003ECB83 /* BusinessListCell.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1463,6 +1478,7 @@
 				02E1A6A31CB38E45009C6177 /* HYNavigationBar.m in Sources */,
 				02E1A8151CB395CD009C6177 /* UIView+WebCacheOperation.m in Sources */,
 				029C08091D1645B900138D15 /* MJRefreshAutoNormalFooter.m in Sources */,
+				87EF31D71D7D2629003ECB83 /* Business.m in Sources */,
 				02DF137E1CFEAE4100F1BD2C /* MyAttentionController.m in Sources */,
 				02E1A6A41CB38E45009C6177 /* BarButtonModel.m in Sources */,
 				02E1A7CB1CB39520009C6177 /* mask.c in Sources */,
@@ -1474,6 +1490,7 @@
 				02E1A6A51CB38E45009C6177 /* HYBarButtonItem.m in Sources */,
 				029C08061D1645B900138D15 /* MJRefreshFooter.m in Sources */,
 				02E1A67C1CB38DDD009C6177 /* NSDictionary+Decription.m in Sources */,
+				87EF31D41D7D256E003ECB83 /* BusinessListCell.m in Sources */,
 				02DF13A61CFEAE4100F1BD2C /* GoodsConvertController.m in Sources */,
 				87074EE41D69A211000410AC /* UnsubscribeConfirmPopView.m in Sources */,
 				02DCA0521D15055F008AF210 /* ModifyPasswordCell.m in Sources */,
@@ -1525,6 +1542,7 @@
 				877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */,
 				0278E9421D47B0B3000F1898 /* UIProgressView+AFNetworking.m in Sources */,
 				02E1A6941CB38DF1009C6177 /* ResManager.m in Sources */,
+				87EF31DA1D7D4751003ECB83 /* Activity.m in Sources */,
 				0278E9401D47B0B3000F1898 /* UIButton+AFNetworking.m in Sources */,
 				02DF13AA1CFEAE4100F1BD2C /* ScoreConvertCenterController.m in Sources */,
 				02DF138B1CFEAE4100F1BD2C /* MyScoreController.m in Sources */,
