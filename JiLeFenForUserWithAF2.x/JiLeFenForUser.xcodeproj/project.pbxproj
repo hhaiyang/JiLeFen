@@ -163,6 +163,7 @@
 		871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 871B127D1D703BC0005F615C /* CashConvertSuccessView.m */; };
 		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
 		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
+		876A2CF51D7E963900B09366 /* BusinessCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 876A2CF41D7E963900B09366 /* BusinessCategory.m */; };
 		877DA6FA1D79A3DB0061D5E5 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */; };
 		877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6FC1D79A7950061D5E5 /* Goods.m */; };
 		87E564201D701F83007301C5 /* Bank.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5641F1D701F83007301C5 /* Bank.m */; };
@@ -507,6 +508,8 @@
 		873F4CED1D6F16FF008BFA42 /* InputDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDateView.m; sourceTree = "<group>"; };
 		873F4CEE1D6F16FF008BFA42 /* SelectDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateView.h; sourceTree = "<group>"; };
 		873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateView.m; sourceTree = "<group>"; };
+		876A2CF31D7E963900B09366 /* BusinessCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCategory.h; sourceTree = "<group>"; };
+		876A2CF41D7E963900B09366 /* BusinessCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCategory.m; sourceTree = "<group>"; };
 		877DA6F81D79A3DB0061D5E5 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		877DA6FB1D79A7950061D5E5 /* Goods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goods.h; sourceTree = "<group>"; };
@@ -805,6 +808,8 @@
 				87EF31D61D7D2629003ECB83 /* Business.m */,
 				87EF31D81D7D4751003ECB83 /* Activity.h */,
 				87EF31D91D7D4751003ECB83 /* Activity.m */,
+				876A2CF31D7E963900B09366 /* BusinessCategory.h */,
+				876A2CF41D7E963900B09366 /* BusinessCategory.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1597,6 +1602,7 @@
 				029C08151D1645B900138D15 /* UIView+MJExtension.m in Sources */,
 				0278E9341D47B0B3000F1898 /* AFHTTPSessionManager.m in Sources */,
 				02998C9B1D1F9F4B00670877 /* Commbox.m in Sources */,
+				876A2CF51D7E963900B09366 /* BusinessCategory.m in Sources */,
 				02DF13A51CFEAE4100F1BD2C /* DomesticConvertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Activity.h"
 
 @interface SecondaryRecommendView : UIView
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *firstLabel;
 @property (nonatomic, strong) UILabel *secondLabel;
-@property (nonatomic, strong) UILabel *thirdLabel;
-
+@property (nonatomic, strong) Activity *activity;
 @end

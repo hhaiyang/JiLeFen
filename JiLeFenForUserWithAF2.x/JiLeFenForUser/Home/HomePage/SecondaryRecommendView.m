@@ -7,6 +7,7 @@
 //
 
 #import "SecondaryRecommendView.h"
+#import "UIImageView+WebCache.h"
 
 @implementation SecondaryRecommendView
 
@@ -19,38 +20,14 @@
         [self addSubview:_imageView];
         
         _firstLabel = [UILabel new];
-        NSMutableAttributedString *str = [NSMutableAttributedString new];
-        NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"阳光家具  " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
-        NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"6" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:[UIColor redColor]}];
-        NSAttributedString *str3 = [[NSAttributedString alloc] initWithString:@"倍积分" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
-        [str appendAttributedString:str1];
-        [str appendAttributedString:str2];
-        [str appendAttributedString:str3];
-        _firstLabel.attributedText = str;
         [self addSubview:_firstLabel];
         
         _secondLabel = [UILabel new];
-        str = [NSMutableAttributedString new];
-        str1 = [[NSAttributedString alloc] initWithString:@"全场" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        str2 = [[NSMutableAttributedString alloc] initWithString:@"5" attributes:@{NSForegroundColorAttributeName:[UIColor redColor], NSFontAttributeName:[UIFont systemFontOfSize:12]}];
-        str3 = [[NSAttributedString alloc] initWithString:@"折" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        [str appendAttributedString:str1];
-        [str appendAttributedString:str2];
-        [str appendAttributedString:str3];
-        _secondLabel.attributedText = str;
+        _secondLabel.numberOfLines = 0;
+        _secondLabel.textColor = [UIColor grayColor];
+        _secondLabel.font = [UIFont systemFontOfSize:11];
         [self addSubview:_secondLabel];
         
-        _thirdLabel = [UILabel new];
-        _thirdLabel.textAlignment = NSTextAlignmentRight;
-        str = [NSMutableAttributedString new];
-        str1 = [[NSAttributedString alloc] initWithString:@"沙发特价" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        str2 = [[NSMutableAttributedString alloc] initWithString:@"1688" attributes:@{NSForegroundColorAttributeName:[UIColor redColor], NSFontAttributeName:[UIFont systemFontOfSize:12]}];
-        str3 = [[NSAttributedString alloc] initWithString:@"元" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor grayColor]}];
-        [str appendAttributedString:str1];
-        [str appendAttributedString:str2];
-        [str appendAttributedString:str3];
-        _thirdLabel.attributedText = str;
-        [self addSubview:_thirdLabel];
         
         
     }
@@ -60,10 +37,22 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     _imageView.frame = CGRectMake(self.width-self.height, 0, self.height, self.height);
-    _firstLabel.frame = CGRectMake(0, 0, self.width-_imageView.width-10, self.height/3);
+    _firstLabel.frame = CGRectMake(0, 0, self.width-_imageView.width-10, self.height/2);
     _secondLabel.frame = CGRectMake(0, _firstLabel.height, _firstLabel.width, _firstLabel.height);
-    _thirdLabel.frame = CGRectMake(0, _secondLabel.y+_secondLabel.height, _secondLabel.width, _secondLabel.height);
     
     
+}
+- (void)setActivity:(Activity *)activity {
+    _activity = activity;
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:activity.thumb]];
+    NSMutableAttributedString *str = [NSMutableAttributedString new];
+    NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:activity.business.name attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+    NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  %@", activity.integral] attributes:@{NSForegroundColorAttributeName:[UIColor redColor], NSFontAttributeName:[UIFont systemFontOfSize:15]}];
+    NSAttributedString *str3 = [[NSAttributedString alloc] initWithString:@"倍积分" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+    [str appendAttributedString:str1];
+    [str appendAttributedString:str2];
+    [str appendAttributedString:str3];
+    _firstLabel.attributedText = str;
+    _secondLabel.text = activity.title;
 }
 @end

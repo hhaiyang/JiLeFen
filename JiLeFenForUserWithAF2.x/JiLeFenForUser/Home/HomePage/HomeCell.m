@@ -63,4 +63,10 @@
     _topSecondaryRecommendView.frame = CGRectMake(_primaryRecommendView.x*2+_primaryRecommendView.width, _primaryRecommendView.y, self.width-3*_primaryRecommendView.x-_primaryRecommendView.width, (self.height-20-_categoryView.height)/2);
     _bottomSecondaryRecommendView.frame = CGRectMake(_topSecondaryRecommendView.x, _topSecondaryRecommendView.y+_topSecondaryRecommendView.height+5, _topSecondaryRecommendView.width, _topSecondaryRecommendView.height);
 }
+- (void)setActivities:(NSArray *)activities {
+    _activities = activities;
+    _primaryRecommendView.activity = activities[0];
+    _topSecondaryRecommendView.activity = activities[1];
+    _bottomSecondaryRecommendView.activity = activities[2];
+}
 @end

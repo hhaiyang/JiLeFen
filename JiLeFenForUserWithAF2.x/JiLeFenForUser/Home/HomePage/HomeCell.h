@@ -17,5 +17,6 @@
 @property (nonatomic, strong) PrimaryRecommendView *primaryRecommendView;
 @property (nonatomic, strong) SecondaryRecommendView *topSecondaryRecommendView;
 @property (nonatomic, strong) SecondaryRecommendView *bottomSecondaryRecommendView;
+@property (nonatomic, strong) NSArray *activities;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 @end

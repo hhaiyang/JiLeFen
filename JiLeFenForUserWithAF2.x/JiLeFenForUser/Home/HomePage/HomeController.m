@@ -21,6 +21,7 @@
 //热门视图
 @property (nonatomic, strong) UIView *hotView;
 @property (nonatomic, strong) NSArray *categoryName;
+@property (nonatomic, strong) NSArray *categoryArray;
 @end
 
 @implementation HomeController
@@ -138,9 +139,6 @@
                         _hotView.frame = CGRectMake(10, _middleView.y+_middleView.height+10, weakSelf.tableView.tableHeaderView.width-20, 150);
                         _hotView.backgroundColor = [UIColor whiteColor];
                         [weakSelf.tableView.tableHeaderView addSubview:_hotView];
-                        CGRect frame = weakSelf.tableView.tableHeaderView.frame;
-                        frame.size.height += 150+20;
-                        weakSelf.tableView.tableHeaderView.frame = frame;
                         PartView *partView = nil;
                         CGFloat partViewHeight = _hotView.height/2;
                         CGFloat partViewWidth = _hotView.width/2;
@@ -170,10 +168,42 @@
                         imageView.frame = CGRectMake(_hotView.width-width, 0, width, height);
                         imageView.image = image;
                         [_hotView addSubview:imageView];
+                        
+                        //更新table header view 的frame
+                        CGRect frame = weakSelf.tableView.tableHeaderView.frame;
+                        frame.size.height += 150+20;
+                        weakSelf.tableView.tableHeaderView.frame = frame;
+                        [weakSelf.tableView setTableHeaderView:weakSelf.tableView.tableHeaderView];
+
                     }
+                    
                     
                 }
                 //分类推广
+                NSArray *arr = responseObject[@"channel"];
+                NSMutableArray *categories = [NSMutableArray new];
+                for (NSDictionary *dic in arr) {
+                    NSMutableArray *category = [NSMutableArray new];
+                    BusinessCategory *businessCategory = [BusinessCategory new];
+                    businessCategory.ID = dic[@"cid"];
+                    businessCategory.name = dic[@"banner"];
+                    NSArray *list = dic[@"list"];
+                    for (NSDictionary *dic2 in list) {
+                        Business *business = [Business new];
+                        business.businessCategory = businessCategory;
+                        business.ID = dic2[@"id"];
+                        business.name = dic2[@"name"];
+                        Activity *activity = [Activity new];
+                        activity.thumb = dic2[@"thumb"];
+                        activity.integral = dic2[@"integral"];
+                        activity.title = dic2[@"title"];
+                        activity.business = business;
+                        [category addObject:activity];
+                    }
+                    [categories addObject:[category copy]];
+                }
+                _categoryArray = [categories copy];
+                [weakSelf.tableView reloadData];
                 
                 
             }
@@ -195,7 +225,6 @@
     }
     return _categoryName;
 }
-
 
 
 - (void)search {
@@ -238,13 +267,14 @@
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.categoryName.count;
+    return _categoryArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell"];
+    cell.activities = _categoryArray[indexPath.row];
     cell.moreButton.tag = indexPath.row;
     cell.categoryLabel.text = self.categoryName[indexPath.row];
     [cell.moreButton addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];

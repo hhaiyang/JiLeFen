@@ -7,6 +7,7 @@
 //
 
 #import "PrimaryRecommendView.h"
+#import "UIImageView+WebCache.h"
 
 @implementation PrimaryRecommendView
 
@@ -17,9 +18,6 @@
         _imageView = [UIImageView new];
         _imageView.image = [UIImage imageNamed:@"标志"];
         [self addSubview:_imageView];
-        
-        _pointImageView = [UIImageView new];
-        _pointImageView.image = [UIImage imageNamed:@""];
     }
     return self;
 }
@@ -27,5 +25,9 @@
     [super layoutSubviews];
     _imageView.frame = self.bounds;
     
+}
+- (void)setActivity:(Activity *)activity {
+    _activity = activity;
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:activity.thumb]];
 }
 @end
