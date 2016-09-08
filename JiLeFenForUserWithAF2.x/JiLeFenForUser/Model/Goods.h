@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Goods : NSObject
-@property (nonatomic, copy) NSString *ID;
+#import "BaseModel.h"
+//商品模型
+@interface Goods : BaseModel
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *thumb;
 @property (nonatomic, copy) NSString *brief;

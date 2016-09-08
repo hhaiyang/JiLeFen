@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Business.h"
+#import "BaseModel.h"
 //商家活动模型
-@interface Activity : NSObject
-//活动ID
-@property (nonatomic, copy) NSString *ID;
+@interface Activity : BaseModel
 //活动标题
 @property (nonatomic, copy) NSString *title;
 //活动缩略图

@@ -160,6 +160,9 @@
 		02F1CF7D1D1C214E003F7220 /* SecondaryRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1CF7C1D1C214E003F7220 /* SecondaryRecommendView.m */; };
 		87074EE41D69A211000410AC /* UnsubscribeConfirmPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */; };
 		8710F4561D72ADEF00D5232C /* UnsubscribeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8710F4551D72ADEF00D5232C /* UnsubscribeSuccessView.m */; };
+		87174E001D8149E30079D0B4 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 87174DFF1D8149E30079D0B4 /* Order.m */; };
+		87174E031D8157200079D0B4 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87174E021D8157200079D0B4 /* BaseModel.m */; };
+		87174E061D8157970079D0B4 /* GoodConvertOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 87174E051D8157970079D0B4 /* GoodConvertOrder.m */; };
 		871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 871B127D1D703BC0005F615C /* CashConvertSuccessView.m */; };
 		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
 		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
@@ -502,6 +505,12 @@
 		87074EE31D69A211000410AC /* UnsubscribeConfirmPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeConfirmPopView.m; sourceTree = "<group>"; };
 		8710F4541D72ADEF00D5232C /* UnsubscribeSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribeSuccessView.h; sourceTree = "<group>"; };
 		8710F4551D72ADEF00D5232C /* UnsubscribeSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeSuccessView.m; sourceTree = "<group>"; };
+		87174DFE1D8149E30079D0B4 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		87174DFF1D8149E30079D0B4 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		87174E011D8157200079D0B4 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		87174E021D8157200079D0B4 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		87174E041D8157970079D0B4 /* GoodConvertOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodConvertOrder.h; sourceTree = "<group>"; };
+		87174E051D8157970079D0B4 /* GoodConvertOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodConvertOrder.m; sourceTree = "<group>"; };
 		871B127C1D703BC0005F615C /* CashConvertSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertSuccessView.h; sourceTree = "<group>"; };
 		871B127D1D703BC0005F615C /* CashConvertSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashConvertSuccessView.m; sourceTree = "<group>"; };
 		873F4CEC1D6F16FF008BFA42 /* InputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputDateView.h; sourceTree = "<group>"; };
@@ -810,6 +819,12 @@
 				87EF31D91D7D4751003ECB83 /* Activity.m */,
 				876A2CF31D7E963900B09366 /* BusinessCategory.h */,
 				876A2CF41D7E963900B09366 /* BusinessCategory.m */,
+				87174DFE1D8149E30079D0B4 /* Order.h */,
+				87174DFF1D8149E30079D0B4 /* Order.m */,
+				87174E011D8157200079D0B4 /* BaseModel.h */,
+				87174E021D8157200079D0B4 /* BaseModel.m */,
+				87174E041D8157970079D0B4 /* GoodConvertOrder.h */,
+				87174E051D8157970079D0B4 /* GoodConvertOrder.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1571,6 +1586,7 @@
 				0200CF5E1D197B2E00A286F6 /* AppointmentingCell.m in Sources */,
 				0278E93F1D47B0B3000F1898 /* UIAlertView+AFNetworking.m in Sources */,
 				029C08031D1645B900138D15 /* MJRefreshAutoFooter.m in Sources */,
+				87174E001D8149E30079D0B4 /* Order.m in Sources */,
 				02E1A80E1CB395CD009C6177 /* SDWebImageManager.m in Sources */,
 				02E1A8131CB395CD009C6177 /* UIImageView+HighlightedWebCache.m in Sources */,
 				02E1A8121CB395CD009C6177 /* UIImage+MultiFormat.m in Sources */,
@@ -1580,6 +1596,7 @@
 				02E1A67B1CB38DDD009C6177 /* NSArray+Description.m in Sources */,
 				02DF136B1CFEAE4100F1BD2C /* HomeController.m in Sources */,
 				87EE54B41D7171D400AE884B /* AppointmentInfoView.m in Sources */,
+				87174E031D8157200079D0B4 /* BaseModel.m in Sources */,
 				029C08131D1645B900138D15 /* UIScrollView+MJExtension.m in Sources */,
 				02E1A80A1CB395CD009C6177 /* SDWebImageCompat.m in Sources */,
 				029C08251D1653EA00138D15 /* ViewUtil.m in Sources */,
@@ -1600,6 +1617,7 @@
 				029C080C1D1645B900138D15 /* MJRefreshBackNormalFooter.m in Sources */,
 				029C080A1D1645B900138D15 /* MJRefreshAutoStateFooter.m in Sources */,
 				029C08151D1645B900138D15 /* UIView+MJExtension.m in Sources */,
+				87174E061D8157970079D0B4 /* GoodConvertOrder.m in Sources */,
 				0278E9341D47B0B3000F1898 /* AFHTTPSessionManager.m in Sources */,
 				02998C9B1D1F9F4B00670877 /* Commbox.m in Sources */,
 				876A2CF51D7E963900B09366 /* BusinessCategory.m in Sources */,
@@ -1718,6 +1736,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.tedu.JiLeFenForUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e16261d2-7b75-4c66-8c70-a3a060e7cc50";
 			};
 			name = Debug;
 		};
@@ -1738,6 +1757,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.tedu.JiLeFenForUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e16261d2-7b75-4c66-8c70-a3a060e7cc50";
 			};
 			name = Release;
 		};

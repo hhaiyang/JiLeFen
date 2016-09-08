@@ -10,6 +10,7 @@
 #import "AddScoreController.h"
 #import "IntroductionView.h"
 #import "ScoreListController.h"
+#import "User.h"
 
 
 @interface MyScoreController ()
@@ -24,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    //初始化导航
     self.navigationController.navigationBar.hidden = NO;
     self.title = @"我的积分";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(back) imageName:@"返回小图标-红色" height:30];
@@ -34,6 +36,18 @@
     UIBarButtonItem *scoreList = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(scoreList) imageName:@"ScoreList" height:25];
     self.navigationItem.rightBarButtonItems = @[addScore, scoreList];
     
+    //获取数据，根据数据刷新界面，如果获取失败，则显示点击重新刷新
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"userid"] = [User currentUser].ID;
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=userinfo" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"res = %@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error = %@", error);
+        
+    }];
     UIView *scoreView = [UIView new];
     scoreView.layer.cornerRadius = 2;
     scoreView.frame = CGRectMake(15, 64+20, self.view.width-30, 45);

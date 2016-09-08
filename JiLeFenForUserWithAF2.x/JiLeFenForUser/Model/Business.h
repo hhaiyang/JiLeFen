@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BusinessCategory.h"
+#import "BaseModel.h"
 //商家模型
-@interface Business : NSObject
-//商家ID
-@property (nonatomic, copy) NSString *ID;
+@interface Business : BaseModel
 //商家的名字
 @property (nonatomic, copy) NSString *name;
 //商家的地址

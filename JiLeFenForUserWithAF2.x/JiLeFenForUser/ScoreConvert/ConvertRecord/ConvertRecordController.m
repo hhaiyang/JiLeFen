@@ -12,6 +12,7 @@
 #import "LookConvertCodePopView.h"
 #import "UnsubscribeConfirmPopView.h"
 #import "UnsubscribeSuccessView.h"
+#import "User.h"
 
 @interface ConvertRecordController () <UnsubscribeConfirmPopViewDelegate, UnsubscribeSuccessViewDelegate>
 @property (nonatomic, strong) NSArray *goodsConvertRecordArr;
@@ -31,7 +32,20 @@
     
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.tableView.mj_header endRefreshing];
+        //获取物品兑换记录
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+        NSMutableDictionary *para = [NSMutableDictionary new];
+        para[@"userid"] = [User currentUser].ID;
+        para[@"isget"] = @"-1";
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=cashlist" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            NSLog(@"res = %@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"error = %@", error);
+            
+        }];
         
     }];
     [self.tableView.mj_header beginRefreshing];

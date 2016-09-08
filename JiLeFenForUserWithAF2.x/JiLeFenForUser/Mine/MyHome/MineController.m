@@ -145,29 +145,29 @@
 }
 - (void)myScore:(id)sender {
     TEST_LOG(@"我的积分");
-//    if ([User currentUser].status == NoLogin) {
-//        [self login:nil];
-//        return;
-//    }
+    if ([User currentUser].status == NoLogin) {
+        [self login:nil];
+        return;
+    }
     MyScoreController *myScoreController = [MyScoreController new];
    
     [self.navigationController pushViewController:myScoreController animated:YES];
 }
 - (void)myAttention:(id)sender {
     TEST_LOG(@"我的关注");
-//    if ([User currentUser].status == NoLogin) {
-//        [self login:nil];
-//        return;
-//    }
+    if ([User currentUser].status == NoLogin) {
+        [self login:nil];
+        return;
+    }
     MyAttentionController *myAttentionController = [[MyAttentionController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:myAttentionController animated:YES];
 }
 - (void)myRelatedAccount:(id)sender {
     TEST_LOG(@"我的关联号");
-//    if ([User currentUser].status == NoLogin) {
-//        [self login:nil];
-//        return;
-//    }
+    if ([User currentUser].status == NoLogin) {
+        [self login:nil];
+        return;
+    }
     MyRelatedAccountController *myRelatedAccountController = [MyRelatedAccountController new];
     myRelatedAccountController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myRelatedAccountController animated:YES];
@@ -188,11 +188,12 @@
         [_userStatusButton setTitle:@"登陆" forState:UIControlStateNormal];
         [_userStatusButton removeTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
         [_userStatusButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+        _userStatusLabel.text = @"你还没有登录哦～";
     } else {
         [_userStatusButton setTitle:@"注销" forState:UIControlStateNormal];
         [_userStatusButton removeTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
         [_userStatusButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-        
+        _userStatusLabel.text = [User currentUser].ID;
     }
     [self.tableView reloadData];
 }

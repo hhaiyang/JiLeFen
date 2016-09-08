@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
 typedef enum UserStatus {
     Login,
@@ -14,8 +15,8 @@ typedef enum UserStatus {
     
 }UserStatus;
 
-@interface User : NSObject
-@property (nonatomic, copy) NSString *ID;
+@interface User : BaseModel
+//用户的登录状态
 @property (nonatomic, assign) UserStatus status;
 + (instancetype)currentUser;
 @end

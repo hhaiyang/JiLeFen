@@ -11,7 +11,7 @@
 @implementation Goods
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     if ([key isEqualToString:@"ID"]) {
-        _ID = key;
+        self.ID = key;
     }
 }
 @end

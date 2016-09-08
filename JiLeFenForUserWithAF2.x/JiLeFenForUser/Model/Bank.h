@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface Bank : NSObject
-@property (nonatomic, copy) NSString *ID;
+@interface Bank : BaseModel
+//银行的名字
 @property (nonatomic, copy) NSString *name;
 @end
