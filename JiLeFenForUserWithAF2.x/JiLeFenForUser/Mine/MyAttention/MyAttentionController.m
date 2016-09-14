@@ -27,9 +27,21 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.myAttentions = @[@"", @"", @""];
-        [weakSelf.tableView.mj_header endRefreshing];
-        [weakSelf.tableView reloadData];
+        //获取我的关注列表
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+        NSMutableDictionary *para = [NSMutableDictionary new];
+        para[@"userid"] = @"13051616145";
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getconcern" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            TEST_LOG(@"res = %@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            TEST_LOG(@"error = %@", error);
+            
+        }];
+        
         
     }];
     [self.tableView.mj_header beginRefreshing];

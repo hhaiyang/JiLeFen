@@ -710,7 +710,7 @@ if($_GET['j']=='index'){
 		case goodsinfo: //活动详情
 		$id=$_POST['id'];
 		//$data =$db->get_one("select id,title,prices,num,points,img_path,mycode,begintime,endtime from {$db_mymps}information where id=".$id);
-		$data =$db->get_one("select id,name,prices,detail,img_path from {$db_mymps}jifen_goods where id=".$id);
+		$data =$db->get_one("select id,name,prices,detail,img_path,myCode from {$db_mymps}jifen_goods where id=".$id);
 		if($data){
 			foreach ($data as $key=>&$val){
 				$val['title'] = iconv('gbk','utf-8',$val['name']);
@@ -844,6 +844,56 @@ if($_GET['j']=='index'){
 		}
         echo json_encode($result);		
 		break;
+		case addconcern: //增加关注商品
+			$userid = $_POST['userid'];
+			$good_id = $_POST['goodid'];
+			$good_name = $_POST['goodname'];
+			$time = time();
+			if($userid){
+				$db->query("INSERT INTO `{$db_mymps}concern` (userid,good_id,good_name,time) values('".$userid."','".$good_id."','".$good_name."','".$time."')");
+				$result['status'] =1;
+			}else{
+				$result['status'] =0;
+			}
+			echo json_encode($result);
+		break;
+		case cannelconcern: //取消关注
+			$id = $_POST['id'];
+			$arr=$db->get_one("select id from {$db_mymps}concern where id ='".$id."'");
+			if($arr){
+				$db->query("update {$db_mymps}concern set flog = 1 where id=".$id);
+				$result['message'] = '取消成功';
+				$result['status'] = 1;
+			}else{
+				$result['msg'] = '参数错误！';
+				$result['status'] = 0;
+			}
+			echo json_encode($result);
+			break;
+		case getconcern: //获取关注列表
+			$userid = $_POST['userid'];
+			$concernlist=$db->getAll("select id,good_id,good_name from my_concern where userid='".$userid." and flog=0' order by time desc");
+			
+			if(is_array($concernlist)&&!empty($concernlist)){
+				$result['status'] =1;
+				$result['data']=$concernlist;
+			}else{
+				$result['status'] =0;
+			}
+			echo json_encode($result);
+			break;
+		case addfankui: //添加反馈
+			$userid = $_POST['userid'];
+			$time = time();
+			$content = $_POST['content'];
+			if($userid && $content){
+				$db->query("INSERT INTO `{$db_mymps}fankui` (fankui,fuserid,time) values('".$content."','".$userid."','".$time."')");
+				$result['status'] =1;
+			}else{
+				$result['status'] =0;
+			}
+			echo json_encode($result);
+			break;
 //		case cashquit:
 //		$userid =$_POST['userid'];
 //		$goods_id =$_POST['goods_id'];
@@ -886,24 +936,28 @@ if($_GET['j']=='index'){
 		case banklist: //银行列表
 		$banklist=$db->getAll("select bankid,bankname from my_bank");
 					$result['data']=$banklist;
-		if($banklist[0]) {$result['status']=1;} else {$result['status'] =0;}
+		if($banklist[0]) {
+			foreach ($result['data'] as $ke=>&$va){
+						$va['bankname'] = iconv('gbk','utf-8',$va['bankname']);
+					}
+			$result['status']=1;
+		} else {$result['status'] =0;}
 		echo json_encode($result);	
 		break;
-		case jzorder: //家政服务订单
+		case jzorder: //预定家政服务
 		$cash=20;
 		$address=$_POST['address'];
 		$userid=$_POST['userid'];
 		$realname=$_POST['realname'];
 		$phone=$_POST['phone'];
-		$tid=$_POST['tid'];
 		$servicetime=$_POST['servicetime'];
 		$ip=$_SERVER['REMOTE_ADDR'];
 		$userinfo=$db->get_one("select jifen_jzfw from {$db_mymps}jifen_mun where userid ='".$userid."'");
-		$jzfwinfo=$db->get_one("select id from {$db_mymps}jifen_jzfw where tid ='".$tid."' and servicetime='".$servicetime."'");
+		$jzfwinfo=$db->get_one("select id from {$db_mymps}jifen_jzfw where servicetime='".$servicetime."'");
 		if($userinfo&&!$jzfwinfo['id']){
 		  if($userinfo['jifen_jzfw']-$cash>0){
 		      $db->query("update {$db_mymps}jifen_mun set jifen_jzfw=jifen_jzfw-".$cash." where userid='".$userid." '");
-			  $db->query("INSERT INTO `{$db_mymps}jifen_jzfw` (userid,address,ip,tid,servicetime,realname,phone) values('".$userid."','".$address."','".$ip."','".$tid."','".$servicetime."','".$realname."','".$phone."')");
+			  $db->query("INSERT INTO `{$db_mymps}jifen_jzfw` (userid,address,ip,servicetime,realname,phone) values('".$userid."','".$address."','".$ip."','".$servicetime."','".$realname."','".$phone."')");
 			  $result['status'] =1;
 		  }else{
 			  $result['status'] =0;
@@ -946,6 +1000,61 @@ if($_GET['j']=='index'){
 		}
         echo json_encode($result); 
 		break;
+		case all_list:
+			$type = $_POST['type'];
+			if($type){
+				$where = "type = ".$type;  //type :0 预约中，1，已完成预约，2取消预约的
+			}else{
+				$where = ' 1=1 ';
+			}
+			if($id){
+				$data=$db->get_one("select * from {$db_mymps}jifen_jzfw where ".$where);
+			}
+			if($data){
+				$result['data'] = $data;
+				$result['status'] = 1;
+			}else{
+				$result['status'] = 0;
+			}
+			echo json_encode($result);
+			break;
+		case jzlist: //个人家政列表
+			$id =$_POST['userid'];
+			$type = $_POST['type'];
+			if($type){
+				$where = " and type = ".$type;  //type :0 预约中，1，已完成预约，2取消预约的
+			}else{
+				$where = '';
+			}
+			if($id){
+				$data=$db->get_one("select * from {$db_mymps}jifen_jzfw where userid ='".$userid."'".$where);
+			}
+			if($data){
+				$result['data'] = $data;
+				$result['status'] = 1;
+			}else{
+				$result['status'] = 0;
+			}
+			echo json_encode($result);
+		break;
+		case qxjzfw: //取消家政服务
+			$userid = $_POST['userid'];
+			$id = $_POST['id'];
+			$cash = 20;
+			$data=$db->get_one("select id from {$db_mymps}jifen_jzfw where userid ='".$userid."' and type=0 and id = $id ");
+			if($data){
+				$db->query("update {$db_mymps}jifen_jzfw  set type = 2 where type=0 and userid='".$userid."and id=$id");
+				$db->query("update {$db_mymps}jifen_mun  set jifen_jzfw=jifen_jzfw+".$cash." where type=0 and userid='".$userid);// 更新家政积分数量
+				$result['data'] = $data;
+				$result['status'] = 1;
+			}else{
+				$result['status'] = 0;
+			}
+			echo json_encode($result);
+			break;
+		case surejz: //确认家政服务完成  预留
+			
+			break;
 		case login: //登录
 		$userid = $_POST['userid'];
 		$password = $_POST['password'];

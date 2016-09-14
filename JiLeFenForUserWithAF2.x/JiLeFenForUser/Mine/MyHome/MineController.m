@@ -65,12 +65,13 @@
     actionView.backgroundColor = kRGBColor(245, 244, 245);
     [tableheaderView addSubview:actionView];
     
+    //我的积分，我的关注
     UIView *subview = nil;
-    CGFloat subviewWidth = actionView.width/3;
+    NSArray *titles = @[@"我的积分", @"我的关注"/*, @"我的关联号"*/];
+    NSArray *images = @[@"我的积分", @"我的关注"/*, @"我的关联号"*/];
+    CGFloat subviewWidth = actionView.width/titles.count;
     CGFloat subviewHeight = actionView.height;
-    NSArray *titles = @[@"我的积分", @"我的关注", @"我的关联号"];
-    NSArray *images = @[@"我的积分", @"我的关注", @"我的关联号"];
-    for (int index = 0; index < 3; index++) {
+    for (int index = 0; index < titles.count; index++) {
         subview = [UIView new];
         subview.backgroundColor = [UIColor clearColor];
         subview.frame = CGRectMake(index*subviewWidth, 0, subviewWidth, subviewHeight);
@@ -86,9 +87,9 @@
             [button addTarget:self action:@selector(myScore:) forControlEvents:UIControlEventTouchUpInside];
         } else if (index == 1) {
             [button addTarget:self action:@selector(myAttention:) forControlEvents:UIControlEventTouchUpInside];
-        } else {
+        } /*else {
             [button addTarget:self action:@selector(myRelatedAccount:) forControlEvents:UIControlEventTouchUpInside];
-        }
+        }*/
         [subview addSubview:button];
         
         UILabel *label = [UILabel new];
@@ -145,23 +146,24 @@
 }
 - (void)myScore:(id)sender {
     TEST_LOG(@"我的积分");
-    if ([User currentUser].status == NoLogin) {
-        [self login:nil];
-        return;
-    }
+//    if ([User currentUser].status == NoLogin) {
+//        [self login:nil];
+//        return;
+//    }
     MyScoreController *myScoreController = [MyScoreController new];
    
     [self.navigationController pushViewController:myScoreController animated:YES];
 }
 - (void)myAttention:(id)sender {
     TEST_LOG(@"我的关注");
-    if ([User currentUser].status == NoLogin) {
-        [self login:nil];
-        return;
-    }
+//    if ([User currentUser].status == NoLogin) {
+//        [self login:nil];
+//        return;
+//    }
     MyAttentionController *myAttentionController = [[MyAttentionController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:myAttentionController animated:YES];
 }
+/*
 - (void)myRelatedAccount:(id)sender {
     TEST_LOG(@"我的关联号");
     if ([User currentUser].status == NoLogin) {
@@ -172,6 +174,7 @@
     myRelatedAccountController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myRelatedAccountController animated:YES];
 }
+ */
 //退出登录
 - (void)logout {
     TEST_LOG(@"退出");

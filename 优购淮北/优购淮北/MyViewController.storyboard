@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="n1q-9N-gRO">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--My View Controller-->
+        <scene sceneID="Jlx-Jk-bev">
+            <objects>
+                <viewController id="n1q-9N-gRO" customClass="MyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r2e-Ce-sy1"/>
+                        <viewControllerLayoutGuide type="bottom" id="oa1-FK-Jof"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YPE-5c-73s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titlelogo" translatesAutoresizingMaskIntoConstraints="NO" id="e75-48-75b">
+                                <rect key="frame" x="102" y="20" width="116" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5WV-39-JRY"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jp8-8B-Q3F">
+                                <rect key="frame" x="0.0" y="50" width="320" height="1"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="vmR-sr-oBh"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的优购淮北" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwr-DF-125">
+                                <rect key="frame" x="108" y="56" width="103" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="5JQ-Lc-aGH"/>
+                                    <constraint firstAttribute="width" constant="103" id="YKO-gV-TXz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABv-0z-eZ1">
+                                <rect key="frame" x="0.0" y="85" width="320" height="483"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKt-FF-Ksz">
+                                <rect key="frame" x="1" y="52" width="25" height="25"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="LFG-6p-N1C"/>
+                                    <constraint firstAttribute="height" constant="25" id="LL8-xc-JS0"/>
+                                </constraints>
+                                <state key="normal" image="back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClick" destination="n1q-9N-gRO" eventType="touchUpInside" id="MDz-zx-nvR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zwr-DF-125" firstAttribute="top" secondItem="jp8-8B-Q3F" secondAttribute="bottom" constant="5" id="0fU-2z-b84"/>
+                            <constraint firstItem="jp8-8B-Q3F" firstAttribute="leading" secondItem="YPE-5c-73s" secondAttribute="leadingMargin" constant="-16" id="2NP-mF-1lo"/>
+                            <constraint firstItem="jp8-8B-Q3F" firstAttribute="top" secondItem="e75-48-75b" secondAttribute="bottom" id="8uQ-Bb-vBq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ABv-0z-eZ1" secondAttribute="trailing" constant="-16" id="8xf-Tv-e24"/>
+                            <constraint firstItem="ABv-0z-eZ1" firstAttribute="leading" secondItem="YPE-5c-73s" secondAttribute="leadingMargin" constant="-16" id="LwI-BI-rAB"/>
+                            <constraint firstItem="ABv-0z-eZ1" firstAttribute="top" secondItem="Zwr-DF-125" secondAttribute="bottom" constant="8" id="Rso-42-Viy"/>
+                            <constraint firstAttribute="centerX" secondItem="Zwr-DF-125" secondAttribute="centerX" id="Stq-dV-bg0"/>
+                            <constraint firstItem="oa1-FK-Jof" firstAttribute="top" secondItem="ABv-0z-eZ1" secondAttribute="bottom" id="Y4I-9e-9UJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e75-48-75b" secondAttribute="trailing" constant="86" id="azq-Py-LU3"/>
+                            <constraint firstItem="e75-48-75b" firstAttribute="leading" secondItem="YPE-5c-73s" secondAttribute="leadingMargin" constant="86" id="jbM-1b-jrL"/>
+                            <constraint firstItem="e75-48-75b" firstAttribute="top" secondItem="r2e-Ce-sy1" secondAttribute="bottom" id="kLh-vJ-0A2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jp8-8B-Q3F" secondAttribute="trailing" constant="-16" id="lUt-cA-qgI"/>
+                            <constraint firstItem="qKt-FF-Ksz" firstAttribute="leading" secondItem="YPE-5c-73s" secondAttribute="leadingMargin" constant="-15" id="o0B-U6-XDx"/>
+                            <constraint firstItem="qKt-FF-Ksz" firstAttribute="top" secondItem="jp8-8B-Q3F" secondAttribute="bottom" constant="1" id="rWZ-kJ-eYx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="MyWebView" destination="ABv-0z-eZ1" id="iMX-qA-KM5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLz-gp-pDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="206" y="309"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="60" height="60"/>
+        <image name="titlelogo" width="259" height="68"/>
+    </resources>
+</document>
