@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  我的关注界面
- */
-@interface MyAttentionController : UITableViewController
+//我的关注列表界面
+@interface MyAttentionListController : UITableViewController
 
 @end

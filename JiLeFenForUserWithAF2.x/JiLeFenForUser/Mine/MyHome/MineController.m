@@ -10,7 +10,7 @@
 #import "ModifyPasswordController.h"
 #import "LoginController.h"
 #import "MyScoreController.h"
-#import "MyAttentionController.h"
+#import "MyAttentionListController.h"
 #import "MyRelatedAccountController.h"
 #import "User.h"
 @interface MineController ()
@@ -160,7 +160,7 @@
 //        [self login:nil];
 //        return;
 //    }
-    MyAttentionController *myAttentionController = [[MyAttentionController alloc] initWithStyle:UITableViewStylePlain];
+    MyAttentionListController *myAttentionController = [[MyAttentionListController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:myAttentionController animated:YES];
 }
 /*

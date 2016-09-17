@@ -87,7 +87,7 @@
 		02DF13731CFEAE4100F1BD2C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12FA1CFEAE4100F1BD2C /* TabBarController.m */; };
 		02DF13741CFEAE4100F1BD2C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF12FE1CFEAE4100F1BD2C /* LoginController.m */; };
 		02DF137C1CFEAE4100F1BD2C /* MyAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF130C1CFEAE4100F1BD2C /* MyAttentionCell.m */; };
-		02DF137E1CFEAE4100F1BD2C /* MyAttentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF130F1CFEAE4100F1BD2C /* MyAttentionController.m */; };
+		02DF137E1CFEAE4100F1BD2C /* MyAttentionListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF130F1CFEAE4100F1BD2C /* MyAttentionListController.m */; };
 		02DF137F1CFEAE4100F1BD2C /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13121CFEAE4100F1BD2C /* MineController.m */; };
 		02DF13821CFEAE4100F1BD2C /* CancelRelatePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF13181CFEAE4100F1BD2C /* CancelRelatePopView.m */; };
 		02DF13841CFEAE4100F1BD2C /* MyRelatedAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF131B1CFEAE4100F1BD2C /* MyRelatedAccountController.m */; };
@@ -341,8 +341,8 @@
 		02DF12FE1CFEAE4100F1BD2C /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		02DF130B1CFEAE4100F1BD2C /* MyAttentionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAttentionCell.h; sourceTree = "<group>"; };
 		02DF130C1CFEAE4100F1BD2C /* MyAttentionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttentionCell.m; sourceTree = "<group>"; };
-		02DF130E1CFEAE4100F1BD2C /* MyAttentionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAttentionController.h; sourceTree = "<group>"; };
-		02DF130F1CFEAE4100F1BD2C /* MyAttentionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttentionController.m; sourceTree = "<group>"; };
+		02DF130E1CFEAE4100F1BD2C /* MyAttentionListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAttentionListController.h; sourceTree = "<group>"; };
+		02DF130F1CFEAE4100F1BD2C /* MyAttentionListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttentionListController.m; sourceTree = "<group>"; };
 		02DF13111CFEAE4100F1BD2C /* MineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineController.h; sourceTree = "<group>"; };
 		02DF13121CFEAE4100F1BD2C /* MineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineController.m; sourceTree = "<group>"; };
 		02DF13171CFEAE4100F1BD2C /* CancelRelatePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelRelatePopView.h; sourceTree = "<group>"; };
@@ -938,8 +938,8 @@
 				029C08211D16537400138D15 /* PopView.m */,
 				02DF130B1CFEAE4100F1BD2C /* MyAttentionCell.h */,
 				02DF130C1CFEAE4100F1BD2C /* MyAttentionCell.m */,
-				02DF130E1CFEAE4100F1BD2C /* MyAttentionController.h */,
-				02DF130F1CFEAE4100F1BD2C /* MyAttentionController.m */,
+				02DF130E1CFEAE4100F1BD2C /* MyAttentionListController.h */,
+				02DF130F1CFEAE4100F1BD2C /* MyAttentionListController.m */,
 				029C08261D165CB200138D15 /* MyAttentionPopView.h */,
 				029C08271D165CB200138D15 /* MyAttentionPopView.m */,
 			);
@@ -1499,7 +1499,7 @@
 				02E1A8151CB395CD009C6177 /* UIView+WebCacheOperation.m in Sources */,
 				029C08091D1645B900138D15 /* MJRefreshAutoNormalFooter.m in Sources */,
 				87EF31D71D7D2629003ECB83 /* Business.m in Sources */,
-				02DF137E1CFEAE4100F1BD2C /* MyAttentionController.m in Sources */,
+				02DF137E1CFEAE4100F1BD2C /* MyAttentionListController.m in Sources */,
 				02E1A6A41CB38E45009C6177 /* BarButtonModel.m in Sources */,
 				02E1A7CB1CB39520009C6177 /* mask.c in Sources */,
 				029C08051D1645B900138D15 /* MJRefreshComponent.m in Sources */,

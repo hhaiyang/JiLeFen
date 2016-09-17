@@ -74,14 +74,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BankCell" forIndexPath:indexPath];
     Bank *bank = _banks[indexPath.row];
-    cell.textLabel.text = bank.ID;
+    cell.textLabel.text = bank.name;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Bank *bank = _banks[indexPath.row];
-    self.cashConvertController.bankLabel.text = bank.ID;
+    self.cashConvertController.bankLabel.text = bank.name;
     [self.navigationController popViewControllerAnimated:YES];
     
 }
