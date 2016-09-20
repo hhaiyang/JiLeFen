@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+   
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -40,7 +40,7 @@
     
     self.HUD = HUD;
     [HUD show:YES];
-    
+    NSLog(@"url = %@", self.productUrl);
     NSURL *url = [NSURL URLWithString:self.productUrl];
 //    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"testindex.html" withExtension:nil];
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url];

@@ -13,15 +13,17 @@
 #import "CategoryController.h"
 #import "PartView.h"
 #import "Activity.h"
-@interface HomeController ()
-//滑动广告视图
-@property (nonatomic, strong) ZLImageViewDisplayView *imageViewDisplayView;
-//积分、打折、商场、全部分类
-@property (nonatomic, strong) UIView *middleView;
-//热门视图
-@property (nonatomic, strong) UIView *hotView;
-@property (nonatomic, strong) NSArray *categoryName;
-@property (nonatomic, strong) NSArray *categoryArray;
+#import "RocationCollectionViewCell.h"
+@interface HomeController () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UIWebViewDelegate>
+@property (nonatomic, strong) UIScrollView *parentScrollView;
+@property (strong, nonatomic)UICollectionView  *rocationCollectionView;
+@property(strong,nonatomic)UIPageControl *rocationPageControl;
+@property(strong,nonatomic)UIWebView *mainWebView;
+
+
+@property(strong,nonatomic)NSMutableArray *imageArray;
+@property(strong,nonatomic)NSMutableArray *clickArray;
+
 @end
 
 @implementation HomeController
@@ -37,193 +39,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //初始化导航
-    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [searchButton addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
-    searchButton.frame = CGRectMake(0, 0, 100, 35);
-    [searchButton setBackgroundImage:[UIImage imageNamed:@"搜索按钮"] forState:UIControlStateNormal];
-    self.navigationItem.titleView = searchButton;
-    //设置table view
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerClass:[HomeCell class] forCellReuseIdentifier:@"HomeCell"];
-    self.tableView.backgroundColor = kRGBColor(245, 245, 245);
-    
-    //添加table header view
-    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 150+57)];
-    self.tableView.tableHeaderView = tableHeaderView;
-      //积分、打折、商场、全部分类
-    UIView *middleView = [UIView new];
-    _middleView = middleView;
-    middleView.frame = CGRectMake(0, 150, tableHeaderView.bounds.size.width, 57);
-    NSArray *images = @[@"首页-积分图标", @"首页-打折图标", @"首页-商超图标", @"首页-全部分类图标"];
-    NSArray *titles = @[@"积分", @"打折", @"商场", @"全部分类"];
-    for (int index = 0; index < images.count; index++) {
-        UIView *view = [UIView new];
-        view.frame = CGRectMake(middleView.width/images.count*index, 0, middleView.width/images.count, middleView.height-2);
-        [middleView addSubview:view];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIImage *image = [UIImage imageNamed:images[index]];
-        CGFloat buttonHeight = view.height-20;
-        CGFloat buttonWidth = image.size.width/image.size.height*buttonHeight;
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        button.frame = CGRectMake((view.width-buttonWidth)/2, 5, buttonWidth, buttonHeight);
-        [view addSubview:button];
-        
-        UILabel *label = [UILabel new];
-        label.text = titles[index];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont systemFontOfSize:14];
-        label.textColor = [UIColor grayColor];
-        label.frame = CGRectMake(0, button.y+button.height, view.width, view.height-button.height-button.y);
-        [view addSubview:label];
-        if (index == 0) {
-            [button addTarget:self action:@selector(integral) forControlEvents:UIControlEventTouchUpInside];
-        } else if (index == 1) {
-            [button addTarget:self action:@selector(discount) forControlEvents:UIControlEventTouchUpInside];
-        } else if (index == 2) {
-            [button addTarget:self action:@selector(supermarket) forControlEvents:UIControlEventTouchUpInside];
-        } else {
-            [button addTarget:self action:@selector(allCategory) forControlEvents:UIControlEventTouchUpInside];
-        }
-    }
-    UIView *line = [UIView new];
-    line.frame = CGRectMake(0, middleView.height-2, middleView.width, 2);
-    line.backgroundColor = kRGBColor(241, 189, 205);
-    [middleView addSubview:line];
-    [tableHeaderView addSubview:middleView];
+    NSMutableArray *tempArray = [NSMutableArray arrayWithObjects:@"http://www.ugohb.com/attachment/flash/1439454273cdfub.jpg", nil];
+    self.imageArray = tempArray;
 
-    
-    //table view 下拉刷新
-    __weak typeof(self) weakSelf = self;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-        [manager GET:@"http://www.ilovetang.com/ugohb/app.php?p=home" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"res = %@", responseObject);
-            [weakSelf.tableView.mj_header endRefreshing];
-            int status = [responseObject[@"status"] intValue];
-            if (status == 1) {
-                //轮播图，不存在则创建
-                if (!_imageViewDisplayView) {
-                    NSArray *flash = responseObject[@"flash"];
-                    NSMutableArray *flashActivities = [NSMutableArray new];
-                    for (NSDictionary *dic in flash) {
-                        Activity *activity = [Activity new];
-                        activity.thumb = dic[@"images"];
-                        [flashActivities addObject:activity];
-                    }
-                    NSMutableArray *activityImages = [NSMutableArray new];
-                    for (Activity *activity in flashActivities) {
-                        [activityImages addObject:activity.thumb];
-                    }
-                    _imageViewDisplayView = [ZLImageViewDisplayView zlImageViewDisplayViewWithFrame:CGRectMake(0, 0, weakSelf.tableView.tableHeaderView.width, 150) WithImages:activityImages];
-                    [weakSelf.tableView.tableHeaderView addSubview:_imageViewDisplayView];
-                    
-                }
-                //热门板块
-                if (!_hotView) {
-                    NSArray *hot = responseObject[@"hot"];
-                    NSInteger row = hot.count/2 + hot.count%2;
-                    if (row != 0) {
-                        for (NSDictionary *dic in hot) {
-                            Activity *activity = [Activity new];
-                            Business *business = [Business new];
-                            activity.business = business;
-                            activity.title = dic[@"title"];
-                            activity.thumb = dic[@"thumb"];
-                            business.name = dic[@"name"];
-                            activity.integral = dic[@"integral"];
-                        }
-                        _hotView = [UIView new];
-                        _hotView.layer.cornerRadius = 3;
-                        _hotView.frame = CGRectMake(10, _middleView.y+_middleView.height+10, weakSelf.tableView.tableHeaderView.width-20, 150);
-                        _hotView.backgroundColor = [UIColor whiteColor];
-                        [weakSelf.tableView.tableHeaderView addSubview:_hotView];
-                        PartView *partView = nil;
-                        CGFloat partViewHeight = _hotView.height/2;
-                        CGFloat partViewWidth = _hotView.width/2;
-                        for (int i = 0; i < hot.count; i++) {
-                            //解析数据
-                            NSDictionary *dic = hot[i];
-                            Activity *activity = [Activity new];
-                            Business *business = [Business new];
-                            activity.business = business;
-                            activity.title = dic[@"title"];
-                            activity.thumb = dic[@"thumb"];
-                            business.name = dic[@"name"];
-                            activity.integral = dic[@"integral"];
-                            //创建视图
-                            partView = [[PartView alloc] init];
-                            partView.frame = CGRectMake(i%2*partViewWidth, i/2*partViewHeight, partViewWidth, partViewHeight);
-                            [_hotView addSubview:partView];
-                            //给视图赋值显示
-                            partView.activity = activity;
-                            
-                        }
-                        //添加聚积分图标
-                        UIImageView *imageView = [UIImageView new];
-                        UIImage *image = [UIImage imageNamed:@"banner_toget"];
-                        CGFloat width = 50;
-                        CGFloat height = image.size.height/image.size.width*width;
-                        imageView.frame = CGRectMake(_hotView.width-width, 0, width, height);
-                        imageView.image = image;
-                        [_hotView addSubview:imageView];
-                        
-                        //更新table header view 的frame
-                        CGRect frame = weakSelf.tableView.tableHeaderView.frame;
-                        frame.size.height += 150+20;
-                        weakSelf.tableView.tableHeaderView.frame = frame;
-                        [weakSelf.tableView setTableHeaderView:weakSelf.tableView.tableHeaderView];
-
-                    }
-                    
-                    
-                }
-                //分类推广
-                NSArray *arr = responseObject[@"channel"];
-                NSMutableArray *categories = [NSMutableArray new];
-                for (NSDictionary *dic in arr) {
-                    NSMutableArray *category = [NSMutableArray new];
-                    BusinessCategory *businessCategory = [BusinessCategory new];
-                    businessCategory.ID = dic[@"cid"];
-                    businessCategory.name = dic[@"banner"];
-                    NSArray *list = dic[@"list"];
-                    for (NSDictionary *dic2 in list) {
-                        Business *business = [Business new];
-                        business.businessCategory = businessCategory;
-                        business.ID = dic2[@"id"];
-                        business.name = dic2[@"name"];
-                        Activity *activity = [Activity new];
-                        activity.thumb = dic2[@"thumb"];
-                        activity.integral = dic2[@"integral"];
-                        activity.title = dic2[@"title"];
-                        activity.business = business;
-                        [category addObject:activity];
-                    }
-                    [categories addObject:[category copy]];
-                }
-                _categoryArray = [categories copy];
-                [weakSelf.tableView reloadData];
-                
-                
-            }
-            
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"error = %@", error);
-            [weakSelf.tableView.mj_header endRefreshing];
-            
-        }];
-    }];
-    [self.tableView.mj_header beginRefreshing];
+    [self setNavi];
+    [self setScrollView];
+    [self getJSON];
+    [self addCollectionView];
+    [self addPageControl];
+    [self addTimer];
+    [self addCategoryIcon];
    
-    
 }
-
-- (NSArray *)categoryName {
-    if (!_categoryName) {
-        _categoryName = @[@"美食",@"服装",@"家具",@"建材"];
+-(void)viewDidAppear:(BOOL)animated{
+    CGFloat testheight = self.mainWebView.frame.size.height;
+    if (testheight <200) {
+        [self addWebView];
+        NSLog(@"[self addWebView]");
     }
-    return _categoryName;
+    
 }
 
 
@@ -236,59 +70,329 @@
 }
 
 
-- (void)integral {
-    CategoryController *categoryController = [CategoryController new];
-    categoryController.businessType = BusinessTypeIntegral;
-    categoryController.title = @"积分";
-    categoryController.sectionTitles = @[@"栏目分类", @"全部商区", @"默认排序"];
-    [self.navigationController pushViewController:categoryController animated:YES];
+//设置导航
+- (void)setNavi {
+    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [searchButton addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
+    searchButton.frame = CGRectMake(0, 0, 100, 35);
+    [searchButton setBackgroundImage:[UIImage imageNamed:@"搜索按钮"] forState:UIControlStateNormal];
+    self.navigationItem.titleView = searchButton;
 }
-- (void)discount {
-    CategoryController *categoryController = [CategoryController new];
-    categoryController.businessType = BusinessTypeDiscount;
-    categoryController.sectionTitles = @[@"栏目分类", @"全部商区", @"默认排序"];
-    categoryController.title = @"打折";
-    [self.navigationController pushViewController:categoryController animated:YES];
+//设置滚动视图
+- (void)setScrollView {
+    _parentScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:_parentScrollView];
+}
+//从服务器中获得轮播广告图片
+-(void)getJSON{
+    
+    
+    dispatch_queue_t q = dispatch_queue_create("com.ttdazhe.ugohb", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(q, ^{
+        
+        //获取图片路径
+        //在子线程中获取json字符串并解析
+        NSURL *adsUrl = [NSURL URLWithString:@"http://www.ugohb.com/client/adimages/download.html"];
+        NSString *jsonstr = [NSString stringWithContentsOfURL:adsUrl encoding:NSUTF8StringEncoding error:nil];
+        //把json字符串转为Data
+        NSData *jsonData = [jsonstr dataUsingEncoding:NSUTF8StringEncoding];
+        
+        if (jsonData != nil) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:NULL];
+            
+            NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+            for (int i = 0; i < [dic[@"number"]intValue]; i++) {
+                NSString *imageName = [[NSString alloc]init];
+                imageName = [NSString stringWithFormat:@"image%d",i];
+                [tempArray addObject:dic[imageName]];
+                
+            }
+            self.imageArray = tempArray;
+            
+            //            NSLog(@"%@",self.imageArray);
+            [self.rocationCollectionView reloadData];
+        }
+        
+        //获取点击跳转链接
+        //在子线程中获取json字符串并解析
+        NSURL *clickUrl = [NSURL URLWithString:@"http://www.ugohb.com/client/adimages/clickurl.html"];
+        NSString *clickjsonstr = [NSString stringWithContentsOfURL:clickUrl encoding:NSUTF8StringEncoding error:nil];
+        //把json字符串转为Data
+        NSData *clickjsonData = [clickjsonstr dataUsingEncoding:NSUTF8StringEncoding];
+        
+        if (jsonData != nil) {
+            NSDictionary *clickdic = [NSJSONSerialization JSONObjectWithData:clickjsonData options:0 error:NULL];
+            
+            NSMutableArray *tempArray2 = [[NSMutableArray alloc]init];
+            for (int i = 0; i < self.imageArray.count; i++) {
+                NSString *imageName = [[NSString alloc]init];
+                imageName = [NSString stringWithFormat:@"image%d",i];
+                [tempArray2 addObject:clickdic[imageName]];
+                
+            }
+            self.clickArray = tempArray2;
+            
+            NSLog(@"%@",self.clickArray);
+            //            [self.rocationCollectionView reloadData];
+        }
+        
+        
+        
+    });
+    
+    
+    
     
 }
-- (void)supermarket {
-    CategoryController *categoryController = [CategoryController new];
-    categoryController.businessType = BusinessTypeSupermarket;
-    categoryController.sectionTitles = @[@"栏目分类", @"全部商区", @"默认排序"];
-    categoryController.title = @"商场";
-    [self.navigationController pushViewController:categoryController animated:YES];
-}
-- (void)allCategory {
-    CategoryController *allCategoryController = [CategoryController new];
-    allCategoryController.businessType = BusinessTypeAll;
-    allCategoryController.sectionTitles = @[@"建材／装潢", @"全部商区", @"店铺类别"];
-    allCategoryController.title = @"建材";
-    [self.navigationController pushViewController:allCategoryController animated:YES];
+-(void)addCollectionView{
+    //设置UICollectionView的属性
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    //设置为水平滚动
+    [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    
+    //设置每个cell的size
+    CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
+    [layout setItemSize:CGSizeMake(screenW, 150)];
+    //去除每个cell之间的距离
+    [layout setMinimumInteritemSpacing:0];
+    [layout setMinimumLineSpacing:0];
+    
+    //设置每个UICollectionView的frame
+    CGFloat rocationCollectionH = 150;
+    UICollectionView *rocationCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, screenW, rocationCollectionH) collectionViewLayout:layout];
+    //设置数据源
+    rocationCollection.dataSource = self;
+    rocationCollection.backgroundColor = [UIColor redColor];
+    //设置UICollectionView的属性
+    rocationCollection.pagingEnabled = YES;
+    rocationCollection.showsHorizontalScrollIndicator = NO;
+    //将UICollectionView添加到parentScrollView
+    [self.parentScrollView addSubview:rocationCollection];
+    
+    //设置代理
+    rocationCollection.delegate = self;
+    
+    self.rocationCollectionView = rocationCollection;
+    
+    //注册UICollectionViewCell
+    UINib *nid = [UINib nibWithNibName:@"RocationCollectionViewCell" bundle:nil];
+    [rocationCollection registerNib:nid forCellWithReuseIdentifier:@"rocationCollectionViewCell"];
     
 }
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+-(void)addPageControl{
+    //设置pageControl的属性
+    UIPageControl *rocationPageControl = [[UIPageControl alloc]init];
+    [rocationPageControl setCurrentPageIndicatorTintColor:[UIColor greenColor]];
+    [rocationPageControl setPageIndicatorTintColor:[UIColor lightGrayColor]];
+    
+    rocationPageControl.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+    
+    //设置pageControl的frame
+    CGFloat rocationPageControlH = 15;
+    CGFloat rocationPageControlW = self.parentScrollView.bounds.size.width;
+    CGFloat rocationPageControlX = 0;
+    CGFloat rocationPageControlY = 150 - rocationPageControlH;
+    rocationPageControl.frame = CGRectMake(rocationPageControlX, rocationPageControlY, rocationPageControlW, rocationPageControlH);
+    
+    
+    self.rocationPageControl = rocationPageControl;
+    //添加到parentScrollView
+    [self.parentScrollView addSubview:rocationPageControl];
+}
+-(void)addTimer{
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
+}
+-(void)addCategoryIcon{
+    UIView *categoryView = [[UIView alloc]init];
+    CGFloat categoryViewX = 0;
+    CGFloat categoryViewY = self.rocationCollectionView.frame.size.height + 3;
+    CGFloat categoryViewW = [UIScreen mainScreen].bounds.size.width;
+    CGFloat categoryViewH = 126;
+    categoryView.frame = CGRectMake(categoryViewX, categoryViewY, categoryViewW, categoryViewH);
+    //    categoryView.backgroundColor = [UIColor redColor];
+    
+    for (int i = 0 ; i < 7; i++) {
+        UIButton *categoryButton = [[UIButton alloc]init];
+        
+        
+        CGFloat buttonw = 45;
+        CGFloat buttonH = 60;
+        CGFloat margin = (categoryViewW-(buttonw * 4))/5;
+        int row = i/4;
+        int column = i%4;
+        CGFloat buttonX = margin+(buttonw+margin)*column;
+        CGFloat buttonY = row * (buttonH + 3);
+        
+        NSString *imageName = [NSString stringWithFormat:@"category%d",i+1];
+        UIImage *tempImage = [UIImage imageNamed:imageName];
+        
+        [categoryButton setImage:tempImage forState:UIControlStateNormal];
+        categoryButton.frame = CGRectMake(buttonX, buttonY, buttonw, buttonH);
+        //        categoryButton.backgroundColor = [UIColor greenColor];
+        categoryButton.tag = i;
+        [categoryButton addTarget:self action:@selector(toCategoryController:) forControlEvents:UIControlEventTouchUpInside];
+        [categoryView addSubview:categoryButton];
+    }
+    
+    
+    
+    [self.parentScrollView addSubview:categoryView];
+}
+-(void)categoryButtonClick:(UIButton *)button{
+    
+}
+-(void)addWebView{
+    UIWebView *mainWebView = [[UIWebView alloc]init];
+    CGFloat webviewW = [UIScreen mainScreen].bounds.size.width;
+    CGFloat webviewH = [UIScreen mainScreen].bounds.size.width-276;
+    mainWebView.frame = CGRectMake(0, 276, webviewW, webviewH);
+    self.mainWebView = mainWebView;
+    
+    //加载测试URL
+    //    NSURL *url = [[NSBundle mainBundle] URLForResource:@"testindex.html" withExtension:nil];
+    NSURL *url = [NSURL URLWithString:@"http://www.ugohb.com/client2/"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [mainWebView loadRequest:request];
+    
+    mainWebView.delegate = self;
+    
+    [self.parentScrollView addSubview:mainWebView];
+}
+-(void)nextPage{
+    //获取当前正在显示的item
+    NSIndexPath *currentIndexPath = [[self.rocationCollectionView indexPathsForVisibleItems]lastObject];
+    //计算即将显示的item
+    NSInteger nextItem = currentIndexPath.item+1;
+    if (nextItem == 5000) {
+        nextItem = 0;
+    }
+    NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:0];
+    
+    //滚动到下一个item
+    [self.rocationCollectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    
+    
+    self.rocationPageControl.currentPage = nextItem % self.imageArray.count;
+    
+}
+#pragma mark- UICollectionView数据源方法
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    //设置rocationPageControl.numberOfPages，在此处设置是为了在刷新数据时候其数值能一起变化
+    self.rocationPageControl.numberOfPages = self.imageArray.count;
+    
     return 1;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _categoryArray.count;
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 5000;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell"];
-    cell.activities = _categoryArray[indexPath.row];
-    cell.moreButton.tag = indexPath.row;
-    cell.categoryLabel.text = self.categoryName[indexPath.row];
-    [cell.moreButton addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    RocationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"rocationCollectionViewCell" forIndexPath:indexPath];
+    
+    RocationImage *rocationimage = [[RocationImage alloc]init];
+    [rocationimage initWithString:self.imageArray[indexPath.item % self.imageArray.count]];
+    
+    cell.rocationimage = rocationimage;
+    
+    
     return cell;
+    
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 150;
+
+#pragma mark- UICollectionView代理方法
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+    int select = indexPath.item;
+    int tempcount = self.imageArray.count;
+    int urlindex = select/tempcount;
+    NSLog([NSString stringWithFormat:@"点击了%d",urlindex]);
+    NSString *clickurl = [[NSString alloc]init];
+    clickurl = self.clickArray[urlindex];
+    if ([self.delegate respondsToSelector:@selector(webviewLinkClicked:)]) {
+        [self.delegate webviewLinkClicked:clickurl];
+    }
+    
 }
-- (void)moreAction:(UIButton *)sender {
-    CategoryController *categoryController = [CategoryController new];
-    categoryController.title = _categoryName[sender.tag];
-    categoryController.businessType = BusinessTypeOther;
-    [self.navigationController pushViewController:categoryController animated:YES];
+
+#pragma mark-UIWebView的代理方法
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     
+    NSString *temploadurl = [request.URL absoluteString];
+    NSMutableString *loadurl = [NSMutableString stringWithString:temploadurl];
+    BOOL toLoad = true;
+    
+    if (![loadurl isEqualToString:@"http://www.ugohb.com/client2/"]) {
+        
+        
+        if([loadurl rangeOfString:@"wap"].location != NSNotFound){
+            //链接中包含字符"wap",将其替换成client2
+            [loadurl replaceCharactersInRange:[loadurl rangeOfString:@"wap"] withString:@"client2"];
+            
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(webviewLinkClicked:)]) {
+            toLoad = false;
+            [self.delegate webviewLinkClicked:loadurl];
+            
+        }
+    }
+    
+    return toLoad;
+}
+
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSString *height = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+    CGFloat webViewHeight = [height floatValue];
+    //    NSLog([NSString stringWithFormat:@"webview的高度：%f",webViewHeight]);
+    /////////////////出现奇葩的bug,这里必须这么写/////////////////
+    webView.frame = CGRectMake(0, 276, [UIScreen mainScreen].bounds.size.width, webViewHeight);
+    self.parentScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, webView.scrollView.contentSize.height+276);
+    webView.scrollView.scrollEnabled = NO;
+    ///////////////////
+    CGFloat newHeight =  webView.scrollView.contentSize.height;
+    //    NSLog([NSString stringWithFormat:@"test = %f",test]);
+    
+    webView.frame = CGRectMake(0, 276, [UIScreen mainScreen].bounds.size.width, newHeight);
+    self.parentScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, newHeight+276);
+    
+    
+    //    CGFloat test = self.mainWebView.frame.size.height;
+    //    NSLog(@"=====%f",test);
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+//    [MBProgressHUD showError:@"没有网络连接"];
+    //    CGFloat test = self.mainWebView.frame.size.height;
+    //    NSLog(@"=====%f",test);
+    
+}
+//跳转到分类界面
+- (void)toCategoryController:(UIButton *)button {
+    
+    CategoryController *category = [CategoryController new];
+    if (button.tag == 0) {
+        category.businessType = BusinessTypeDiscount;
+    } else if (button.tag == 1) {
+        category.businessType = BusinessTypeSupermarket;
+    } else if (button.tag == 2) {
+        category.businessType = BusinessTypeProperty;
+    } else if (button.tag == 3) {
+        category.businessType = BusinessTypeFurniture;
+    } else if (button.tag == 4) {
+        category.businessType = BusinessTypeClothes;
+        
+    } else if (button.tag == 5) {
+        category.businessType = BusinessTypeMaterial;
+        
+    } else if (button.tag == 6) {
+        category.businessType = BusinessTypeAll;
+    }
+    [self.navigationController pushViewController:category animated:YES];
 }
 @end

@@ -166,6 +166,10 @@
 		871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 871B127D1D703BC0005F615C /* CashConvertSuccessView.m */; };
 		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
 		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
+		8750759A1D91550100986FEF /* IntegralController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875075991D91550100986FEF /* IntegralController.m */; };
+		8750759E1D9164D900986FEF /* RocationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8750759C1D9164D900986FEF /* RocationCollectionViewCell.m */; };
+		8750759F1D9164D900986FEF /* RocationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8750759D1D9164D900986FEF /* RocationCollectionViewCell.xib */; };
+		875075A21D91650800986FEF /* RocationImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 875075A11D91650800986FEF /* RocationImage.m */; };
 		876A2CF51D7E963900B09366 /* BusinessCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 876A2CF41D7E963900B09366 /* BusinessCategory.m */; };
 		877DA6FA1D79A3DB0061D5E5 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */; };
 		877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6FC1D79A7950061D5E5 /* Goods.m */; };
@@ -517,6 +521,13 @@
 		873F4CED1D6F16FF008BFA42 /* InputDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDateView.m; sourceTree = "<group>"; };
 		873F4CEE1D6F16FF008BFA42 /* SelectDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateView.h; sourceTree = "<group>"; };
 		873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateView.m; sourceTree = "<group>"; };
+		875075981D91550100986FEF /* IntegralController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralController.h; sourceTree = "<group>"; };
+		875075991D91550100986FEF /* IntegralController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralController.m; sourceTree = "<group>"; };
+		8750759B1D9164D900986FEF /* RocationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RocationCollectionViewCell.h; sourceTree = "<group>"; };
+		8750759C1D9164D900986FEF /* RocationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RocationCollectionViewCell.m; sourceTree = "<group>"; };
+		8750759D1D9164D900986FEF /* RocationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RocationCollectionViewCell.xib; sourceTree = "<group>"; };
+		875075A01D91650800986FEF /* RocationImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RocationImage.h; sourceTree = "<group>"; };
+		875075A11D91650800986FEF /* RocationImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RocationImage.m; sourceTree = "<group>"; };
 		876A2CF31D7E963900B09366 /* BusinessCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCategory.h; sourceTree = "<group>"; };
 		876A2CF41D7E963900B09366 /* BusinessCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCategory.m; sourceTree = "<group>"; };
 		877DA6F81D79A3DB0061D5E5 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
@@ -832,6 +843,7 @@
 		02DF12DE1CFEAE4100F1BD2C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				875075971D9154E100986FEF /* Integral */,
 				020FF65B1D1FCF9C0035683E /* Business */,
 				02DF12DF1CFEAE4100F1BD2C /* Category */,
 				02DF12E51CFEAE4100F1BD2C /* HomePage */,
@@ -859,6 +871,11 @@
 		02DF12E51CFEAE4100F1BD2C /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				875075A01D91650800986FEF /* RocationImage.h */,
+				875075A11D91650800986FEF /* RocationImage.m */,
+				8750759B1D9164D900986FEF /* RocationCollectionViewCell.h */,
+				8750759C1D9164D900986FEF /* RocationCollectionViewCell.m */,
+				8750759D1D9164D900986FEF /* RocationCollectionViewCell.xib */,
 				02DF12E61CFEAE4100F1BD2C /* HomeCell.h */,
 				02DF12E71CFEAE4100F1BD2C /* HomeCell.m */,
 				02DF12E91CFEAE4100F1BD2C /* HomeController.h */,
@@ -1377,6 +1394,15 @@
 			path = StringSorter;
 			sourceTree = "<group>";
 		};
+		875075971D9154E100986FEF /* Integral */ = {
+			isa = PBXGroup;
+			children = (
+				875075981D91550100986FEF /* IntegralController.h */,
+				875075991D91550100986FEF /* IntegralController.m */,
+			);
+			path = Integral;
+			sourceTree = "<group>";
+		};
 		877DA6F71D79A3DB0061D5E5 /* TTTAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1448,6 +1474,7 @@
 				02DF139B1CFEAE4100F1BD2C /* NotGetCell.xib in Resources */,
 				0278E93B1D47B0B3000F1898 /* LICENSE in Resources */,
 				02E1A58E1CB38657009C6177 /* LaunchScreen.storyboard in Resources */,
+				8750759F1D9164D900986FEF /* RocationCollectionViewCell.xib in Resources */,
 				02DF13961CFEAE4100F1BD2C /* AlreadyGetCell.xib in Resources */,
 				029C08111D1645B900138D15 /* MJRefresh.bundle in Resources */,
 			);
@@ -1539,6 +1566,7 @@
 				0242F4A91D05626A00C41E4A /* UIView+HYGeometry.m in Sources */,
 				029C07CC1D16368E00138D15 /* WMMenuView.m in Sources */,
 				02AB89D31D14181300B09691 /* RecordPasswordButton.m in Sources */,
+				8750759A1D91550100986FEF /* IntegralController.m in Sources */,
 				0278E9321D47B0B3000F1898 /* AFHTTPRequestOperation.m in Sources */,
 				029C07CA1D16368E00138D15 /* WMFooldView.m in Sources */,
 				02E1A80F1CB395CD009C6177 /* SDWebImagePrefetcher.m in Sources */,
@@ -1562,6 +1590,7 @@
 				877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */,
 				0278E9421D47B0B3000F1898 /* UIProgressView+AFNetworking.m in Sources */,
 				02E1A6941CB38DF1009C6177 /* ResManager.m in Sources */,
+				875075A21D91650800986FEF /* RocationImage.m in Sources */,
 				87EF31DA1D7D4751003ECB83 /* Activity.m in Sources */,
 				0278E9401D47B0B3000F1898 /* UIButton+AFNetworking.m in Sources */,
 				02DF13AA1CFEAE4100F1BD2C /* ScoreConvertCenterController.m in Sources */,
@@ -1600,6 +1629,7 @@
 				029C08131D1645B900138D15 /* UIScrollView+MJExtension.m in Sources */,
 				02E1A80A1CB395CD009C6177 /* SDWebImageCompat.m in Sources */,
 				029C08251D1653EA00138D15 /* ViewUtil.m in Sources */,
+				8750759E1D9164D900986FEF /* RocationCollectionViewCell.m in Sources */,
 				02E1A8141CB395CD009C6177 /* UIImageView+WebCache.m in Sources */,
 				02DF13971CFEAE4100F1BD2C /* ConvertRecordController.m in Sources */,
 				02DF13731CFEAE4100F1BD2C /* TabBarController.m in Sources */,

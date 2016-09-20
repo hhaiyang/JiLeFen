@@ -11,5 +11,6 @@
 
 @interface CategoryController : UIViewController
 @property (nonatomic, assign) BusinessType businessType;
-@property (nonatomic, strong) NSArray *sectionTitles;
+
+
 @end
