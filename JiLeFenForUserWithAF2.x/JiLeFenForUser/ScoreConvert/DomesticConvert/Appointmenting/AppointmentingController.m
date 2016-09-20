@@ -10,6 +10,7 @@
 #import "AppointmentingCell.h"
 #import "AppointmentUnsubscribePopView.h"
 #import "AppointmentUnsubscribeSuccessPopView.h"
+#import "User.h"
 
 @interface AppointmentingController ()
 @property (nonatomic, strong) NSArray *appointmentingDomestics;
@@ -27,10 +28,13 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
+        //测试数据
         [weakSelf.tableView.mj_header endRefreshing];
         _appointmentingDomestics = @[@"", @"", @""];
         [weakSelf.tableView reloadData];
+        
+        //获取预约中的订单列表
+        
     }];
     [self.tableView.mj_header beginRefreshing];
     [self.tableView registerClass:[AppointmentingCell class] forCellReuseIdentifier:@"AppointmentingCell"];
@@ -81,23 +85,43 @@
     self.appointmentUnsubscribePopView = nil;
     
 }
+
+//取消家政预约
 - (void)abandon {
     __weak typeof(self) weakSelf = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:kWindow animated:YES];
     hud.label.text = @"退订中，请稍候";
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"userid"] = [User currentUser].ID;
+    para[@"id"] = @"2";
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=qxjzfw" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        int status = [responseObject[@"status"] intValue];
+        if (status == 0) {
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = @"退订失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return ;
+        }
         [hud hideAnimated:YES];
-        [weakSelf close];
+        [_appointmentUnsubscribePopView removeFromSuperview];
+        _appointmentUnsubscribePopView = nil;
         AppointmentUnsubscribeSuccessPopView *view = [AppointmentUnsubscribeSuccessPopView new];
         [view.closeButton1 addTarget:weakSelf action:@selector(closeSuccessPopView) forControlEvents:UIControlEventTouchUpInside];
         [view.closeButton2 addTarget:weakSelf action:@selector(closeSuccessPopView) forControlEvents:UIControlEventTouchUpInside];
-        
         _appointmentUnsubscribeSuccessPopView = view;
         [kWindow addSubview:view];
-
         
-    });
-    
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"退订失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+    }];
 }
 - (void)treasure {
     [self close];
@@ -105,5 +129,6 @@
 - (void)closeSuccessPopView {
     [self.appointmentUnsubscribeSuccessPopView removeFromSuperview];
     self.appointmentUnsubscribeSuccessPopView = nil;
+    [self.tableView.mj_header beginRefreshing];
 }
 @end

@@ -65,7 +65,7 @@
     userInfoView.frame = CGRectMake(10, _timeLabel.y+_timeLabel.height+10, contentView.width-20, 0);
     [contentView addSubview:userInfoView];
     
-    NSArray *titles = @[@"姓 氏", @"电 话", @"地 址"];
+    NSArray *titles = @[@"姓 名", @"电 话", @"地 址"];
     for (int i = 0; i < 3; i++) {
         label = [UILabel new];
         label.text = titles[i];

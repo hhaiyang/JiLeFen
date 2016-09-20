@@ -149,13 +149,14 @@
 //跳转到家政兑换界面
 - (void)domesticConvert:(id)sender {
     //首先判断用户是否已经登录，如果是则直接跳转，否则让用户先登录
-    if ([User currentUser].status == Login) {
-        DomesticConvertController *domesticServiceController = [DomesticConvertController new];
-        [self.navigationController pushViewController:domesticServiceController animated:YES];
-    } else {
+    if ([User currentUser].status == NoLogin) {
         [self toLoginController];
+        return;
     }
-  
+    
+    DomesticConvertController *domesticServiceController = [DomesticConvertController new];
+    [self.navigationController pushViewController:domesticServiceController animated:YES];
+    
 }
 //跳转到兑换记录界面
 - (void)convertRecord:(id)sender {

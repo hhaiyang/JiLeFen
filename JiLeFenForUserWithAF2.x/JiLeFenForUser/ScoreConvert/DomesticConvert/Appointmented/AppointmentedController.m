@@ -19,13 +19,21 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"已预约";
+    self.title = @"已完成";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(backAction) imageName:@"返回小图标-红色" height:30];
     __weak typeof(self) weakSelf = self;
      self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-         [weakSelf.tableView.mj_header endRefreshing];
-         _appointmentedDomestics = @[@"", @"", @""];
-         [weakSelf.tableView reloadData];
+         
+//         //测试数据
+//         [weakSelf.tableView.mj_header endRefreshing];
+//         _appointmentedDomestics = @[@"", @"", @""];
+//         [weakSelf.tableView reloadData];
+         
+         //获取已完成订单
+         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+         
+         
         
     }];
     [self.tableView.mj_header beginRefreshing];

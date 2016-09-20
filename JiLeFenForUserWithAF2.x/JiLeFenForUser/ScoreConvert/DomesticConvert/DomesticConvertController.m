@@ -14,6 +14,8 @@
 #import "AppointmentHintView.h"
 #import "AppointmentInfoView.h"
 #import "AppointmentSuccessView.h"
+#import "AccountValidate.h"
+#import "User.h"
 @interface DomesticConvertController () <AppointmentHintViewDelegate, AppointmentInfoViewDelegate, AppointmentSuccessViewDelegate>
 @property (nonatomic, strong) UILabel *freeScoreLabel;
 @property (nonatomic, strong) UILabel *appointmentingLabel;
@@ -29,7 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"免费兑换中心";
+    [self getDomesticTimeSet];
+    self.title = @"家政兑换";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithTarget:self action:@selector(backAction) imageName:@"返回小图标-红色" height:30];
     
     UIView *tableHeaderView = [UIView new];
@@ -78,7 +81,7 @@
         } else {
             _appointmentedLabel = label;
             NSMutableAttributedString *str = [NSMutableAttributedString new];
-            NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"已预约  " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:9]}];
+            NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"已完成  " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:9]}];
             NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:@"2" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20], NSForegroundColorAttributeName:[UIColor redColor]}];
             [str appendAttributedString:str1];
             [str appendAttributedString:str2];
@@ -86,7 +89,7 @@
             
             UITapGestureRecognizer *appointmentedGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toAppointmentedVC:)];
             [label addGestureRecognizer:appointmentedGR];
-
+            
         }
     }
     
@@ -194,16 +197,17 @@
     TEST_LOG(@"向后滚动");
 }
 
-//预约
+//点击预约按钮，弹出确认预约对话框
 - (void)appointment:(UIButton *)sender {
-    TEST_LOG(@"预约");
     _appointmentHintView = [[AppointmentHintView alloc] init];
     _appointmentHintView.delegate = self;
     [kWindow addSubview:_appointmentHintView];
     
 }
+//预约确认弹出视图代理
 - (void)appointmentHintView:(AppointmentHintView *)view didClickedCloseButton:(UIButton *)button {
     [view removeFromSuperview];
+    _appointmentHintView = nil;
 }
 - (void)appointmentHintView:(AppointmentHintView *)view didClickedSureButton:(UIButton *)button {
     [view removeFromSuperview];
@@ -214,36 +218,122 @@
 }
 - (void)appointmentHintView:(AppointmentHintView *)view didClickedCancelButton:(UIButton *)button {
     [view removeFromSuperview];
+    _appointmentHintView = nil;
     
 }
 
-
+//填写预约信息视图的代理方法
 - (void)appointmentInfoView:(AppointmentInfoView *)view didClickedCloseButton:(UIButton *)button {
     [view removeFromSuperview];
+    _appointmentInfoView = nil;
+    _appointmentHintView = nil;
 }
+
+//发送预约请求
 - (void)appointmentInfoView:(AppointmentInfoView *)view didClickedSureButton:(UIButton *)button {
-    [view removeFromSuperview];
-    _appointmentSuccessView = [[AppointmentSuccessView alloc] init];
-    _appointmentSuccessView.delegate = self;
-    [kWindow addSubview:_appointmentSuccessView];
+    __weak typeof(self) weakSelf = self;
+    //获取用户输入
+    NSString *username = view.nameTextField.text;
+    NSString *phone = view.phoneTextField.text;
+    NSString *address = view.addressTextField.text;
+    //验证用户输入
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:kWindow animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    if (username.length <= 0) {
+        hud.label.text = @"请输入您的姓名";
+        [hud hideAnimated:YES afterDelay:1.5];
+        return;
+    }
+    if (![AccountValidate validatePhone:phone]) {
+        hud.label.text = @"请输入正确的手机号";
+        [hud hideAnimated:YES afterDelay:1.5];
+        return;
+    }
+    if (address.length <= 0) {
+        hud.label.text = @"请输入您的详细地址";
+        [hud hideAnimated:YES afterDelay:1.5];
+        return;
+    }
+    //验证通过则发送预约请求
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.label.text = @"预约中，请稍候";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"realname"] = username;
+    para[@"phone"] = phone;
+    para[@"address"] = address;
+    para[@"userid"] = [User currentUser].ID;
+    para[@"servicetime"] = @"2016-9-20";
+    para[@"timeset"] = @"18:00-20:00";
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=jzorder" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+//        int status = [responseObject[@"status"] intValue];
+//        if (status == 0) {
+//            hud.mode = MBProgressHUDModeText;
+//            hud.label.text = @"预约失败";
+//            [hud hideAnimated:YES afterDelay:1.5];
+//            return ;
+//        }
+        
+        //预约成功则弹出成功视图
+        [hud hideAnimated:YES];
+        [view removeFromSuperview];
+        _appointmentSuccessView = [[AppointmentSuccessView alloc] init];
+        _appointmentSuccessView.nameLabel.text = username;
+        _appointmentSuccessView.phoneLabel.text = phone;
+        _appointmentSuccessView.addressLabel.text = address;
+        _appointmentSuccessView.delegate = weakSelf;
+        [kWindow addSubview:_appointmentSuccessView];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"预约失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+    }];
+    
+    
     
 }
 - (void)appointmentInfoView:(AppointmentInfoView *)view didClickedBackButton:(UIButton *)button {
     [view removeFromSuperview];
+    _appointmentInfoView = nil;
+    _appointmentHintView = nil;
     
 }
 
 
 - (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedCloseButton:(UIButton *)button{
     [view removeFromSuperview];
+    _appointmentSuccessView = nil;
+    _appointmentHintView = nil;
+    _appointmentInfoView = nil;
 }
 - (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedSureButton:(UIButton *)button{
     [view removeFromSuperview];
+    _appointmentSuccessView = nil;
+    _appointmentHintView = nil;
+    _appointmentInfoView = nil;
     
 }
 - (void)appointmentSuccessView:(AppointmentSuccessView *)view didClickedBackButton:(UIButton *)button {
     [view removeFromSuperview];
+    _appointmentSuccessView = nil;
+    _appointmentHintView = nil;
+    _appointmentInfoView = nil;
     
 }
-
+//获取家政时间表
+- (void)getDomesticTimeSet {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=jztimeset" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        
+    }];
+}
 @end

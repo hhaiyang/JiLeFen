@@ -25,8 +25,8 @@
     [contentView addSubview:_closeButton];
     
     //填写用户信息
-    NSArray *titles = @[@"姓 氏", @"手 机", @"地 址"];
-    NSArray *placeholds = @[@"请输入您的贵姓", @"请输入手机号码", @"请输入您的详细地址"];
+    NSArray *titles = @[@"姓 名", @"手 机", @"地 址"];
+    NSArray *placeholds = @[@"请输入您的姓名", @"请输入手机号码", @"请输入您的详细地址"];
     UIView *infoView = nil;
     for (int i = 0; i < 3; i++) {
         infoView = [UIView new];
