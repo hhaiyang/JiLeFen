@@ -82,6 +82,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Bank *bank = _banks[indexPath.row];
     self.cashConvertController.bankLabel.text = bank.name;
+    self.cashConvertController.bank = bank;
     [self.navigationController popViewControllerAnimated:YES];
     
 }

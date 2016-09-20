@@ -9,6 +9,7 @@
 #import "User.h"
 static User *currentUser = nil;
 
+
 @implementation User
 + (instancetype)currentUser {
     if (currentUser) {

@@ -18,5 +18,7 @@ typedef enum UserStatus {
 @interface User : BaseModel
 //用户的登录状态
 @property (nonatomic, assign) UserStatus status;
+//获取当前用户
 + (instancetype)currentUser;
+
 @end

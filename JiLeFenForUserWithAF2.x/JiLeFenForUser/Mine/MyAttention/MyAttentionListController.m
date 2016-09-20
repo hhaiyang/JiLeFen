@@ -9,6 +9,7 @@
 #import "MyAttentionListController.h"
 #import "MyAttentionCell.h"
 #import "MyAttentionPopView.h"
+#import "User.h"
 
 @interface MyAttentionListController ()
 @property (nonatomic, strong) MyAttentionPopView *cancelAttentionPopView;
@@ -28,24 +29,31 @@
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         //获取我的关注列表
-//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-//        NSMutableDictionary *para = [NSMutableDictionary new];
-//        para[@"userid"] = @"13051616145";
-//        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getconcern" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
-//            [weakSelf.tableView.mj_header endRefreshing];
-//            TEST_LOG(@"res = %@", responseObject);
-//            
-//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//            [weakSelf.tableView.mj_header endRefreshing];
-//            TEST_LOG(@"error = %@", error);
-//            
-//        }];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+        NSMutableDictionary *para = [NSMutableDictionary new];
+        para[@"userid"] = [User currentUser].ID;
+        [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=getconcern" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            TEST_LOG(@"res = %@", responseObject);
+            int status = [responseObject[@"status"] intValue];
+            if (status == 0) {
+                _myAttentions = nil;
+            } else if (status == 1) {
+                //缺少返回json示例，无法解析
+            }
+            [weakSelf.tableView reloadData];
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [weakSelf.tableView.mj_header endRefreshing];
+            TEST_LOG(@"error = %@", error);
+            
+        }];
         
-        //测试数据
-        _myAttentions = @[@"", @"", @""];
-        [weakSelf.tableView.mj_header endRefreshing];
-        [weakSelf.tableView reloadData];
+//        //测试数据
+//        _myAttentions = @[@"", @"", @""];
+//        [weakSelf.tableView.mj_header endRefreshing];
+//        [weakSelf.tableView reloadData];
         
         
     }];
@@ -84,22 +92,34 @@
 }
 //确定取消关注
 - (void)confirmCancelAttention {
+    __weak typeof(self) weakSelf = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:kWindow animated:YES];
     hud.label.text = @"取消中，请稍后";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     NSMutableDictionary *para = [NSMutableDictionary new];
-    para[@"id"] = @"2";
+    para[@"id"] = [User currentUser].ID;
     [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=cannelconcern" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"res = %@", responseObject);
+       
+        int status = [responseObject[@"status"] intValue];
+        if (status == 0) {
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = @"取消失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+        } else if (status == 1) {
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = @"取消成功";
+            [hud hideAnimated:YES afterDelay:1.5];
+            [_cancelAttentionPopView removeFromSuperview];
+            _cancelAttentionPopView = nil;
+            [weakSelf.tableView.mj_header beginRefreshing];
+        }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"error = %@", error);
+       
         hud.mode = MBProgressHUDModeText;
         hud.label.text = @"取消失败";
         [hud hideAnimated:YES afterDelay:1.5];
-        [_cancelAttentionPopView removeFromSuperview];
-        _cancelAttentionPopView = nil;
         
     }];
 }

@@ -132,12 +132,11 @@
                 _cashTextField = textField;
                 textField.keyboardType = UIKeyboardTypeNumberPad;
             } else if (index == 1) {
-                _nameTextField = textField;
-            } else if (index == 2) {
-                _phoneTextField = textField;
-                textField.keyboardType = UIKeyboardTypeNumberPad;
-            } else {
                 _bankTextField = textField;
+            } else if (index == 2) {
+                _nameTextField = textField;
+            } else {
+                _phoneTextField = textField;
                 textField.keyboardType = UIKeyboardTypeNumberPad;
             }
 
@@ -248,6 +247,8 @@
     
     
 }
+
+//选择银行
 - (void)selectBank {
     [self.view endEditing:YES];
     SelectBankController *selectBank = [SelectBankController new];
@@ -268,11 +269,12 @@
     [_cashConvertHintView removeFromSuperview];
     _cashConvertCheckInfoView = [[CashConvertCheckInfoView alloc] init];
     _cashConvertCheckInfoView.delegate = self;
-    _cashConvertCheckInfoView.bankLabel.text = @"淮北农商银行";
-    _cashConvertCheckInfoView.nameLabel.text = @"张三";
-    _cashConvertCheckInfoView.phoneLabel.text = @"15000000000";
-    _cashConvertCheckInfoView.cashLabel.text = @"50元";
-    _cashConvertCheckInfoView.scoreLabel.text = @"5000";
+    _cashConvertCheckInfoView.bankLabel.text = _bankLabel.text;
+    _cashConvertCheckInfoView.nameLabel.text = _nameTextField.text;
+    _cashConvertCheckInfoView.phoneLabel.text = _phoneTextField.text;
+    _cashConvertCheckInfoView.cashLabel.text = [NSString stringWithFormat:@"%@元", _cashTextField.text];
+    _cashConvertCheckInfoView.scoreLabel.text = [NSString stringWithFormat:@"%d", [_cashTextField.text intValue]*100];
+    _cashConvertCheckInfoView.banknoLabel.text = _bankTextField.text;
     [kWindow addSubview:_cashConvertCheckInfoView];
     
     
@@ -284,10 +286,49 @@
     [view removeFromSuperview];
 }
 - (void)cashConvertCheckInfoView:(CashConvertCheckInfoView *)view didClickedSubmitButton:(UIButton *)button {
-    [view removeFromSuperview];
-    _cashConvertSuccessView = [[CashConvertSuccessView alloc] init];
-    [_cashConvertSuccessView.closeButton addTarget:self action:@selector(removeSuccessView:) forControlEvents:UIControlEventTouchUpInside];
-    [kWindow addSubview:_cashConvertSuccessView];
+    
+    //提交现金兑换请求
+    __weak typeof(self) weakSelf = self;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:kWindow animated:YES];
+    hud.label.text = @"提交中，请稍候";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"cashmoney"] = _cashTextField.text;
+    para[@"realname"] = _nameTextField.text;
+    para[@"phone"] = _phoneTextField.text;
+    para[@"bankno"] = _bankTextField.text;
+    para[@"bankid"] = _bank.ID;
+    
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=cashmoney" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        hud.mode = MBProgressHUDModeText;
+        int status = [responseObject[@"status"] intValue];
+        if (status == -1) {
+            hud.label.text = @"兑换失败";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return ;
+        }
+        if (status == 0) {
+            hud.label.text = @"兑换失败，积分不足";
+            [hud hideAnimated:YES afterDelay:1.5];
+            return;
+        }
+        if (status == 1) {
+            [hud hideAnimated:YES];
+            [view removeFromSuperview];
+            _cashConvertSuccessView = [[CashConvertSuccessView alloc] init];
+            [_cashConvertSuccessView.closeButton addTarget:weakSelf action:@selector(removeSuccessView:) forControlEvents:UIControlEventTouchUpInside];
+            [kWindow addSubview:_cashConvertSuccessView];
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"兑换失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+    }];
     
 }
 - (void)removeSuccessView:(UIButton *)sender {

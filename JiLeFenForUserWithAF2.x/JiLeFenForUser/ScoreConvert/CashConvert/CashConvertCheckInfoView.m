@@ -15,7 +15,7 @@
     UIView *contentView = [UIView new];
     contentView.backgroundColor = ContentViewBackgroundColor;
     CGFloat width = self.width-ContentViewLeftMargin*2;
-    CGFloat height = 20+20+15+150+10+21+15+25+15;
+    CGFloat height = 20+20+15+180+10+21+15+25+15;
     contentView.frame = CGRectMake(ContentViewLeftMargin, (self.height-height)/2, width, height);
     [self addSubview:contentView];
     
@@ -35,13 +35,13 @@
     //信息视图
     UIView *infoView = [UIView new];
     infoView.backgroundColor = kRGBColor(253, 235, 237);
-    infoView.frame = CGRectMake(5, label.y+label.height+15, contentView.width-10, 150);
+    infoView.frame = CGRectMake(5, label.y+label.height+15, contentView.width-10, 180);
     [contentView addSubview:infoView];
     
-    NSArray *titles = @[@"银行卡类型:", @"持有人姓名:", @"手 机 号 码:", @"兑 换 金 额:", @"消 耗 积 分:"];
+    NSArray *titles = @[@"银行卡类型:", @"银 行 卡 号:", @"持有人姓名:", @"手 机 号 码:", @"兑 换 金 额:", @"消 耗 积 分:"];
     width = 85;
-    height = infoView.height/5;
-    for (int i = 0; i < 5; i++) {
+    height = infoView.height/6;
+    for (int i = 0; i < 6; i++) {
         UILabel *label1 = [UILabel new];
         label1.text = titles[i];
         label1.textColor = [UIColor grayColor];
@@ -57,6 +57,8 @@
         if (i == 0) {
             _bankLabel = label2;
         } else if (i == 1) {
+            _banknoLabel = label2;
+        } else if (i == 2) {
             _nameLabel = label2;
         } else if (i == 3) {
             _phoneLabel = label2;

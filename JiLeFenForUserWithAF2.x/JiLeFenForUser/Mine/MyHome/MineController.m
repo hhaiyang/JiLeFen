@@ -146,20 +146,20 @@
 }
 - (void)myScore:(id)sender {
     TEST_LOG(@"我的积分");
-//    if ([User currentUser].status == NoLogin) {
-//        [self login:nil];
-//        return;
-//    }
+    if ([User currentUser].status == NoLogin) {
+        [self login:nil];
+        return;
+    }
     MyScoreController *myScoreController = [MyScoreController new];
    
     [self.navigationController pushViewController:myScoreController animated:YES];
 }
 - (void)myAttention:(id)sender {
     TEST_LOG(@"我的关注");
-//    if ([User currentUser].status == NoLogin) {
-//        [self login:nil];
-//        return;
-//    }
+    if ([User currentUser].status == NoLogin) {
+        [self login:nil];
+        return;
+    }
     MyAttentionListController *myAttentionController = [[MyAttentionListController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:myAttentionController animated:YES];
 }

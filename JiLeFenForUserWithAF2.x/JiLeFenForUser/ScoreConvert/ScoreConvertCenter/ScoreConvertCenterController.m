@@ -13,6 +13,8 @@
 #import "ConvertRecordController.h"
 #import "GoodsConvertController.h"
 #import "Goods.h"
+#import "User.h"
+#import "LoginController.h"
 
 @interface ScoreConvertCenterController ()
 @property (nonatomic, strong) NSArray *goodsList;
@@ -134,17 +136,44 @@
 
 //跳转到现金兑换界面
 - (void)cashConvert:(id)sender {
-    CashConvertController *cashConvertController = [CashConvertController new];
-    [self.navigationController pushViewController:cashConvertController animated:YES];
+    //首先判断用户是否登录，如果已经登录直接跳转，否则让用户先登录
+    if ([User currentUser].status == Login) {
+        CashConvertController *cashConvertController = [CashConvertController new];
+        [self.navigationController pushViewController:cashConvertController animated:YES];
+    } else {
+        [self toLoginController];
+    }
+    
+    
 }
+//跳转到家政兑换界面
 - (void)domesticConvert:(id)sender {
-    DomesticConvertController *domesticServiceController = [DomesticConvertController new];
-    [self.navigationController pushViewController:domesticServiceController animated:YES];
+    //首先判断用户是否已经登录，如果是则直接跳转，否则让用户先登录
+    if ([User currentUser].status == Login) {
+        DomesticConvertController *domesticServiceController = [DomesticConvertController new];
+        [self.navigationController pushViewController:domesticServiceController animated:YES];
+    } else {
+        [self toLoginController];
+    }
+  
 }
+//跳转到兑换记录界面
 - (void)convertRecord:(id)sender {
-    ConvertRecordController *convertRecordController = [ConvertRecordController new];
-    convertRecordController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:convertRecordController animated:YES];
+    //首先判断用户是否已经登录，如果是则直接跳转，否则让用户先登录
+    if ([User currentUser].status == Login) {
+        ConvertRecordController *convertRecordController = [ConvertRecordController new];
+        convertRecordController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:convertRecordController animated:YES];
+    } else {
+        [self toLoginController];
+    }
+    
+}
+//跳转到登录界面
+- (void)toLoginController {
+    LoginController *login = [LoginController new];
+    UINavigationController *loginNavi = [[UINavigationController alloc] initWithRootViewController:login];
+    [self presentViewController:loginNavi animated:YES completion:nil];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
