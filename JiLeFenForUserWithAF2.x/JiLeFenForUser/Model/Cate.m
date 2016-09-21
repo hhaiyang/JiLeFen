@@ -6,9 +6,9 @@
 //  Copyright © 2016年 tarena. All rights reserved.
 //
 
-#import "BusinessCategory.h"
+#import "Cate.h"
 
 
-@implementation BusinessCategory
+@implementation Cate
 
 @end

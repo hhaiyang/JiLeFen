@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BusinessCategory.h"
+#import "Cate.h"
 #import "BaseModel.h"
 //商家模型
 @interface Business : BaseModel
@@ -16,5 +16,5 @@
 //商家的地址
 @property (nonatomic, copy) NSString *address;
 //商家所属分类
-@property (nonatomic, strong) BusinessCategory *businessCategory;
+@property (nonatomic, strong) Cate *businessCategory;
 @end

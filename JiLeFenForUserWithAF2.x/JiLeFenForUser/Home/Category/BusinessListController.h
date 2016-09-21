@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeController.h"
+#import "Cate.h"
 
-@interface CategoryController : UIViewController
+@interface BusinessListController : UIViewController
 @property (nonatomic, assign) BusinessType businessType;
 
-
+@property (nonatomic, strong) Cate *cate;
 @end

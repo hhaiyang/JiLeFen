@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
 
-@interface BusinessCategory : BaseModel
+
+@interface Cate : BaseModel
 //分类名
 @property (nonatomic, copy) NSString *name;
-//分类的父类信息，可能有很多，但最少应该有父ID
+//分类的父类信息
 @property (nonatomic, copy) NSString *parentID;
+//分类的图标
+@property (nonatomic, copy) NSString *icon;
 @end

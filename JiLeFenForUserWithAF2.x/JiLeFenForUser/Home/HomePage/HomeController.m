@@ -10,10 +10,11 @@
 #import "ZLImageViewDisplayView.h"
 #import "HomeCell.h"
 #import "SearchController.h"
-#import "CategoryController.h"
+#import "BusinessListController.h"
 #import "PartView.h"
 #import "Activity.h"
 #import "RocationCollectionViewCell.h"
+#import "AllCategoryController.h"
 @interface HomeController () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UIWebViewDelegate>
 @property (nonatomic, strong) UIScrollView *parentScrollView;
 @property (strong, nonatomic)UICollectionView  *rocationCollectionView;
@@ -374,24 +375,36 @@
 }
 //跳转到分类界面
 - (void)toCategoryController:(UIButton *)button {
+    if (button.tag == 6) {
+        AllCategoryController *allCate = [AllCategoryController new];
+        [self.navigationController pushViewController:allCate animated:YES];
+        return;
+    }
     
-    CategoryController *category = [CategoryController new];
+    BusinessListController *category = [BusinessListController new];
     if (button.tag == 0) {
         category.businessType = BusinessTypeDiscount;
+        category.title = @"打折";
     } else if (button.tag == 1) {
         category.businessType = BusinessTypeSupermarket;
+        category.title = @"商超";
     } else if (button.tag == 2) {
         category.businessType = BusinessTypeProperty;
+        category.title = @"房产";
     } else if (button.tag == 3) {
         category.businessType = BusinessTypeFurniture;
+        category.title = @"家具";
     } else if (button.tag == 4) {
         category.businessType = BusinessTypeClothes;
+        category.title = @"服装";
         
     } else if (button.tag == 5) {
         category.businessType = BusinessTypeMaterial;
+        category.title = @"建材";
         
     } else if (button.tag == 6) {
         category.businessType = BusinessTypeAll;
+        category.title = @"全部";
     }
     [self.navigationController pushViewController:category animated:YES];
 }
