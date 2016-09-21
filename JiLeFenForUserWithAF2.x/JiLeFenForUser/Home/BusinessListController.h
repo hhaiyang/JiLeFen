@@ -11,7 +11,7 @@
 #import "Cate.h"
 
 @interface BusinessListController : UIViewController
-@property (nonatomic, assign) BusinessType businessType;
+@property (nonatomic, copy) NSString *urlStr;
 
 @property (nonatomic, strong) Cate *cate;
 @end

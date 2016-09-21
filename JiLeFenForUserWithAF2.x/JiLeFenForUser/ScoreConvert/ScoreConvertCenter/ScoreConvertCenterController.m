@@ -77,7 +77,7 @@
     [self.tableView registerClass:[ScoreCell class] forCellReuseIdentifier:@"ScoreCell"];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getGoodsListForConvert)];
     [self.tableView.mj_header beginRefreshing];
-    
+    [self getTestGoodsList];
     
     
     
@@ -107,6 +107,21 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         TEST_LOG(@"error = %@", error);
         [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+    
+}
+//获取商品列表的测试数据
+- (void)getTestGoodsList {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"pagesize"] = @"3";
+    para[@"pagenum"] = @"1";
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=goodslist" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"test res = %@", responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"test err = %@", error);
         
     }];
     

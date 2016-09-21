@@ -43,8 +43,9 @@
     NSMutableArray *tempArray = [NSMutableArray arrayWithObjects:@"http://www.ugohb.com/attachment/flash/1439454273cdfub.jpg", nil];
     self.imageArray = tempArray;
 
-    [self setNavi];
-    [self setScrollView];
+    self.title = @"首页";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}];
+    [self addScrollView];
     [self getJSON];
     [self addCollectionView];
     [self addPageControl];
@@ -61,8 +62,8 @@
     
 }
 
-
-- (void)search {
+//跳转到搜索界面
+- (void)toSearchController {
     TEST_LOG(@"搜索");
     SearchController *searchController = [SearchController new];
     searchController.hidesBottomBarWhenPushed = YES;
@@ -71,16 +72,16 @@
 }
 
 
-//设置导航
-- (void)setNavi {
+//添加搜索功能
+- (void)addSearch {
     UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [searchButton addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
+    [searchButton addTarget:self action:@selector(toSearchController) forControlEvents:UIControlEventTouchUpInside];
     searchButton.frame = CGRectMake(0, 0, 100, 35);
     [searchButton setBackgroundImage:[UIImage imageNamed:@"搜索按钮"] forState:UIControlStateNormal];
     self.navigationItem.titleView = searchButton;
 }
-//设置滚动视图
-- (void)setScrollView {
+//添加滚动视图
+- (void)addScrollView {
     _parentScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_parentScrollView];
 }
@@ -211,9 +212,8 @@
     CGFloat categoryViewW = [UIScreen mainScreen].bounds.size.width;
     CGFloat categoryViewH = 126;
     categoryView.frame = CGRectMake(categoryViewX, categoryViewY, categoryViewW, categoryViewH);
-    //    categoryView.backgroundColor = [UIColor redColor];
     
-    for (int i = 0 ; i < 7; i++) {
+    for (int i = 0 ; i < 6; i++) {
         UIButton *categoryButton = [[UIButton alloc]init];
         
         
@@ -230,7 +230,6 @@
         
         [categoryButton setImage:tempImage forState:UIControlStateNormal];
         categoryButton.frame = CGRectMake(buttonX, buttonY, buttonw, buttonH);
-        //        categoryButton.backgroundColor = [UIColor greenColor];
         categoryButton.tag = i;
         [categoryButton addTarget:self action:@selector(toCategoryController:) forControlEvents:UIControlEventTouchUpInside];
         [categoryView addSubview:categoryButton];
@@ -306,15 +305,15 @@
 #pragma mark- UICollectionView代理方法
 
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    int select = indexPath.item;
-    int tempcount = self.imageArray.count;
-    int urlindex = select/tempcount;
-    NSLog([NSString stringWithFormat:@"点击了%d",urlindex]);
-    NSString *clickurl = [[NSString alloc]init];
-    clickurl = self.clickArray[urlindex];
-    if ([self.delegate respondsToSelector:@selector(webviewLinkClicked:)]) {
-        [self.delegate webviewLinkClicked:clickurl];
-    }
+//    int select = indexPath.item;
+//    int tempcount = self.imageArray.count;
+//    int urlindex = select/tempcount;
+//    NSLog([NSString stringWithFormat:@"点击了%d",urlindex]);
+//    NSString *clickurl = [[NSString alloc]init];
+//    clickurl = self.clickArray[urlindex];
+//    if ([self.delegate respondsToSelector:@selector(webviewLinkClicked:)]) {
+//        [self.delegate webviewLinkClicked:clickurl];
+//    }
     
 }
 
@@ -375,37 +374,33 @@
 }
 //跳转到分类界面
 - (void)toCategoryController:(UIButton *)button {
-    if (button.tag == 6) {
+    if (button.tag == 5) {
         AllCategoryController *allCate = [AllCategoryController new];
         [self.navigationController pushViewController:allCate animated:YES];
         return;
     }
-    
-    BusinessListController *category = [BusinessListController new];
+    BusinessListController *businessList = [BusinessListController new];
     if (button.tag == 0) {
-        category.businessType = BusinessTypeDiscount;
-        category.title = @"打折";
-    } else if (button.tag == 1) {
-        category.businessType = BusinessTypeSupermarket;
-        category.title = @"商超";
-    } else if (button.tag == 2) {
-        category.businessType = BusinessTypeProperty;
-        category.title = @"房产";
-    } else if (button.tag == 3) {
-        category.businessType = BusinessTypeFurniture;
-        category.title = @"家具";
-    } else if (button.tag == 4) {
-        category.businessType = BusinessTypeClothes;
-        category.title = @"服装";
-        
-    } else if (button.tag == 5) {
-        category.businessType = BusinessTypeMaterial;
-        category.title = @"建材";
-        
-    } else if (button.tag == 6) {
-        category.businessType = BusinessTypeAll;
-        category.title = @"全部";
+        businessList.title = @"打折";
+        businessList.urlStr = @"http://www.ugohb.com/client/diszhe.php?did=1";
+    } else {
+        Cate *cate = [Cate new];
+        if (button.tag == 1) {
+            cate.name = @"商超";
+            cate.ID = @"3";
+        } else if (button.tag == 2) {
+            cate.name = @"家具";
+            cate.ID = @"196";
+        } else if (button.tag == 3) {
+            cate.name = @"服装";
+            cate.ID = @"2";
+        } else if (button.tag == 4) {
+            cate.name = @"建材";
+            cate.ID = @"197";
+        }
+        businessList.cate = cate;
     }
-    [self.navigationController pushViewController:category animated:YES];
+    [self.navigationController pushViewController:businessList animated:YES];
+    
 }
 @end

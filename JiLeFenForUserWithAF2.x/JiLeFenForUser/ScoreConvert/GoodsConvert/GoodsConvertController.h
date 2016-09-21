@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Goods.h"
 //物品兑换界面
-@interface GoodsConvertController : UITableViewController
-
+@interface GoodsConvertController : UIViewController
+@property (nonatomic, strong) Goods *goods;
 @end

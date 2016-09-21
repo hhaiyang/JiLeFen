@@ -108,7 +108,7 @@
                 </constraints>
             </tableViewCellContentView>
             <animations/>
-            <point key="canvasLocation" x="248.5" y="394.5"/>
+            <point key="canvasLocation" x="421.5" y="318.5"/>
         </tableViewCell>
     </objects>
     <resources>

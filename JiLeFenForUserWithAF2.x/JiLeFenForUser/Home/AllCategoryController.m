@@ -46,7 +46,6 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=firstcategory" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        TEST_LOG(@"res = %@", responseObject);
         [hud hideAnimated:YES];
         _firstCateLoadSuccess = YES;
         NSArray *arr = (NSArray *)responseObject;
@@ -65,7 +64,6 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         //加载失败以后再说
-        TEST_LOG(@"error = %@", error);
         [hud hideAnimated:YES];
         
         
@@ -110,7 +108,7 @@
         NSMutableDictionary *para = [NSMutableDictionary new];
         para[@"parentid"] = cate.ID;
         [manager POST:@"http://www.ugohb.com/app/app.php?j=user&type=childcategory" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
-            TEST_LOG(@"res = %@", responseObject);
+
             [hud hideAnimated:YES];
             NSArray *arr = (NSArray *)responseObject;
             NSMutableArray *cates = [NSMutableArray new];
