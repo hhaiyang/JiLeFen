@@ -15,12 +15,14 @@
 #import "Activity.h"
 #import "RocationCollectionViewCell.h"
 #import "AllCategoryController.h"
+#import "BusinessController.h"
+#import "BusinessWebController.h"
 @interface HomeController () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UIWebViewDelegate>
 @property (nonatomic, strong) UIScrollView *parentScrollView;
 @property (strong, nonatomic)UICollectionView  *rocationCollectionView;
 @property(strong,nonatomic)UIPageControl *rocationPageControl;
 @property(strong,nonatomic)UIWebView *mainWebView;
-
+@property (nonatomic, strong) UIView *categoryView;
 
 @property(strong,nonatomic)NSMutableArray *imageArray;
 @property(strong,nonatomic)NSMutableArray *clickArray;
@@ -205,15 +207,20 @@
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
 }
+//加载分类视图
 -(void)addCategoryIcon{
+    NSArray *icons = @[@"category1", @"category4", @"category2", @"category6"];
+    int row = icons.count/4 + icons.count%4?1:0;
+    NSLog(@"row = %d", row);
     UIView *categoryView = [[UIView alloc]init];
+    _categoryView = categoryView;
     CGFloat categoryViewX = 0;
     CGFloat categoryViewY = self.rocationCollectionView.frame.size.height + 3;
     CGFloat categoryViewW = [UIScreen mainScreen].bounds.size.width;
-    CGFloat categoryViewH = 126;
+    CGFloat categoryViewH = 63.0*row;
     categoryView.frame = CGRectMake(categoryViewX, categoryViewY, categoryViewW, categoryViewH);
     
-    for (int i = 0 ; i < 6; i++) {
+    for (int i = 0 ; i < icons.count; i++) {
         UIButton *categoryButton = [[UIButton alloc]init];
         
         
@@ -224,9 +231,8 @@
         int column = i%4;
         CGFloat buttonX = margin+(buttonw+margin)*column;
         CGFloat buttonY = row * (buttonH + 3);
-        
-        NSString *imageName = [NSString stringWithFormat:@"category%d",i+1];
-        UIImage *tempImage = [UIImage imageNamed:imageName];
+    
+        UIImage *tempImage = [UIImage imageNamed:icons[i]];
         
         [categoryButton setImage:tempImage forState:UIControlStateNormal];
         categoryButton.frame = CGRectMake(buttonX, buttonY, buttonw, buttonH);
@@ -239,18 +245,14 @@
     
     [self.parentScrollView addSubview:categoryView];
 }
--(void)categoryButtonClick:(UIButton *)button{
-    
-}
+//加载网页
 -(void)addWebView{
     UIWebView *mainWebView = [[UIWebView alloc]init];
     CGFloat webviewW = [UIScreen mainScreen].bounds.size.width;
     CGFloat webviewH = [UIScreen mainScreen].bounds.size.width-276;
-    mainWebView.frame = CGRectMake(0, 276, webviewW, webviewH);
+    mainWebView.frame = CGRectMake(0, _categoryView.y+_categoryView.height, webviewW, webviewH);
     self.mainWebView = mainWebView;
     
-    //加载测试URL
-    //    NSURL *url = [[NSBundle mainBundle] URLForResource:@"testindex.html" withExtension:nil];
     NSURL *url = [NSURL URLWithString:@"http://www.ugohb.com/client2/"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [mainWebView loadRequest:request];
@@ -305,76 +307,50 @@
 #pragma mark- UICollectionView代理方法
 
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-//    int select = indexPath.item;
-//    int tempcount = self.imageArray.count;
-//    int urlindex = select/tempcount;
-//    NSLog([NSString stringWithFormat:@"点击了%d",urlindex]);
-//    NSString *clickurl = [[NSString alloc]init];
-//    clickurl = self.clickArray[urlindex];
-//    if ([self.delegate respondsToSelector:@selector(webviewLinkClicked:)]) {
-//        [self.delegate webviewLinkClicked:clickurl];
-//    }
+    NSInteger select = indexPath.item;
+    NSInteger tempcount = self.imageArray.count;
+    NSInteger urlindex = select/tempcount;
+    NSString *urlStr = self.clickArray[urlindex];
+    [self toBusinessControllerWithURLString:urlStr];
     
 }
 
 #pragma mark-UIWebView的代理方法
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
-    
-    NSString *temploadurl = [request.URL absoluteString];
-    NSMutableString *loadurl = [NSMutableString stringWithString:temploadurl];
-    BOOL toLoad = true;
-    
-    if (![loadurl isEqualToString:@"http://www.ugohb.com/client2/"]) {
-        
-        
-        if([loadurl rangeOfString:@"wap"].location != NSNotFound){
-            //链接中包含字符"wap",将其替换成client2
-            [loadurl replaceCharactersInRange:[loadurl rangeOfString:@"wap"] withString:@"client2"];
-            
+    //点击网页链接后跳转到商家界面
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        NSMutableString *str = [NSMutableString stringWithString:request.URL.absoluteString];
+        if ([str containsString:@"wap"]) {
+             [str replaceCharactersInRange:[str rangeOfString:@"wap"] withString:@"client2"];
         }
-        
-        if ([self.delegate respondsToSelector:@selector(webviewLinkClicked:)]) {
-            toLoad = false;
-            [self.delegate webviewLinkClicked:loadurl];
-            
-        }
+        [self toBusinessControllerWithURLString:[str copy]];
+        return NO;
     }
-    
-    return toLoad;
+    return YES;
 }
 
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
+    //网页加载完毕后重新计算滚动视图的高度
     NSString *height = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
     CGFloat webViewHeight = [height floatValue];
-    //    NSLog([NSString stringWithFormat:@"webview的高度：%f",webViewHeight]);
-    /////////////////出现奇葩的bug,这里必须这么写/////////////////
-    webView.frame = CGRectMake(0, 276, [UIScreen mainScreen].bounds.size.width, webViewHeight);
-    self.parentScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, webView.scrollView.contentSize.height+276);
+    webView.frame = CGRectMake(0, _categoryView.y+_categoryView.height, [UIScreen mainScreen].bounds.size.width, webViewHeight);
+    self.parentScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, webView.scrollView.contentSize.height+276-63);
     webView.scrollView.scrollEnabled = NO;
-    ///////////////////
+   
     CGFloat newHeight =  webView.scrollView.contentSize.height;
-    //    NSLog([NSString stringWithFormat:@"test = %f",test]);
     
-    webView.frame = CGRectMake(0, 276, [UIScreen mainScreen].bounds.size.width, newHeight);
-    self.parentScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, newHeight+276);
+    webView.frame = CGRectMake(0, _categoryView.height+_categoryView.y, [UIScreen mainScreen].bounds.size.width, newHeight);
+    self.parentScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, newHeight+276-63);
     
     
-    //    CGFloat test = self.mainWebView.frame.size.height;
-    //    NSLog(@"=====%f",test);
 }
 
--(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-//    [MBProgressHUD showError:@"没有网络连接"];
-    //    CGFloat test = self.mainWebView.frame.size.height;
-    //    NSLog(@"=====%f",test);
-    
-}
+
 //跳转到分类界面
 - (void)toCategoryController:(UIButton *)button {
-    if (button.tag == 5) {
+    if (button.tag == 3) {
         AllCategoryController *allCate = [AllCategoryController new];
         [self.navigationController pushViewController:allCate animated:YES];
         return;
@@ -386,21 +362,21 @@
     } else {
         Cate *cate = [Cate new];
         if (button.tag == 1) {
-            cate.name = @"商超";
-            cate.ID = @"3";
-        } else if (button.tag == 2) {
-            cate.name = @"家具";
-            cate.ID = @"196";
-        } else if (button.tag == 3) {
             cate.name = @"服装";
             cate.ID = @"2";
-        } else if (button.tag == 4) {
-            cate.name = @"建材";
-            cate.ID = @"197";
+        } else if (button.tag == 2) {
+            cate.name = @"商超";
+            cate.ID = @"3";
         }
         businessList.cate = cate;
     }
     [self.navigationController pushViewController:businessList animated:YES];
     
+}
+//根据给定的商家URL跳转到商家界面
+- (void)toBusinessControllerWithURLString:(NSString *)urlStr {
+    BusinessWebController *business = [BusinessWebController new];
+    business.urlStr = urlStr;
+    [self.navigationController pushViewController:business animated:YES];
 }
 @end

@@ -7,15 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol CategoryButtonClickDelegate <NSObject>
-
-@optional
--(void)categoryButtonclicked:(NSInteger)buttonTag;
-
-@optional
--(void)webviewLinkClicked:(NSString *)url;
-
-@end
 
 typedef enum : NSUInteger {
     //积分
@@ -35,6 +26,5 @@ typedef enum : NSUInteger {
 } BusinessType;
 
 @interface HomeController : UIViewController
-@property(nonatomic,weak)id<CategoryButtonClickDelegate> delegate;
 
 @end

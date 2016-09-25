@@ -10,8 +10,9 @@
 #import "BusinessController.h"
 #import "Commbox.h"
 #import "Cate.h"
+#import "BusinessWebController.h"
 
-@interface BusinessListController ()
+@interface BusinessListController () <UIWebViewDelegate>
 @end
 
 @implementation BusinessListController
@@ -28,6 +29,7 @@
     
     //根据传过来的分类信息添加web view加载商家列表
     UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    webView.delegate = self;
     [self.view addSubview:webView];
     NSURL *url = nil;
     if (self.cate) {
@@ -45,4 +47,15 @@
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        BusinessWebController *business = [BusinessWebController new];
+        business.urlStr = request.URL.absoluteString;
+        [self.navigationController pushViewController:business animated:YES];
+        return NO;
+    }
+    return YES;
+}
+
 @end
