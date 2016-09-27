@@ -1217,7 +1217,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.tedu.JiLeFenForBusiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86749015-1318-4688-b968-35b3eac32f6e";
+				PROVISIONING_PROFILE = "1380e77a-4cc5-40e8-9378-d6fbb1c07290";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1236,7 +1236,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.tedu.JiLeFenForBusiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86749015-1318-4688-b968-35b3eac32f6e";
+				PROVISIONING_PROFILE = "1380e77a-4cc5-40e8-9378-d6fbb1c07290";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

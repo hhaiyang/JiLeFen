@@ -118,7 +118,7 @@ static NSString *scoreCellID = @"ScoreCell";
         [hud hideAnimated:YES];
         int status = [responseObject[@"status"] intValue];
         if (status == 1) {
-            NSString *v_num = responseObject[@"data"][@"v_num"];
+            NSString *v_num = [responseObject[@"data"] firstObject][@"v_mun"];
             NSMutableAttributedString *usableScore = [NSMutableAttributedString new];
             NSAttributedString *str1 = [[NSAttributedString alloc] initWithString:@"可用积分  " attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}];
             NSAttributedString *str2 = [[NSAttributedString alloc] initWithString:v_num attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20], NSForegroundColorAttributeName:[UIColor redColor]}];

@@ -52,6 +52,13 @@
         [hud hideAnimated:YES afterDelay:1.5];
         return;
     }
+    if (![UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"照相机不可用";
+        [hud hideAnimated:YES afterDelay:1.5];
+        return;
+    }
     ScanQRCodeController *scanQRCode = [ScanQRCodeController new];
     [self.navigationController pushViewController:scanQRCode animated:YES];
     

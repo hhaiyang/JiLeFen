@@ -75,7 +75,24 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = @"提交中，请稍候";
     //缺少接口
-    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    para[@"userid"] = self.userNameTextField.text;
+    para[@"mycode"] = [User currentUser].ID;
+    para[@"jifen_mun"] = self.scoreTextField.text;
+    [manager POST:@"http://www.ugohb.com/app/app.php?j=index&type=addjifen" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        TEST_LOG(@"res = %@", responseObject);
+        int status = [responseObject[@"status"] intValue];
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        TEST_LOG(@"error = %@", error);
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"提交失败";
+        [hud hideAnimated:YES afterDelay:1.5];
+        
+    }];
     
     
 }
