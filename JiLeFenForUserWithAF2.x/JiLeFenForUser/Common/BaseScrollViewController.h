@@ -6,9 +6,9 @@
 //  Copyright © 2016年 tarena. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "HYBaseViewController.h"
 
-@interface BaseScrollViewController : BaseViewController
+@interface BaseScrollViewController : HYBaseViewController
 
 /**
  *  BaseScrollViewController下的子视图,都放在mainView上面

@@ -212,6 +212,14 @@
         [hud hideAnimated:YES afterDelay:1.5];
         return;
     }
+    //开始注册
+    //如果验证码的计时器还在计时先把它停了
+    if (_countDownTimer) {
+        [_countDownTimer invalidate];
+        _countDownLabel.text = nil;
+        _hintLabel.text = nil;
+        _getVerifyCodeButton.enabled = YES;
+    }
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = @"注册中，请稍候";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -227,6 +235,10 @@
         if (status == 1) {
             hud.label.text = @"注册成功";
             [hud hideAnimated:YES afterDelay:1.5];
+            _phoneTextField.text = nil;
+            _verifyCodeTextField.text = nil;
+            _passwordTextField.text = nil;
+            _surePasswordTextField.text = nil;
             return ;
         }
         hud.label.text = @"注册失败";

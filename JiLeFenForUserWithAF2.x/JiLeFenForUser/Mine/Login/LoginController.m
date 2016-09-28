@@ -10,6 +10,7 @@
 #import "RegisterController.h"
 #import "RecordPasswordButton.h"
 #import "User.h"
+#import "GetBackPasswordController.h"
 @interface LoginController () <UITextFieldDelegate>
 @property (strong, nonatomic) UITextField *phoneTextField;
 @property (strong, nonatomic) UITextField *passwordTextField;
@@ -76,16 +77,17 @@
     [recordPasswordButton addTarget:self action:@selector(recordPassword:) forControlEvents:UIControlEventTouchUpInside];
     [backgroundImageView addSubview:recordPasswordButton];
     
-    /*
+    
+    //添加忘记密码按钮
     UIButton *forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *forgotImage = [UIImage imageNamed:@"忘记密码小图标"];
     CGFloat forgotHeight = 30;
     CGFloat forgotWidth = forgotImage.size.width/forgotImage.size.height*forgotHeight;
     forgotPasswordButton.frame = CGRectMake(inputImageView.x+inputImageView.width-forgotWidth, recordPasswordButton.y, forgotWidth, forgotHeight);
     [forgotPasswordButton setBackgroundImage:forgotImage forState:UIControlStateNormal];
-    [forgotPasswordButton addTarget:self action:@selector(forgetPassword:) forControlEvents:UIControlEventTouchUpInside];
+    [forgotPasswordButton addTarget:self action:@selector(toGetBackPasswordController:) forControlEvents:UIControlEventTouchUpInside];
     [backgroundImageView addSubview:forgotPasswordButton];
-     */
+    
     
     UIButton *button = nil;
     CGFloat buttonHeight = 47;
@@ -100,7 +102,7 @@
         if (index == 0) {
             [button addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
         } else {
-            [button addTarget:self action:@selector(registerAccount:) forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:self action:@selector(toRegisterController:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
     
@@ -131,10 +133,7 @@
     }
 }
 
-- (void)forgetPassword:(UIButton *)sender {
-    TEST_LOG(@"忘记密码");
-    
-}
+
 - (void)login:(id)sender {
     [self.view endEditing:YES];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -164,7 +163,7 @@
         int status = [responseObject[@"status"] intValue];
          hud.mode = MBProgressHUDModeText;
         if (status == 0) {
-            hud.label.text = @"登录失败";
+            hud.label.text = @"帐号或密码输入错误";
             [hud hideAnimated:YES afterDelay:1.5];
             return ;
         }
@@ -191,17 +190,23 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         TEST_LOG(@"error = %@", error);
         hud.mode = MBProgressHUDModeText;
-        hud.label.text = @"登录失败";
+        hud.label.text = @"帐号或密码输入错误";
         [hud hideAnimated:YES afterDelay:1.5];
     }];
 
 }
-- (void)registerAccount:(id)sender {
-    TEST_LOG(@"注册");
+
+//跳转到注册界面
+- (void)toRegisterController:(id)sender {
     RegisterController *registerController = [RegisterController new];
     [self.navigationController pushViewController:registerController animated:YES];
 }
-
+//跳转到找回密码界面
+- (void)toGetBackPasswordController:(id)sender {
+    GetBackPasswordController *getBackPassword = [GetBackPasswordController new];
+    [self.navigationController pushViewController:getBackPassword animated:YES];
+    
+}
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }

@@ -108,7 +108,7 @@
 		02E1A6921CB38DF1009C6177 /* UIDevice+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A6841CB38DF1009C6177 /* UIDevice+Addition.m */; };
 		02E1A6931CB38DF1009C6177 /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A6861CB38DF1009C6177 /* ImageManager.m */; };
 		02E1A6941CB38DF1009C6177 /* ResManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A6881CB38DF1009C6177 /* ResManager.m */; };
-		02E1A6951CB38DF1009C6177 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A68A1CB38DF1009C6177 /* BaseViewController.m */; };
+		02E1A6951CB38DF1009C6177 /* HYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A68A1CB38DF1009C6177 /* HYBaseViewController.m */; };
 		02E1A6961CB38DF1009C6177 /* BaseScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A68C1CB38DF1009C6177 /* BaseScrollViewController.m */; };
 		02E1A6971CB38DF1009C6177 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A68E1CB38DF1009C6177 /* NSString+Addition.m */; };
 		02E1A69B1CB38E1F009C6177 /* HYButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E1A69A1CB38E1F009C6177 /* HYButton.m */; };
@@ -155,9 +155,11 @@
 		87323DF01D9237C100658FA7 /* AllCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87323DEF1D9237C100658FA7 /* AllCategoryController.m */; };
 		873F4CF01D6F16FF008BFA42 /* InputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CED1D6F16FF008BFA42 /* InputDateView.m */; };
 		873F4CF11D6F16FF008BFA42 /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */; };
+		8740A16E1D9BA72A003FA67A /* GetBackPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8740A16D1D9BA72A003FA67A /* GetBackPasswordController.m */; };
 		876A2CF51D7E963900B09366 /* Cate.m in Sources */ = {isa = PBXBuildFile; fileRef = 876A2CF41D7E963900B09366 /* Cate.m */; };
 		877DA6FA1D79A3DB0061D5E5 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */; };
 		877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */ = {isa = PBXBuildFile; fileRef = 877DA6FC1D79A7950061D5E5 /* Goods.m */; };
+		879457E21D9BAB410046C511 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879457E11D9BAB410046C511 /* BaseViewController.m */; };
 		87E564201D701F83007301C5 /* Bank.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5641F1D701F83007301C5 /* Bank.m */; };
 		87E564231D7022C7007301C5 /* CashConvertHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564221D7022C7007301C5 /* CashConvertHintView.m */; };
 		87E564261D702F52007301C5 /* CashConvertCheckInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E564251D702F52007301C5 /* CashConvertCheckInfoView.m */; };
@@ -386,8 +388,8 @@
 		02E1A6861CB38DF1009C6177 /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
 		02E1A6871CB38DF1009C6177 /* ResManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResManager.h; sourceTree = "<group>"; };
 		02E1A6881CB38DF1009C6177 /* ResManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResManager.m; sourceTree = "<group>"; };
-		02E1A6891CB38DF1009C6177 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		02E1A68A1CB38DF1009C6177 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		02E1A6891CB38DF1009C6177 /* HYBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseViewController.h; sourceTree = "<group>"; };
+		02E1A68A1CB38DF1009C6177 /* HYBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseViewController.m; sourceTree = "<group>"; };
 		02E1A68B1CB38DF1009C6177 /* BaseScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScrollViewController.h; sourceTree = "<group>"; };
 		02E1A68C1CB38DF1009C6177 /* BaseScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScrollViewController.m; sourceTree = "<group>"; };
 		02E1A68D1CB38DF1009C6177 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
@@ -499,12 +501,16 @@
 		873F4CED1D6F16FF008BFA42 /* InputDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDateView.m; sourceTree = "<group>"; };
 		873F4CEE1D6F16FF008BFA42 /* SelectDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateView.h; sourceTree = "<group>"; };
 		873F4CEF1D6F16FF008BFA42 /* SelectDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateView.m; sourceTree = "<group>"; };
+		8740A16C1D9BA72A003FA67A /* GetBackPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetBackPasswordController.h; sourceTree = "<group>"; };
+		8740A16D1D9BA72A003FA67A /* GetBackPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetBackPasswordController.m; sourceTree = "<group>"; };
 		876A2CF31D7E963900B09366 /* Cate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cate.h; sourceTree = "<group>"; };
 		876A2CF41D7E963900B09366 /* Cate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cate.m; sourceTree = "<group>"; };
 		877DA6F81D79A3DB0061D5E5 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		877DA6F91D79A3DB0061D5E5 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		877DA6FB1D79A7950061D5E5 /* Goods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goods.h; sourceTree = "<group>"; };
 		877DA6FC1D79A7950061D5E5 /* Goods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goods.m; sourceTree = "<group>"; };
+		879457E01D9BAB410046C511 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		879457E11D9BAB410046C511 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		87E5641E1D701F83007301C5 /* Bank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bank.h; sourceTree = "<group>"; };
 		87E5641F1D701F83007301C5 /* Bank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bank.m; sourceTree = "<group>"; };
 		87E564211D7022C7007301C5 /* CashConvertHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashConvertHintView.h; sourceTree = "<group>"; };
@@ -880,6 +886,8 @@
 				02DF12F81CFEAE4100F1BD2C /* AppDelegate.m */,
 				02DF12F91CFEAE4100F1BD2C /* TabBarController.h */,
 				02DF12FA1CFEAE4100F1BD2C /* TabBarController.m */,
+				879457E01D9BAB410046C511 /* BaseViewController.h */,
+				879457E11D9BAB410046C511 /* BaseViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -905,6 +913,8 @@
 				02AB89D21D14181300B09691 /* RecordPasswordButton.m */,
 				02DF12FD1CFEAE4100F1BD2C /* LoginController.h */,
 				02DF12FE1CFEAE4100F1BD2C /* LoginController.m */,
+				8740A16C1D9BA72A003FA67A /* GetBackPasswordController.h */,
+				8740A16D1D9BA72A003FA67A /* GetBackPasswordController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1146,8 +1156,8 @@
 				02E1A6861CB38DF1009C6177 /* ImageManager.m */,
 				02E1A6871CB38DF1009C6177 /* ResManager.h */,
 				02E1A6881CB38DF1009C6177 /* ResManager.m */,
-				02E1A6891CB38DF1009C6177 /* BaseViewController.h */,
-				02E1A68A1CB38DF1009C6177 /* BaseViewController.m */,
+				02E1A6891CB38DF1009C6177 /* HYBaseViewController.h */,
+				02E1A68A1CB38DF1009C6177 /* HYBaseViewController.m */,
 				02E1A68B1CB38DF1009C6177 /* BaseScrollViewController.h */,
 				02E1A68C1CB38DF1009C6177 /* BaseScrollViewController.m */,
 				02E1A68D1CB38DF1009C6177 /* NSString+Addition.h */,
@@ -1472,6 +1482,7 @@
 				02AE92141D181810001312D0 /* AppointmentCell.m in Sources */,
 				02E1A6AC1CB38E73009C6177 /* QRCodeScan.m in Sources */,
 				0278E93E1D47B0B3000F1898 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				879457E21D9BAB410046C511 /* BaseViewController.m in Sources */,
 				0278E9441D47B0B3000F1898 /* UIWebView+AFNetworking.m in Sources */,
 				87E564261D702F52007301C5 /* CashConvertCheckInfoView.m in Sources */,
 				87E564201D701F83007301C5 /* Bank.m in Sources */,
@@ -1479,7 +1490,7 @@
 				871B127E1D703BC0005F615C /* CashConvertSuccessView.m in Sources */,
 				029C08101D1645B900138D15 /* MJRefreshStateHeader.m in Sources */,
 				029C07CB1D16368E00138D15 /* WMMenuItem.m in Sources */,
-				02E1A6951CB38DF1009C6177 /* BaseViewController.m in Sources */,
+				02E1A6951CB38DF1009C6177 /* HYBaseViewController.m in Sources */,
 				02E1A6B91CB38F56009C6177 /* ZLImageViewDisplayView.m in Sources */,
 				87F748501D716760008B8639 /* AppointmentHintView.m in Sources */,
 				87E6D9A81D92696B0018BA6A /* RocationCollectionViewCell.m in Sources */,
@@ -1555,6 +1566,7 @@
 				029C08081D1645B900138D15 /* MJRefreshAutoGifFooter.m in Sources */,
 				877DA6FD1D79A7950061D5E5 /* Goods.m in Sources */,
 				0278E9421D47B0B3000F1898 /* UIProgressView+AFNetworking.m in Sources */,
+				8740A16E1D9BA72A003FA67A /* GetBackPasswordController.m in Sources */,
 				02E1A6941CB38DF1009C6177 /* ResManager.m in Sources */,
 				87EF31DA1D7D4751003ECB83 /* Activity.m in Sources */,
 				87E6D9AB1D92696B0018BA6A /* SecondaryRecommendView.m in Sources */,

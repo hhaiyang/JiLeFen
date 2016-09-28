@@ -6,11 +6,11 @@
 //  Copyright © 2016年 tarena. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "HYBaseViewController.h"
 /**
  *  二维码扫描界面
  */
-@interface QRCodeScanViewController : BaseViewController
+@interface QRCodeScanViewController : HYBaseViewController
 @property (copy) void (^scanActionBlock)(NSString *scanResult);
 @property (assign) BOOL isFromJSWeb;
 
